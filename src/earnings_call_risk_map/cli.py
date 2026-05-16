@@ -20,6 +20,12 @@ DEMO_FIXTURES = (
     ("energy_infrastructure", Path("examples/input/demo_energy_infrastructure.json")),
     ("public_apple_static_case_study", Path("examples/input/public_apple_static_case_study.json")),
 )
+DEMO_COMPARE = (
+    "demo_compare",
+    "demo_prior",
+    Path("examples/input/demo_company_prior.json"),
+    Path("examples/input/demo_company.json"),
+)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -110,6 +116,14 @@ def cmd_demo(args: argparse.Namespace) -> int:
         write_text(out_dir / f"{slug}_dashboard.html", render_dashboard_html(snapshot))
         write_json(out_dir / f"{slug}_review_queue.json", review_queue)
         write_text(out_dir / f"{slug}_review_queue.md", render_review_queue_markdown(review_queue))
+    compare_slug, before_slug, before_source, after_source = DEMO_COMPARE
+    before_snapshot = analyze_document(read_json(before_source))
+    after_snapshot = analyze_document(read_json(after_source))
+    compare = compare_snapshots(before_snapshot, after_snapshot)
+    write_json(out_dir / f"{before_slug}_snapshot.json", before_snapshot)
+    write_text(out_dir / f"{before_slug}_report.md", render_markdown(before_snapshot))
+    write_json(out_dir / f"{compare_slug}.json", compare)
+    write_text(out_dir / f"{compare_slug}.md", render_compare_markdown(compare))
     write_text(out_dir / "package_audit.json", package_audit_json("."))
     write_text(out_dir / "package_audit.md", package_audit_markdown("."))
     write_json(out_dir / "release_manifest.json", json.loads(manifest_json(".")))

@@ -1,10 +1,10 @@
 # Package Audit
 
 - Package: `earnings-call-risk-map`
-- Version: `0.3.0`
+- Version: `0.4.0`
 - Commands: 8 (`analyze`, `audit`, `compare`, `demo`, `manifest`, `maturity-evidence`, `review-queue`, `version`)
 - Fixtures: 4
-- Output artifacts: 18
+- Output artifacts: 22
 - Workflow files present: no
 - Skill present: yes (`skills/agent/earnings-call-risk-map/SKILL.md`)
 
@@ -19,7 +19,11 @@
 
 ## Output Artifacts
 
+- `examples/output/demo_compare.json`
+- `examples/output/demo_compare.md`
 - `examples/output/demo_dashboard.html`
+- `examples/output/demo_prior_report.md`
+- `examples/output/demo_prior_snapshot.json`
 - `examples/output/demo_report.md`
 - `examples/output/demo_review_queue.json`
 - `examples/output/demo_review_queue.md`

@@ -3,6 +3,19 @@
 The input fixture is a single JSON object used by `earnings-call-risk-map analyze`.
 The CLI validates the top-level contract before scoring so fixture mistakes fail with readable errors.
 
+## Machine-Readable Reference
+
+[`docs/schema-reference.json`](schema-reference.json) is a JSON Schema reference example for fixture authors and integrators. It is machine-readable documentation, not a new runtime dependency.
+
+The schema mirrors the accepted fixture fields described below:
+
+- top-level required fields and optional collections;
+- supported note, KPI, catalyst, and source-attribution fields;
+- `YYYY-MM-DD` date string shape;
+- permissive `additionalProperties` behavior so existing lightweight runtime validation can keep accepting extra integration metadata.
+
+Use it in editors, CI scripts, or downstream integrations that already have a JSON Schema validator available. This project itself remains zero-dependency and validates inputs with the standard library.
+
 ## Top-Level Object
 
 Required fields:
@@ -97,6 +110,36 @@ The validator reports the field path in the error, such as:
 error: examples/input/bad.json.as_of must use YYYY-MM-DD format, got '2026/05/15'
 error: examples/input/bad.json.notes[0].date must use YYYY-MM-DD format, got '04-30-2026'
 ```
+
+## Zero-Dependency Validation Guide
+
+For project-native validation, run the CLI against the fixture. If no output path is supplied, the command writes a Markdown report to stdout after validation succeeds:
+
+```sh
+python -m earnings_call_risk_map analyze examples/input/demo_company.json
+```
+
+For a quieter check that still exercises the same parser and validator, call `read_json` from the package:
+
+```sh
+python - <<'PY'
+from earnings_call_risk_map.io import read_json
+
+read_json("examples/input/demo_company.json")
+print("valid")
+PY
+```
+
+This validates:
+
+- the input is a JSON object;
+- `company`, `ticker`, `as_of`, and `data_cutoff` are present and non-empty;
+- `company` and `ticker` are strings;
+- `as_of`, `data_cutoff`, and item-level `date` values use valid `YYYY-MM-DD` calendar dates;
+- `notes`, `kpis`, and `catalysts` are arrays when provided;
+- each note, KPI, and catalyst item is a JSON object.
+
+The runtime validator does not require optional text fields, source attribution, evidence URLs, or the JSON Schema package. Those fields are documented so producers can generate stable fixtures and consumers can safely read known keys.
 
 ## Minimal Fixture
 

@@ -1,0 +1,65 @@
+{
+  "after_as_of": "2026-05-15",
+  "before_as_of": "2026-02-15",
+  "company": "Example Systems Inc.",
+  "interpretation": [
+    "Deltas compare deterministic keyword scores between analyzed snapshots; they are prompts for source review, not investment conclusions.",
+    "Risk attention increased for: gross margin, Inventory days, revenue durability.",
+    "Opportunity attention increased for: product launch.",
+    "Opportunity attention decreased for: gross margin, revenue durability.",
+    "Review workload increased by 2; inspect new stale, missing-evidence, or high-impact items.",
+    "Stale/static badge count increased by 2; verify whether older sources still apply."
+  ],
+  "opportunity_changes": [
+    {
+      "after": 6,
+      "before": 0,
+      "delta": 6,
+      "topic": "product launch"
+    },
+    {
+      "after": 0,
+      "before": 4,
+      "delta": -4,
+      "topic": "gross margin"
+    },
+    {
+      "after": 2,
+      "before": 5,
+      "delta": -3,
+      "topic": "revenue durability"
+    }
+  ],
+  "review_queue_delta": 2,
+  "risk_changes": [
+    {
+      "after": 11,
+      "before": 0,
+      "delta": 11,
+      "topic": "gross margin"
+    },
+    {
+      "after": 4,
+      "before": 0,
+      "delta": 4,
+      "topic": "Inventory days"
+    },
+    {
+      "after": 2,
+      "before": 0,
+      "delta": 2,
+      "topic": "revenue durability"
+    }
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_attribution": [],
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "stale_badge_delta": 2,
+  "ticker": "EXM",
+  "tool_version": "0.4.0"
+}

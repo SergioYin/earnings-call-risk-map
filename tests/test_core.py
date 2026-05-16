@@ -3,6 +3,8 @@ import unittest
 from pathlib import Path
 
 from earnings_call_risk_map.core import analyze_document, build_review_queue_export, compare_snapshots
+from earnings_call_risk_map.models import SAFETY_NOTICE, SOURCE_BOUNDARIES
+from earnings_call_risk_map.render import render_compare_markdown, render_markdown, render_review_queue_markdown
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -51,7 +53,7 @@ class CoreTests(unittest.TestCase):
 
     def test_analyze_scores_and_review_queue(self):
         snapshot = analyze_document(self.fixture())
-        self.assertEqual(snapshot["tool_version"], "0.3.0")
+        self.assertEqual(snapshot["tool_version"], "0.4.0")
         self.assertEqual(snapshot["summary"]["risk_count"], 1)
         self.assertEqual(snapshot["summary"]["opportunity_count"], 2)
         self.assertEqual(snapshot["review_queue"][0]["topic"], "gross margin")
@@ -78,6 +80,27 @@ class CoreTests(unittest.TestCase):
         gross_margin = next(item for item in export["items"] if item["topic"] == "gross margin")
         self.assertEqual(gross_margin["source_attribution"][0]["source_type"], "company_investor_relations")
 
+    def test_outputs_preserve_disclaimer_and_source_boundaries(self):
+        snapshot = analyze_document(self.fixture())
+        queue = build_review_queue_export(snapshot)
+        compare = compare_snapshots(snapshot, snapshot)
+
+        for payload in (snapshot, queue, compare):
+            self.assertEqual(payload["safety_notice"], SAFETY_NOTICE)
+            self.assertEqual(payload["source_boundaries"], SOURCE_BOUNDARIES)
+
+        for markdown in (
+            render_markdown(snapshot),
+            render_review_queue_markdown(queue),
+            render_compare_markdown(compare),
+        ):
+            self.assertIn(SAFETY_NOTICE, markdown)
+            self.assertIn("## Source Boundaries", markdown)
+            self.assertIn("Management claims", markdown)
+            self.assertIn("Analyst questions", markdown)
+            self.assertIn("User synthesis", markdown)
+            self.assertIn("not advice", markdown)
+
     def test_compare_snapshots_reports_deltas(self):
         before = analyze_document(self.fixture())
         after_fixture = self.fixture()
@@ -96,6 +119,8 @@ class CoreTests(unittest.TestCase):
         topics = {item["topic"] for item in result["risk_changes"]}
         self.assertIn("regulatory", topics)
         self.assertGreaterEqual(result["stale_badge_delta"], 1)
+        self.assertTrue(result["interpretation"])
+        self.assertIn("deterministic keyword scores", result["interpretation"][0])
 
     def test_review_queue_export_is_focused(self):
         snapshot = analyze_document(self.fixture())

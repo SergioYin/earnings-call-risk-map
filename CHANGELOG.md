@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.4.0 - 2026-05-17
+
+Packaging-readiness and final-polish release.
+
+### Added
+
+- Package distribution guide at `docs/distribution.md`.
+- Local `pipx`, `pip`, editable install, and wheel build dry-run instructions.
+- Supported Python version guidance for Python `3.9` or newer.
+- Packaging troubleshooting notes for build tools, stale local installs, path issues, and stale artifacts.
+- Release notes at `docs/release-notes-v0.4.0.md`.
+- Selfcheck validation for local Markdown links in README and release documentation.
+
+### Changed
+
+- README links now point to v0.4.0 release notes and package distribution guidance.
+- README first screen now gives cold users the project purpose, two quickest commands, static dashboard path, and non-advice boundary before deeper documentation.
+- Release readiness references now point to v0.4.0 release notes and wheel dry-run guidance.
+- Demo outputs, release manifests, package audit files, static dashboard previews, and maturity evidence were refreshed for the release candidate.
+- Package version is now `0.4.0`.
+
+### Safety
+
+- Distribution instructions explicitly avoid publishing to PyPI or another package index.
+- No workflow files, private context, API keys, databases, or runtime package dependencies are added.
+
 ## 0.3.0 - 2026-05-17
 
 Showcase-oriented public release.

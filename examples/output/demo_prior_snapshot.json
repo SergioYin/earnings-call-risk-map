@@ -1,0 +1,107 @@
+{
+  "as_of": "2026-02-15",
+  "catalyst_timeline": [
+    {
+      "date": "2026-05-15",
+      "description": "Compare pipeline comments with reported growth.",
+      "evidence_url": null,
+      "expected_impact": "opportunity validation",
+      "source_attribution": [],
+      "title": "Q1 earnings review"
+    }
+  ],
+  "company": "Example Systems Inc.",
+  "data_cutoff": "2026-01-31",
+  "opportunities": [
+    {
+      "date": "2026-01-31",
+      "direction": "up",
+      "evidence_url": "https://example.com/exm/q4-2025-deck",
+      "name": "Net retention",
+      "observation": "Growth recovered modestly.",
+      "opportunity_keywords": [
+        "growth"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 5,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [],
+      "stale_badge": {
+        "age_days": 15,
+        "label": "current",
+        "status": "current"
+      },
+      "value": "109%"
+    },
+    {
+      "date": "2026-01-31",
+      "evidence_url": "https://example.com/exm/q4-2025-call",
+      "id": "p1",
+      "opportunity_keywords": [
+        "growth",
+        "pipeline"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 5,
+      "review_reasons": [],
+      "review_required": false,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [],
+      "stale_badge": {
+        "age_days": 15,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "Management cited growth in the enterprise pipeline.",
+      "topic": "revenue durability",
+      "type": "transcript_excerpt"
+    },
+    {
+      "date": "2026-01-31",
+      "evidence_url": "https://example.com/exm/q4-2025-deck",
+      "id": "p2",
+      "opportunity_keywords": [
+        "margin improvement"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 4,
+      "review_reasons": [],
+      "review_required": false,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [],
+      "stale_badge": {
+        "age_days": 15,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "Margin improvement remained a target for the next fiscal year.",
+      "topic": "gross margin",
+      "type": "note"
+    }
+  ],
+  "review_queue": [],
+  "risks": [],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_attribution": [],
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "stale_badges": [],
+  "summary": {
+    "opportunity_count": 3,
+    "review_queue_count": 0,
+    "risk_count": 0,
+    "stale_badge_count": 0
+  },
+  "ticker": "EXM",
+  "tool_version": "0.4.0"
+}

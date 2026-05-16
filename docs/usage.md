@@ -26,16 +26,17 @@ PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_ener
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/public_apple_static_case_study.json
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json --html-out examples/output/demo_dashboard.html
 PYTHONPATH=src python -m earnings_call_risk_map review-queue examples/input/demo_company.json --md-out examples/output/demo_review_queue.md --json-out examples/output/demo_review_queue.json
+PYTHONPATH=src python -m earnings_call_risk_map compare examples/output/demo_prior_snapshot.json examples/output/demo_snapshot.json --md-out examples/output/demo_compare.md --json-out examples/output/demo_compare.json
 PYTHONPATH=src python -m earnings_call_risk_map audit --format markdown
 PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
 PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
 ```
 
-The first command verifies imports, the next two print Markdown reports for the software fixture and the capital-intensive energy/infrastructure fixture, and the public Apple static case study demonstrates investor-relations/SEC-style source attribution without claiming live data. The HTML command writes a self-contained dashboard, `review-queue` writes a focused review export, `audit` reports package parity, and `demo` writes deterministic bundles under `examples/output/`.
+The first command verifies imports, the next two print Markdown reports for the software fixture and the capital-intensive energy/infrastructure fixture, and the public Apple static case study demonstrates investor-relations/SEC-style source attribution without claiming live data. The HTML command writes a self-contained dashboard, `review-queue` writes a focused review export, `compare` writes prior/current score movement with interpretation, `audit` reports package parity, and `demo` writes deterministic bundles under `examples/output/`.
 
 The final command writes a basic release maturity evidence bundle listing test commands, generated artifact paths, the public skill path, the release review template path, and privacy scan status.
 
-`demo` preserves the original `demo_*` filenames for `examples/input/demo_company.json` and also writes `energy_infrastructure_*` files for `examples/input/demo_energy_infrastructure.json` plus `public_apple_static_case_study_*` files for `examples/input/public_apple_static_case_study.json`.
+`demo` preserves the original `demo_*` filenames for `examples/input/demo_company.json` and also writes `demo_prior_*` and `demo_compare.*` artifacts for the prior/current compare example, `energy_infrastructure_*` files for `examples/input/demo_energy_infrastructure.json`, and `public_apple_static_case_study_*` files for `examples/input/public_apple_static_case_study.json`.
 
 The report starts with a compact research queue:
 
@@ -66,7 +67,7 @@ python -m earnings_call_risk_map analyze examples/input/public_apple_static_case
 python -m earnings_call_risk_map analyze examples/input/demo_company.json --html-out dashboard.html
 python -m earnings_call_risk_map review-queue examples/input/demo_company.json --json-out review_queue.json --md-out review_queue.md
 python -m earnings_call_risk_map demo --out-dir examples/output
-python -m earnings_call_risk_map compare before.json after.json --md-out compare.md
+python -m earnings_call_risk_map compare before.json after.json --json-out compare.json --md-out compare.md
 python -m earnings_call_risk_map audit --format json --out package_audit.json
 python -m earnings_call_risk_map audit --format markdown --out package_audit.md
 python -m earnings_call_risk_map manifest --out release_manifest.json
@@ -94,6 +95,12 @@ The dashboard summarizes:
 - high-impact language, defined as risk or opportunity score `>= 7`
 
 When no output path is supplied, the command prints Markdown. Supplying `--json-out`, `--md-out`, or both writes deterministic files suitable for review handoff or demos.
+
+## Compare Reports
+
+`compare` expects two analyzed snapshots, not raw input fixtures. The demo bundle writes `examples/output/demo_prior_snapshot.json`, `examples/output/demo_snapshot.json`, `examples/output/demo_compare.json`, and `examples/output/demo_compare.md` to show the intended flow.
+
+Positive deltas mean the later snapshot triggered more deterministic keyword score for that risk or opportunity topic. Negative deltas mean the later snapshot triggered less score. The "How To Read This Compare" section explains the movement as reviewer triage: it does not claim that a risk or opportunity has changed in the real world without source verification.
 
 ## Package Audit
 

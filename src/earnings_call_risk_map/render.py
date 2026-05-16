@@ -63,6 +63,7 @@ def render_compare_markdown(compare: dict[str, Any]) -> str:
     ]
     lines.extend(SOURCE_BOUNDARY_LINES)
     lines.extend(_source_attribution_section(compare.get("source_attribution", [])))
+    lines.extend(_compare_interpretation(compare.get("interpretation", [])))
     lines.extend(_changes("Risk Changes", compare.get("risk_changes", [])))
     lines.extend(_changes("Opportunity Changes", compare.get("opportunity_changes", [])))
     return "\n".join(lines).rstrip() + "\n"
@@ -412,6 +413,18 @@ def _catalysts(items: list[dict[str, Any]]) -> list[str]:
     for item in items:
         lines.append(f"- `{item['date']}` **{item['title']}** ({item['expected_impact']}): {item['description']}")
         lines.extend(f"  Source attribution: {line}" for line in _source_attribution_lines(item.get("source_attribution", [])))
+    lines.append("")
+    return lines
+
+
+def _compare_interpretation(items: list[str]) -> list[str]:
+    lines = ["## How To Read This Compare", ""]
+    if not items:
+        return lines + [
+            "- Score deltas are deterministic review prompts; verify them against source materials before using them.",
+            "",
+        ]
+    lines.extend(f"- {item}" for item in items)
     lines.append("")
     return lines
 

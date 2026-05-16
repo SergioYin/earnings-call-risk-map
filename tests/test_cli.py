@@ -26,7 +26,7 @@ class CliTests(unittest.TestCase):
     def test_version(self):
         result = self.run_cli("version")
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout.strip(), "0.3.0")
+        self.assertEqual(result.stdout.strip(), "0.4.0")
 
     def test_help_uses_public_safe_wording(self):
         result = self.run_cli("--help")
@@ -54,6 +54,12 @@ class CliTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             payload = json.loads(json_out.read_text(encoding="utf-8"))
             self.assertEqual(payload["ticker"], "EXM")
+            self.assertIn(NON_ADVICE_TEXT, payload["safety_notice"])
+            self.assertEqual(
+                payload["source_boundaries"]["management_claims"],
+                "source-provided company statements or prepared remarks; verify against filings and transcripts",
+            )
+            self.assertIn("analyst_questions", payload["source_boundaries"])
             markdown = md_out.read_text(encoding="utf-8")
             self.assertIn(NON_ADVICE_TEXT, markdown)
             self.assertIn("## Source Boundaries", markdown)
@@ -150,6 +156,12 @@ class CliTests(unittest.TestCase):
             self.assertIn("Snapshot Compare", markdown)
             self.assertIn(NON_ADVICE_TEXT, markdown)
             self.assertIn("## Source Boundaries", markdown)
+            json_out = Path(tmp) / "compare.json"
+            json_result = self.run_cli("compare", str(before), str(after), "--json-out", str(json_out))
+            self.assertEqual(json_result.returncode, 0, json_result.stderr)
+            payload = json.loads(json_out.read_text(encoding="utf-8"))
+            self.assertIn(NON_ADVICE_TEXT, payload["safety_notice"])
+            self.assertIn("user_synthesis", payload["source_boundaries"])
 
     def test_review_queue_outputs_focused_files(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -166,6 +178,8 @@ class CliTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             payload = json.loads(json_out.read_text(encoding="utf-8"))
             self.assertEqual(payload["summary"]["review_item_count"], 4)
+            self.assertIn(NON_ADVICE_TEXT, payload["safety_notice"])
+            self.assertIn("management_claims", payload["source_boundaries"])
             categories = {category for item in payload["items"] for category in item["issue_categories"]}
             self.assertEqual(categories, {"stale_data", "missing_evidence", "high_impact_language"})
             markdown = md_out.read_text(encoding="utf-8")
@@ -178,7 +192,7 @@ class CliTests(unittest.TestCase):
         result = self.run_cli("audit")
         self.assertEqual(result.returncode, 0, result.stderr)
         payload = json.loads(result.stdout)
-        self.assertEqual(payload["version"], "0.3.0")
+        self.assertEqual(payload["version"], "0.4.0")
         self.assertIn("audit", payload["commands"])
         self.assertEqual(payload["fixture_count"], 4)
         self.assertGreaterEqual(payload["output_artifact_count"], 5)
@@ -214,6 +228,16 @@ class CliTests(unittest.TestCase):
                 "Rate-case filing",
                 {item["topic"] for item in energy_review_queue["items"]},
             )
+            prior_snapshot = json.loads((Path(tmp) / "demo_prior_snapshot.json").read_text(encoding="utf-8"))
+            self.assertEqual(prior_snapshot["as_of"], "2026-02-15")
+            compare = json.loads((Path(tmp) / "demo_compare.json").read_text(encoding="utf-8"))
+            self.assertEqual(compare["before_as_of"], "2026-02-15")
+            self.assertEqual(compare["after_as_of"], "2026-05-15")
+            self.assertIn("interpretation", compare)
+            self.assertIn("gross margin", {item["topic"] for item in compare["risk_changes"]})
+            compare_report = (Path(tmp) / "demo_compare.md").read_text(encoding="utf-8")
+            self.assertIn("How To Read This Compare", compare_report)
+            self.assertIn("Opportunity attention increased", compare_report)
             energy_report = (Path(tmp) / "energy_infrastructure_report.md").read_text(encoding="utf-8")
             self.assertIn("Northstar Grid & LNG Partners", energy_report)
             energy_dashboard = (Path(tmp) / "energy_infrastructure_dashboard.html").read_text(encoding="utf-8")

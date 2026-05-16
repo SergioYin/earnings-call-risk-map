@@ -19,9 +19,13 @@
   ],
   "has_workflow_files": false,
   "name": "earnings-call-risk-map",
-  "output_artifact_count": 18,
+  "output_artifact_count": 22,
   "output_artifacts": [
+    "examples/output/demo_compare.json",
+    "examples/output/demo_compare.md",
     "examples/output/demo_dashboard.html",
+    "examples/output/demo_prior_report.md",
+    "examples/output/demo_prior_snapshot.json",
     "examples/output/demo_report.md",
     "examples/output/demo_review_queue.json",
     "examples/output/demo_review_queue.md",
@@ -44,6 +48,6 @@
     "path": "skills/agent/earnings-call-risk-map/SKILL.md",
     "present": true
   },
-  "version": "0.3.0",
+  "version": "0.4.0",
   "workflow_files": []
 }

@@ -1,20 +1,31 @@
 # earnings-call-risk-map
 
-Zero-dependency Python CLI for turning public earnings-call notes into a deterministic risk, opportunity, catalyst, and human-review map.
+Turn public earnings-call notes into a deterministic risk, opportunity, catalyst, and human-review map.
 
-**Why star it:** this repo is a small, inspectable reference implementation for finance-adjacent research tooling that stays reproducible, static-data-aware, and public-safe without an LLM, database, API key, or workflow dependency. It is useful as a CLI, a fixture format, and a public agent-skill example.
+This is a zero-dependency Python CLI for researchers who want inspectable outputs without an LLM, database, API key, workflow dependency, or live market feed. It reads JSON fixtures, scores review topics with deterministic rules, preserves source boundaries, and writes Markdown, JSON, and self-contained HTML dashboards.
 
-This project is for educational research review only. It does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Outputs preserve stale/static data warnings and should be reviewed against source materials.
+Start from a checkout:
+
+```bash
+PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
+PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json
+```
+
+Open [examples/output/demo_dashboard.html](examples/output/demo_dashboard.html) for the static dashboard, or read [docs/usage.md](docs/usage.md) for command details.
+
+> Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Outputs preserve stale/static data warnings and should be reviewed against source materials.
 
 ## Badges And Links
 
 ![Static dashboard preview](docs/assets/showcase-dashboard-preview.svg)
 
-**Release:** `v0.3.0` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
+**Release:** `v0.4.0` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
 
 - [Pages demo guide](docs/pages-demo.md)
 - [Gallery](docs/gallery.md)
-- [v0.3.0 release notes](docs/release-notes-v0.3.0.md)
+- [Distribution guide](docs/distribution.md)
+- [Non-advice boundary](docs/non-advice-boundary.md)
+- [v0.4.0 release notes](docs/release-notes-v0.4.0.md)
 - [Demo dashboard HTML](examples/output/demo_dashboard.html)
 - [PNG-free screenshot substitute](examples/output/showcase_dashboard_preview.svg)
 
@@ -35,6 +46,7 @@ PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_ener
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/public_apple_static_case_study.json
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json --html-out examples/output/demo_dashboard.html
 PYTHONPATH=src python -m earnings_call_risk_map review-queue examples/input/demo_company.json --md-out examples/output/demo_review_queue.md --json-out examples/output/demo_review_queue.json
+PYTHONPATH=src python -m earnings_call_risk_map compare examples/output/demo_prior_snapshot.json examples/output/demo_snapshot.json --md-out examples/output/demo_compare.md --json-out examples/output/demo_compare.json
 PYTHONPATH=src python -m earnings_call_risk_map audit --format markdown
 PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
 PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
@@ -48,9 +60,10 @@ What just happened:
 4. The public Apple static case study demonstrates source attribution from public investor-relations/newsroom and SEC EDGAR URLs without claiming live data.
 5. `analyze --html-out` writes a self-contained static dashboard with no external JS or CSS.
 6. `review-queue` writes a focused queue containing only stale data, missing evidence, and high-impact language.
-7. `audit` reports package parity: version, commands, fixture count, output artifact count, workflow absence, and skill presence.
-8. `demo` writes reproducible bundles for all fixtures: legacy `demo_*`, `energy_infrastructure_*`, `public_apple_static_case_study_*`, package audit files, and `release_manifest.json`.
-9. `maturity-evidence` writes a basic release evidence bundle with test commands, artifact paths, skill path, review template path, and privacy scan status.
+7. `compare` writes deterministic before/after score movement for the prior and current software snapshots.
+8. `audit` reports package parity: version, commands, fixture count, output artifact count, workflow absence, and skill presence.
+9. `demo` writes reproducible bundles for all fixtures: legacy `demo_*`, `demo_prior_*`, `demo_compare.*`, `energy_infrastructure_*`, `public_apple_static_case_study_*`, package audit files, and `release_manifest.json`.
+10. `maturity-evidence` writes a basic release evidence bundle with test commands, artifact paths, skill path, review template path, and privacy scan status.
 
 Sample output excerpt:
 
@@ -94,6 +107,16 @@ Focused review-queue excerpt:
 - High-impact language: 1
 ```
 
+Compare interpretation excerpt:
+
+```markdown
+## How To Read This Compare
+
+- Deltas compare deterministic keyword scores between analyzed snapshots; they are prompts for source review, not investment conclusions.
+- Risk attention increased for: gross margin, Inventory days, revenue durability.
+- Opportunity attention increased for: product launch.
+```
+
 ## Static-Data Badge
 
 Each note, KPI, and catalyst carries a date. The tool compares that date to the fixture's `as_of` date and labels the item:
@@ -113,9 +136,12 @@ Outputs are plain Markdown, JSON, and self-contained HTML. They can be handed to
 - [docs/pages-demo.md](docs/pages-demo.md) explains how to view the static HTML dashboards locally and what to screenshot.
 - [docs/public-case-study.md](docs/public-case-study.md) documents the static public-source Apple case study and its attribution boundary.
 - [docs/release-readiness.md](docs/release-readiness.md) documents the release review template and maturity evidence bundle.
+- [docs/reviewer-evidence.md](docs/reviewer-evidence.md) summarizes exact reviewer verification commands, fresh clone validation, release assets, and maturity scores.
 - `examples/output/integration_notes.json` contains static example records derived from the demo snapshot and review queue.
 
 ## Quickstart
+
+Supported Python versions: Python `3.9` or newer.
 
 Optional local install:
 
@@ -125,12 +151,14 @@ earnings-call-risk-map version
 earnings-call-risk-map analyze examples/input/demo_company.json --json-out examples/output/demo_snapshot.json --md-out examples/output/demo_report.md --html-out examples/output/demo_dashboard.html
 ```
 
+For `pipx`, wheel dry-run, and troubleshooting notes, see [docs/distribution.md](docs/distribution.md). The package is prepared for local distribution checks, but this repository does not require publishing to use the CLI.
+
 ## Commands
 
 - `analyze`: reads one JSON fixture and writes or prints a Markdown report plus optional JSON snapshot and static HTML dashboard.
 - `review-queue`: writes or prints deterministic Markdown/JSON for only stale data, missing evidence, and high-impact language.
 - `demo`: builds `demo_*`, `energy_infrastructure_*`, and `public_apple_static_case_study_*` artifacts, package audit files, and a demo release manifest.
-- `compare`: compares two analyzed JSON snapshots.
+- `compare`: compares two analyzed JSON snapshots and adds a plain-language interpretation section. Positive deltas mean a topic drew more deterministic risk or opportunity score in the later snapshot; negative deltas mean the later snapshot drew less score. Deltas are review prompts only, so reviewers should verify source documents and freshness badges before treating a movement as resolved or newly material.
 - `audit`: writes or prints package parity in JSON or Markdown.
 - `manifest`: writes a deterministic release manifest with file hashes.
 - `maturity-evidence`: writes JSON and Markdown release maturity evidence under `reports/maturity` by default.

@@ -82,6 +82,14 @@ def compare_snapshots(before: dict[str, Any], after: dict[str, Any]) -> dict[str
     after_risks = _score_by_key(after.get("risks", []))
     before_opps = _score_by_key(before.get("opportunities", []))
     after_opps = _score_by_key(after.get("opportunities", []))
+    risk_changes = _diff_scores(before_risks, after_risks)
+    opportunity_changes = _diff_scores(before_opps, after_opps)
+    review_queue_delta = int(after.get("summary", {}).get("review_queue_count", 0)) - int(
+        before.get("summary", {}).get("review_queue_count", 0)
+    )
+    stale_badge_delta = int(after.get("summary", {}).get("stale_badge_count", 0)) - int(
+        before.get("summary", {}).get("stale_badge_count", 0)
+    )
     return {
         "schema_version": "0.1",
         "tool_version": __version__,
@@ -92,12 +100,16 @@ def compare_snapshots(before: dict[str, Any], after: dict[str, Any]) -> dict[str
         "safety_notice": after.get("safety_notice") or before.get("safety_notice") or SAFETY_NOTICE,
         "source_boundaries": after.get("source_boundaries") or before.get("source_boundaries") or SOURCE_BOUNDARIES,
         "source_attribution": after.get("source_attribution") or before.get("source_attribution") or [],
-        "risk_changes": _diff_scores(before_risks, after_risks),
-        "opportunity_changes": _diff_scores(before_opps, after_opps),
-        "review_queue_delta": int(after.get("summary", {}).get("review_queue_count", 0))
-        - int(before.get("summary", {}).get("review_queue_count", 0)),
-        "stale_badge_delta": int(after.get("summary", {}).get("stale_badge_count", 0))
-        - int(before.get("summary", {}).get("stale_badge_count", 0)),
+        "risk_changes": risk_changes,
+        "opportunity_changes": opportunity_changes,
+        "review_queue_delta": review_queue_delta,
+        "stale_badge_delta": stale_badge_delta,
+        "interpretation": _compare_interpretation(
+            risk_changes,
+            opportunity_changes,
+            review_queue_delta,
+            stale_badge_delta,
+        ),
     }
 
 
@@ -227,6 +239,55 @@ def _diff_scores(before: dict[str, int], after: dict[str, int]) -> list[dict[str
         if old != new:
             changes.append({"topic": key, "before": old, "after": new, "delta": new - old})
     return sorted(changes, key=lambda item: (-abs(item["delta"]), item["topic"]))
+
+
+def _compare_interpretation(
+    risk_changes: list[dict[str, Any]],
+    opportunity_changes: list[dict[str, Any]],
+    review_queue_delta: int,
+    stale_badge_delta: int,
+) -> list[str]:
+    lines = [
+        "Deltas compare deterministic keyword scores between analyzed snapshots; they are prompts for source review, not investment conclusions.",
+    ]
+    if risk_changes:
+        risers = [item for item in risk_changes if int(item["delta"]) > 0]
+        fallers = [item for item in risk_changes if int(item["delta"]) < 0]
+        if risers:
+            topics = ", ".join(item["topic"] for item in risers[:3])
+            lines.append(f"Risk attention increased for: {topics}.")
+        if fallers:
+            topics = ", ".join(item["topic"] for item in fallers[:3])
+            lines.append(f"Risk attention decreased for: {topics}.")
+    else:
+        lines.append("No risk-score movement was detected.")
+
+    if opportunity_changes:
+        risers = [item for item in opportunity_changes if int(item["delta"]) > 0]
+        fallers = [item for item in opportunity_changes if int(item["delta"]) < 0]
+        if risers:
+            topics = ", ".join(item["topic"] for item in risers[:3])
+            lines.append(f"Opportunity attention increased for: {topics}.")
+        if fallers:
+            topics = ", ".join(item["topic"] for item in fallers[:3])
+            lines.append(f"Opportunity attention decreased for: {topics}.")
+    else:
+        lines.append("No opportunity-score movement was detected.")
+
+    if review_queue_delta > 0:
+        lines.append(f"Review workload increased by {review_queue_delta}; inspect new stale, missing-evidence, or high-impact items.")
+    elif review_queue_delta < 0:
+        lines.append(f"Review workload decreased by {abs(review_queue_delta)}; confirm whether evidence or freshness improved.")
+    else:
+        lines.append("Review workload count was unchanged.")
+
+    if stale_badge_delta > 0:
+        lines.append(f"Stale/static badge count increased by {stale_badge_delta}; verify whether older sources still apply.")
+    elif stale_badge_delta < 0:
+        lines.append(f"Stale/static badge count decreased by {abs(stale_badge_delta)}; confirm dates and source freshness.")
+    else:
+        lines.append("Stale/static badge count was unchanged.")
+    return lines
 
 
 def _record_for_scored_item(item: dict[str, Any]) -> dict[str, Any]:

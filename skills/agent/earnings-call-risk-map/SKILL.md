@@ -16,6 +16,18 @@ Use this skill when a user needs a public, deterministic earnings-call research 
 
 Keep wording educational and research-oriented. Do not present the output as personalized investment, buy, sell, hold, tax, legal, or accounting advice. Preserve stale/static data warnings and ask the user to verify source materials.
 
+Follow `docs/non-advice-boundary.md` when drafting responses around generated artifacts.
+
+## Response Rules
+
+- State that outputs are educational research review only when summarizing or sharing results.
+- Do not tell a user to buy, sell, hold, short, overweight, underweight, enter, exit, rebalance, or otherwise take a securities action.
+- Describe score movement as deterministic risk/opportunity attention, not as an investment conclusion.
+- Preserve `safety_notice`, `source_boundaries`, source attribution, and stale/static badges in JSON or Markdown handoffs.
+- Keep management claims, analyst questions, and user synthesis separated. Do not restate management claims as verified facts or analyst questions as assertions.
+- Mention exact `as_of`, `data_cutoff`, and relevant access dates when freshness matters.
+- If evidence is missing, stale, static, or high-impact, route it to human review rather than resolving it in the response.
+
 ## Workflow
 
 1. Prepare a JSON input with `company`, `ticker`, `as_of`, `data_cutoff`, and optional `notes`, `kpis`, and `catalysts`.
@@ -40,8 +52,16 @@ Keep wording educational and research-oriented. Do not present the output as per
 5. Before sharing a public artifact, run:
 
    ```bash
+   PYTHONPATH=src python -m unittest discover -s tests
    python scripts/selfcheck.py
    python scripts/privacy_scan.py
+   ```
+
+6. For release evidence, run:
+
+   ```bash
+   PYTHONPATH=src python -m earnings_call_risk_map audit
+   PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
    ```
 
 ## Input Notes
