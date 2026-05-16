@@ -134,7 +134,7 @@
     {
       "bytes": 8427,
       "path": "examples/output/release_manifest.json",
-      "sha256": "227e11f19dc9797de97d527c6aff03bb681984163f44dcf0a50cc4cc6bd76eab"
+      "sha256": "a73b2a880ffef92897bdda03e6afa2ff831680965a7c7119b321453d51a2593d"
     },
     {
       "bytes": 978,
@@ -162,9 +162,9 @@
       "sha256": "31f25d4c1e46a6966505f32c53801d730ef3e6c4ab03169e3fdc5900262c62de"
     },
     {
-      "bytes": 1519,
+      "bytes": 1524,
       "path": "scripts/privacy_scan.py",
-      "sha256": "afeef03359efeb161da8b73e7847e0d43122f6d09618697b50532003808b4c62"
+      "sha256": "02eab529b173f9f9a399916b1e2035b9179f5f0ceacb330b6844ec40b9e566b7"
     },
     {
       "bytes": 3642,
