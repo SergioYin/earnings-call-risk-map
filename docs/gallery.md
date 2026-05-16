@@ -7,6 +7,10 @@ The repository includes deterministic artifacts under `examples/output/` for qui
 - `examples/output/demo_dashboard.html`: compact software-style example dashboard.
 - `examples/output/energy_infrastructure_dashboard.html`: capital-intensive energy/infrastructure example with project catalysts and stale/static data.
 - `examples/output/public_apple_static_case_study_dashboard.html`: static public-source Apple case-study dashboard with source attribution and non-live-data labels.
+- `examples/output/showcase_dashboard_preview.svg`: PNG-free static dashboard preview for release pages and screenshots.
+- `docs/assets/showcase-dashboard-preview.svg`: documentation asset copy of the static dashboard preview.
+
+See `docs/pages-demo.md` for local static HTML viewing and screenshot framing guidance.
 
 ## Reports And Queues
 

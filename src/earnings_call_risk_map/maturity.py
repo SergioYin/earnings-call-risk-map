@@ -20,6 +20,8 @@ ARTIFACT_GLOBS = (
     "examples/output/*.json",
     "examples/output/*.md",
     "examples/output/*.html",
+    "examples/output/*.svg",
+    "docs/assets/*.svg",
     "release_manifest.json",
 )
 SKILL_PATH = "skills/agent/earnings-call-risk-map/SKILL.md"

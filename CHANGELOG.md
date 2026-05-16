@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.3.0 - 2026-05-17
+
+Showcase-oriented public release.
+
+### Added
+
+- Deterministic SVG dashboard preview at `examples/output/showcase_dashboard_preview.svg`.
+- PNG-free documentation screenshot substitute at `docs/assets/showcase-dashboard-preview.svg`.
+- Static Pages-style demo instructions at `docs/pages-demo.md`.
+- README badge/link section for the local preview, gallery, Pages demo guide, release notes, and generated dashboard HTML.
+- Release notes at `docs/release-notes-v0.3.0.md`.
+- Internal review record at `reports/reviews/2026-05-17-v0.3.0-internal-review.md`.
+
+### Changed
+
+- `selfcheck` now verifies dashboard HTML and SVG preview files exist and do not contain script, linked stylesheet, image, or linked SVG asset markers.
+- Maturity evidence includes SVG preview artifacts.
+- Release readiness references now point to v0.3.0 release notes and preview assets.
+- Package version is now `0.3.0`.
+
+### Safety
+
+- Preview assets are self-contained SVG/HTML and load no external assets.
+- No workflow files, private context, API keys, databases, or runtime package dependencies are added.
+
 ## 0.2.0 - 2026-05-17
 
 Promotion-oriented public release.

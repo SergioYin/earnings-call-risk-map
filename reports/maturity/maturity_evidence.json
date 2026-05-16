@@ -1,5 +1,6 @@
 {
   "artifact_paths": [
+    "docs/assets/showcase-dashboard-preview.svg",
     "examples/output/demo_dashboard.html",
     "examples/output/demo_report.md",
     "examples/output/demo_review_queue.json",
@@ -19,6 +20,7 @@
     "examples/output/public_apple_static_case_study_review_queue.md",
     "examples/output/public_apple_static_case_study_snapshot.json",
     "examples/output/release_manifest.json",
+    "examples/output/showcase_dashboard_preview.svg",
     "release_manifest.json"
   ],
   "name": "earnings-call-risk-map",
@@ -42,5 +44,5 @@
     "PYTHONPATH=src python scripts/selfcheck.py",
     "python scripts/privacy_scan.py"
   ],
-  "version": "0.2.0"
+  "version": "0.3.0"
 }

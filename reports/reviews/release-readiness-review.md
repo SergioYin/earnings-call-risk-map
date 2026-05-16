@@ -15,6 +15,8 @@
 - Included changes:
 - Excluded changes:
 - Public artifact paths:
+- Preview SVG:
+- Pages demo doc:
 
 ## Verification
 
@@ -23,12 +25,14 @@
 - Privacy scan:
 - Demo bundle regeneration:
 - Manifest regeneration:
+- Static HTML/SVG preview check:
 
 ## Evidence Bundle
 
 - Maturity evidence JSON:
 - Maturity evidence Markdown:
 - Package audit:
+- Preview asset: `docs/assets/showcase-dashboard-preview.svg`
 - Skill path: `skills/agent/earnings-call-risk-map/SKILL.md`
 
 ## Safety And Privacy
@@ -37,6 +41,7 @@
 - No workflow files included:
 - No local absolute paths or credentials found:
 - Non-advice disclaimer present in generated Markdown:
+- Preview assets contain no scripts, linked stylesheets, image loads, or linked SVG assets:
 - Management claims, analyst questions, and user synthesis remain separated:
 
 ## Reviewer Notes

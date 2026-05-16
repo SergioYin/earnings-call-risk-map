@@ -26,7 +26,7 @@ class CliTests(unittest.TestCase):
     def test_version(self):
         result = self.run_cli("version")
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout.strip(), "0.2.0")
+        self.assertEqual(result.stdout.strip(), "0.3.0")
 
     def test_help_uses_public_safe_wording(self):
         result = self.run_cli("--help")
@@ -178,7 +178,7 @@ class CliTests(unittest.TestCase):
         result = self.run_cli("audit")
         self.assertEqual(result.returncode, 0, result.stderr)
         payload = json.loads(result.stdout)
-        self.assertEqual(payload["version"], "0.2.0")
+        self.assertEqual(payload["version"], "0.3.0")
         self.assertIn("audit", payload["commands"])
         self.assertEqual(payload["fixture_count"], 4)
         self.assertGreaterEqual(payload["output_artifact_count"], 5)

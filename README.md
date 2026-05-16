@@ -6,6 +6,18 @@ Zero-dependency Python CLI for turning public earnings-call notes into a determi
 
 This project is for educational research review only. It does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Outputs preserve stale/static data warnings and should be reviewed against source materials.
 
+## Badges And Links
+
+![Static dashboard preview](docs/assets/showcase-dashboard-preview.svg)
+
+**Release:** `v0.3.0` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
+
+- [Pages demo guide](docs/pages-demo.md)
+- [Gallery](docs/gallery.md)
+- [v0.3.0 release notes](docs/release-notes-v0.3.0.md)
+- [Demo dashboard HTML](examples/output/demo_dashboard.html)
+- [PNG-free screenshot substitute](examples/output/showcase_dashboard_preview.svg)
+
 The project keeps financial-safety boundaries explicit:
 
 - Management claims are source-provided company statements or prepared remarks. The tool surfaces them for review and does not verify them as facts.
@@ -98,6 +110,7 @@ Outputs are plain Markdown, JSON, and self-contained HTML. They can be handed to
 
 - [docs/integrations.md](docs/integrations.md) shows mappings for thesis-ledger notes and portfolio risk review items.
 - [docs/gallery.md](docs/gallery.md) lists the generated demo artifacts and machine-readable handoff examples.
+- [docs/pages-demo.md](docs/pages-demo.md) explains how to view the static HTML dashboards locally and what to screenshot.
 - [docs/public-case-study.md](docs/public-case-study.md) documents the static public-source Apple case study and its attribution boundary.
 - [docs/release-readiness.md](docs/release-readiness.md) documents the release review template and maturity evidence bundle.
 - `examples/output/integration_notes.json` contains static example records derived from the demo snapshot and review queue.
@@ -132,6 +145,7 @@ Input fixtures are documented in [docs/input-schema.md](docs/input-schema.md). R
 - `src/earnings_call_risk_map/`: standard-library-only package.
 - `examples/input/`: deterministic public fixtures.
 - `examples/output/`: demo output artifacts.
+- `docs/assets/`: static documentation assets, including the SVG dashboard preview.
 - `docs/`: usage, scoring, gallery, and integration notes.
 - `reports/reviews/`: release review templates.
 - `tests/`: `unittest` suite.

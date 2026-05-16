@@ -2,7 +2,12 @@
 
 Use the release readiness review template at `reports/reviews/release-readiness-review.md` before publishing a demo bundle or tagged release.
 
-Use `docs/release-notes-v0.2.0.md` as the deterministic release notes source for v0.2.0. The prior v0.1.0 notes remain in `docs/release-notes-v0.1.0.md`.
+Use `docs/release-notes-v0.3.0.md` as the deterministic release notes source for v0.3.0. Prior notes remain in `docs/release-notes-v0.2.0.md` and `docs/release-notes-v0.1.0.md`.
+
+Use `docs/pages-demo.md` to verify the local static HTML demo path and screenshot framing. The PNG-free preview assets are:
+
+- `docs/assets/showcase-dashboard-preview.svg`
+- `examples/output/showcase_dashboard_preview.svg`
 
 Generate the basic maturity evidence bundle with either entry point:
 

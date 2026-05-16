@@ -41,6 +41,32 @@ def check_demo_dashboard() -> int:
     return 0
 
 
+def check_showcase_previews() -> int:
+    print("== showcase previews ==", flush=True)
+    paths = [
+        ROOT / "examples/output/demo_dashboard.html",
+        ROOT / "examples/output/energy_infrastructure_dashboard.html",
+        ROOT / "examples/output/public_apple_static_case_study_dashboard.html",
+        ROOT / "examples/output/showcase_dashboard_preview.svg",
+        ROOT / "docs/assets/showcase-dashboard-preview.svg",
+    ]
+    missing = [path.relative_to(ROOT).as_posix() for path in paths if not path.is_file()]
+    if missing:
+        print("missing preview file(s): " + ", ".join(missing))
+        return 1
+
+    blocked_markers = ("<script", "<link", "<img", " src=", "xlink:href=", "url(http://", "url(https://")
+    for path in paths:
+        text = path.read_text(encoding="utf-8").lower()
+        blocked = [marker for marker in blocked_markers if marker in text]
+        if blocked:
+            rel = path.relative_to(ROOT).as_posix()
+            print(f"{rel} contains external asset marker(s): " + ", ".join(blocked))
+            return 1
+    print("showcase previews passed")
+    return 0
+
+
 def check_integration_examples() -> int:
     print("== integration examples ==", flush=True)
     docs = [
@@ -86,6 +112,9 @@ def main() -> int:
             return code
         if label == "demo":
             code = check_demo_dashboard()
+            if code:
+                return code
+            code = check_showcase_previews()
             if code:
                 return code
             code = check_integration_examples()

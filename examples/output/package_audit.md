@@ -1,10 +1,10 @@
 # Package Audit
 
 - Package: `earnings-call-risk-map`
-- Version: `0.2.0`
+- Version: `0.3.0`
 - Commands: 8 (`analyze`, `audit`, `compare`, `demo`, `manifest`, `maturity-evidence`, `review-queue`, `version`)
 - Fixtures: 4
-- Output artifacts: 17
+- Output artifacts: 18
 - Workflow files present: no
 - Skill present: yes (`skills/agent/earnings-call-risk-map/SKILL.md`)
 
@@ -36,6 +36,7 @@
 - `examples/output/public_apple_static_case_study_review_queue.md`
 - `examples/output/public_apple_static_case_study_snapshot.json`
 - `examples/output/release_manifest.json`
+- `examples/output/showcase_dashboard_preview.svg`
 
 ## Workflow Files
 

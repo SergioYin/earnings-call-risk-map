@@ -1,10 +1,10 @@
 {
-  "file_count": 59,
+  "file_count": 65,
   "files": [
     {
-      "bytes": 2728,
+      "bytes": 3833,
       "path": "CHANGELOG.md",
-      "sha256": "27c326ec6d176f2e2d9791964be322cc603a6fdfcd00aa85da0ba994395ddf92"
+      "sha256": "0ae6daeb305cecf1a6daa8104bb7b703be84e72b8f8a4fe80d8aa98b6e506858"
     },
     {
       "bytes": 1056,
@@ -12,14 +12,19 @@
       "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685"
     },
     {
-      "bytes": 7945,
+      "bytes": 8637,
       "path": "README.md",
-      "sha256": "1b3c165a15f5c4eef86ab384410aff92c85756756db1d770c395bd5b1348cc04"
+      "sha256": "6fc186de11830ff3a770a8776d6a2433a54c6cf6da470972d9d1ca633e4d8c13"
     },
     {
-      "bytes": 1829,
+      "bytes": 4556,
+      "path": "docs/assets/showcase-dashboard-preview.svg",
+      "sha256": "ad1d8093453f14990c4ab54f08c4a9726fc0724b6160121d3812851b9fecbeef"
+    },
+    {
+      "bytes": 2145,
       "path": "docs/gallery.md",
-      "sha256": "6b50502b63f227c3a69659f63608795026ecd1f4109f6728daa146917960ae94"
+      "sha256": "8fa137b4aa5585b5bb192ef45b8fbbeb082a3cb843f4ab83382afecc85d5749b"
     },
     {
       "bytes": 5331,
@@ -30,6 +35,11 @@
       "bytes": 4935,
       "path": "docs/integrations.md",
       "sha256": "df5fd032a00813c97a991609a640e96aaa9816c50bc72ae71f51cb19794fdc97"
+    },
+    {
+      "bytes": 1542,
+      "path": "docs/pages-demo.md",
+      "sha256": "81d83394a86e3b12080945f5df959a0945bc76a3a9f3f3e14dc8ced1f0c178e5"
     },
     {
       "bytes": 1438,
@@ -47,9 +57,14 @@
       "sha256": "f680602e064e54540675722a56fad28e09a3330db8facafed478c47eac4da8b9"
     },
     {
-      "bytes": 1011,
+      "bytes": 1471,
+      "path": "docs/release-notes-v0.3.0.md",
+      "sha256": "d63f04f71b1605e7f34359c372b9fb20cd19c1fc3f42a005301f08caf6eed906"
+    },
+    {
+      "bytes": 1259,
       "path": "docs/release-readiness.md",
-      "sha256": "185b4e04a7c581f45d83dd27b42cd03242d8053d1e3f6bbecd16d70709477842"
+      "sha256": "840f10120c85c01c3d417ca456251ec3b55137a652593b2ec6a9c899702ee355"
     },
     {
       "bytes": 1533,
@@ -84,52 +99,52 @@
     {
       "bytes": 6551,
       "path": "examples/output/demo_dashboard.html",
-      "sha256": "8cde586fb2d5d747dd38976999d05dcb0adf294d4c3ab75771f0e95315ab7415"
+      "sha256": "53e0c5c814ea1db4a7a5b47b862b211ae8552ded760677f194353af5a02e8fe3"
     },
     {
       "bytes": 1963,
       "path": "examples/output/demo_report.md",
-      "sha256": "ad1da0c482f4cf983a7305fcf29a9221018240f8dd621a22fb0744e2d77f661d"
+      "sha256": "0a9898f6e5c1a68081f6e38de5e2e9b4ea66e487b0ce7741621032495974eddc"
     },
     {
       "bytes": 3575,
       "path": "examples/output/demo_review_queue.json",
-      "sha256": "41af96e9b83ba33e03f42592fa5a0b52294b7e28306ed3abfdf3953241eb0ddc"
+      "sha256": "475eeb9826c1e1e8c5463f1c7906c6cad2ad775149bdf63569e94550a3d2c6d6"
     },
     {
       "bytes": 1672,
       "path": "examples/output/demo_review_queue.md",
-      "sha256": "2e6bc499b9c26bc92770e88e255903b6598e45196e6d0393bf2957f08995cbec"
+      "sha256": "551d93645f2f202f162b45e8cce5350148b033281f6b480db21533b5df35dd62"
     },
     {
       "bytes": 6708,
       "path": "examples/output/demo_snapshot.json",
-      "sha256": "424784e6bdbc9e2539c30038a0e3709d7f551baf56704e55a654ed111c62f314"
+      "sha256": "626b43d405171beee9af9a440ea876ef45ac210ec283d08dc19fabbb8552d25c"
     },
     {
       "bytes": 8996,
       "path": "examples/output/energy_infrastructure_dashboard.html",
-      "sha256": "dc6607c2423524b699cfa3851133b4a67e4d4d7143969ebe9c9e4c86f2a45939"
+      "sha256": "2c6eb69f5410b4540a4215202486e4c1c6174fbdf91c40314bfc459c9fb8a63b"
     },
     {
       "bytes": 3118,
       "path": "examples/output/energy_infrastructure_report.md",
-      "sha256": "f539523749f3f7b818642fee161ea3a44251a68208235691f00131994de177bf"
+      "sha256": "ce09f0602173f532a0e111e055c5f230bf3c1275cb141f39e7826e245f821f8f"
     },
     {
       "bytes": 6954,
       "path": "examples/output/energy_infrastructure_review_queue.json",
-      "sha256": "ad34961ad0424556b8f385b068792a835271681ec5a742cb5e89e7d3838c063f"
+      "sha256": "d294b4187ccd1fd644eb77a7fa0f51f59e53df75d53e02d2737c45ee3ef923e0"
     },
     {
       "bytes": 2527,
       "path": "examples/output/energy_infrastructure_review_queue.md",
-      "sha256": "ff58902c00c9bb746678e1f2c7eef485abd858e25b2a2fb6486c24039f674daf"
+      "sha256": "4935cd9d99eb34c6ca8a2c2a649ae0f895eea400f2cbaeec8e336712088f743f"
     },
     {
       "bytes": 13247,
       "path": "examples/output/energy_infrastructure_snapshot.json",
-      "sha256": "0a78b31a4e5223193413d8a08cc86a7b60741f024b59045d7c47452a005c9952"
+      "sha256": "1bfd944e8fdc817ddecb684dd9a6595d8b37baf1f96975bbd4551b61a9e86998"
     },
     {
       "bytes": 3681,
@@ -137,59 +152,64 @@
       "sha256": "c948a610d203f214ae8deff95408925caf0c89f52e08c91fc11c3f41ca79c06d"
     },
     {
-      "bytes": 1631,
+      "bytes": 1685,
       "path": "examples/output/package_audit.json",
-      "sha256": "7defe90b63f9c86a35ff2861c4c1ec2a4a02f1756354fe04f0c24cd5705cc260"
+      "sha256": "13987593a264682906b0a2987c7939e8847fbd440146063f073f93965b7498d2"
     },
     {
-      "bytes": 1703,
+      "bytes": 1754,
       "path": "examples/output/package_audit.md",
-      "sha256": "5c8e293caa784e59e1c9e633d2b82be49cbfd707ea501f8b0d16d595c5874aa4"
+      "sha256": "84ff2e561b24d0ddbee0fdbd32732bae51c386697bd23b61d214816bb109f3a8"
     },
     {
       "bytes": 8740,
       "path": "examples/output/public_apple_static_case_study_dashboard.html",
-      "sha256": "7484d74b07a01d51cce1e1b951b9a862b507ae9a626cd76d095814f4b759acee"
+      "sha256": "0ae7a185346ed0376d527df0e86e152d86c2b32d83fabc94072e6a5f95fdd27f"
     },
     {
       "bytes": 4000,
       "path": "examples/output/public_apple_static_case_study_report.md",
-      "sha256": "bf29cfc50ec0919e8bb9de4420b770afa6de8e9e11934865b3694f4e897dbdb7"
+      "sha256": "1ec5161e83e8c3034fe205f39531163ad7fe04d6069a5f7fe78d6070c64bef7e"
     },
     {
       "bytes": 5351,
       "path": "examples/output/public_apple_static_case_study_review_queue.json",
-      "sha256": "1d56b65dbbe3afce3dc4bc66d04ada97b0596dd89a36cba7a8c5dbeeefb7a7b0"
+      "sha256": "faf3c5253a97d787cabf86bd09254afcc16b7d69f03378117263aaf24409539a"
     },
     {
       "bytes": 2927,
       "path": "examples/output/public_apple_static_case_study_review_queue.md",
-      "sha256": "376189c833ba127311ddc665e1a13a73caad9c9da70aeec336494ec25a47a115"
+      "sha256": "19e37d6b9c5b0ece416a7ac70113dc18f5ceb0da47dad90e639692dd7b8ef4c8"
     },
     {
       "bytes": 10198,
       "path": "examples/output/public_apple_static_case_study_snapshot.json",
-      "sha256": "f7b1649f42f531d6da4c061da5aa3e79d58d1906ea9e7ca19b7593792f3310e1"
+      "sha256": "22cfac77d4cbdccaa484210a3358e9ca6aa970a3da42b34ca032e170c367639c"
     },
     {
-      "bytes": 10103,
+      "bytes": 11152,
       "path": "examples/output/release_manifest.json",
-      "sha256": "b967b649ae67f9762e53fae9662030527cd505d62eb6e6eeec253091a38d2556"
+      "sha256": "6e7b0624dbf599d751f29cb939c74843eace29f752700badacce0ed795db4750"
+    },
+    {
+      "bytes": 4556,
+      "path": "examples/output/showcase_dashboard_preview.svg",
+      "sha256": "ad1d8093453f14990c4ab54f08c4a9726fc0724b6160121d3812851b9fecbeef"
     },
     {
       "bytes": 978,
       "path": "pyproject.toml",
-      "sha256": "e90c6d356d140778e3c35520f8b4faaff500b23ca243d8f0a95c46ea0c746707"
+      "sha256": "2cbe605c8c031387fdb74358e72eb5f6c10d96682f6b33f630ce6133d6977b22"
     },
     {
-      "bytes": 1692,
+      "bytes": 1796,
       "path": "reports/maturity/maturity_evidence.json",
-      "sha256": "9b35c4cf65311044aba887b70471aa466759de496124ea3514a56bc8f0d319b2"
+      "sha256": "4db344307602c76b5a7f7e31f581dbcc6ba6952ee74bcca4f3d6826bd4205326"
     },
     {
-      "bytes": 1765,
+      "bytes": 1863,
       "path": "reports/maturity/maturity_evidence.md",
-      "sha256": "fc5f7c4273ea70641e61dd072622d44cd3411f90c8aa764f88dbf387a199e5bd"
+      "sha256": "91a4732e8b6d72940c60cb3377233decd6cfbedb4979d99f4d4664560a067fa6"
     },
     {
       "bytes": 3586,
@@ -197,9 +217,19 @@
       "sha256": "ac4f68aac64e662c0f2cac4fa3f05eef05a36a1e8175d683051e6c69eff5143a"
     },
     {
-      "bytes": 972,
+      "bytes": 2074,
+      "path": "reports/reviews/2026-05-17-v0.2.0-internal-review.md",
+      "sha256": "94d31fd4f795c33c707492b5630c487310ede8ac419dbc49cbb7f7bd0f9e0045"
+    },
+    {
+      "bytes": 1912,
+      "path": "reports/reviews/2026-05-17-v0.3.0-internal-review.md",
+      "sha256": "4edcf4493241ce5ea95a0a014d83eab4c1eb6f410304d80389762cda86975c4d"
+    },
+    {
+      "bytes": 1192,
       "path": "reports/reviews/release-readiness-review.md",
-      "sha256": "98578ab2abf6801291eb46ebdbc61137ccb0714d1c75403bde6326ebce78e8a0"
+      "sha256": "e7d6d53c83786cf0c4c8eb166fbf4d2eab5e5a4bf8d2c3ff4dfc75e5e5363030"
     },
     {
       "bytes": 817,
@@ -212,9 +242,9 @@
       "sha256": "02eab529b173f9f9a399916b1e2035b9179f5f0ceacb330b6844ec40b9e566b7"
     },
     {
-      "bytes": 3642,
+      "bytes": 4853,
       "path": "scripts/selfcheck.py",
-      "sha256": "0ef9028afbd054888856771303cd19e054dc2ca7b27668a0c0ec3c1306721dd2"
+      "sha256": "2f249a47db550094af9ebe22e1222e1e192e07d9f020487551ea31d7db1f5436"
     },
     {
       "bytes": 1884,
@@ -257,9 +287,9 @@
       "sha256": "523607bec0d23d78e6e7648eee785776f83d6763a8613f653eb843daecd14bab"
     },
     {
-      "bytes": 4349,
+      "bytes": 4403,
       "path": "src/earnings_call_risk_map/maturity.py",
-      "sha256": "d3834c7e866c5ad35267e728efdd1807771416b529a9cc9ab7684f686ff364d0"
+      "sha256": "698372163c2a2d9a0e1f27a8b6e5239946deed7092b283a2201694fa52562a0a"
     },
     {
       "bytes": 1392,
@@ -279,17 +309,17 @@
     {
       "bytes": 50,
       "path": "src/earnings_call_risk_map/version.py",
-      "sha256": "2b6baa82998db80a52fce57991c4a8b21546f4b15096bf9eb351ee6402f00aae"
+      "sha256": "c2d3f181f8e6f3674af9edc42b4b210cfe3fec394593c8644643883ddea6579f"
     },
     {
       "bytes": 14122,
       "path": "tests/test_cli.py",
-      "sha256": "01b45b0e786534bc2fd4497131477f8c11736146c27ac527e957e9fc286590bb"
+      "sha256": "6a9481933e8d2b4dd9b0eecb97b0be12f92605bffbbec38b83e3b9e435b80a36"
     },
     {
       "bytes": 5998,
       "path": "tests/test_core.py",
-      "sha256": "7333df36a6c6f009dfdca1fe920fa25825218e9a25a39b457bb6ac2e2ddb68ee"
+      "sha256": "46b9ecefa48ae17ed8092bdcb3d560d3cbdb560aca5ddbfa547b1e7fe9a2e361"
     },
     {
       "bytes": 2465,
@@ -298,5 +328,5 @@
     }
   ],
   "name": "earnings-call-risk-map",
-  "version": "0.2.0"
+  "version": "0.3.0"
 }
