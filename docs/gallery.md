@@ -2,6 +2,13 @@
 
 The repository includes deterministic artifacts under `examples/output/` for quick inspection and downstream handoff tests.
 
+## Contents
+
+- [Dashboards](#dashboards)
+- [Reports And Queues](#reports-and-queues)
+- [Compare Example](#compare-example)
+- [Integration Examples](#integration-examples)
+
 ## Dashboards
 
 - `examples/output/demo_dashboard.html`: compact software-style example dashboard.
@@ -26,6 +33,8 @@ See `docs/pages-demo.md` for local static HTML viewing and screenshot framing gu
 - `examples/output/demo_compare.json`: machine-readable score deltas and interpretation lines for the prior/current software comparison.
 - `examples/output/demo_review_queue.json` and `examples/output/energy_infrastructure_review_queue.json`: focused machine-readable review queues.
 - `examples/output/public_apple_static_case_study_review_queue.json`: focused machine-readable static case-study review queue.
+- `examples/output/demo_review_queue_items.jsonl`: deterministic JSON Lines records for every review item across bundled demo fixtures, including fixture context for agent ingestion.
+- `examples/output/fixture_catalog.md`: bundled fixture catalog with tickers, data cutoffs, static/live status, and recommended commands.
 
 ## Compare Example
 
@@ -34,3 +43,4 @@ The compare example uses `examples/input/demo_company_prior.json` as the earlier
 ## Integration Examples
 
 - `examples/output/integration_notes.json`: static example notes showing how risk-map outputs can be handed to a thesis ledger or portfolio risk review without adding runtime dependencies on those tools.
+- `examples/output/demo_review_queue_items.jsonl`: agent-ingestion handoff with one `review_queue_item` JSON object per line.

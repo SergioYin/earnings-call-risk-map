@@ -8,7 +8,14 @@ import sys
 from pathlib import Path
 
 from .audit import package_audit_json, package_audit_markdown
-from .core import analyze_document, build_review_queue_export, compare_snapshots
+from .core import (
+    analyze_document,
+    build_review_queue_export,
+    build_review_queue_jsonl_records,
+    compare_snapshots,
+    render_jsonl,
+)
+from .fixture_catalog import fixture_catalog_markdown
 from .io import read_json, write_json, write_text
 from .manifest import manifest_json
 from .maturity import write_maturity_evidence
@@ -25,6 +32,9 @@ DEMO_COMPARE = (
     "demo_prior",
     Path("examples/input/demo_company_prior.json"),
     Path("examples/input/demo_company.json"),
+)
+DEMO_REVIEW_QUEUE_JSONL_FIXTURES = DEMO_FIXTURES + (
+    ("demo_prior", Path("examples/input/demo_company_prior.json")),
 )
 
 
@@ -73,10 +83,21 @@ def build_parser() -> argparse.ArgumentParser:
     review_queue.add_argument("--md-out", metavar="PATH", help="Write focused review queue Markdown")
     review_queue.set_defaults(func=cmd_review_queue)
 
+    review_queue_jsonl = sub.add_parser(
+        "review-queue-jsonl",
+        help="Export deterministic JSON Lines review items across bundled demo fixtures",
+    )
+    review_queue_jsonl.add_argument("--out", metavar="PATH", help="Write JSON Lines to this path")
+    review_queue_jsonl.set_defaults(func=cmd_review_queue_jsonl)
+
     audit = sub.add_parser("audit", help="Report package audit parity as JSON or Markdown")
     audit.add_argument("--format", choices=("json", "markdown"), default="json", help="Output format")
     audit.add_argument("--out", metavar="PATH", help="Write audit report to this path")
     audit.set_defaults(func=cmd_audit)
+
+    fixture_catalog = sub.add_parser("fixture-catalog", help="List bundled fixtures and recommended commands")
+    fixture_catalog.add_argument("--out", metavar="PATH", help="Write fixture catalog Markdown to this path")
+    fixture_catalog.set_defaults(func=cmd_fixture_catalog)
 
     manifest = sub.add_parser("manifest", help="Print or write release manifest")
     manifest.add_argument("--out", metavar="PATH", help="Write manifest JSON to this path")
@@ -108,9 +129,11 @@ def cmd_analyze(args: argparse.Namespace) -> int:
 
 def cmd_demo(args: argparse.Namespace) -> int:
     out_dir = Path(args.out_dir)
+    jsonl_records = []
     for slug, source in DEMO_FIXTURES:
         snapshot = analyze_document(read_json(source))
         review_queue = build_review_queue_export(snapshot)
+        jsonl_records.extend(build_review_queue_jsonl_records(slug, source.as_posix(), review_queue))
         write_json(out_dir / f"{slug}_snapshot.json", snapshot)
         write_text(out_dir / f"{slug}_report.md", render_markdown(snapshot))
         write_text(out_dir / f"{slug}_dashboard.html", render_dashboard_html(snapshot))
@@ -120,12 +143,16 @@ def cmd_demo(args: argparse.Namespace) -> int:
     before_snapshot = analyze_document(read_json(before_source))
     after_snapshot = analyze_document(read_json(after_source))
     compare = compare_snapshots(before_snapshot, after_snapshot)
+    before_review_queue = build_review_queue_export(before_snapshot)
+    jsonl_records.extend(build_review_queue_jsonl_records(before_slug, before_source.as_posix(), before_review_queue))
     write_json(out_dir / f"{before_slug}_snapshot.json", before_snapshot)
     write_text(out_dir / f"{before_slug}_report.md", render_markdown(before_snapshot))
     write_json(out_dir / f"{compare_slug}.json", compare)
     write_text(out_dir / f"{compare_slug}.md", render_compare_markdown(compare))
+    write_text(out_dir / "demo_review_queue_items.jsonl", render_jsonl(jsonl_records))
     write_text(out_dir / "package_audit.json", package_audit_json("."))
     write_text(out_dir / "package_audit.md", package_audit_markdown("."))
+    write_text(out_dir / "fixture_catalog.md", fixture_catalog_markdown("."))
     write_json(out_dir / "release_manifest.json", json.loads(manifest_json(".")))
     print(f"wrote demo bundles to {out_dir}")
     return 0
@@ -156,6 +183,20 @@ def cmd_review_queue(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_review_queue_jsonl(args: argparse.Namespace) -> int:
+    records = []
+    for slug, source in DEMO_REVIEW_QUEUE_JSONL_FIXTURES:
+        snapshot = analyze_document(read_json(source))
+        export = build_review_queue_export(snapshot)
+        records.extend(build_review_queue_jsonl_records(slug, source.as_posix(), export))
+    payload = render_jsonl(records)
+    if args.out:
+        write_text(args.out, payload)
+    else:
+        print(payload, end="")
+    return 0
+
+
 def cmd_manifest(args: argparse.Namespace) -> int:
     payload = manifest_json(".")
     if args.out:
@@ -170,6 +211,15 @@ def cmd_audit(args: argparse.Namespace) -> int:
         payload = package_audit_json(".")
     else:
         payload = package_audit_markdown(".")
+    if args.out:
+        write_text(args.out, payload)
+    else:
+        print(payload, end="")
+    return 0
+
+
+def cmd_fixture_catalog(args: argparse.Namespace) -> int:
+    payload = fixture_catalog_markdown(".")
     if args.out:
         write_text(args.out, payload)
     else:

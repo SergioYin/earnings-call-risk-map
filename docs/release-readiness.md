@@ -2,7 +2,7 @@
 
 Use the release readiness review template at `reports/reviews/release-readiness-review.md` before publishing a demo bundle or tagged release.
 
-Use `docs/release-notes-v0.4.0.md` as the deterministic release notes source for v0.4.0. Prior notes remain in `docs/release-notes-v0.3.0.md`, `docs/release-notes-v0.2.0.md`, and `docs/release-notes-v0.1.0.md`.
+Use `docs/release-notes-v0.5.0.md` as the deterministic release notes draft for v0.5.0. Prior notes remain in `docs/release-notes-v0.4.0.md`, `docs/release-notes-v0.3.0.md`, `docs/release-notes-v0.2.0.md`, and `docs/release-notes-v0.1.0.md`.
 
 Use `docs/distribution.md` for local install, `pipx`, supported Python version, and wheel dry-run checks. Do not publish package artifacts as part of the dry run.
 

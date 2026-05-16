@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from typing import Any
 
 from .models import SAFETY_NOTICE, SOURCE_BOUNDARIES
@@ -223,6 +224,49 @@ def build_review_queue_export(snapshot: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def build_review_queue_jsonl_records(
+    fixture_slug: str,
+    fixture_path: str,
+    review_queue_export: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Flatten one review queue export into deterministic JSONL records."""
+
+    records = []
+    for index, item in enumerate(review_queue_export.get("items", []), start=1):
+        records.append(
+            {
+                "schema_version": "0.1",
+                "record_type": "review_queue_item",
+                "fixture_slug": fixture_slug,
+                "fixture_path": fixture_path,
+                "item_index": index,
+                "company": review_queue_export.get("company"),
+                "ticker": review_queue_export.get("ticker"),
+                "as_of": review_queue_export.get("as_of"),
+                "data_cutoff": review_queue_export.get("data_cutoff"),
+                "safety_notice": review_queue_export.get("safety_notice", SAFETY_NOTICE),
+                "source_boundaries": review_queue_export.get("source_boundaries", SOURCE_BOUNDARIES),
+                "source_attribution": review_queue_export.get("source_attribution", []),
+                "review_item": item,
+            }
+        )
+    return records
+
+
+def render_jsonl(records: list[dict[str, Any]]) -> str:
+    """Render records as deterministic JSON Lines."""
+
+    if not records:
+        return ""
+    return "\n".join(_json_dumps(record) for record in records) + "\n"
+
+
+def _json_dumps(payload: dict[str, Any]) -> str:
+    """Return one compact deterministic JSON object."""
+
+    return json.dumps(payload, sort_keys=True, separators=(",", ":"))
+
+
 def _score_by_key(items: list[dict[str, Any]]) -> dict[str, int]:
     scores: dict[str, int] = {}
     for item in items:
@@ -250,30 +294,8 @@ def _compare_interpretation(
     lines = [
         "Deltas compare deterministic keyword scores between analyzed snapshots; they are prompts for source review, not investment conclusions.",
     ]
-    if risk_changes:
-        risers = [item for item in risk_changes if int(item["delta"]) > 0]
-        fallers = [item for item in risk_changes if int(item["delta"]) < 0]
-        if risers:
-            topics = ", ".join(item["topic"] for item in risers[:3])
-            lines.append(f"Risk attention increased for: {topics}.")
-        if fallers:
-            topics = ", ".join(item["topic"] for item in fallers[:3])
-            lines.append(f"Risk attention decreased for: {topics}.")
-    else:
-        lines.append("No risk-score movement was detected.")
-
-    if opportunity_changes:
-        risers = [item for item in opportunity_changes if int(item["delta"]) > 0]
-        fallers = [item for item in opportunity_changes if int(item["delta"]) < 0]
-        if risers:
-            topics = ", ".join(item["topic"] for item in risers[:3])
-            lines.append(f"Opportunity attention increased for: {topics}.")
-        if fallers:
-            topics = ", ".join(item["topic"] for item in fallers[:3])
-            lines.append(f"Opportunity attention decreased for: {topics}.")
-    else:
-        lines.append("No opportunity-score movement was detected.")
-
+    lines.extend(_attention_movement_lines("Risk", risk_changes, "risk-score"))
+    lines.extend(_attention_movement_lines("Opportunity", opportunity_changes, "opportunity-score"))
     if review_queue_delta > 0:
         lines.append(f"Review workload increased by {review_queue_delta}; inspect new stale, missing-evidence, or high-impact items.")
     elif review_queue_delta < 0:
@@ -287,6 +309,18 @@ def _compare_interpretation(
         lines.append(f"Stale/static badge count decreased by {abs(stale_badge_delta)}; confirm dates and source freshness.")
     else:
         lines.append("Stale/static badge count was unchanged.")
+    return lines
+
+
+def _attention_movement_lines(label: str, changes: list[dict[str, Any]], score_name: str) -> list[str]:
+    if not changes:
+        return [f"No {score_name} movement was detected."]
+    lines = []
+    for direction, comparator in (("increased", 1), ("decreased", -1)):
+        matching_topics = [item["topic"] for item in changes if int(item["delta"]) * comparator > 0]
+        topics = ", ".join(matching_topics[:3])
+        if topics:
+            lines.append(f"{label} attention {direction} for: {topics}.")
     return lines
 
 
@@ -330,10 +364,11 @@ def _merge_review_record(records: dict[tuple[str, str, str], dict[str, Any]], re
     if existing is None:
         records[key] = record
         return
+    categories = set(existing["issue_categories"]) | set(record["issue_categories"])
     existing["issue_categories"] = [
         category
         for category in REVIEW_CATEGORY_ORDER
-        if category in set(existing["issue_categories"]) | set(record["issue_categories"])
+        if category in categories
     ]
     existing["reasons"] = [REVIEW_REASON_LABELS[category] for category in existing["issue_categories"]]
     existing["risk_score"] = max(int(existing.get("risk_score", 0)), int(record.get("risk_score", 0)))

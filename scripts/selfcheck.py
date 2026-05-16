@@ -14,11 +14,15 @@ ENV = {"PYTHONPATH": str(ROOT / "src")}
 MARKDOWN_LINK_RE = re.compile(r"!?\[[^\]]+\]\(([^)]+)\)")
 DOC_LINK_CHECK_PATHS = (
     Path("README.md"),
+    Path("docs/tutorial-earnings-review.md"),
     Path("docs/distribution.md"),
     Path("docs/non-advice-boundary.md"),
     Path("docs/release-readiness.md"),
     Path("docs/reviewer-evidence.md"),
-    Path("docs/release-notes-v0.4.0.md"),
+    Path("docs/release-notes-v0.5.0.md"),
+)
+REQUIRED_DOC_PATHS = (
+    Path("docs/tutorial-earnings-review.md"),
 )
 
 
@@ -144,6 +148,34 @@ def check_compare_examples() -> int:
     return 0
 
 
+def check_review_queue_jsonl() -> int:
+    print("== review queue jsonl ==", flush=True)
+    path = ROOT / "examples/output/demo_review_queue_items.jsonl"
+    if not path.is_file():
+        print(f"{path.relative_to(ROOT)} is missing")
+        return 1
+    lines = path.read_text(encoding="utf-8").splitlines()
+    if not lines:
+        print("review queue JSONL is empty")
+        return 1
+    try:
+        records = [json.loads(line) for line in lines]
+    except json.JSONDecodeError as exc:
+        print(f"review queue JSONL is invalid at line {exc.lineno}, column {exc.colno}")
+        return 1
+    slugs = {record.get("fixture_slug") for record in records}
+    required_slugs = {"demo", "energy_infrastructure", "public_apple_static_case_study", "demo_prior"}
+    if not required_slugs.issubset(slugs):
+        print("review queue JSONL missing fixture slug(s): " + ", ".join(sorted(required_slugs - slugs)))
+        return 1
+    for record in records:
+        if record.get("record_type") != "review_queue_item" or not record.get("review_item"):
+            print("review queue JSONL contains a malformed review item record")
+            return 1
+    print("review queue jsonl passed")
+    return 0
+
+
 def check_docs_links() -> int:
     print("== docs links ==", flush=True)
     failures = []
@@ -173,6 +205,31 @@ def check_docs_links() -> int:
             print(failure)
         return 1
     print("docs links passed")
+    return 0
+
+
+def check_required_docs() -> int:
+    print("== required docs ==", flush=True)
+    missing = [path.as_posix() for path in REQUIRED_DOC_PATHS if not (ROOT / path).is_file()]
+    if missing:
+        print("missing required doc(s): " + ", ".join(missing))
+        return 1
+
+    tutorial = ROOT / "docs/tutorial-earnings-review.md"
+    text = tutorial.read_text(encoding="utf-8")
+    required_markers = (
+        "fixture",
+        "report",
+        "review queue",
+        "compare",
+        "Educational research review only",
+    )
+    missing_markers = [marker for marker in required_markers if marker not in text]
+    if missing_markers:
+        print("tutorial missing marker(s): " + ", ".join(missing_markers))
+        return 1
+
+    print("required docs passed")
     return 0
 
 
@@ -210,6 +267,12 @@ def main() -> int:
             if code:
                 return code
             code = check_compare_examples()
+            if code:
+                return code
+            code = check_review_queue_jsonl()
+            if code:
+                return code
+            code = check_required_docs()
             if code:
                 return code
             code = check_docs_links()

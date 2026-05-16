@@ -12,6 +12,7 @@ Run these commands from the repository root:
 PYTHONPATH=src python -m unittest discover -s tests
 PYTHONPATH=src python scripts/selfcheck.py
 PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
+PYTHONPATH=src python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl
 PYTHONPATH=src python -m earnings_call_risk_map audit
 PYTHONPATH=src python -m earnings_call_risk_map manifest --out release_manifest.json
 PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
@@ -38,7 +39,7 @@ python -m pip install .
 earnings-call-risk-map version
 ```
 
-Expected version for this release line: `0.4.0`.
+Expected version for this release line: `0.5.0`.
 
 ## Release Assets
 
@@ -46,10 +47,13 @@ Primary release and reviewer assets:
 
 - `README.md`
 - `CHANGELOG.md`
-- `docs/release-notes-v0.4.0.md`
+- `docs/release-notes-v0.5.0.md`
 - `docs/release-readiness.md`
 - `docs/reviewer-evidence.md`
 - `docs/distribution.md`
+- `docs/agent-workflow.md`
+- `docs/fixture-catalog.md`
+- `docs/tutorial-earnings-review.md`
 - `docs/non-advice-boundary.md`
 - `docs/pages-demo.md`
 - `docs/gallery.md`
@@ -66,6 +70,8 @@ Primary release and reviewer assets:
 - `examples/output/demo_review_queue.md`
 - `examples/output/energy_infrastructure_review_queue.md`
 - `examples/output/public_apple_static_case_study_review_queue.md`
+- `examples/output/demo_review_queue_items.jsonl`
+- `examples/output/fixture_catalog.md`
 - `examples/output/demo_snapshot.json`
 - `examples/output/demo_prior_snapshot.json`
 - `examples/output/energy_infrastructure_snapshot.json`

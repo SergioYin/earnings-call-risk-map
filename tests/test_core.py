@@ -2,7 +2,13 @@ import json
 import unittest
 from pathlib import Path
 
-from earnings_call_risk_map.core import analyze_document, build_review_queue_export, compare_snapshots
+from earnings_call_risk_map.core import (
+    analyze_document,
+    build_review_queue_export,
+    build_review_queue_jsonl_records,
+    compare_snapshots,
+    render_jsonl,
+)
 from earnings_call_risk_map.models import SAFETY_NOTICE, SOURCE_BOUNDARIES
 from earnings_call_risk_map.render import render_compare_markdown, render_markdown, render_review_queue_markdown
 
@@ -53,7 +59,7 @@ class CoreTests(unittest.TestCase):
 
     def test_analyze_scores_and_review_queue(self):
         snapshot = analyze_document(self.fixture())
-        self.assertEqual(snapshot["tool_version"], "0.4.0")
+        self.assertEqual(snapshot["tool_version"], "0.5.0")
         self.assertEqual(snapshot["summary"]["risk_count"], 1)
         self.assertEqual(snapshot["summary"]["opportunity_count"], 2)
         self.assertEqual(snapshot["review_queue"][0]["topic"], "gross margin")
@@ -134,6 +140,26 @@ class CoreTests(unittest.TestCase):
         self.assertEqual(gross_margin["issue_categories"], ["stale_data", "high_impact_language"])
         launch = next(item for item in export["items"] if item["topic"] == "launch")
         self.assertEqual(launch["issue_categories"], ["missing_evidence", "high_impact_language"])
+
+    def test_review_queue_jsonl_records_are_deterministic_agent_handoff(self):
+        snapshot = analyze_document(self.fixture())
+        export = build_review_queue_export(snapshot)
+        records = build_review_queue_jsonl_records("unit_fixture", "examples/input/unit_fixture.json", export)
+        self.assertEqual(len(records), export["summary"]["review_item_count"])
+        self.assertEqual(records[0]["record_type"], "review_queue_item")
+        self.assertEqual(records[0]["fixture_slug"], "unit_fixture")
+        self.assertEqual(records[0]["fixture_path"], "examples/input/unit_fixture.json")
+        self.assertEqual(records[0]["item_index"], 1)
+        self.assertEqual(records[0]["ticker"], "EXM")
+        self.assertIn("source_boundaries", records[0])
+        self.assertIn("review_item", records[0])
+
+        text = render_jsonl(records)
+        lines = text.splitlines()
+        self.assertEqual(len(lines), len(records))
+        parsed = [json.loads(line) for line in lines]
+        self.assertEqual(parsed, records)
+        self.assertEqual(text, render_jsonl(records))
 
     def test_energy_infrastructure_fixture_exercises_review_paths(self):
         fixture = json.loads((ROOT / "examples/input/demo_energy_infrastructure.json").read_text(encoding="utf-8"))

@@ -1,7 +1,7 @@
 # Maturity Evidence Bundle
 
 - Package: `earnings-call-risk-map`
-- Version: `0.4.0`
+- Version: `0.5.0`
 - Skill path: `skills/agent/earnings-call-risk-map/SKILL.md` (present)
 - Review template: `reports/reviews/release-readiness-review.md` (present)
 - Privacy scan: passed (`python scripts/privacy_scan.py`)
@@ -19,6 +19,7 @@
 - `PYTHONPATH=src python -m unittest discover -s tests`
 - `PYTHONPATH=src python scripts/selfcheck.py`
 - `PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output`
+- `PYTHONPATH=src python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl`
 - `PYTHONPATH=src python -m earnings_call_risk_map audit`
 - `PYTHONPATH=src python -m earnings_call_risk_map manifest --out release_manifest.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity`
@@ -68,7 +69,7 @@
 
 - `README.md`
 - `CHANGELOG.md`
-- `docs/release-notes-v0.4.0.md`
+- `docs/release-notes-v0.5.0.md`
 - `docs/release-readiness.md`
 - `docs/reviewer-evidence.md`
 - `docs/distribution.md`
@@ -88,6 +89,7 @@
 - `examples/output/demo_review_queue.md`
 - `examples/output/energy_infrastructure_review_queue.md`
 - `examples/output/public_apple_static_case_study_review_queue.md`
+- `examples/output/demo_review_queue_items.jsonl`
 - `examples/output/demo_snapshot.json`
 - `examples/output/demo_prior_snapshot.json`
 - `examples/output/energy_infrastructure_snapshot.json`
@@ -114,12 +116,14 @@
 - `examples/output/demo_report.md`
 - `examples/output/demo_review_queue.json`
 - `examples/output/demo_review_queue.md`
+- `examples/output/demo_review_queue_items.jsonl`
 - `examples/output/demo_snapshot.json`
 - `examples/output/energy_infrastructure_dashboard.html`
 - `examples/output/energy_infrastructure_report.md`
 - `examples/output/energy_infrastructure_review_queue.json`
 - `examples/output/energy_infrastructure_review_queue.md`
 - `examples/output/energy_infrastructure_snapshot.json`
+- `examples/output/fixture_catalog.md`
 - `examples/output/integration_notes.json`
 - `examples/output/package_audit.json`
 - `examples/output/package_audit.md`

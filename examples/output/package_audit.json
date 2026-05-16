@@ -1,13 +1,15 @@
 {
-  "command_count": 8,
+  "command_count": 10,
   "commands": [
     "analyze",
     "audit",
     "compare",
     "demo",
+    "fixture-catalog",
     "manifest",
     "maturity-evidence",
     "review-queue",
+    "review-queue-jsonl",
     "version"
   ],
   "fixture_count": 4,
@@ -18,8 +20,89 @@
     "examples/input/public_apple_static_case_study.json"
   ],
   "has_workflow_files": false,
+  "local_only": {
+    "checks": [
+      {
+        "detail": "project declares no runtime package dependencies",
+        "name": "runtime_dependencies_empty",
+        "status": "passed"
+      },
+      {
+        "detail": "no network-client imports found in package or local scripts",
+        "name": "no_network_client_imports",
+        "status": "passed"
+      },
+      {
+        "detail": "no credential environment variable reads found in package or local scripts",
+        "name": "no_credential_environment_reads",
+        "status": "passed"
+      },
+      {
+        "detail": "no GitHub workflow files are required for package commands",
+        "name": "workflow_files_absent",
+        "status": "passed"
+      }
+    ],
+    "command_scope": "All CLI commands read local JSON/text inputs and write local Markdown, JSON, JSONL, HTML, or manifest files only.",
+    "commands": [
+      {
+        "credentials_required": false,
+        "name": "analyze",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "audit",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "compare",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "demo",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "fixture-catalog",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "manifest",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "maturity-evidence",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "review-queue",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "review-queue-jsonl",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "version",
+        "network_required": false
+      }
+    ],
+    "credentials_required": false,
+    "external_services": [],
+    "network_required": false,
+    "status": "passed"
+  },
   "name": "earnings-call-risk-map",
-  "output_artifact_count": 22,
+  "output_artifact_count": 24,
   "output_artifacts": [
     "examples/output/demo_compare.json",
     "examples/output/demo_compare.md",
@@ -29,12 +112,14 @@
     "examples/output/demo_report.md",
     "examples/output/demo_review_queue.json",
     "examples/output/demo_review_queue.md",
+    "examples/output/demo_review_queue_items.jsonl",
     "examples/output/demo_snapshot.json",
     "examples/output/energy_infrastructure_dashboard.html",
     "examples/output/energy_infrastructure_report.md",
     "examples/output/energy_infrastructure_review_queue.json",
     "examples/output/energy_infrastructure_review_queue.md",
     "examples/output/energy_infrastructure_snapshot.json",
+    "examples/output/fixture_catalog.md",
     "examples/output/integration_notes.json",
     "examples/output/public_apple_static_case_study_dashboard.html",
     "examples/output/public_apple_static_case_study_report.md",
@@ -48,6 +133,6 @@
     "path": "skills/agent/earnings-call-risk-map/SKILL.md",
     "present": true
   },
-  "version": "0.4.0",
+  "version": "0.5.0",
   "workflow_files": []
 }

@@ -67,3 +67,15 @@ Follow `docs/non-advice-boundary.md` when drafting responses around generated ar
 ## Input Notes
 
 Use ISO dates (`YYYY-MM-DD`). Include evidence URLs and `source_attribution` records where possible. Missing evidence and stale or unverified dates should remain visible in the review queue.
+
+## Done Criteria
+
+The task is done when the agent has:
+
+- Selected the correct route from `docs/agent-workflow.md`: analyze, compare, review queue export, source attribution handoff, or a complete bundle.
+- Preserved the educational research boundary and avoided personalized investment, legal, accounting, or tax advice.
+- Kept `safety_notice`, `source_boundaries`, source attribution, evidence URLs, `as_of`, `data_cutoff`, and stale/static badges visible in generated or summarized outputs.
+- Routed missing evidence, stale/static data, date-unverified items, and high-impact language to the human review queue instead of resolving them silently.
+- Explained compare deltas as deterministic score movement between snapshots, not as a real-world business conclusion or securities recommendation.
+- Used fixture-provided attribution for management claims, analyst questions, user synthesis, KPIs, and catalysts; any missing attribution is called out as a review item.
+- Run the relevant local verification for public or release-facing handoffs: unit tests, `scripts/selfcheck.py`, `scripts/privacy_scan.py`, audit, and maturity evidence as applicable.

@@ -7,6 +7,7 @@ It is intentionally conservative:
 - It uses keyword scoring, not financial forecasting.
 - It preserves stale/static data warnings.
 - It does not produce personalized buy, sell, hold, tax, legal, or accounting advice.
+- It runs locally from checked-out files and does not require network access, API keys, tokens, secrets, passwords, proxies, cloud credentials, workflow runners, or databases.
 - It expects users to verify source documents before relying on the output.
 
 Every Markdown report repeats the non-advice disclaimer and separates source provenance:
@@ -26,13 +27,15 @@ PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_ener
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/public_apple_static_case_study.json
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json --html-out examples/output/demo_dashboard.html
 PYTHONPATH=src python -m earnings_call_risk_map review-queue examples/input/demo_company.json --md-out examples/output/demo_review_queue.md --json-out examples/output/demo_review_queue.json
+PYTHONPATH=src python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl
 PYTHONPATH=src python -m earnings_call_risk_map compare examples/output/demo_prior_snapshot.json examples/output/demo_snapshot.json --md-out examples/output/demo_compare.md --json-out examples/output/demo_compare.json
+PYTHONPATH=src python -m earnings_call_risk_map fixture-catalog --out examples/output/fixture_catalog.md
 PYTHONPATH=src python -m earnings_call_risk_map audit --format markdown
 PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
 PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
 ```
 
-The first command verifies imports, the next two print Markdown reports for the software fixture and the capital-intensive energy/infrastructure fixture, and the public Apple static case study demonstrates investor-relations/SEC-style source attribution without claiming live data. The HTML command writes a self-contained dashboard, `review-queue` writes a focused review export, `compare` writes prior/current score movement with interpretation, `audit` reports package parity, and `demo` writes deterministic bundles under `examples/output/`.
+The first command verifies imports, the next two print Markdown reports for the software fixture and the capital-intensive energy/infrastructure fixture, and the public Apple static case study demonstrates investor-relations/SEC-style source attribution without claiming live data. The HTML command writes a self-contained dashboard, `review-queue` writes a focused review export, `review-queue-jsonl` writes one deterministic JSON Lines record per demo review item for agent ingestion, `compare` writes prior/current score movement with interpretation, `fixture-catalog` lists bundled fixtures and recommended commands, `audit` reports package parity, and `demo` writes deterministic bundles under `examples/output/`.
 
 The final command writes a basic release maturity evidence bundle listing test commands, generated artifact paths, the public skill path, the release review template path, and privacy scan status.
 
@@ -66,8 +69,10 @@ python -m earnings_call_risk_map analyze examples/input/demo_energy_infrastructu
 python -m earnings_call_risk_map analyze examples/input/public_apple_static_case_study.json
 python -m earnings_call_risk_map analyze examples/input/demo_company.json --html-out dashboard.html
 python -m earnings_call_risk_map review-queue examples/input/demo_company.json --json-out review_queue.json --md-out review_queue.md
+python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl
 python -m earnings_call_risk_map demo --out-dir examples/output
 python -m earnings_call_risk_map compare before.json after.json --json-out compare.json --md-out compare.md
+python -m earnings_call_risk_map fixture-catalog --out examples/output/fixture_catalog.md
 python -m earnings_call_risk_map audit --format json --out package_audit.json
 python -m earnings_call_risk_map audit --format markdown --out package_audit.md
 python -m earnings_call_risk_map manifest --out release_manifest.json
@@ -96,6 +101,12 @@ The dashboard summarizes:
 
 When no output path is supplied, the command prints Markdown. Supplying `--json-out`, `--md-out`, or both writes deterministic files suitable for review handoff or demos.
 
+## JSON Lines Review Queue
+
+`review-queue-jsonl` analyzes the bundled demo fixtures and writes compact JSON Lines for downstream agents. Each line is one `review_queue_item` record with fixture context (`fixture_slug`, `fixture_path`, `company`, `ticker`, `as_of`, and `data_cutoff`), source boundaries, safety notice, and the normalized `review_item` payload.
+
+The generated demo bundle writes `examples/output/demo_review_queue_items.jsonl`. It includes the current software, energy/infrastructure, public Apple static case-study, and prior-period software fixtures in deterministic fixture order.
+
 ## Compare Reports
 
 `compare` expects two analyzed snapshots, not raw input fixtures. The demo bundle writes `examples/output/demo_prior_snapshot.json`, `examples/output/demo_snapshot.json`, `examples/output/demo_compare.json`, and `examples/output/demo_compare.md` to show the intended flow.
@@ -105,6 +116,8 @@ Positive deltas mean the later snapshot triggered more deterministic keyword sco
 ## Package Audit
 
 `audit` emits a deterministic parity report in JSON or Markdown. It includes the package version, command list, fixture count, output artifact count, workflow-file absence, and whether the public agent skill exists at `skills/agent/earnings-call-risk-map/SKILL.md`.
+
+The audit report also includes a "Local-Only No-Network Guarantee" section. That section records `network_required: false` and `credentials_required: false` for every public command, plus checks for an empty runtime dependency list, absence of network-client imports, absence of credential environment variable reads, and absence of required workflow files.
 
 The demo bundle writes both `examples/output/package_audit.json` and `examples/output/package_audit.md`, then includes them in `examples/output/release_manifest.json`. The audit output files themselves are excluded from the output artifact count so repeated audit runs do not change the count.
 
@@ -147,6 +160,8 @@ The repository includes three current demo fixtures plus one prior-period compar
 - `examples/input/demo_energy_infrastructure.json`: capital-intensive energy/infrastructure example with project catalysts, KPI observations, stale static data, and intentionally missing evidence URLs.
 - `examples/input/public_apple_static_case_study.json`: static public-source Apple case study with Apple and SEC URLs, source attribution, and non-live-data labels.
 - `examples/input/demo_company_prior.json`: earlier snapshot for `compare` examples.
+
+See [Fixture Catalog](fixture-catalog.md) for tickers, data cutoffs, static/live status, and recommended commands for each bundled fixture.
 
 Dates must use `YYYY-MM-DD` format and must be valid calendar dates. Items older than 90 days relative to `as_of` receive a stale/static data badge.
 

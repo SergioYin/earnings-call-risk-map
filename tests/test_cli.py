@@ -10,6 +10,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ENV = {**os.environ, "PYTHONPATH": str(ROOT / "src")}
 NON_ADVICE_TEXT = "does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice"
+LOCAL_ONLY_ENV = {
+    "PATH": os.environ.get("PATH", ""),
+    "PYTHONPATH": str(ROOT / "src"),
+    "PYTHONNOUSERSITE": "1",
+    "HOME": str(ROOT),
+}
 
 
 class CliTests(unittest.TestCase):
@@ -23,10 +29,20 @@ class CliTests(unittest.TestCase):
             check=False,
         )
 
+    def run_cli_local_only(self, *args):
+        return subprocess.run(
+            [sys.executable, "-m", "earnings_call_risk_map", *args],
+            cwd=ROOT,
+            env=LOCAL_ONLY_ENV,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+
     def test_version(self):
         result = self.run_cli("version")
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout.strip(), "0.4.0")
+        self.assertEqual(result.stdout.strip(), "0.5.0")
 
     def test_help_uses_public_safe_wording(self):
         result = self.run_cli("--help")
@@ -188,23 +204,126 @@ class CliTests(unittest.TestCase):
             self.assertIn(NON_ADVICE_TEXT, markdown)
             self.assertIn("## Source Boundaries", markdown)
 
+    def test_fixture_catalog_lists_bundled_fixtures(self):
+        result = self.run_cli("fixture-catalog")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("# Fixture Catalog", result.stdout)
+        self.assertIn("examples/input/demo_company.json", result.stdout)
+        self.assertIn("`EXM`", result.stdout)
+        self.assertIn("`2026-04-30`", result.stdout)
+        self.assertIn("static demo fixture", result.stdout)
+        self.assertIn("earnings-call-risk-map analyze examples/input/demo_company.json", result.stdout)
+        self.assertIn("examples/input/public_apple_static_case_study.json", result.stdout)
+        self.assertIn("`AAPL`", result.stdout)
+        self.assertIn("static public-source case study", result.stdout)
+        self.assertIn("earnings-call-risk-map compare examples/output/demo_prior_snapshot.json", result.stdout)
+
+    def test_fixture_catalog_writes_output_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "fixture_catalog.md"
+            result = self.run_cli("fixture-catalog", "--out", str(out))
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "")
+            text = out.read_text(encoding="utf-8")
+            self.assertIn("# Fixture Catalog", text)
+            self.assertIn("examples/input/demo_energy_infrastructure.json", text)
+            self.assertIn("`NGLP`", text)
+
     def test_audit_reports_package_parity_json_and_markdown(self):
         result = self.run_cli("audit")
         self.assertEqual(result.returncode, 0, result.stderr)
         payload = json.loads(result.stdout)
-        self.assertEqual(payload["version"], "0.4.0")
+        self.assertEqual(payload["version"], "0.5.0")
         self.assertIn("audit", payload["commands"])
+        self.assertIn("fixture-catalog", payload["commands"])
+        self.assertIn("review-queue-jsonl", payload["commands"])
         self.assertEqual(payload["fixture_count"], 4)
         self.assertGreaterEqual(payload["output_artifact_count"], 5)
         self.assertFalse(payload["has_workflow_files"])
         self.assertTrue(payload["skill"]["present"])
+        self.assertEqual(payload["local_only"]["status"], "passed")
+        self.assertFalse(payload["local_only"]["network_required"])
+        self.assertFalse(payload["local_only"]["credentials_required"])
+        self.assertEqual(payload["local_only"]["external_services"], [])
+        self.assertEqual(
+            {item["name"] for item in payload["local_only"]["commands"]},
+            set(payload["commands"]),
+        )
+        self.assertTrue(
+            all(not item["network_required"] and not item["credentials_required"] for item in payload["local_only"]["commands"])
+        )
+        self.assertEqual(
+            {check["name"] for check in payload["local_only"]["checks"]},
+            {
+                "runtime_dependencies_empty",
+                "no_network_client_imports",
+                "no_credential_environment_reads",
+                "workflow_files_absent",
+            },
+        )
+        self.assertTrue(all(check["status"] == "passed" for check in payload["local_only"]["checks"]))
 
         md_result = self.run_cli("audit", "--format", "markdown")
         self.assertEqual(md_result.returncode, 0, md_result.stderr)
         self.assertIn("# Package Audit", md_result.stdout)
         self.assertIn("Workflow files present: no", md_result.stdout)
         self.assertIn("Skill present: yes", md_result.stdout)
+        self.assertIn("Local-Only No-Network Guarantee", md_result.stdout)
+        self.assertIn("Network access required: no", md_result.stdout)
+        self.assertIn("Credentials required: no", md_result.stdout)
+        self.assertIn("no_network_client_imports: passed", md_result.stdout)
         self.assertIn(NON_ADVICE_TEXT, md_result.stdout)
+
+    def test_commands_run_without_network_or_credential_environment(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            commands = [
+                ("version",),
+                ("analyze", "examples/input/demo_company_prior.json", "--json-out", str(tmp_path / "before.json")),
+                ("analyze", "examples/input/demo_company.json", "--json-out", str(tmp_path / "after.json")),
+                (
+                    "analyze",
+                    "examples/input/demo_company.json",
+                    "--json-out",
+                    str(tmp_path / "snapshot.json"),
+                    "--md-out",
+                    str(tmp_path / "report.md"),
+                    "--html-out",
+                    str(tmp_path / "dashboard.html"),
+                ),
+                (
+                    "compare",
+                    str(tmp_path / "before.json"),
+                    str(tmp_path / "after.json"),
+                    "--json-out",
+                    str(tmp_path / "compare.json"),
+                    "--md-out",
+                    str(tmp_path / "compare.md"),
+                ),
+                (
+                    "review-queue",
+                    "examples/input/demo_company.json",
+                    "--json-out",
+                    str(tmp_path / "review_queue.json"),
+                    "--md-out",
+                    str(tmp_path / "review_queue.md"),
+                ),
+                ("review-queue-jsonl", "--out", str(tmp_path / "review_items.jsonl")),
+                ("fixture-catalog", "--out", str(tmp_path / "fixture_catalog.md")),
+                ("audit", "--format", "json", "--out", str(tmp_path / "package_audit.json")),
+                ("manifest", "--out", str(tmp_path / "release_manifest.json")),
+                ("maturity-evidence", "--out-dir", str(tmp_path / "maturity")),
+                ("demo", "--out-dir", str(tmp_path / "demo")),
+            ]
+            for command in commands:
+                with self.subTest(command=" ".join(command)):
+                    result = self.run_cli_local_only(*command)
+                    self.assertEqual(result.returncode, 0, result.stderr)
+
+            audit = json.loads((tmp_path / "package_audit.json").read_text(encoding="utf-8"))
+            self.assertEqual(audit["local_only"]["status"], "passed")
+            self.assertFalse(audit["local_only"]["network_required"])
+            self.assertFalse(audit["local_only"]["credentials_required"])
 
     def test_demo_writes_static_dashboard(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -251,7 +370,19 @@ class CliTests(unittest.TestCase):
             apple_dashboard = (Path(tmp) / "public_apple_static_case_study_dashboard.html").read_text(encoding="utf-8")
             self.assertIn("Static educational case study", apple_dashboard)
             audit = json.loads((Path(tmp) / "package_audit.json").read_text(encoding="utf-8"))
-            self.assertIn("review-queue", audit["commands"])
+            self.assertIn("review-queue-jsonl", audit["commands"])
+            jsonl_lines = (Path(tmp) / "demo_review_queue_items.jsonl").read_text(encoding="utf-8").splitlines()
+            self.assertGreaterEqual(len(jsonl_lines), 10)
+            jsonl_records = [json.loads(line) for line in jsonl_lines]
+            self.assertEqual(jsonl_records[0]["record_type"], "review_queue_item")
+            self.assertEqual(jsonl_records[0]["fixture_slug"], "demo")
+            self.assertEqual(jsonl_records[0]["fixture_path"], "examples/input/demo_company.json")
+            self.assertIn("review_item", jsonl_records[0])
+            self.assertIn("demo_prior", {record["fixture_slug"] for record in jsonl_records})
+            fixture_catalog = (Path(tmp) / "fixture_catalog.md").read_text(encoding="utf-8")
+            self.assertIn("Fixture Catalog", fixture_catalog)
+            self.assertIn("examples/input/public_apple_static_case_study.json", fixture_catalog)
+            self.assertIn("static public-source case study", fixture_catalog)
             self.assertIn("src/earnings_call_risk_map/audit.py", {
                 item["path"]
                 for item in json.loads((Path(tmp) / "release_manifest.json").read_text(encoding="utf-8"))["files"]
@@ -263,6 +394,22 @@ class CliTests(unittest.TestCase):
             self.assertIn(NON_ADVICE_TEXT, review_queue)
             self.assertIn(NON_ADVICE_TEXT, package_audit)
             self.assertIn("Package Audit", package_audit)
+
+    def test_review_queue_jsonl_outputs_demo_fixture_records(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "review_items.jsonl"
+            result = self.run_cli("review-queue-jsonl", "--out", str(out))
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "")
+            lines = out.read_text(encoding="utf-8").splitlines()
+            self.assertGreaterEqual(len(lines), 10)
+            records = [json.loads(line) for line in lines]
+            self.assertEqual(records[0]["fixture_slug"], "demo")
+            self.assertEqual(records[0]["item_index"], 1)
+            self.assertEqual(records[0]["ticker"], "EXM")
+            self.assertIn("source_boundaries", records[0])
+            self.assertIn("review_item", records[0])
+            self.assertIn("public_apple_static_case_study", {record["fixture_slug"] for record in records})
 
     def test_manifest_lists_package_file(self):
         result = self.run_cli("manifest")

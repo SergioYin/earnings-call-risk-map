@@ -15,17 +15,31 @@ Open [examples/output/demo_dashboard.html](examples/output/demo_dashboard.html) 
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Outputs preserve stale/static data warnings and should be reviewed against source materials.
 
+## Contents
+
+- [Badges And Links](#badges-and-links)
+- [Local-Only No-Network Guarantee](#local-only-no-network-guarantee)
+- [2-Minute Walkthrough](#2-minute-walkthrough)
+- [Static-Data Badge](#static-data-badge)
+- [Integration Examples](#integration-examples)
+- [Quickstart](#quickstart)
+- [Commands](#commands)
+- [Fixture Schema](#fixture-schema)
+- [Repository Layout](#repository-layout)
+- [Verification](#verification)
+
 ## Badges And Links
 
 ![Static dashboard preview](docs/assets/showcase-dashboard-preview.svg)
 
-**Release:** `v0.4.0` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
+**Release:** `v0.5.0` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
 
 - [Pages demo guide](docs/pages-demo.md)
+- [Analyst tutorial](docs/tutorial-earnings-review.md)
 - [Gallery](docs/gallery.md)
 - [Distribution guide](docs/distribution.md)
 - [Non-advice boundary](docs/non-advice-boundary.md)
-- [v0.4.0 release notes](docs/release-notes-v0.4.0.md)
+- [v0.5.0 release notes draft](docs/release-notes-v0.5.0.md)
 - [Demo dashboard HTML](examples/output/demo_dashboard.html)
 - [PNG-free screenshot substitute](examples/output/showcase_dashboard_preview.svg)
 
@@ -34,6 +48,19 @@ The project keeps financial-safety boundaries explicit:
 - Management claims are source-provided company statements or prepared remarks. The tool surfaces them for review and does not verify them as facts.
 - Analyst questions are source-provided prompts from Q&A or research materials. They are treated as questions, not assertions.
 - User synthesis is user-authored notes, tags, and deterministic tool scoring. It is a review aid, not investment advice or a recommendation.
+
+## Local-Only No-Network Guarantee
+
+All package commands are designed to run from local files only. They do not call APIs, open sockets, fetch live market data, read credential environment variables, require workflow runners, or require a database.
+
+The `audit` command records this guarantee in machine-readable form. Its local-only checks verify:
+
+- `pyproject.toml` declares no runtime package dependencies.
+- Package and script sources contain no network-client imports.
+- Package and script sources contain no credential environment variable reads.
+- No `.github/workflows` files are required to run the package commands.
+
+The test suite also runs every CLI subcommand with a minimal credential-free environment to confirm the commands do not need API keys, tokens, secrets, passwords, proxies, or cloud credentials.
 
 ## 2-Minute Walkthrough
 
@@ -46,6 +73,7 @@ PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_ener
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/public_apple_static_case_study.json
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json --html-out examples/output/demo_dashboard.html
 PYTHONPATH=src python -m earnings_call_risk_map review-queue examples/input/demo_company.json --md-out examples/output/demo_review_queue.md --json-out examples/output/demo_review_queue.json
+PYTHONPATH=src python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl
 PYTHONPATH=src python -m earnings_call_risk_map compare examples/output/demo_prior_snapshot.json examples/output/demo_snapshot.json --md-out examples/output/demo_compare.md --json-out examples/output/demo_compare.json
 PYTHONPATH=src python -m earnings_call_risk_map audit --format markdown
 PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
@@ -60,10 +88,11 @@ What just happened:
 4. The public Apple static case study demonstrates source attribution from public investor-relations/newsroom and SEC EDGAR URLs without claiming live data.
 5. `analyze --html-out` writes a self-contained static dashboard with no external JS or CSS.
 6. `review-queue` writes a focused queue containing only stale data, missing evidence, and high-impact language.
-7. `compare` writes deterministic before/after score movement for the prior and current software snapshots.
-8. `audit` reports package parity: version, commands, fixture count, output artifact count, workflow absence, and skill presence.
-9. `demo` writes reproducible bundles for all fixtures: legacy `demo_*`, `demo_prior_*`, `demo_compare.*`, `energy_infrastructure_*`, `public_apple_static_case_study_*`, package audit files, and `release_manifest.json`.
-10. `maturity-evidence` writes a basic release evidence bundle with test commands, artifact paths, skill path, review template path, and privacy scan status.
+7. `review-queue-jsonl` writes deterministic JSON Lines across the bundled demo fixtures for agent ingestion.
+8. `compare` writes deterministic before/after score movement for the prior and current software snapshots.
+9. `audit` reports package parity: version, commands, fixture count, output artifact count, workflow absence, and skill presence.
+10. `demo` writes reproducible bundles for all fixtures: legacy `demo_*`, `demo_prior_*`, `demo_compare.*`, `energy_infrastructure_*`, `public_apple_static_case_study_*`, `demo_review_queue_items.jsonl`, package audit files, and `release_manifest.json`.
+11. `maturity-evidence` writes a basic release evidence bundle with test commands, artifact paths, skill path, review template path, and privacy scan status.
 
 Sample output excerpt:
 
@@ -131,6 +160,7 @@ These badges are intentionally visible because a stale public KPI can look autho
 
 Outputs are plain Markdown, JSON, and self-contained HTML. They can be handed to adjacent research tools without adding runtime dependencies on those tools:
 
+- [docs/tutorial-earnings-review.md](docs/tutorial-earnings-review.md) walks through an analyst-style review from fixture to report to review queue to compare.
 - [docs/integrations.md](docs/integrations.md) shows mappings for thesis-ledger notes and portfolio risk review items.
 - [docs/gallery.md](docs/gallery.md) lists the generated demo artifacts and machine-readable handoff examples.
 - [docs/pages-demo.md](docs/pages-demo.md) explains how to view the static HTML dashboards locally and what to screenshot.
@@ -157,6 +187,7 @@ For `pipx`, wheel dry-run, and troubleshooting notes, see [docs/distribution.md]
 
 - `analyze`: reads one JSON fixture and writes or prints a Markdown report plus optional JSON snapshot and static HTML dashboard.
 - `review-queue`: writes or prints deterministic Markdown/JSON for only stale data, missing evidence, and high-impact language.
+- `review-queue-jsonl`: writes or prints deterministic JSON Lines review item records across bundled demo fixtures, including fixture context and normalized review item payloads.
 - `demo`: builds `demo_*`, `energy_infrastructure_*`, and `public_apple_static_case_study_*` artifacts, package audit files, and a demo release manifest.
 - `compare`: compares two analyzed JSON snapshots and adds a plain-language interpretation section. Positive deltas mean a topic drew more deterministic risk or opportunity score in the later snapshot; negative deltas mean the later snapshot drew less score. Deltas are review prompts only, so reviewers should verify source documents and freshness badges before treating a movement as resolved or newly material.
 - `audit`: writes or prints package parity in JSON or Markdown.

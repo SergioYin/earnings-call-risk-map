@@ -20,6 +20,7 @@ VERIFICATION_COMMANDS = (
     "PYTHONPATH=src python -m unittest discover -s tests",
     "PYTHONPATH=src python scripts/selfcheck.py",
     "PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output",
+    "PYTHONPATH=src python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl",
     "PYTHONPATH=src python -m earnings_call_risk_map audit",
     "PYTHONPATH=src python -m earnings_call_risk_map manifest --out release_manifest.json",
     "PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity",
@@ -43,6 +44,7 @@ ARTIFACT_GLOBS = (
     "examples/output/*.md",
     "examples/output/*.html",
     "examples/output/*.svg",
+    "examples/output/*.jsonl",
     "docs/assets/*.svg",
     "release_manifest.json",
 )
@@ -51,7 +53,7 @@ REVIEW_TEMPLATE_PATH = "reports/reviews/release-readiness-review.md"
 RELEASE_ASSETS = (
     "README.md",
     "CHANGELOG.md",
-    "docs/release-notes-v0.4.0.md",
+    "docs/release-notes-v0.5.0.md",
     "docs/release-readiness.md",
     "docs/reviewer-evidence.md",
     "docs/distribution.md",
@@ -71,6 +73,7 @@ RELEASE_ASSETS = (
     "examples/output/demo_review_queue.md",
     "examples/output/energy_infrastructure_review_queue.md",
     "examples/output/public_apple_static_case_study_review_queue.md",
+    "examples/output/demo_review_queue_items.jsonl",
     "examples/output/demo_snapshot.json",
     "examples/output/demo_prior_snapshot.json",
     "examples/output/energy_infrastructure_snapshot.json",

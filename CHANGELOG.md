@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.5.0 - 2026-05-17
+
+Release-evidence and agent-workflow draft release.
+
+### Added
+
+- Release notes draft at `docs/release-notes-v0.5.0.md`.
+- `fixture-catalog` CLI command and generated `examples/output/fixture_catalog.md`.
+- `review-queue-jsonl` CLI command and generated `examples/output/demo_review_queue_items.jsonl`.
+- Agent workflow guide at `docs/agent-workflow.md`.
+- Earnings review tutorial at `docs/tutorial-earnings-review.md`.
+- Fixture catalog documentation at `docs/fixture-catalog.md`.
+- Local-only package audit section covering runtime dependencies, network-client imports, credential environment reads, workflow absence, and per-command network/credential requirements.
+- Selfcheck coverage for review-queue JSONL output and required tutorial documentation markers.
+
+### Changed
+
+- README, usage, gallery, scoring, reviewer evidence, release readiness, and agent skill documentation now cover the v0.5.0 evidence workflow.
+- Package audit JSON and Markdown now include local-only/no-network guarantee evidence.
+- Demo output generation now writes review-queue JSONL records and a fixture catalog artifact.
+- Maturity evidence now includes JSONL artifacts and the review-queue JSONL verification command.
+- Package version is now `0.5.0`.
+
+### Safety
+
+- Local-only audit evidence explicitly records that commands require no network access, credentials, external services, workflow files, or runtime package dependencies.
+- The release remains educational research review only and preserves the non-advice boundary.
+
 ## 0.4.0 - 2026-05-17
 
 Packaging-readiness and final-polish release.

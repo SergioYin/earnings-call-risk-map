@@ -9,12 +9,33 @@ Risk and opportunity terms are stored in `src/earnings_call_risk_map/models.py`.
 - `down`, `worse`, or `negative` add risk weight.
 - `up`, `better`, or `positive` add opportunity weight.
 
-Severity labels:
+Severity calibration:
 
-- `high`: score >= 7
-- `medium`: score >= 4
-- `low`: score > 0
-- `none`: score = 0
+| Label | Inclusive score range | Review meaning |
+| --- | --- | --- |
+| `high` | `score >= 7` | High-impact language; include in focused review queue. |
+| `medium` | `4 <= score <= 6` | Meaningful deterministic signal; include in full risk/opportunity report. |
+| `low` | `1 <= score <= 3` | Light deterministic signal; include in full risk/opportunity report. |
+| `none` | `score = 0` | No configured keyword or directional score was found. |
+
+Threshold edge cases:
+
+- `0` is `none`; it is not shown as a scored risk or opportunity.
+- `1`, `2`, and `3` are `low`; a score of `3` does not round up to `medium`.
+- `4`, `5`, and `6` are `medium`; a score of `6` does not round up to `high`.
+- `7` is the first `high` score and is also the first score that triggers `high-impact language`.
+- Scores above `7` remain `high`; there is no separate critical tier.
+- Stale note data adds `+1` to the risk score after keyword scoring, so a stale risk note can move from `6` to `7` and become `high`.
+
+Examples:
+
+| Example score | Label | Edge behavior |
+| --- | --- | --- |
+| `0` | `none` | No report item from severity alone. |
+| `3` | `low` | Highest low score. |
+| `4` | `medium` | First medium score. |
+| `6` | `medium` | Highest medium score. |
+| `7` | `high` | First high score and review-queue high-impact trigger. |
 
 The review queue includes items with missing evidence URLs, stale or unverified dates, or high-impact language. High-impact language is deterministic: a risk or opportunity score of `>= 7`.
 
