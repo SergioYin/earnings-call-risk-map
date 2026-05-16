@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INCLUDE_SUFFIXES = {".py", ".md", ".json", ".toml", ".txt"}
 SKIP_PARTS = {".git", "__pycache__", ".pytest_cache", "build", "dist", "*.egg-info"}
 FORBIDDEN_PATTERNS = [
-    re.compile(r"/home/[A-Za-z0-9_.-]+/"),
+    re.compile("/" + r"home/[A-Za-z0-9_.-]+/"),
     re.compile(r"github-assets/runtime"),
     re.compile(r"sk-[A-Za-z0-9_-]{20,}"),
     re.compile(r"AKIA[0-9A-Z]{16}"),
