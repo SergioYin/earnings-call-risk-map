@@ -51,13 +51,32 @@ class CoreTests(unittest.TestCase):
 
     def test_analyze_scores_and_review_queue(self):
         snapshot = analyze_document(self.fixture())
-        self.assertEqual(snapshot["tool_version"], "0.1.0")
+        self.assertEqual(snapshot["tool_version"], "0.2.0")
         self.assertEqual(snapshot["summary"]["risk_count"], 1)
         self.assertEqual(snapshot["summary"]["opportunity_count"], 2)
         self.assertEqual(snapshot["review_queue"][0]["topic"], "gross margin")
         self.assertEqual(snapshot["stale_badges"][0]["badge"]["status"], "stale")
         self.assertEqual(snapshot["catalyst_timeline"][0]["title"], "Earlier")
         self.assertIn("does not provide personalized", snapshot["safety_notice"])
+
+    def test_source_attribution_is_preserved(self):
+        fixture = self.fixture()
+        fixture["source_attribution"] = {
+            "source_name": "Example release",
+            "publisher": "Example Systems",
+            "source_type": "company_investor_relations",
+            "source_url": "https://example.com/source",
+            "accessed_at": "2026-05-15",
+            "static_notice": "Static fixture; not live data."
+        }
+        fixture["notes"][0]["source_attribution"] = fixture["source_attribution"]
+
+        snapshot = analyze_document(fixture)
+        export = build_review_queue_export(snapshot)
+
+        self.assertEqual(snapshot["source_attribution"][0]["source_name"], "Example release")
+        gross_margin = next(item for item in export["items"] if item["topic"] == "gross margin")
+        self.assertEqual(gross_margin["source_attribution"][0]["source_type"], "company_investor_relations")
 
     def test_compare_snapshots_reports_deltas(self):
         before = analyze_document(self.fixture())

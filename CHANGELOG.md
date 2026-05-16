@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.2.0 - 2026-05-17
+
+Promotion-oriented public release.
+
+### Added
+
+- Public-source static Apple case-study fixture with Apple investor-relations/newsroom and SEC EDGAR source URLs.
+- `source_attribution` fields in fixtures, analyzed snapshots, scored items, catalysts, and review-queue exports.
+- Source Attribution sections in Markdown reports, review-queue Markdown, and static HTML dashboards.
+- Stronger static educational case-study warning in dashboards.
+- Public case-study documentation at `docs/public-case-study.md`.
+- Release notes at `docs/release-notes-v0.2.0.md`.
+
+### Changed
+
+- `demo` now emits `public_apple_static_case_study_*` artifacts in addition to the synthetic software and energy/infrastructure examples.
+- Package version is now `0.2.0`.
+
+### Safety
+
+- Public case-study artifacts are explicitly static, source-attributed, and non-advice.
+- No workflow files, private context, API keys, databases, or runtime package dependencies are added.
+
 ## 0.1.0 - 2026-05-17
 
 Initial deterministic release.

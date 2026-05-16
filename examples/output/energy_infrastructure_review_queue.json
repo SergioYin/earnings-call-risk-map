@@ -20,6 +20,7 @@
       ],
       "risk_level": "high",
       "risk_score": 12,
+      "source_attribution": [],
       "source_type": "analyst_question",
       "stale_badge": {
         "age_days": 125,
@@ -45,6 +46,7 @@
       ],
       "risk_level": "high",
       "risk_score": 8,
+      "source_attribution": [],
       "source_type": "kpi",
       "stale_badge": {
         "age_days": 135,
@@ -70,6 +72,7 @@
       ],
       "risk_level": "high",
       "risk_score": 7,
+      "source_attribution": [],
       "source_type": "user_synthesis",
       "stale_badge": {
         "age_days": 227,
@@ -95,6 +98,7 @@
       ],
       "risk_level": "low",
       "risk_score": 3,
+      "source_attribution": [],
       "source_type": "transcript_excerpt",
       "stale_badge": {
         "age_days": 20,
@@ -120,6 +124,7 @@
       ],
       "risk_level": "none",
       "risk_score": 0,
+      "source_attribution": [],
       "source_type": "kpi",
       "stale_badge": {
         "age_days": 20,
@@ -143,6 +148,7 @@
       ],
       "risk_level": "medium",
       "risk_score": 4,
+      "source_attribution": [],
       "source_type": "kpi",
       "stale_badge": {
         "age_days": 103,
@@ -166,6 +172,7 @@
       ],
       "risk_level": "none",
       "risk_score": 0,
+      "source_attribution": [],
       "source_type": "note",
       "stale_badge": {
         "age_days": 56,
@@ -189,6 +196,7 @@
       ],
       "risk_level": "none",
       "risk_score": 0,
+      "source_attribution": [],
       "source_type": "catalyst",
       "stale_badge": null,
       "topic": "Rate-case filing"
@@ -196,6 +204,7 @@
   ],
   "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
   "schema_version": "0.1",
+  "source_attribution": [],
   "source_boundaries": {
     "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
     "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
@@ -208,5 +217,5 @@
     "stale_data_count": 4
   },
   "ticker": "NGLP",
-  "tool_version": "0.1.0"
+  "tool_version": "0.2.0"
 }

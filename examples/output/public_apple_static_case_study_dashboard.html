@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Earnings Call Risk Map: Apple Inc. Public-Source Static Case Study (AAPL)</title>
+<style>
+:root{color-scheme:light;--ink:#17202a;--muted:#5d6978;--line:#d9e0e8;--panel:#ffffff;--risk:#a1372f;--opp:#1f7652;--review:#6f4a9e;--stale:#8b621e;--bg:#f5f7f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 Arial,Helvetica,sans-serif}
+.page{max-width:1180px;margin:0 auto;padding:28px 18px 40px}
+.hero{border-bottom:1px solid var(--line);padding-bottom:20px}
+.eyebrow{color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:32px;line-height:1.15;margin:8px 0 14px}
+h1 span{color:var(--muted);font-weight:600}
+.meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 16px}
+.meta div,.metric,.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.meta div{padding:10px 12px}
+dt{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase}
+dd{margin:2px 0 0;font-weight:700}
+.notice{max-width:900px;margin:0;color:var(--muted)}
+.static-warning{display:inline-block;margin:0 0 12px;padding:5px 8px;border:1px solid #d7b56d;background:#fff8e8;color:var(--stale);font-size:12px;font-weight:700;text-transform:uppercase}
+.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
+.metric{padding:14px}
+.metric strong{display:block;font-size:30px;line-height:1}
+.metric span{color:var(--muted);font-weight:700}
+.metric.risk{border-top:4px solid var(--risk)}
+.metric.opportunity{border-top:4px solid var(--opp)}
+.metric.review{border-top:4px solid var(--review)}
+.metric.stale{border-top:4px solid var(--stale)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.panel{padding:16px}
+h2{font-size:18px;margin:0 0 12px}
+ol,ul{margin:0;padding-left:20px}
+li{margin:0 0 11px}
+.item-title{font-weight:700}
+.item-meta{color:var(--muted);font-size:13px}
+.badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 7px;margin-left:4px;font-size:12px;font-weight:700}
+.badge.stale,.badge.date-unverified{border-color:#d7b56d;color:var(--stale);background:#fff8e8}
+.badge.current{color:#2d6b4f;background:#eaf6ef}
+a{color:#235c96;overflow-wrap:anywhere}
+.catalysts{margin-top:14px}
+@media(max-width:760px){.page{padding:20px 12px 28px}h1{font-size:26px}.meta,.summary,.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="hero">
+<div class="eyebrow">Deterministic demo dashboard</div>
+<h1>Apple Inc. Public-Source Static Case Study <span>AAPL</span></h1>
+<div class="static-warning">Static educational case study - not live market data or advice</div>
+<dl class="meta">
+<div><dt>As of</dt><dd>2024-05-03</dd></div>
+<div><dt>Static data cutoff</dt><dd>2024-05-02</dd></div>
+<div><dt>Tool version</dt><dd>0.2.0</dd></div>
+</dl>
+<p class="notice">Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.</p>
+</header>
+<section class="panel attribution"><h2>Source Attribution</h2>
+<ul>
+<li>Apple reports second quarter results; type=company_investor_relations; publisher=Apple; accessed=2026-05-17; Static educational case-study fixture assembled from public URLs; not live data.; https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/</li>
+<li>Apple FY2023 Form 10-K; type=sec_filing; publisher=U.S. SEC EDGAR; accessed=2026-05-17; Static educational case-study fixture assembled from a public SEC URL; not live data.; https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm</li>
+</ul></section>
+<section class="summary" aria-label="Summary counts">
+<article class="metric risk"><strong>2</strong><span>Risks</span></article>
+<article class="metric opportunity"><strong>3</strong><span>Opportunities</span></article>
+<article class="metric review"><strong>2</strong><span>Review queue</span></article>
+<article class="metric stale"><strong>1</strong><span>Stale badges</span></article>
+</section>
+<section class="grid">
+<article class="panel"><h2>Risks</h2>
+<ol>
+<li>
+<div class="item-title">risk factors: 10 (high)<span class="badge stale">stale&gt;90d</span></div>
+<div class="item-meta">Evidence: <a href="https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm">https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm</a></div>
+<div class="item-meta">Source attribution: Apple FY2023 Form 10-K; type=sec_filing; publisher=U.S. SEC EDGAR; accessed=2026-05-17; Static public SEC filing reference; stale badge is expected.; https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm</div>
+</li>
+<li>
+<div class="item-title">Quarterly revenue: 5 (medium)<span class="badge current">current</span></div>
+<div class="item-meta">Evidence: <a href="https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/">https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/</a></div>
+<div class="item-meta">Source attribution: Apple Q2 FY2024 results release; type=company_investor_relations; publisher=Apple; accessed=2026-05-17; Static case-study KPI; not live data.; https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/</div>
+</li>
+</ol></article>
+<article class="panel"><h2>Opportunities</h2>
+<ol>
+<li>
+<div class="item-title">Services revenue: 7 (high)<span class="badge current">current</span></div>
+<div class="item-meta">Evidence: <a href="https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/">https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/</a></div>
+<div class="item-meta">Source attribution: Apple Q2 FY2024 results release; type=company_investor_relations; publisher=Apple; accessed=2026-05-17; Static case-study KPI; not live data.; https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/</div>
+</li>
+<li>
+<div class="item-title">services revenue: 7 (high)<span class="badge current">current</span></div>
+<div class="item-meta">Evidence: <a href="https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/">https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/</a></div>
+<div class="item-meta">Source attribution: Apple Q2 FY2024 results release; type=company_investor_relations; publisher=Apple; accessed=2026-05-17; Static public-source excerpt; verify against the original release.; https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/</div>
+</li>
+<li>
+<div class="item-title">quarterly revenue: 2 (low)<span class="badge current">current</span></div>
+<div class="item-meta">Evidence: <a href="https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/">https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/</a></div>
+<div class="item-meta">Source attribution: Apple Q2 FY2024 results release; type=company_investor_relations; publisher=Apple; accessed=2026-05-17; Static public-source excerpt; verify against the original release.; https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/</div>
+</li>
+</ol></article>
+<article class="panel"><h2>Review Queue</h2>
+<ul>
+<li><span class="item-title">services revenue</span>: high-impact language</li>
+<li><span class="item-title">risk factors</span>: data is stale; high-impact language</li>
+</ul></article>
+<article class="panel"><h2>Stale Badges</h2>
+<ul>
+<li><span class="item-title">risk factors</span>: <span class="badge stale">stale&gt;90d</span> <span class="item-meta">age=216</span></li>
+</ul></article>
+</section>
+<section class="panel catalysts"><h2>Catalysts</h2>
+<ol>
+<li><span class="item-title">2024-06-10 - WWDC 2024 review point</span> <span class="item-meta">(opportunity review)</span><br>Static case-study catalyst to review public product and platform updates after the Q2 FY2024 release.<br><span class="item-meta">Evidence: <a href="https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/">https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/</a></span><br>Source attribution: Apple Q2 FY2024 results release; type=company_investor_relations; publisher=Apple; accessed=2026-05-17; Static case-study catalyst; not live data.; https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/</li>
+</ol></section>
+</main>
+</body>
+</html>

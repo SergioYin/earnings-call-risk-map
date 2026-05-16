@@ -1,0 +1,283 @@
+{
+  "as_of": "2024-05-03",
+  "catalyst_timeline": [
+    {
+      "date": "2024-06-10",
+      "description": "Static case-study catalyst to review public product and platform updates after the Q2 FY2024 release.",
+      "evidence_url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+      "expected_impact": "opportunity review",
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "Apple",
+          "source_name": "Apple Q2 FY2024 results release",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+          "static_notice": "Static case-study catalyst; not live data."
+        }
+      ],
+      "title": "WWDC 2024 review point"
+    }
+  ],
+  "company": "Apple Inc. Public-Source Static Case Study",
+  "data_cutoff": "2024-05-02",
+  "opportunities": [
+    {
+      "date": "2024-05-02",
+      "direction": "up",
+      "evidence_url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+      "name": "Services revenue",
+      "observation": "Static case-study value from the company release; services growth is an opportunity prompt.",
+      "opportunity_keywords": [
+        "growth",
+        "opportunity"
+      ],
+      "opportunity_level": "high",
+      "opportunity_score": 7,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "Apple",
+          "source_name": "Apple Q2 FY2024 results release",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+          "static_notice": "Static case-study KPI; not live data."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 1,
+        "label": "current",
+        "status": "current"
+      },
+      "value": "$23.9B"
+    },
+    {
+      "date": "2024-05-02",
+      "evidence_url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+      "id": "aapl-services-growth",
+      "opportunity_keywords": [
+        "growth",
+        "record",
+        "tailwind"
+      ],
+      "opportunity_level": "high",
+      "opportunity_score": 7,
+      "review_reasons": [
+        "high-impact language"
+      ],
+      "review_required": true,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "Apple",
+          "source_name": "Apple Q2 FY2024 results release",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+          "static_notice": "Static public-source excerpt; verify against the original release."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 1,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "Management described services as reaching an all-time revenue record, a possible growth tailwind for review.",
+      "topic": "services revenue",
+      "type": "management_claim"
+    },
+    {
+      "date": "2024-05-02",
+      "evidence_url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+      "id": "aapl-q2-revenue",
+      "opportunity_keywords": [
+        "record"
+      ],
+      "opportunity_level": "low",
+      "opportunity_score": 2,
+      "review_reasons": [],
+      "review_required": false,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "Apple",
+          "source_name": "Apple Q2 FY2024 results release",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+          "static_notice": "Static public-source excerpt; verify against the original release."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 1,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "Company release described quarterly revenue as down year over year while EPS was reported as a March-quarter record.",
+      "topic": "quarterly revenue",
+      "type": "management_claim"
+    }
+  ],
+  "review_queue": [
+    {
+      "evidence_url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+      "id": "aapl-services-growth",
+      "reasons": [
+        "high-impact language"
+      ],
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "Apple",
+          "source_name": "Apple Q2 FY2024 results release",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+          "static_notice": "Static public-source excerpt; verify against the original release."
+        }
+      ],
+      "topic": "services revenue"
+    },
+    {
+      "evidence_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm",
+      "id": "aapl-risk-factors-static",
+      "reasons": [
+        "data is stale",
+        "high-impact language"
+      ],
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "U.S. SEC EDGAR",
+          "source_name": "Apple FY2023 Form 10-K",
+          "source_type": "sec_filing",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm",
+          "static_notice": "Static public SEC filing reference; stale badge is expected."
+        }
+      ],
+      "topic": "risk factors"
+    }
+  ],
+  "risks": [
+    {
+      "date": "2023-09-30",
+      "evidence_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm",
+      "id": "aapl-risk-factors-static",
+      "opportunity_keywords": [],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "review_reasons": [
+        "data is stale",
+        "high-impact language"
+      ],
+      "review_required": true,
+      "risk_keywords": [
+        "pressure",
+        "regulatory",
+        "risk",
+        "supply"
+      ],
+      "risk_level": "high",
+      "risk_score": 10,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "U.S. SEC EDGAR",
+          "source_name": "Apple FY2023 Form 10-K",
+          "source_type": "sec_filing",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm",
+          "static_notice": "Static public SEC filing reference; stale badge is expected."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 216,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "text": "Prior Form 10-K risk-factor context covers competitive pressure, supply constraints, regulatory matters, and potential margin pressure.",
+      "topic": "risk factors",
+      "type": "sec_filing_excerpt"
+    },
+    {
+      "date": "2024-05-02",
+      "direction": "down",
+      "evidence_url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+      "name": "Quarterly revenue",
+      "observation": "Static case-study value from the company release; year-over-year decline creates a review prompt.",
+      "opportunity_keywords": [],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "risk_keywords": [
+        "decline"
+      ],
+      "risk_level": "medium",
+      "risk_score": 5,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "Apple",
+          "source_name": "Apple Q2 FY2024 results release",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+          "static_notice": "Static case-study KPI; not live data."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 1,
+        "label": "current",
+        "status": "current"
+      },
+      "value": "$90.8B"
+    }
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_attribution": [
+    {
+      "accessed_at": "2026-05-17",
+      "publisher": "Apple",
+      "source_name": "Apple reports second quarter results",
+      "source_type": "company_investor_relations",
+      "source_url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+      "static_notice": "Static educational case-study fixture assembled from public URLs; not live data."
+    },
+    {
+      "accessed_at": "2026-05-17",
+      "publisher": "U.S. SEC EDGAR",
+      "source_name": "Apple FY2023 Form 10-K",
+      "source_type": "sec_filing",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm",
+      "static_notice": "Static educational case-study fixture assembled from a public SEC URL; not live data."
+    }
+  ],
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "stale_badges": [
+    {
+      "badge": {
+        "age_days": 216,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "id": "aapl-risk-factors-static",
+      "topic": "risk factors"
+    }
+  ],
+  "summary": {
+    "opportunity_count": 3,
+    "review_queue_count": 2,
+    "risk_count": 2,
+    "stale_badge_count": 1
+  },
+  "ticker": "AAPL",
+  "tool_version": "0.2.0"
+}

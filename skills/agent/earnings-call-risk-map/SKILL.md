@@ -1,11 +1,12 @@
 # earnings-call-risk-map
 
-Use this skill when a user needs a public, deterministic earnings-call research review artifact from JSON fixtures containing transcript excerpts, research notes, KPI observations, catalysts, evidence URLs, and stale/static data dates.
+Use this skill when a user needs a public, deterministic earnings-call research review artifact from JSON fixtures containing transcript excerpts, research notes, KPI observations, catalysts, evidence URLs, source attribution, and stale/static data dates.
 
 ## What It Does
 
 - Produces Markdown and JSON risk/opportunity maps.
 - Builds a human review queue for missing evidence, stale/static data, or high-impact language.
+- Preserves source attribution for public investor-relations, SEC, transcript, or user-authored source records.
 - Creates stale/static data badges for inputs older than the configured freshness threshold.
 - Sorts catalysts into a timeline.
 - Compares two analyzed snapshots.
@@ -45,4 +46,4 @@ Keep wording educational and research-oriented. Do not present the output as per
 
 ## Input Notes
 
-Use ISO dates (`YYYY-MM-DD`). Include evidence URLs where possible. Missing evidence and stale or unverified dates should remain visible in the review queue.
+Use ISO dates (`YYYY-MM-DD`). Include evidence URLs and `source_attribution` records where possible. Missing evidence and stale or unverified dates should remain visible in the review queue.

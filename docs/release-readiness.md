@@ -2,7 +2,7 @@
 
 Use the release readiness review template at `reports/reviews/release-readiness-review.md` before publishing a demo bundle or tagged release.
 
-Use `docs/release-notes-v0.1.0.md` as the deterministic release notes source for v0.1.0.
+Use `docs/release-notes-v0.2.0.md` as the deterministic release notes source for v0.2.0. The prior v0.1.0 notes remain in `docs/release-notes-v0.1.0.md`.
 
 Generate the basic maturity evidence bundle with either entry point:
 

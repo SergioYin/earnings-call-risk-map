@@ -29,6 +29,7 @@ def render_markdown(snapshot: dict[str, Any]) -> str:
         "",
     ]
     lines.extend(SOURCE_BOUNDARY_LINES)
+    lines.extend(_source_attribution_section(snapshot.get("source_attribution", [])))
     lines.extend(
         [
             "## Summary",
@@ -61,6 +62,7 @@ def render_compare_markdown(compare: dict[str, Any]) -> str:
         "",
     ]
     lines.extend(SOURCE_BOUNDARY_LINES)
+    lines.extend(_source_attribution_section(compare.get("source_attribution", [])))
     lines.extend(_changes("Risk Changes", compare.get("risk_changes", [])))
     lines.extend(_changes("Opportunity Changes", compare.get("opportunity_changes", [])))
     return "\n".join(lines).rstrip() + "\n"
@@ -79,6 +81,7 @@ def render_review_queue_markdown(export: dict[str, Any]) -> str:
         "",
     ]
     lines.extend(SOURCE_BOUNDARY_LINES)
+    lines.extend(_source_attribution_section(export.get("source_attribution", [])))
     lines.extend(
         [
             "## Focus",
@@ -116,6 +119,7 @@ def render_review_queue_markdown(export: dict[str, Any]) -> str:
             f"risk={item.get('risk_score', 0)}; opportunity={item.get('opportunity_score', 0)}"
         )
         lines.append(f"  Evidence: {evidence}")
+        lines.extend(f"  Source attribution: {line}" for line in _source_attribution_lines(item.get("source_attribution", [])))
     return "\n".join(lines).rstrip() + "\n"
 
 
@@ -140,6 +144,7 @@ def render_dashboard_html(snapshot: dict[str, Any]) -> str:
         '<header class="hero">',
         '<div class="eyebrow">Deterministic demo dashboard</div>',
         f"<h1>{_html(snapshot.get('company'))} <span>{_html(snapshot.get('ticker'))}</span></h1>",
+        '<div class="static-warning">Static educational case study - not live market data or advice</div>',
         '<dl class="meta">',
         f"<div><dt>As of</dt><dd>{_html(snapshot.get('as_of'))}</dd></div>",
         f"<div><dt>Static data cutoff</dt><dd>{_html(snapshot.get('data_cutoff'))}</dd></div>",
@@ -147,6 +152,7 @@ def render_dashboard_html(snapshot: dict[str, Any]) -> str:
         "</dl>",
         f'<p class="notice">{_html(snapshot.get("safety_notice"))}</p>',
         "</header>",
+        _source_attribution_panel(snapshot.get("source_attribution", [])),
         '<section class="summary" aria-label="Summary counts">',
         _metric("Risks", summary.get("risk_count", 0), "risk"),
         _metric("Opportunities", summary.get("opportunity_count", 0), "opportunity"),
@@ -182,6 +188,7 @@ def _section(title: str, items: list[dict[str, Any]], score_key: str, level_key:
         badge = item.get("stale_badge", {}).get("label", "date-unverified")
         lines.append(f"- **{label}**: {item[score_key]} ({item[level_key]}), `{badge}`")
         lines.append(f"  Evidence: {evidence}")
+        lines.extend(f"  Source attribution: {line}" for line in _source_attribution_lines(item.get("source_attribution", [])))
     lines.append("")
     return lines
 
@@ -202,6 +209,7 @@ h1 span{color:var(--muted);font-weight:600}
 dt{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase}
 dd{margin:2px 0 0;font-weight:700}
 .notice{max-width:900px;margin:0;color:var(--muted)}
+.static-warning{display:inline-block;margin:0 0 12px;padding:5px 8px;border:1px solid #d7b56d;background:#fff8e8;color:var(--stale);font-size:12px;font-weight:700;text-transform:uppercase}
 .summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
 .metric{padding:14px}
 .metric strong{display:block;font-size:30px;line-height:1}
@@ -245,6 +253,7 @@ def _ranked_panel(title: str, items: list[dict[str, Any]], score_key: str, level
             f'({_html(item.get(level_key, "none"))}){_badge(badge)}</div>'
         )
         lines.append(f'<div class="item-meta">Evidence: {_evidence(item.get("evidence_url"))}</div>')
+        lines.extend(_item_attribution_html(item.get("source_attribution", [])))
         lines.append("</li>")
     lines.append("</ol></article>")
     return "\n".join(lines)
@@ -292,7 +301,8 @@ def _catalyst_panel(items: list[dict[str, Any]]) -> str:
             f'<li><span class="item-title">{_html(item.get("date"))} - {_html(item.get("title"))}</span> '
             f'<span class="item-meta">({_html(item.get("expected_impact", "n/a"))})</span><br>'
             f'{_html(item.get("description", ""))}<br>'
-            f'<span class="item-meta">Evidence: {_evidence(item.get("evidence_url"))}</span></li>'
+            f'<span class="item-meta">Evidence: {_evidence(item.get("evidence_url"))}</span>'
+            f'{_catalyst_attribution_html(item.get("source_attribution", []))}</li>'
         )
     lines.append("</ol></section>")
     return "\n".join(lines)
@@ -302,6 +312,64 @@ def _badge(badge: dict[str, Any]) -> str:
     label = str(badge.get("label") or "date-unverified")
     status = str(badge.get("status") or "date-unverified")
     return f'<span class="badge {_html(status)}">{_html(label)}</span>'
+
+
+def _source_attribution_section(sources: list[dict[str, Any]]) -> list[str]:
+    lines = ["## Source Attribution", ""]
+    if not sources:
+        return lines + ["- No source attribution supplied beyond item evidence URLs.", ""]
+    for source in sources:
+        lines.append(f"- {_source_attribution_text(source)}")
+    lines.append("")
+    return lines
+
+
+def _source_attribution_panel(sources: list[dict[str, Any]]) -> str:
+    lines = ['<section class="panel attribution"><h2>Source Attribution</h2>']
+    if not sources:
+        lines.append("<p>No source attribution supplied beyond item evidence URLs.</p></section>")
+        return "\n".join(lines)
+    lines.append("<ul>")
+    for source in sources:
+        lines.append(f"<li>{_html(_source_attribution_text(source))}</li>")
+    lines.append("</ul></section>")
+    return "\n".join(lines)
+
+
+def _item_attribution_html(sources: list[dict[str, Any]]) -> list[str]:
+    return [f'<div class="item-meta">Source attribution: {_html(_source_attribution_text(source))}</div>' for source in sources]
+
+
+def _catalyst_attribution_html(sources: list[dict[str, Any]]) -> str:
+    if not sources:
+        return ""
+    lines = ["<br>" + _html("Source attribution: " + _source_attribution_text(sources[0]))]
+    for source in sources[1:]:
+        lines.append("<br>" + _html("Source attribution: " + _source_attribution_text(source)))
+    return "".join(lines)
+
+
+def _source_attribution_lines(sources: list[dict[str, Any]]) -> list[str]:
+    return [_source_attribution_text(source) for source in sources]
+
+
+def _source_attribution_text(source: dict[str, Any]) -> str:
+    label = source.get("source_name") or source.get("source_url") or "Unnamed source"
+    source_type = source.get("source_type") or "source"
+    publisher = source.get("publisher")
+    url = source.get("source_url")
+    accessed = source.get("accessed_at")
+    static_notice = source.get("static_notice")
+    parts = [str(label), f"type={source_type}"]
+    if publisher:
+        parts.append(f"publisher={publisher}")
+    if accessed:
+        parts.append(f"accessed={accessed}")
+    if static_notice:
+        parts.append(str(static_notice))
+    if url:
+        parts.append(str(url))
+    return "; ".join(parts)
 
 
 def _evidence(url: Any) -> str:
@@ -343,6 +411,7 @@ def _catalysts(items: list[dict[str, Any]]) -> list[str]:
         return lines + ["- No catalysts supplied.", ""]
     for item in items:
         lines.append(f"- `{item['date']}` **{item['title']}** ({item['expected_impact']}): {item['description']}")
+        lines.extend(f"  Source attribution: {line}" for line in _source_attribution_lines(item.get("source_attribution", [])))
     lines.append("")
     return lines
 

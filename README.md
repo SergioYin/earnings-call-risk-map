@@ -20,6 +20,7 @@ From a source checkout:
 PYTHONPATH=src python -m earnings_call_risk_map version
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_energy_infrastructure.json
+PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/public_apple_static_case_study.json
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json --html-out examples/output/demo_dashboard.html
 PYTHONPATH=src python -m earnings_call_risk_map review-queue examples/input/demo_company.json --md-out examples/output/demo_review_queue.md --json-out examples/output/demo_review_queue.json
 PYTHONPATH=src python -m earnings_call_risk_map audit --format markdown
@@ -32,11 +33,12 @@ What just happened:
 1. `version` confirms the package imports cleanly.
 2. `analyze` reads the software demo fixture and prints a Markdown risk map.
 3. The second `analyze` command runs a capital-intensive energy/infrastructure fixture with project catalysts, KPIs, stale badges, and missing evidence.
-4. `analyze --html-out` writes a self-contained static dashboard with no external JS or CSS.
-5. `review-queue` writes a focused queue containing only stale data, missing evidence, and high-impact language.
-6. `audit` reports package parity: version, commands, fixture count, output artifact count, workflow absence, and skill presence.
-7. `demo` writes reproducible bundles for both fixtures: legacy `demo_*` artifacts for `demo_company.json`, `energy_infrastructure_*` artifacts for `demo_energy_infrastructure.json`, package audit files, and `release_manifest.json`.
-8. `maturity-evidence` writes a basic release evidence bundle with test commands, artifact paths, skill path, review template path, and privacy scan status.
+4. The public Apple static case study demonstrates source attribution from public investor-relations/newsroom and SEC EDGAR URLs without claiming live data.
+5. `analyze --html-out` writes a self-contained static dashboard with no external JS or CSS.
+6. `review-queue` writes a focused queue containing only stale data, missing evidence, and high-impact language.
+7. `audit` reports package parity: version, commands, fixture count, output artifact count, workflow absence, and skill presence.
+8. `demo` writes reproducible bundles for all fixtures: legacy `demo_*`, `energy_infrastructure_*`, `public_apple_static_case_study_*`, package audit files, and `release_manifest.json`.
+9. `maturity-evidence` writes a basic release evidence bundle with test commands, artifact paths, skill path, review template path, and privacy scan status.
 
 Sample output excerpt:
 
@@ -96,6 +98,7 @@ Outputs are plain Markdown, JSON, and self-contained HTML. They can be handed to
 
 - [docs/integrations.md](docs/integrations.md) shows mappings for thesis-ledger notes and portfolio risk review items.
 - [docs/gallery.md](docs/gallery.md) lists the generated demo artifacts and machine-readable handoff examples.
+- [docs/public-case-study.md](docs/public-case-study.md) documents the static public-source Apple case study and its attribution boundary.
 - [docs/release-readiness.md](docs/release-readiness.md) documents the release review template and maturity evidence bundle.
 - `examples/output/integration_notes.json` contains static example records derived from the demo snapshot and review queue.
 
@@ -113,7 +116,7 @@ earnings-call-risk-map analyze examples/input/demo_company.json --json-out examp
 
 - `analyze`: reads one JSON fixture and writes or prints a Markdown report plus optional JSON snapshot and static HTML dashboard.
 - `review-queue`: writes or prints deterministic Markdown/JSON for only stale data, missing evidence, and high-impact language.
-- `demo`: builds `demo_*` output artifacts for `demo_company.json`, `energy_infrastructure_*` artifacts for `demo_energy_infrastructure.json`, package audit files, and a demo release manifest.
+- `demo`: builds `demo_*`, `energy_infrastructure_*`, and `public_apple_static_case_study_*` artifacts, package audit files, and a demo release manifest.
 - `compare`: compares two analyzed JSON snapshots.
 - `audit`: writes or prints package parity in JSON or Markdown.
 - `manifest`: writes a deterministic release manifest with file hashes.

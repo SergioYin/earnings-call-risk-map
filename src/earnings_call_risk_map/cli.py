@@ -18,6 +18,7 @@ from .version import __version__
 DEMO_FIXTURES = (
     ("demo", Path("examples/input/demo_company.json")),
     ("energy_infrastructure", Path("examples/input/demo_energy_infrastructure.json")),
+    ("public_apple_static_case_study", Path("examples/input/public_apple_static_case_study.json")),
 )
 
 

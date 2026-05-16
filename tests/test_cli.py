@@ -26,7 +26,7 @@ class CliTests(unittest.TestCase):
     def test_version(self):
         result = self.run_cli("version")
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout.strip(), "0.1.0")
+        self.assertEqual(result.stdout.strip(), "0.2.0")
 
     def test_help_uses_public_safe_wording(self):
         result = self.run_cli("--help")
@@ -57,6 +57,7 @@ class CliTests(unittest.TestCase):
             markdown = md_out.read_text(encoding="utf-8")
             self.assertIn(NON_ADVICE_TEXT, markdown)
             self.assertIn("## Source Boundaries", markdown)
+            self.assertIn("## Source Attribution", markdown)
             self.assertIn("Management claims", markdown)
             self.assertIn("Analyst questions", markdown)
             self.assertIn("User synthesis", markdown)
@@ -64,6 +65,8 @@ class CliTests(unittest.TestCase):
             self.assertIn("<!doctype html>", html)
             self.assertIn("Deterministic demo dashboard", html)
             self.assertIn("Review Queue", html)
+            self.assertIn("Source Attribution", html)
+            self.assertIn("Static educational case study", html)
             self.assertNotIn("<script", html)
             self.assertNotIn("<link", html)
 
@@ -175,9 +178,9 @@ class CliTests(unittest.TestCase):
         result = self.run_cli("audit")
         self.assertEqual(result.returncode, 0, result.stderr)
         payload = json.loads(result.stdout)
-        self.assertEqual(payload["version"], "0.1.0")
+        self.assertEqual(payload["version"], "0.2.0")
         self.assertIn("audit", payload["commands"])
-        self.assertEqual(payload["fixture_count"], 3)
+        self.assertEqual(payload["fixture_count"], 4)
         self.assertGreaterEqual(payload["output_artifact_count"], 5)
         self.assertFalse(payload["has_workflow_files"])
         self.assertTrue(payload["skill"]["present"])
@@ -215,6 +218,14 @@ class CliTests(unittest.TestCase):
             self.assertIn("Northstar Grid & LNG Partners", energy_report)
             energy_dashboard = (Path(tmp) / "energy_infrastructure_dashboard.html").read_text(encoding="utf-8")
             self.assertIn("capital cost inflation", energy_dashboard)
+            apple_snapshot = json.loads((Path(tmp) / "public_apple_static_case_study_snapshot.json").read_text(encoding="utf-8"))
+            self.assertEqual(apple_snapshot["ticker"], "AAPL")
+            self.assertEqual(apple_snapshot["source_attribution"][0]["source_type"], "company_investor_relations")
+            apple_report = (Path(tmp) / "public_apple_static_case_study_report.md").read_text(encoding="utf-8")
+            self.assertIn("Static educational case-study fixture", apple_report)
+            self.assertIn("U.S. SEC EDGAR", apple_report)
+            apple_dashboard = (Path(tmp) / "public_apple_static_case_study_dashboard.html").read_text(encoding="utf-8")
+            self.assertIn("Static educational case study", apple_dashboard)
             audit = json.loads((Path(tmp) / "package_audit.json").read_text(encoding="utf-8"))
             self.assertIn("review-queue", audit["commands"])
             self.assertIn("src/earnings_call_risk_map/audit.py", {

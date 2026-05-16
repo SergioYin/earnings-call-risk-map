@@ -10,15 +10,16 @@
     "review-queue",
     "version"
   ],
-  "fixture_count": 3,
+  "fixture_count": 4,
   "fixtures": [
     "examples/input/demo_company.json",
     "examples/input/demo_company_prior.json",
-    "examples/input/demo_energy_infrastructure.json"
+    "examples/input/demo_energy_infrastructure.json",
+    "examples/input/public_apple_static_case_study.json"
   ],
   "has_workflow_files": false,
   "name": "earnings-call-risk-map",
-  "output_artifact_count": 12,
+  "output_artifact_count": 17,
   "output_artifacts": [
     "examples/output/demo_dashboard.html",
     "examples/output/demo_report.md",
@@ -31,12 +32,17 @@
     "examples/output/energy_infrastructure_review_queue.md",
     "examples/output/energy_infrastructure_snapshot.json",
     "examples/output/integration_notes.json",
+    "examples/output/public_apple_static_case_study_dashboard.html",
+    "examples/output/public_apple_static_case_study_report.md",
+    "examples/output/public_apple_static_case_study_review_queue.json",
+    "examples/output/public_apple_static_case_study_review_queue.md",
+    "examples/output/public_apple_static_case_study_snapshot.json",
     "examples/output/release_manifest.json"
   ],
   "skill": {
     "path": "skills/agent/earnings-call-risk-map/SKILL.md",
     "present": true
   },
-  "version": "0.1.0",
+  "version": "0.2.0",
   "workflow_files": []
 }

@@ -22,6 +22,22 @@ Optional fields:
 | `notes` | array | Transcript excerpts or research notes. |
 | `kpis` | array | KPI observations. |
 | `catalysts` | array | Dated future events or review triggers. |
+| `source_attribution` | object or array | Optional public-source attribution records for the fixture. These are rendered in reports and preserved in snapshots. |
+
+## Source Attribution
+
+`source_attribution` can be supplied at the top level and on individual notes, KPIs, and catalysts. It is intended for public investor-relations, SEC, transcript, or user-authored source labels. It does not make the data live or verified; it records where the static fixture says the item came from.
+
+Supported fields:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `source_name` | string | Human-readable source label. |
+| `publisher` | string | Publisher or source system, such as a company name or `U.S. SEC EDGAR`. |
+| `source_type` | string | Provenance class, such as `company_investor_relations`, `sec_filing`, `transcript`, or `user_synthesis`. |
+| `source_url` | string | Public URL for the source. |
+| `accessed_at` | string | Date the static fixture author recorded the source URL. |
+| `static_notice` | string | Short label clarifying that the fixture is static and not live data. |
 
 ## Notes
 
@@ -35,6 +51,7 @@ Each item in `notes` must be a JSON object. Supported fields:
 | `type` | string | optional | Note provenance, such as `management_claim`, `analyst_question`, `user_synthesis`, `transcript_excerpt`, or `note`. |
 | `text` | string | optional | Text scored for risk and opportunity keywords. |
 | `evidence_url` | string | optional | Public source URL. Missing URLs enter the review queue. |
+| `source_attribution` | object or array | optional | Public-source attribution rendered with the item. |
 
 Recommended provenance values:
 
@@ -54,6 +71,7 @@ Each item in `kpis` must be a JSON object. Supported fields:
 | `date` | string | `YYYY-MM-DD` when present | KPI observation date. Falls back to `data_cutoff` if omitted. |
 | `observation` | string | optional | Text scored alongside the KPI name and direction. |
 | `evidence_url` | string | optional | Public source URL. |
+| `source_attribution` | object or array | optional | Public-source attribution rendered with the KPI. |
 
 ## Catalysts
 
@@ -66,6 +84,7 @@ Each item in `catalysts` must be a JSON object. Supported fields:
 | `description` | string | optional | Context for the event or review trigger. |
 | `expected_impact` | string | optional | Expected risk/opportunity impact label. |
 | `evidence_url` | string | optional | Public source URL. |
+| `source_attribution` | object or array | optional | Public-source attribution rendered with the catalyst. |
 
 ## Date Validation
 

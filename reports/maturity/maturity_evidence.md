@@ -1,7 +1,7 @@
 # Maturity Evidence Bundle
 
 - Package: `earnings-call-risk-map`
-- Version: `0.1.0`
+- Version: `0.2.0`
 - Skill path: `skills/agent/earnings-call-risk-map/SKILL.md` (present)
 - Review template: `reports/reviews/release-readiness-review.md` (present)
 - Privacy scan: passed (`python scripts/privacy_scan.py`)
@@ -29,6 +29,11 @@
 - `examples/output/integration_notes.json`
 - `examples/output/package_audit.json`
 - `examples/output/package_audit.md`
+- `examples/output/public_apple_static_case_study_dashboard.html`
+- `examples/output/public_apple_static_case_study_report.md`
+- `examples/output/public_apple_static_case_study_review_queue.json`
+- `examples/output/public_apple_static_case_study_review_queue.md`
+- `examples/output/public_apple_static_case_study_snapshot.json`
 - `examples/output/release_manifest.json`
 - `release_manifest.json`
 

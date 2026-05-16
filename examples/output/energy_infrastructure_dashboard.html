@@ -19,6 +19,7 @@ h1 span{color:var(--muted);font-weight:600}
 dt{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase}
 dd{margin:2px 0 0;font-weight:700}
 .notice{max-width:900px;margin:0;color:var(--muted)}
+.static-warning{display:inline-block;margin:0 0 12px;padding:5px 8px;border:1px solid #d7b56d;background:#fff8e8;color:var(--stale);font-size:12px;font-weight:700;text-transform:uppercase}
 .summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
 .metric{padding:14px}
 .metric strong{display:block;font-size:30px;line-height:1}
@@ -47,13 +48,16 @@ a{color:#235c96;overflow-wrap:anywhere}
 <header class="hero">
 <div class="eyebrow">Deterministic demo dashboard</div>
 <h1>Northstar Grid &amp; LNG Partners <span>NGLP</span></h1>
+<div class="static-warning">Static educational case study - not live market data or advice</div>
 <dl class="meta">
 <div><dt>As of</dt><dd>2026-05-15</dd></div>
 <div><dt>Static data cutoff</dt><dd>2026-04-25</dd></div>
-<div><dt>Tool version</dt><dd>0.1.0</dd></div>
+<div><dt>Tool version</dt><dd>0.2.0</dd></div>
 </dl>
 <p class="notice">Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.</p>
 </header>
+<section class="panel attribution"><h2>Source Attribution</h2>
+<p>No source attribution supplied beyond item evidence URLs.</p></section>
 <section class="summary" aria-label="Summary counts">
 <article class="metric risk"><strong>7</strong><span>Risks</span></article>
 <article class="metric opportunity"><strong>5</strong><span>Opportunities</span></article>

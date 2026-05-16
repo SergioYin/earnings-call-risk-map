@@ -23,6 +23,7 @@ Run the demo directly from a checkout:
 PYTHONPATH=src python -m earnings_call_risk_map version
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_energy_infrastructure.json
+PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/public_apple_static_case_study.json
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json --html-out examples/output/demo_dashboard.html
 PYTHONPATH=src python -m earnings_call_risk_map review-queue examples/input/demo_company.json --md-out examples/output/demo_review_queue.md --json-out examples/output/demo_review_queue.json
 PYTHONPATH=src python -m earnings_call_risk_map audit --format markdown
@@ -30,11 +31,11 @@ PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
 PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
 ```
 
-The first command verifies imports, the next two print Markdown reports for the software fixture and the capital-intensive energy/infrastructure fixture, the fourth writes a self-contained HTML dashboard, the fifth writes a focused review-queue export, the sixth reports package audit parity, and the seventh writes deterministic demo bundles under `examples/output/`.
+The first command verifies imports, the next two print Markdown reports for the software fixture and the capital-intensive energy/infrastructure fixture, and the public Apple static case study demonstrates investor-relations/SEC-style source attribution without claiming live data. The HTML command writes a self-contained dashboard, `review-queue` writes a focused review export, `audit` reports package parity, and `demo` writes deterministic bundles under `examples/output/`.
 
 The final command writes a basic release maturity evidence bundle listing test commands, generated artifact paths, the public skill path, the release review template path, and privacy scan status.
 
-`demo` preserves the original `demo_*` filenames for `examples/input/demo_company.json` and also writes `energy_infrastructure_snapshot.json`, `energy_infrastructure_report.md`, `energy_infrastructure_dashboard.html`, `energy_infrastructure_review_queue.json`, and `energy_infrastructure_review_queue.md` for `examples/input/demo_energy_infrastructure.json`.
+`demo` preserves the original `demo_*` filenames for `examples/input/demo_company.json` and also writes `energy_infrastructure_*` files for `examples/input/demo_energy_infrastructure.json` plus `public_apple_static_case_study_*` files for `examples/input/public_apple_static_case_study.json`.
 
 The report starts with a compact research queue:
 
@@ -61,6 +62,7 @@ The report starts with a compact research queue:
 python -m earnings_call_risk_map version
 python -m earnings_call_risk_map analyze examples/input/demo_company.json
 python -m earnings_call_risk_map analyze examples/input/demo_energy_infrastructure.json
+python -m earnings_call_risk_map analyze examples/input/public_apple_static_case_study.json
 python -m earnings_call_risk_map analyze examples/input/demo_company.json --html-out dashboard.html
 python -m earnings_call_risk_map review-queue examples/input/demo_company.json --json-out review_queue.json --md-out review_queue.md
 python -m earnings_call_risk_map demo --out-dir examples/output
@@ -80,6 +82,7 @@ The dashboard summarizes:
 - risk and opportunity counts
 - review-queue count and reasons
 - stale/static data badges
+- source attribution and static case-study labels
 - catalysts in date order
 
 ## Focused Review Queue
@@ -121,16 +124,21 @@ Required top-level fields:
 - `as_of`
 - `data_cutoff`
 
+Optional attribution:
+
+- `source_attribution`: top-level or per-item public-source records with `source_name`, `publisher`, `source_type`, `source_url`, `accessed_at`, and `static_notice`
+
 Optional lists:
 
 - `notes`: transcript excerpts or research notes with `id`, `date`, `topic`, `type`, `text`, and `evidence_url`; use `type` values such as `management_claim`, `analyst_question`, or `user_synthesis` when provenance matters
 - `kpis`: KPI observations with `name`, `value`, `direction`, `date`, `observation`, and `evidence_url`
 - `catalysts`: dated events with `date`, `title`, `description`, `expected_impact`, and `evidence_url`
 
-The repository includes two current demo fixtures plus one prior-period comparison fixture:
+The repository includes three current demo fixtures plus one prior-period comparison fixture:
 
 - `examples/input/demo_company.json`: compact software-style company example.
 - `examples/input/demo_energy_infrastructure.json`: capital-intensive energy/infrastructure example with project catalysts, KPI observations, stale static data, and intentionally missing evidence URLs.
+- `examples/input/public_apple_static_case_study.json`: static public-source Apple case study with Apple and SEC URLs, source attribution, and non-live-data labels.
 - `examples/input/demo_company_prior.json`: earlier snapshot for `compare` examples.
 
 Dates must use `YYYY-MM-DD` format and must be valid calendar dates. Items older than 90 days relative to `as_of` receive a stale/static data badge.

@@ -37,6 +37,7 @@ def analyze_document(data: dict[str, Any]) -> dict[str, Any]:
             "topic": item.get("topic") or item.get("name"),
             "reasons": item.get("review_reasons") or ["review evidence and freshness"],
             "evidence_url": item.get("evidence_url"),
+            "source_attribution": _source_attribution(item),
         }
         for item in notes
         if item.get("review_required")
@@ -59,6 +60,7 @@ def analyze_document(data: dict[str, Any]) -> dict[str, Any]:
         "data_cutoff": data_cutoff,
         "safety_notice": SAFETY_NOTICE,
         "source_boundaries": SOURCE_BOUNDARIES,
+        "source_attribution": _source_attribution(data),
         "summary": {
             "risk_count": len(risks),
             "opportunity_count": len(opportunities),
@@ -89,6 +91,7 @@ def compare_snapshots(before: dict[str, Any], after: dict[str, Any]) -> dict[str
         "after_as_of": after.get("as_of"),
         "safety_notice": after.get("safety_notice") or before.get("safety_notice") or SAFETY_NOTICE,
         "source_boundaries": after.get("source_boundaries") or before.get("source_boundaries") or SOURCE_BOUNDARIES,
+        "source_attribution": after.get("source_attribution") or before.get("source_attribution") or [],
         "risk_changes": _diff_scores(before_risks, after_risks),
         "opportunity_changes": _diff_scores(before_opps, after_opps),
         "review_queue_delta": int(after.get("summary", {}).get("review_queue_count", 0))
@@ -137,6 +140,7 @@ def build_review_queue_export(snapshot: dict[str, Any]) -> dict[str, Any]:
                 "source_type": key[2],
                 "date": None,
                 "evidence_url": None,
+                "source_attribution": [],
                 "stale_badge": badge,
                 "risk_score": 0,
                 "risk_level": "none",
@@ -160,6 +164,7 @@ def build_review_queue_export(snapshot: dict[str, Any]) -> dict[str, Any]:
                 "source_type": "catalyst",
                 "date": catalyst.get("date"),
                 "evidence_url": None,
+                "source_attribution": _source_attribution(catalyst),
                 "stale_badge": None,
                 "risk_score": 0,
                 "risk_level": "none",
@@ -195,6 +200,7 @@ def build_review_queue_export(snapshot: dict[str, Any]) -> dict[str, Any]:
         "data_cutoff": snapshot.get("data_cutoff"),
         "safety_notice": snapshot.get("safety_notice", SAFETY_NOTICE),
         "source_boundaries": snapshot.get("source_boundaries", SOURCE_BOUNDARIES),
+        "source_attribution": snapshot.get("source_attribution", []),
         "summary": {
             "review_item_count": len(items),
             "stale_data_count": counts["stale_data"],
@@ -243,6 +249,7 @@ def _record_for_scored_item(item: dict[str, Any]) -> dict[str, Any]:
         "source_type": source_type,
         "date": item.get("date"),
         "evidence_url": item.get("evidence_url"),
+        "source_attribution": _source_attribution(item),
         "stale_badge": badge,
         "risk_score": risk_score,
         "risk_level": item.get("risk_level", "none"),
@@ -273,6 +280,24 @@ def _merge_review_record(records: dict[tuple[str, str, str], dict[str, Any]], re
         int(existing.get("opportunity_score", 0)), int(record.get("opportunity_score", 0))
     )
     existing["evidence_url"] = existing.get("evidence_url") or record.get("evidence_url")
+    existing["source_attribution"] = existing.get("source_attribution") or record.get("source_attribution") or []
     existing["date"] = existing.get("date") or record.get("date")
     existing["stale_badge"] = existing.get("stale_badge") or record.get("stale_badge")
     existing["excerpt"] = existing.get("excerpt") or record.get("excerpt")
+
+
+def _source_attribution(item: dict[str, Any]) -> list[dict[str, Any]]:
+    attribution = item.get("source_attribution") or []
+    if isinstance(attribution, dict):
+        attribution = [attribution]
+    if not isinstance(attribution, list):
+        return []
+    normalized = []
+    allowed = {"source_name", "publisher", "source_type", "source_url", "accessed_at", "static_notice"}
+    for source in attribution:
+        if not isinstance(source, dict):
+            continue
+        clean = {key: str(value) for key, value in source.items() if key in allowed and value is not None}
+        if clean:
+            normalized.append(clean)
+    return normalized

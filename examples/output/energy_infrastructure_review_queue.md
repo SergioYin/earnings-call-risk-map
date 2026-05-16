@@ -2,7 +2,7 @@
 
 - As of: `2026-05-15`
 - Static data cutoff: `2026-04-25`
-- Tool version: `0.1.0`
+- Tool version: `0.2.0`
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
 
@@ -11,6 +11,10 @@
 - Management claims: source-provided company statements or prepared remarks; verify against filings and transcripts.
 - Analyst questions: source-provided questions or prompts; they are not treated as factual claims.
 - User synthesis: user-authored notes, tags, and deterministic tool scores; they are review prompts, not advice.
+
+## Source Attribution
+
+- No source attribution supplied beyond item evidence URLs.
 
 ## Focus
 

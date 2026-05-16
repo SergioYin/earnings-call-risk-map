@@ -76,6 +76,7 @@ def score_note(note: dict[str, Any], as_of: str, data_cutoff: str) -> dict[str, 
         "text": text,
         "date": note_date,
         "evidence_url": evidence_url,
+        "source_attribution": _source_attribution(note),
         "risk_score": risk_score,
         "risk_level": severity_label(risk_score),
         "risk_keywords": risk_hits,
@@ -108,6 +109,7 @@ def score_kpi(kpi: dict[str, Any], as_of: str, data_cutoff: str) -> dict[str, An
         "observation": observation,
         "date": kpi_date,
         "evidence_url": kpi.get("evidence_url"),
+        "source_attribution": _source_attribution(kpi),
         "risk_score": risk_score,
         "risk_level": severity_label(risk_score),
         "risk_keywords": risk_hits,
@@ -128,6 +130,16 @@ def sort_catalysts(catalysts: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "description": str(item.get("description") or ""),
                 "expected_impact": str(item.get("expected_impact") or "review"),
                 "evidence_url": item.get("evidence_url"),
+                "source_attribution": _source_attribution(item),
             }
         )
     return sorted(normalized, key=lambda item: (item["date"], item["title"]))
+
+
+def _source_attribution(item: dict[str, Any]) -> list[dict[str, Any]]:
+    attribution = item.get("source_attribution") or []
+    if isinstance(attribution, dict):
+        attribution = [attribution]
+    if not isinstance(attribution, list):
+        return []
+    return [source for source in attribution if isinstance(source, dict)]

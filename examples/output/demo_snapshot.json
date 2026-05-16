@@ -6,6 +6,7 @@
       "description": "Management expected to update long-term margin framework.",
       "evidence_url": "https://example.com/exm/events",
       "expected_impact": "risk/opportunity review",
+      "source_attribution": [],
       "title": "Investor day"
     },
     {
@@ -13,6 +14,7 @@
       "description": "Review whether regional pressure persisted after quarter close.",
       "evidence_url": null,
       "expected_impact": "risk validation",
+      "source_attribution": [],
       "title": "Next earnings report"
     }
   ],
@@ -37,6 +39,7 @@
       "risk_keywords": [],
       "risk_level": "none",
       "risk_score": 0,
+      "source_attribution": [],
       "stale_badge": {
         "age_days": 15,
         "label": "current",
@@ -60,6 +63,7 @@
       "risk_keywords": [],
       "risk_level": "none",
       "risk_score": 0,
+      "source_attribution": [],
       "stale_badge": {
         "age_days": 15,
         "label": "current",
@@ -84,6 +88,7 @@
       ],
       "risk_level": "low",
       "risk_score": 2,
+      "source_attribution": [],
       "stale_badge": {
         "age_days": 15,
         "label": "current",
@@ -102,6 +107,7 @@
         "data is stale",
         "high-impact language"
       ],
+      "source_attribution": [],
       "topic": "gross margin"
     },
     {
@@ -110,6 +116,7 @@
       "reasons": [
         "missing evidence URL"
       ],
+      "source_attribution": [],
       "topic": "product launch"
     }
   ],
@@ -134,6 +141,7 @@
       ],
       "risk_level": "high",
       "risk_score": 11,
+      "source_attribution": [],
       "stale_badge": {
         "age_days": 195,
         "label": "stale>90d",
@@ -157,6 +165,7 @@
       ],
       "risk_level": "medium",
       "risk_score": 4,
+      "source_attribution": [],
       "stale_badge": {
         "age_days": 135,
         "label": "stale>90d",
@@ -181,6 +190,7 @@
       ],
       "risk_level": "low",
       "risk_score": 2,
+      "source_attribution": [],
       "stale_badge": {
         "age_days": 15,
         "label": "current",
@@ -193,6 +203,7 @@
   ],
   "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
   "schema_version": "0.1",
+  "source_attribution": [],
   "source_boundaries": {
     "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
     "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
@@ -225,5 +236,5 @@
     "stale_badge_count": 2
   },
   "ticker": "EXM",
-  "tool_version": "0.1.0"
+  "tool_version": "0.2.0"
 }
