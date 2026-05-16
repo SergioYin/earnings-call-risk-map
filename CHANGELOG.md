@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.6.0 - 2026-05-17
+
+Playbook-oriented release line.
+
+### Added
+
+- Research playbook index at `examples/playbooks/README.md`.
+- Quarterly review, catalyst check-in, and post-earnings thesis refresh playbooks under `examples/playbooks/`.
+- Release notes draft at `docs/release-notes-v0.6.0.md`.
+- Internal maturity review record at `reports/reviews/2026-05-17-v0.6.0-internal-review.md`.
+- Unit-test and selfcheck coverage for playbook presence, deterministic commands, expected artifacts, and safety markers.
+
+### Changed
+
+- README links and repository layout now include the playbook directory.
+- Reviewer evidence, release manifests, package audit outputs, and maturity evidence were refreshed for the v0.6.0 playbook-oriented candidate.
+- Package version is now `0.6.0`.
+
+### Safety
+
+- Playbooks repeat the educational research review boundary and keep deterministic scoring as source-review triage, not investment advice.
+
 ## 0.5.0 - 2026-05-17
 
 Release-evidence and agent-workflow draft release.

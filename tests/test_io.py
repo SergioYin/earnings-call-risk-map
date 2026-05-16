@@ -18,6 +18,21 @@ class InputValidationTests(unittest.TestCase):
     def test_valid_fixture_passes(self):
         validate_input(self.valid_fixture())
 
+    def test_valid_nested_source_attribution_passes(self):
+        fixture = self.valid_fixture()
+        fixture["source_attribution"] = {
+            "source_name": "Example release",
+            "accessed_at": "2026-05-15",
+        }
+        fixture["notes"][0]["source_attribution"] = [
+            {
+                "source_name": "Example call transcript",
+                "accessed_at": "2026-05-15",
+            }
+        ]
+
+        validate_input(fixture)
+
     def test_missing_company_ticker_and_as_of_are_readable(self):
         fixture = self.valid_fixture()
         del fixture["company"]
@@ -53,6 +68,58 @@ class InputValidationTests(unittest.TestCase):
         fixture["notes"][0]["date"] = "04-30-2026"
 
         with self.assertRaisesRegex(ValueError, r"fixture\.notes\[0\]\.date must use YYYY-MM-DD format"):
+            validate_input(fixture, "fixture")
+
+    def test_bad_nested_source_attribution_shape_includes_field_path(self):
+        cases = (
+            ("notes", r"fixture\.notes\[0\]\.source_attribution must be a JSON object or list"),
+            ("kpis", r"fixture\.kpis\[0\]\.source_attribution must be a JSON object or list"),
+            ("catalysts", r"fixture\.catalysts\[0\]\.source_attribution must be a JSON object or list"),
+        )
+        for collection, message in cases:
+            with self.subTest(collection=collection):
+                fixture = self.valid_fixture()
+                fixture[collection][0]["source_attribution"] = "Example release"
+
+                with self.assertRaisesRegex(ValueError, message):
+                    validate_input(fixture, "fixture")
+
+    def test_bad_nested_source_attribution_item_includes_field_path(self):
+        fixture = self.valid_fixture()
+        fixture["notes"][0]["source_attribution"] = [{"source_name": "Example release"}, "bad source"]
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"fixture\.notes\[0\]\.source_attribution\[1\] must be a JSON object",
+        ):
+            validate_input(fixture, "fixture")
+
+    def test_bad_nested_source_attribution_accessed_at_includes_field_path(self):
+        cases = (
+            ("notes", r"fixture\.notes\[0\]\.source_attribution\[0\]\.accessed_at must use YYYY-MM-DD format"),
+            ("kpis", r"fixture\.kpis\[0\]\.source_attribution\[0\]\.accessed_at must use YYYY-MM-DD format"),
+            ("catalysts", r"fixture\.catalysts\[0\]\.source_attribution\[0\]\.accessed_at must use YYYY-MM-DD format"),
+        )
+        for collection, message in cases:
+            with self.subTest(collection=collection):
+                fixture = self.valid_fixture()
+                fixture[collection][0]["source_attribution"] = [
+                    {"source_name": "Example release", "accessed_at": "05-15-2026"}
+                ]
+
+                with self.assertRaisesRegex(ValueError, message):
+                    validate_input(fixture, "fixture")
+
+    def test_bad_top_level_source_attribution_includes_field_path(self):
+        fixture = self.valid_fixture()
+        fixture["source_attribution"] = [
+            {"source_name": "Example release", "accessed_at": "2026-02-30"}
+        ]
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"fixture\.source_attribution\[0\]\.accessed_at must be a valid calendar date",
+        ):
             validate_input(fixture, "fixture")
 
     def test_invalid_calendar_date_is_readable(self):

@@ -1,7 +1,7 @@
 # Maturity Evidence Bundle
 
 - Package: `earnings-call-risk-map`
-- Version: `0.5.0`
+- Version: `0.6.0`
 - Skill path: `skills/agent/earnings-call-risk-map/SKILL.md` (present)
 - Review template: `reports/reviews/release-readiness-review.md` (present)
 - Privacy scan: passed (`python scripts/privacy_scan.py`)
@@ -20,7 +20,9 @@
 - `PYTHONPATH=src python scripts/selfcheck.py`
 - `PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output`
 - `PYTHONPATH=src python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl`
+- `PYTHONPATH=src python -m earnings_call_risk_map playbooks --format markdown --out examples/output/playbooks.md`
 - `PYTHONPATH=src python -m earnings_call_risk_map audit`
+- `PYTHONPATH=src python -m earnings_call_risk_map release-assets`
 - `PYTHONPATH=src python -m earnings_call_risk_map manifest --out release_manifest.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity`
 - `python scripts/privacy_scan.py`
@@ -41,27 +43,27 @@
 
 ## Maturity Scores
 
-- Source: `reports/reviews/2026-05-17-v0.3.0-internal-review.md`
+- Source: `reports/reviews/2026-05-17-v0.6.0-internal-review.md`
 - Review date: `2026-05-17`
-- Overall: `89/100`
-- Level: `L3 -> target L4`
-- Release gate: `PASS`
-- Promotion gate: `PASS small-scope`
+- Overall: `95/100`
+- Level: `L4 -> target L4+`
+- Release gate: `PASS for owner handoff`
+- Promotion gate: `PASS small-scope after release owner approval`
 
 ### Scorecard
 
-- Product Clarity: `14/15`
-- Reproducibility: `14/15`
-- User Value: `18/20`
+- Product Clarity: `15/15`
+- Reproducibility: `15/15`
+- User Value: `19/20`
 - Evidence Quality: `15/15`
-- Engineering Quality: `13/15`
-- Showcase: `8/10`
-- Risk Boundary: `7/10`
+- Engineering Quality: `14/15`
+- Showcase: `9/10`
+- Risk Boundary: `8/10`
 
 ### Four-Role Review
 
-- Product: `4/5 accept`
-- Engineering: `4/5 accept`
+- Product: `5/5 accept`
+- Engineering: `5/5 accept`
 - Cold User: `4/5 accept`
 - Risk: `4/5 accept`
 
@@ -69,7 +71,11 @@
 
 - `README.md`
 - `CHANGELOG.md`
-- `docs/release-notes-v0.5.0.md`
+- `docs/release-notes-v0.6.0.md`
+- `examples/playbooks/README.md`
+- `examples/playbooks/quarterly-review.md`
+- `examples/playbooks/catalyst-check-in.md`
+- `examples/playbooks/post-earnings-thesis-refresh.md`
 - `docs/release-readiness.md`
 - `docs/reviewer-evidence.md`
 - `docs/distribution.md`
@@ -98,10 +104,19 @@
 - `examples/output/demo_compare.json`
 - `examples/output/package_audit.md`
 - `examples/output/package_audit.json`
+- `examples/output/playbooks.md`
+- `examples/output/playbooks.json`
+- `examples/output/playbook_output_examples.md`
+- `examples/output/playbook_output_examples.json`
+- `examples/output/handoff_packet.md`
+- `examples/output/handoff_packet.json`
+- `examples/output/handoff_packet_examples.md`
+- `examples/output/handoff_packet_examples.json`
 - `examples/output/release_manifest.json`
 - `release_manifest.json`
 - `reports/maturity/maturity_evidence.md`
 - `reports/maturity/maturity_evidence.json`
+- `reports/reviews/2026-05-17-v0.6.0-internal-review.md`
 - `skills/agent/earnings-call-risk-map/SKILL.md`
 - `reports/reviews/release-readiness-review.md`
 
@@ -124,9 +139,17 @@
 - `examples/output/energy_infrastructure_review_queue.md`
 - `examples/output/energy_infrastructure_snapshot.json`
 - `examples/output/fixture_catalog.md`
+- `examples/output/handoff_packet.json`
+- `examples/output/handoff_packet.md`
+- `examples/output/handoff_packet_examples.json`
+- `examples/output/handoff_packet_examples.md`
 - `examples/output/integration_notes.json`
 - `examples/output/package_audit.json`
 - `examples/output/package_audit.md`
+- `examples/output/playbook_output_examples.json`
+- `examples/output/playbook_output_examples.md`
+- `examples/output/playbooks.json`
+- `examples/output/playbooks.md`
 - `examples/output/public_apple_static_case_study_dashboard.html`
 - `examples/output/public_apple_static_case_study_report.md`
 - `examples/output/public_apple_static_case_study_review_queue.json`

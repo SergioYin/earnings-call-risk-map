@@ -1,0 +1,109 @@
+{
+  "artifact_type": "playbook_output_examples",
+  "examples": [
+    {
+      "generated_artifacts": [
+        {
+          "format": "markdown",
+          "path": "examples/output/demo_report.md",
+          "role": "human-readable research review report"
+        },
+        {
+          "format": "json",
+          "path": "examples/output/demo_snapshot.json",
+          "role": "machine-readable analyzed snapshot"
+        },
+        {
+          "format": "markdown",
+          "path": "examples/output/demo_review_queue.md",
+          "role": "focused human-review queue"
+        },
+        {
+          "format": "markdown",
+          "path": "examples/output/demo_compare.md",
+          "role": "prior/current deterministic score movement"
+        },
+        {
+          "format": "html",
+          "path": "examples/output/demo_dashboard.html",
+          "role": "static dashboard preview"
+        }
+      ],
+      "recommended_command_count": 5,
+      "slug": "quarterly-review",
+      "source": "examples/playbooks/quarterly-review.md",
+      "title": "Quarterly Review",
+      "verification": {
+        "regenerate_command": "PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output",
+        "selfcheck_command": "PYTHONPATH=src python scripts/selfcheck.py"
+      }
+    },
+    {
+      "generated_artifacts": [
+        {
+          "format": "markdown",
+          "path": "examples/output/energy_infrastructure_report.md",
+          "role": "human-readable research review report"
+        },
+        {
+          "format": "markdown",
+          "path": "examples/output/energy_infrastructure_review_queue.md",
+          "role": "focused human-review queue"
+        },
+        {
+          "format": "json",
+          "path": "examples/output/energy_infrastructure_snapshot.json",
+          "role": "machine-readable analyzed snapshot"
+        },
+        {
+          "format": "jsonl",
+          "path": "examples/output/demo_review_queue_items.jsonl",
+          "role": "focused human-review queue"
+        }
+      ],
+      "recommended_command_count": 3,
+      "slug": "catalyst-check-in",
+      "source": "examples/playbooks/catalyst-check-in.md",
+      "title": "Catalyst Check-In",
+      "verification": {
+        "regenerate_command": "PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output",
+        "selfcheck_command": "PYTHONPATH=src python scripts/selfcheck.py"
+      }
+    },
+    {
+      "generated_artifacts": [
+        {
+          "format": "markdown",
+          "path": "examples/output/public_apple_static_case_study_report.md",
+          "role": "human-readable research review report"
+        },
+        {
+          "format": "markdown",
+          "path": "examples/output/public_apple_static_case_study_review_queue.md",
+          "role": "focused human-review queue"
+        },
+        {
+          "format": "json",
+          "path": "examples/output/public_apple_static_case_study_snapshot.json",
+          "role": "machine-readable analyzed snapshot"
+        },
+        {
+          "format": "json",
+          "path": "examples/output/integration_notes.json",
+          "role": "downstream integration example records"
+        }
+      ],
+      "recommended_command_count": 3,
+      "slug": "post-earnings-thesis-refresh",
+      "source": "examples/playbooks/post-earnings-thesis-refresh.md",
+      "title": "Post-Earnings Thesis Refresh",
+      "verification": {
+        "regenerate_command": "PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output",
+        "selfcheck_command": "PYTHONPATH=src python scripts/selfcheck.py"
+      }
+    }
+  ],
+  "playbook_count": 3,
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1"
+}

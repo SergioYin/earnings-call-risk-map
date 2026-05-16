@@ -71,7 +71,7 @@ earnings-call-risk-map version
 Expected result for this release:
 
 ```text
-0.5.0
+0.6.0
 ```
 
 Do not run `twine upload`, `gh release upload`, or any package-index publishing command as part of this dry run.
@@ -93,6 +93,6 @@ The selfcheck includes local documentation-link validation for README and releas
 - `No module named build`: install the build frontend with `python -m pip install --upgrade build`.
 - `pipx: command not found`: install it with `python -m pip install --user pipx`, then run `python -m pipx ensurepath` and reopen the shell if needed.
 - `earnings-call-risk-map: command not found`: confirm the active environment or `pipx` path, then run `python -m pip show earnings-call-risk-map` or `pipx list`.
-- Version output is not `0.5.0`: uninstall stale local installs with `python -m pip uninstall earnings-call-risk-map` or `pipx uninstall earnings-call-risk-map`, then reinstall from the checkout.
+- Version output is not `0.6.0`: uninstall stale local installs with `python -m pip uninstall earnings-call-risk-map` or `pipx uninstall earnings-call-risk-map`, then reinstall from the checkout.
 - Wheel installs but example paths fail: run commands from the repository root, or pass absolute paths for `examples/input/*.json` and output files.
 - Build artifacts are stale: remove `build/`, `dist/`, `dist-dry-run/`, and `*.egg-info/`, then rebuild.

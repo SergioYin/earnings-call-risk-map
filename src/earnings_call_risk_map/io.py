@@ -61,6 +61,8 @@ def validate_input(data: dict[str, Any], label: str = "input") -> None:
             raise ValueError(f"{label}.{field} must be a non-empty string")
     for field in ("as_of", "data_cutoff"):
         _validate_date(data[field], f"{label}.{field}")
+    if "source_attribution" in data:
+        _validate_source_attribution(data["source_attribution"], f"{label}.source_attribution")
     for collection in ("notes", "catalysts", "kpis"):
         if collection in data and not isinstance(data[collection], list):
             raise ValueError(f"{label}.{collection} must be a list when provided")
@@ -69,6 +71,11 @@ def validate_input(data: dict[str, Any], label: str = "input") -> None:
                 raise ValueError(f"{label}.{collection}[{index}] must be a JSON object")
             if item.get("date"):
                 _validate_date(item["date"], f"{label}.{collection}[{index}].date")
+            if "source_attribution" in item:
+                _validate_source_attribution(
+                    item["source_attribution"],
+                    f"{label}.{collection}[{index}].source_attribution",
+                )
 
 
 def _validate_date(value: Any, field: str) -> None:
@@ -80,3 +87,21 @@ def _validate_date(value: Any, field: str) -> None:
         date.fromisoformat(value)
     except ValueError as exc:
         raise ValueError(f"{field} must be a valid calendar date, got {value!r}") from exc
+
+
+def _validate_source_attribution(value: Any, field: str) -> None:
+    if isinstance(value, dict):
+        _validate_source_record(value, field)
+        return
+    if not isinstance(value, list):
+        raise ValueError(f"{field} must be a JSON object or list of JSON objects when provided")
+    for index, source in enumerate(value):
+        source_field = f"{field}[{index}]"
+        if not isinstance(source, dict):
+            raise ValueError(f"{source_field} must be a JSON object")
+        _validate_source_record(source, source_field)
+
+
+def _validate_source_record(source: dict[str, Any], field: str) -> None:
+    if source.get("accessed_at"):
+        _validate_date(source["accessed_at"], f"{field}.accessed_at")

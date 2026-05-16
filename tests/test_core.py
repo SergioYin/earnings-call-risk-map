@@ -59,7 +59,7 @@ class CoreTests(unittest.TestCase):
 
     def test_analyze_scores_and_review_queue(self):
         snapshot = analyze_document(self.fixture())
-        self.assertEqual(snapshot["tool_version"], "0.5.0")
+        self.assertEqual(snapshot["tool_version"], "0.6.0")
         self.assertEqual(snapshot["summary"]["risk_count"], 1)
         self.assertEqual(snapshot["summary"]["opportunity_count"], 2)
         self.assertEqual(snapshot["review_queue"][0]["topic"], "gross margin")

@@ -9,6 +9,8 @@ The fixture uses public URLs only:
 
 The fixture is dated `as_of: 2024-05-03` with `data_cutoff: 2024-05-02`. Reports render the case-study warning, static data cutoff, stale/static badges, and source-attribution records so readers can see that the artifact is not live market data.
 
+Read [Case Study Limitations](case-study-limitations.md) before adapting this fixture. The public URLs are attribution for a frozen example, not a freshness guarantee, and reviewers must replace the fixture content with current user-collected notes before using the workflow for a new review.
+
 Run it directly:
 
 ```bash

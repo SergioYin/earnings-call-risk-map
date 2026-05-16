@@ -1,0 +1,146 @@
+{
+  "artifact_type": "handoff_packet_examples",
+  "example_count": 3,
+  "examples": [
+    {
+      "packet": {
+        "artifacts": [
+          {
+            "artifact_type": "report",
+            "format": "markdown",
+            "path": "examples/output/demo_report.md",
+            "purpose": "human-readable earnings-call risk, opportunity, catalyst, and review summary"
+          },
+          {
+            "artifact_type": "review_queue_jsonl",
+            "format": "jsonl",
+            "path": "examples/output/demo_review_queue_items.jsonl",
+            "purpose": "line-delimited triage records for stale data, missing evidence, and high-impact language"
+          },
+          {
+            "artifact_type": "compare",
+            "format": "markdown",
+            "path": "examples/output/demo_compare.md",
+            "purpose": "prior/current deterministic score movement and reviewer interpretation"
+          }
+        ],
+        "cautions": [
+          "Educational research review only; not personalized investment, legal, accounting, tax, buy, sell, or hold advice.",
+          "Artifact paths are local file handoffs and should be regenerated from current fixtures before portfolio or thesis use.",
+          "Review queue JSONL is triage input; humans must verify missing evidence, stale data, and high-impact language against source documents.",
+          "Compare output reflects deterministic keyword-score movement between snapshots, not real-world valuation or risk conclusions.",
+          "Downstream portfolio and thesis systems own exposure sizing, approval workflow, retention policy, and investment decisions."
+        ],
+        "handoff_targets": [
+          "portfolio_risk_review",
+          "thesis_ledger"
+        ],
+        "packet_type": "portfolio_thesis_handoff",
+        "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+        "schema_version": "0.1",
+        "source_boundaries": {
+          "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+          "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+          "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+        },
+        "tool_version": "0.6.0"
+      },
+      "slug": "quarterly-review",
+      "title": "Quarterly Review Handoff"
+    },
+    {
+      "packet": {
+        "artifacts": [
+          {
+            "artifact_type": "report",
+            "format": "markdown",
+            "path": "examples/output/energy_infrastructure_report.md",
+            "purpose": "human-readable earnings-call risk, opportunity, catalyst, and review summary"
+          },
+          {
+            "artifact_type": "review_queue_jsonl",
+            "format": "jsonl",
+            "path": "examples/output/demo_review_queue_items.jsonl",
+            "purpose": "line-delimited triage records for stale data, missing evidence, and high-impact language"
+          },
+          {
+            "artifact_type": "compare",
+            "format": "markdown",
+            "path": "examples/output/demo_compare.md",
+            "purpose": "prior/current deterministic score movement and reviewer interpretation"
+          }
+        ],
+        "cautions": [
+          "Educational research review only; not personalized investment, legal, accounting, tax, buy, sell, or hold advice.",
+          "Artifact paths are local file handoffs and should be regenerated from current fixtures before portfolio or thesis use.",
+          "Review queue JSONL is triage input; humans must verify missing evidence, stale data, and high-impact language against source documents.",
+          "Compare output reflects deterministic keyword-score movement between snapshots, not real-world valuation or risk conclusions.",
+          "Downstream portfolio and thesis systems own exposure sizing, approval workflow, retention policy, and investment decisions."
+        ],
+        "handoff_targets": [
+          "portfolio_risk_review",
+          "thesis_ledger"
+        ],
+        "packet_type": "portfolio_thesis_handoff",
+        "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+        "schema_version": "0.1",
+        "source_boundaries": {
+          "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+          "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+          "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+        },
+        "tool_version": "0.6.0"
+      },
+      "slug": "catalyst-check-in",
+      "title": "Catalyst Check-In Handoff"
+    },
+    {
+      "packet": {
+        "artifacts": [
+          {
+            "artifact_type": "report",
+            "format": "markdown",
+            "path": "examples/output/public_apple_static_case_study_report.md",
+            "purpose": "human-readable earnings-call risk, opportunity, catalyst, and review summary"
+          },
+          {
+            "artifact_type": "review_queue_jsonl",
+            "format": "jsonl",
+            "path": "examples/output/demo_review_queue_items.jsonl",
+            "purpose": "line-delimited triage records for stale data, missing evidence, and high-impact language"
+          },
+          {
+            "artifact_type": "compare",
+            "format": "markdown",
+            "path": "examples/output/demo_compare.md",
+            "purpose": "prior/current deterministic score movement and reviewer interpretation"
+          }
+        ],
+        "cautions": [
+          "Educational research review only; not personalized investment, legal, accounting, tax, buy, sell, or hold advice.",
+          "Artifact paths are local file handoffs and should be regenerated from current fixtures before portfolio or thesis use.",
+          "Review queue JSONL is triage input; humans must verify missing evidence, stale data, and high-impact language against source documents.",
+          "Compare output reflects deterministic keyword-score movement between snapshots, not real-world valuation or risk conclusions.",
+          "Downstream portfolio and thesis systems own exposure sizing, approval workflow, retention policy, and investment decisions."
+        ],
+        "handoff_targets": [
+          "portfolio_risk_review",
+          "thesis_ledger"
+        ],
+        "packet_type": "portfolio_thesis_handoff",
+        "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+        "schema_version": "0.1",
+        "source_boundaries": {
+          "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+          "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+          "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+        },
+        "tool_version": "0.6.0"
+      },
+      "slug": "post-earnings-thesis-refresh",
+      "title": "Post-Earnings Thesis Refresh Handoff"
+    }
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1"
+}

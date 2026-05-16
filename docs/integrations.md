@@ -6,6 +6,7 @@ The two most useful artifacts are:
 
 - `*_snapshot.json`: full deterministic analysis with risks, opportunities, catalysts, stale badges, review queue, source boundaries, and the safety notice.
 - `*_review_queue.json`: focused handoff of stale data, missing evidence, and high-impact language.
+- `handoff_packet.json`: compact path summary for the Markdown report, review queue JSONL, compare artifact, handoff targets, source boundaries, and cautions.
 
 The examples below show how those outputs can feed adjacent research tools without making this package aware of those tools.
 
@@ -112,3 +113,13 @@ The portfolio tool should own exposure sizing, portfolio weights, limits, escala
 ## Machine-Readable Examples
 
 See `examples/output/integration_notes.json` for static example records derived from the demo outputs. The file is intentionally generic and uses `integration` labels instead of importing a ledger or portfolio schema.
+
+For a deterministic handoff index, generate:
+
+```bash
+PYTHONPATH=src python -m earnings_call_risk_map handoff-packet \
+  --json-out examples/output/handoff_packet.json \
+  --md-out examples/output/handoff_packet.md
+```
+
+The packet does not import a portfolio or thesis schema. It only summarizes artifact paths and cautions so downstream systems can decide what to ingest.

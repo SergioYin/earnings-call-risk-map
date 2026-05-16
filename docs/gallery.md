@@ -33,7 +33,10 @@ See `docs/pages-demo.md` for local static HTML viewing and screenshot framing gu
 - `examples/output/demo_compare.json`: machine-readable score deltas and interpretation lines for the prior/current software comparison.
 - `examples/output/demo_review_queue.json` and `examples/output/energy_infrastructure_review_queue.json`: focused machine-readable review queues.
 - `examples/output/public_apple_static_case_study_review_queue.json`: focused machine-readable static case-study review queue.
-- `examples/output/demo_review_queue_items.jsonl`: deterministic JSON Lines records for every review item across bundled demo fixtures, including fixture context for agent ingestion.
+- `examples/output/demo_review_queue_items.jsonl`: deterministic JSON Lines records for every review item across bundled demo fixtures, including fixture context for downstream review handoff.
+- `examples/output/handoff_packet.md` and `examples/output/handoff_packet.json`: portfolio/thesis handoff packet summarizing report, review queue JSONL, compare paths, handoff targets, and cautions.
+- `examples/output/handoff_packet_examples.md` and `examples/output/handoff_packet_examples.json`: deterministic handoff packet variants for quarterly review, catalyst check-in, and post-earnings thesis refresh.
+- `examples/output/playbook_output_examples.md` and `examples/output/playbook_output_examples.json`: generated artifact inventory for each research playbook with regeneration and selfcheck commands.
 - `examples/output/fixture_catalog.md`: bundled fixture catalog with tickers, data cutoffs, static/live status, and recommended commands.
 
 ## Compare Example
@@ -43,4 +46,6 @@ The compare example uses `examples/input/demo_company_prior.json` as the earlier
 ## Integration Examples
 
 - `examples/output/integration_notes.json`: static example notes showing how risk-map outputs can be handed to a thesis ledger or portfolio risk review without adding runtime dependencies on those tools.
-- `examples/output/demo_review_queue_items.jsonl`: agent-ingestion handoff with one `review_queue_item` JSON object per line.
+- `examples/output/demo_review_queue_items.jsonl`: checklist handoff with one `review_queue_item` JSON object per line.
+- `examples/output/handoff_packet.json`: deterministic packet for adjacent portfolio/thesis systems that need artifact paths plus source and non-advice cautions.
+- `examples/output/handoff_packet_examples.json`: multiple packet examples for downstream systems that want playbook-specific routing samples.

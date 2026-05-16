@@ -15,6 +15,13 @@ REVIEW_REASON_LABELS = {
     "missing_evidence": "missing evidence URL",
     "high_impact_language": "high-impact language",
 }
+HANDOFF_PACKET_CAUTIONS = (
+    "Educational research review only; not personalized investment, legal, accounting, tax, buy, sell, or hold advice.",
+    "Artifact paths are local file handoffs and should be regenerated from current fixtures before portfolio or thesis use.",
+    "Review queue JSONL is triage input; humans must verify missing evidence, stale data, and high-impact language against source documents.",
+    "Compare output reflects deterministic keyword-score movement between snapshots, not real-world valuation or risk conclusions.",
+    "Downstream portfolio and thesis systems own exposure sizing, approval workflow, retention policy, and investment decisions.",
+)
 
 
 def analyze_document(data: dict[str, Any]) -> dict[str, Any]:
@@ -261,10 +268,59 @@ def render_jsonl(records: list[dict[str, Any]]) -> str:
     return "\n".join(_json_dumps(record) for record in records) + "\n"
 
 
+def build_handoff_packet(
+    report_path: str,
+    review_queue_jsonl_path: str,
+    compare_path: str,
+    cautions: list[str] | None = None,
+) -> dict[str, Any]:
+    """Build a deterministic portfolio/thesis handoff packet."""
+
+    caution_lines = list(cautions) if cautions is not None else list(HANDOFF_PACKET_CAUTIONS)
+    return {
+        "schema_version": "0.1",
+        "tool_version": __version__,
+        "packet_type": "portfolio_thesis_handoff",
+        "safety_notice": SAFETY_NOTICE,
+        "source_boundaries": SOURCE_BOUNDARIES,
+        "artifacts": [
+            {
+                "artifact_type": "report",
+                "path": str(report_path),
+                "format": "markdown",
+                "purpose": "human-readable earnings-call risk, opportunity, catalyst, and review summary",
+            },
+            {
+                "artifact_type": "review_queue_jsonl",
+                "path": str(review_queue_jsonl_path),
+                "format": "jsonl",
+                "purpose": "line-delimited triage records for stale data, missing evidence, and high-impact language",
+            },
+            {
+                "artifact_type": "compare",
+                "path": str(compare_path),
+                "format": _artifact_format(compare_path),
+                "purpose": "prior/current deterministic score movement and reviewer interpretation",
+            },
+        ],
+        "handoff_targets": ["portfolio_risk_review", "thesis_ledger"],
+        "cautions": caution_lines,
+    }
+
+
 def _json_dumps(payload: dict[str, Any]) -> str:
     """Return one compact deterministic JSON object."""
 
     return json.dumps(payload, sort_keys=True, separators=(",", ":"))
+
+
+def _artifact_format(path: str) -> str:
+    suffix = path.lower().rsplit(".", 1)[-1] if "." in path else ""
+    if suffix == "md":
+        return "markdown"
+    if suffix == "json":
+        return "json"
+    return suffix or "unknown"
 
 
 def _score_by_key(items: list[dict[str, Any]]) -> dict[str, int]:

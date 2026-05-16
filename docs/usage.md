@@ -28,6 +28,8 @@ PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/public_ap
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json --html-out examples/output/demo_dashboard.html
 PYTHONPATH=src python -m earnings_call_risk_map review-queue examples/input/demo_company.json --md-out examples/output/demo_review_queue.md --json-out examples/output/demo_review_queue.json
 PYTHONPATH=src python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl
+PYTHONPATH=src python -m earnings_call_risk_map handoff-packet --md-out examples/output/handoff_packet.md --json-out examples/output/handoff_packet.json
+PYTHONPATH=src python -m earnings_call_risk_map playbooks --format markdown --out examples/output/playbooks.md
 PYTHONPATH=src python -m earnings_call_risk_map compare examples/output/demo_prior_snapshot.json examples/output/demo_snapshot.json --md-out examples/output/demo_compare.md --json-out examples/output/demo_compare.json
 PYTHONPATH=src python -m earnings_call_risk_map fixture-catalog --out examples/output/fixture_catalog.md
 PYTHONPATH=src python -m earnings_call_risk_map audit --format markdown
@@ -35,7 +37,7 @@ PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
 PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
 ```
 
-The first command verifies imports, the next two print Markdown reports for the software fixture and the capital-intensive energy/infrastructure fixture, and the public Apple static case study demonstrates investor-relations/SEC-style source attribution without claiming live data. The HTML command writes a self-contained dashboard, `review-queue` writes a focused review export, `review-queue-jsonl` writes one deterministic JSON Lines record per demo review item for agent ingestion, `compare` writes prior/current score movement with interpretation, `fixture-catalog` lists bundled fixtures and recommended commands, `audit` reports package parity, and `demo` writes deterministic bundles under `examples/output/`.
+The first command verifies imports, the next two print Markdown reports for the software fixture and the capital-intensive energy/infrastructure fixture, and the public Apple static case study demonstrates investor-relations/SEC-style source attribution without claiming live data. The HTML command writes a self-contained dashboard, `review-queue` writes a focused review export, `review-queue-jsonl` writes one deterministic JSON Lines record per demo review item for downstream review handoff, `handoff-packet` summarizes the report, review-queue JSONL, compare path, and cautions for portfolio/thesis handoff, `playbooks` lists research workflows and recommended CLI sequences, `compare` writes prior/current score movement with interpretation, `fixture-catalog` lists bundled fixtures and recommended commands, `audit` reports package parity, and `demo` writes deterministic bundles under `examples/output/`.
 
 The final command writes a basic release maturity evidence bundle listing test commands, generated artifact paths, the public skill path, the release review template path, and privacy scan status.
 
@@ -70,11 +72,14 @@ python -m earnings_call_risk_map analyze examples/input/public_apple_static_case
 python -m earnings_call_risk_map analyze examples/input/demo_company.json --html-out dashboard.html
 python -m earnings_call_risk_map review-queue examples/input/demo_company.json --json-out review_queue.json --md-out review_queue.md
 python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl
+python -m earnings_call_risk_map handoff-packet --json-out examples/output/handoff_packet.json --md-out examples/output/handoff_packet.md
+python -m earnings_call_risk_map playbooks --format json --out examples/output/playbooks.json
 python -m earnings_call_risk_map demo --out-dir examples/output
 python -m earnings_call_risk_map compare before.json after.json --json-out compare.json --md-out compare.md
 python -m earnings_call_risk_map fixture-catalog --out examples/output/fixture_catalog.md
 python -m earnings_call_risk_map audit --format json --out package_audit.json
 python -m earnings_call_risk_map audit --format markdown --out package_audit.md
+python -m earnings_call_risk_map release-assets --format markdown --out release_assets.md
 python -m earnings_call_risk_map manifest --out release_manifest.json
 python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
 ```
@@ -107,6 +112,34 @@ When no output path is supplied, the command prints Markdown. Supplying `--json-
 
 The generated demo bundle writes `examples/output/demo_review_queue_items.jsonl`. It includes the current software, energy/infrastructure, public Apple static case-study, and prior-period software fixtures in deterministic fixture order.
 
+## Portfolio/Thesis Handoff Packet
+
+`handoff-packet` writes a small deterministic packet for downstream portfolio-risk and thesis-ledger workflows. It records the Markdown report path, review queue JSONL path, compare path, handoff targets, source boundaries, safety notice, and cautions about stale data, source verification, deterministic score movement, and downstream ownership of decisions.
+
+By default it points at the generated demo artifacts:
+
+```bash
+python -m earnings_call_risk_map handoff-packet
+python -m earnings_call_risk_map handoff-packet --format json
+```
+
+Use explicit paths when handing off a custom run:
+
+```bash
+python -m earnings_call_risk_map handoff-packet \
+  --report-path reports/acme_report.md \
+  --review-queue-jsonl-path reports/acme_review_items.jsonl \
+  --compare-path reports/acme_compare.md \
+  --json-out reports/acme_handoff_packet.json \
+  --md-out reports/acme_handoff_packet.md
+```
+
+## Research Playbooks
+
+`playbooks` prints available research playbooks and the recommended local CLI sequence for each. Markdown is the default output for reviewer handoff; `--format json` writes the same catalog as structured data for automation.
+
+The generated demo bundle writes `examples/output/playbooks.md`, `examples/output/playbooks.json`, `examples/output/playbook_output_examples.md`, and `examples/output/playbook_output_examples.json`.
+
 ## Compare Reports
 
 `compare` expects two analyzed snapshots, not raw input fixtures. The demo bundle writes `examples/output/demo_prior_snapshot.json`, `examples/output/demo_snapshot.json`, `examples/output/demo_compare.json`, and `examples/output/demo_compare.md` to show the intended flow.
@@ -122,6 +155,8 @@ The audit report also includes a "Local-Only No-Network Guarantee" section. That
 The demo bundle writes both `examples/output/package_audit.json` and `examples/output/package_audit.md`, then includes them in `examples/output/release_manifest.json`. The audit output files themselves are excluded from the output artifact count so repeated audit runs do not change the count.
 
 ## Release Readiness
+
+`release-assets` validates the expected release notes, documentation, generated examples, manifests, maturity evidence, public skill, and review template for the current package version. It emits JSON or Markdown and exits with code `1` when any expected asset is missing.
 
 `maturity-evidence` writes `maturity_evidence.json` and `maturity_evidence.md` under the selected output directory. The bundle records local test commands, generated artifact paths, the public skill path, release review template presence, and the current result from `scripts/privacy_scan.py`.
 

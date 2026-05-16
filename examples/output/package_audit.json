@@ -1,13 +1,16 @@
 {
-  "command_count": 10,
+  "command_count": 13,
   "commands": [
     "analyze",
     "audit",
     "compare",
     "demo",
     "fixture-catalog",
+    "handoff-packet",
     "manifest",
     "maturity-evidence",
+    "playbooks",
+    "release-assets",
     "review-queue",
     "review-queue-jsonl",
     "version"
@@ -72,12 +75,27 @@
       },
       {
         "credentials_required": false,
+        "name": "handoff-packet",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
         "name": "manifest",
         "network_required": false
       },
       {
         "credentials_required": false,
         "name": "maturity-evidence",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "playbooks",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "release-assets",
         "network_required": false
       },
       {
@@ -102,7 +120,7 @@
     "status": "passed"
   },
   "name": "earnings-call-risk-map",
-  "output_artifact_count": 24,
+  "output_artifact_count": 32,
   "output_artifacts": [
     "examples/output/demo_compare.json",
     "examples/output/demo_compare.md",
@@ -120,7 +138,15 @@
     "examples/output/energy_infrastructure_review_queue.md",
     "examples/output/energy_infrastructure_snapshot.json",
     "examples/output/fixture_catalog.md",
+    "examples/output/handoff_packet.json",
+    "examples/output/handoff_packet.md",
+    "examples/output/handoff_packet_examples.json",
+    "examples/output/handoff_packet_examples.md",
     "examples/output/integration_notes.json",
+    "examples/output/playbook_output_examples.json",
+    "examples/output/playbook_output_examples.md",
+    "examples/output/playbooks.json",
+    "examples/output/playbooks.md",
     "examples/output/public_apple_static_case_study_dashboard.html",
     "examples/output/public_apple_static_case_study_report.md",
     "examples/output/public_apple_static_case_study_review_queue.json",
@@ -133,6 +159,6 @@
     "path": "skills/agent/earnings-call-risk-map/SKILL.md",
     "present": true
   },
-  "version": "0.5.0",
+  "version": "0.6.0",
   "workflow_files": []
 }

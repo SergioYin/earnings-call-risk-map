@@ -13,14 +13,16 @@ PYTHONPATH=src python -m unittest discover -s tests
 PYTHONPATH=src python scripts/selfcheck.py
 PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
 PYTHONPATH=src python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl
+PYTHONPATH=src python -m earnings_call_risk_map playbooks --format markdown --out examples/output/playbooks.md
 PYTHONPATH=src python -m earnings_call_risk_map audit
+PYTHONPATH=src python -m earnings_call_risk_map release-assets
 PYTHONPATH=src python -m earnings_call_risk_map manifest --out release_manifest.json
 PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
 python scripts/privacy_scan.py
 git diff --check
 ```
 
-`scripts/selfcheck.py` also runs unit tests, regenerates the demo bundle, runs package audit, regenerates `release_manifest.json`, runs the privacy scan, regenerates maturity evidence, and verifies the static dashboard/SVG previews, integration examples, compare examples, and selected documentation links.
+`scripts/selfcheck.py` also runs unit tests, regenerates the demo bundle, runs package audit, validates release assets, regenerates `release_manifest.json`, runs the privacy scan, regenerates maturity evidence, and verifies the static dashboard/SVG previews, integration examples, compare examples, playbooks, handoff packet examples, and selected documentation links.
 
 ## Fresh Clone Procedure
 
@@ -39,7 +41,7 @@ python -m pip install .
 earnings-call-risk-map version
 ```
 
-Expected version for this release line: `0.5.0`.
+Expected version for this release line: `0.6.0`.
 
 ## Release Assets
 
@@ -47,13 +49,14 @@ Primary release and reviewer assets:
 
 - `README.md`
 - `CHANGELOG.md`
-- `docs/release-notes-v0.5.0.md`
+- `docs/release-notes-v0.6.0.md`
+- `examples/playbooks/README.md`
+- `examples/playbooks/quarterly-review.md`
+- `examples/playbooks/catalyst-check-in.md`
+- `examples/playbooks/post-earnings-thesis-refresh.md`
 - `docs/release-readiness.md`
 - `docs/reviewer-evidence.md`
 - `docs/distribution.md`
-- `docs/agent-workflow.md`
-- `docs/fixture-catalog.md`
-- `docs/tutorial-earnings-review.md`
 - `docs/non-advice-boundary.md`
 - `docs/pages-demo.md`
 - `docs/gallery.md`
@@ -80,10 +83,19 @@ Primary release and reviewer assets:
 - `examples/output/demo_compare.json`
 - `examples/output/package_audit.md`
 - `examples/output/package_audit.json`
+- `examples/output/playbooks.md`
+- `examples/output/playbooks.json`
+- `examples/output/playbook_output_examples.md`
+- `examples/output/playbook_output_examples.json`
+- `examples/output/handoff_packet.md`
+- `examples/output/handoff_packet.json`
+- `examples/output/handoff_packet_examples.md`
+- `examples/output/handoff_packet_examples.json`
 - `examples/output/release_manifest.json`
 - `release_manifest.json`
 - `reports/maturity/maturity_evidence.md`
 - `reports/maturity/maturity_evidence.json`
+- `reports/reviews/2026-05-17-v0.6.0-internal-review.md`
 - `skills/agent/earnings-call-risk-map/SKILL.md`
 - `reports/reviews/release-readiness-review.md`
 
@@ -93,27 +105,27 @@ Generated release hashes are recorded in `release_manifest.json`. The demo-copy 
 
 Latest recorded internal maturity review:
 
-- Source: `reports/reviews/2026-05-17-v0.3.0-internal-review.md`
+- Source: `reports/reviews/2026-05-17-v0.6.0-internal-review.md`
 - Review date: `2026-05-17`
-- Overall score: `89/100`
-- Level: `L3 -> target L4`
-- Release gate: `PASS`
-- Promotion gate: `PASS small-scope`
+- Overall score: `95/100`
+- Level: `L4 -> target L4+`
+- Release gate: `PASS for owner handoff`
+- Promotion gate: `PASS small-scope after release owner approval`
 
 Scorecard:
 
-- Product clarity: `14/15`
-- Reproducibility: `14/15`
-- User value: `18/20`
+- Product clarity: `15/15`
+- Reproducibility: `15/15`
+- User value: `19/20`
 - Evidence quality: `15/15`
-- Engineering quality: `13/15`
-- Showcase: `8/10`
-- Risk boundary: `7/10`
+- Engineering quality: `14/15`
+- Showcase: `9/10`
+- Risk boundary: `8/10`
 
 Four-role review:
 
-- Product reviewer: `4/5 accept`
-- Engineering reviewer: `4/5 accept`
+- Product reviewer: `5/5 accept`
+- Engineering reviewer: `5/5 accept`
 - Cold-user reviewer: `4/5 accept`
 - Risk reviewer: `4/5 accept`
 

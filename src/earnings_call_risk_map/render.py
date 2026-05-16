@@ -124,6 +124,68 @@ def render_review_queue_markdown(export: dict[str, Any]) -> str:
     return "\n".join(lines).rstrip() + "\n"
 
 
+def render_handoff_packet_markdown(packet: dict[str, Any]) -> str:
+    lines = [
+        "# Portfolio/Thesis Handoff Packet",
+        "",
+        f"- Packet type: `{packet.get('packet_type')}`",
+        f"- Tool version: `{packet.get('tool_version')}`",
+        "",
+        f"> {packet.get('safety_notice', SAFETY_NOTICE)}",
+        "",
+    ]
+    lines.extend(SOURCE_BOUNDARY_LINES)
+    lines.extend(
+        [
+            "## Artifact Paths",
+            "",
+        ]
+    )
+    for artifact in packet.get("artifacts", []):
+        lines.append(
+            f"- `{artifact.get('artifact_type')}` ({artifact.get('format')}): `{artifact.get('path')}`"
+        )
+        lines.append(f"  Purpose: {artifact.get('purpose')}")
+    lines.extend(["", "## Handoff Targets", ""])
+    lines.extend(f"- `{target}`" for target in packet.get("handoff_targets", []))
+    lines.extend(["", "## Cautions", ""])
+    lines.extend(f"- {caution}" for caution in packet.get("cautions", []))
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def render_handoff_packet_examples_markdown(examples: dict[str, Any]) -> str:
+    lines = [
+        "# Handoff Packet Examples",
+        "",
+        "Deterministic handoff packet variants generated from bundled demo artifacts.",
+        "",
+        f"> {examples.get('safety_notice', SAFETY_NOTICE)}",
+        "",
+    ]
+    for example in examples.get("examples", []):
+        packet = example.get("packet", {})
+        lines.extend(
+            [
+                f"## {example.get('title')}",
+                "",
+                f"- Slug: `{example.get('slug')}`",
+                f"- Packet type: `{packet.get('packet_type')}`",
+                f"- Handoff targets: {', '.join(f'`{target}`' for target in packet.get('handoff_targets', []))}",
+                "",
+                "| Artifact | Format | Path |",
+                "| --- | --- | --- |",
+            ]
+        )
+        for artifact in packet.get("artifacts", []):
+            lines.append(
+                f"| `{artifact.get('artifact_type')}` | `{artifact.get('format')}` | `{artifact.get('path')}` |"
+            )
+        lines.extend(["", "Cautions:"])
+        lines.extend(f"- {caution}" for caution in packet.get("cautions", []))
+        lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
+
+
 def render_dashboard_html(snapshot: dict[str, Any]) -> str:
     """Render a deterministic static dashboard with no external assets."""
 

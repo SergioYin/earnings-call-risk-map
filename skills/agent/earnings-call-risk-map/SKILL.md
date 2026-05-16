@@ -31,25 +31,26 @@ Follow `docs/non-advice-boundary.md` when drafting responses around generated ar
 ## Workflow
 
 1. Prepare a JSON input with `company`, `ticker`, `as_of`, `data_cutoff`, and optional `notes`, `kpis`, and `catalysts`.
-2. Run:
+2. When authoring a new fixture from earnings-call notes, follow `docs/examples-from-scratch.md` so management claims, analyst questions, and user synthesis stay separate.
+3. Run:
 
    ```bash
    python -m earnings_call_risk_map analyze input.json --json-out snapshot.json --md-out report.md
    ```
 
-3. For a demo bundle:
+4. For a demo bundle:
 
    ```bash
    python -m earnings_call_risk_map demo --out-dir examples/output
    ```
 
-4. To compare two analyzed snapshots:
+5. To compare two analyzed snapshots:
 
    ```bash
    python -m earnings_call_risk_map compare before.json after.json --json-out compare.json --md-out compare.md
    ```
 
-5. Before sharing a public artifact, run:
+6. Before sharing a public artifact, run:
 
    ```bash
    PYTHONPATH=src python -m unittest discover -s tests
@@ -57,7 +58,7 @@ Follow `docs/non-advice-boundary.md` when drafting responses around generated ar
    python scripts/privacy_scan.py
    ```
 
-6. For release evidence, run:
+7. For release evidence, run:
 
    ```bash
    PYTHONPATH=src python -m earnings_call_risk_map audit
@@ -68,11 +69,14 @@ Follow `docs/non-advice-boundary.md` when drafting responses around generated ar
 
 Use ISO dates (`YYYY-MM-DD`). Include evidence URLs and `source_attribution` records where possible. Missing evidence and stale or unverified dates should remain visible in the review queue.
 
+For first-time fixture authoring from a raw earnings-call note, use `docs/examples-from-scratch.md` as the minimal template. Keep `management_claim`, `analyst_question`, and `user_synthesis` records as separate notes and preserve the provenance in `source_attribution`.
+
 ## Done Criteria
 
 The task is done when the agent has:
 
 - Selected the correct route from `docs/agent-workflow.md`: analyze, compare, review queue export, source attribution handoff, or a complete bundle.
+- Used `docs/examples-from-scratch.md` when creating a fixture from raw earnings-call notes.
 - Preserved the educational research boundary and avoided personalized investment, legal, accounting, or tax advice.
 - Kept `safety_notice`, `source_boundaries`, source attribution, evidence URLs, `as_of`, `data_cutoff`, and stale/static badges visible in generated or summarized outputs.
 - Routed missing evidence, stale/static data, date-unverified items, and high-impact language to the human review queue instead of resolving them silently.

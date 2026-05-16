@@ -22,6 +22,7 @@ Open [examples/output/demo_dashboard.html](examples/output/demo_dashboard.html) 
 - [2-Minute Walkthrough](#2-minute-walkthrough)
 - [Static-Data Badge](#static-data-badge)
 - [Integration Examples](#integration-examples)
+- [Research Playbooks](#research-playbooks)
 - [Quickstart](#quickstart)
 - [Commands](#commands)
 - [Fixture Schema](#fixture-schema)
@@ -32,14 +33,16 @@ Open [examples/output/demo_dashboard.html](examples/output/demo_dashboard.html) 
 
 ![Static dashboard preview](docs/assets/showcase-dashboard-preview.svg)
 
-**Release:** `v0.5.0` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
+**Release:** `v0.6.0` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
 
 - [Pages demo guide](docs/pages-demo.md)
 - [Analyst tutorial](docs/tutorial-earnings-review.md)
 - [Gallery](docs/gallery.md)
 - [Distribution guide](docs/distribution.md)
+- [Research playbooks](examples/playbooks/README.md)
 - [Non-advice boundary](docs/non-advice-boundary.md)
-- [v0.5.0 release notes draft](docs/release-notes-v0.5.0.md)
+- [Case study limitations](docs/case-study-limitations.md)
+- [v0.6.0 release notes draft](docs/release-notes-v0.6.0.md)
 - [Demo dashboard HTML](examples/output/demo_dashboard.html)
 - [PNG-free screenshot substitute](examples/output/showcase_dashboard_preview.svg)
 
@@ -74,8 +77,11 @@ PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/public_ap
 PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json --html-out examples/output/demo_dashboard.html
 PYTHONPATH=src python -m earnings_call_risk_map review-queue examples/input/demo_company.json --md-out examples/output/demo_review_queue.md --json-out examples/output/demo_review_queue.json
 PYTHONPATH=src python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl
+PYTHONPATH=src python -m earnings_call_risk_map handoff-packet --md-out examples/output/handoff_packet.md --json-out examples/output/handoff_packet.json
+PYTHONPATH=src python -m earnings_call_risk_map playbooks --format markdown --out examples/output/playbooks.md
 PYTHONPATH=src python -m earnings_call_risk_map compare examples/output/demo_prior_snapshot.json examples/output/demo_snapshot.json --md-out examples/output/demo_compare.md --json-out examples/output/demo_compare.json
 PYTHONPATH=src python -m earnings_call_risk_map audit --format markdown
+PYTHONPATH=src python -m earnings_call_risk_map release-assets --format markdown
 PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
 PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
 ```
@@ -88,11 +94,14 @@ What just happened:
 4. The public Apple static case study demonstrates source attribution from public investor-relations/newsroom and SEC EDGAR URLs without claiming live data.
 5. `analyze --html-out` writes a self-contained static dashboard with no external JS or CSS.
 6. `review-queue` writes a focused queue containing only stale data, missing evidence, and high-impact language.
-7. `review-queue-jsonl` writes deterministic JSON Lines across the bundled demo fixtures for agent ingestion.
-8. `compare` writes deterministic before/after score movement for the prior and current software snapshots.
-9. `audit` reports package parity: version, commands, fixture count, output artifact count, workflow absence, and skill presence.
-10. `demo` writes reproducible bundles for all fixtures: legacy `demo_*`, `demo_prior_*`, `demo_compare.*`, `energy_infrastructure_*`, `public_apple_static_case_study_*`, `demo_review_queue_items.jsonl`, package audit files, and `release_manifest.json`.
-11. `maturity-evidence` writes a basic release evidence bundle with test commands, artifact paths, skill path, review template path, and privacy scan status.
+7. `review-queue-jsonl` writes deterministic JSON Lines across the bundled demo fixtures for downstream review handoff.
+8. `handoff-packet` writes portfolio/thesis handoff metadata with report, review-queue JSONL, compare paths, and cautions.
+9. `playbooks` writes available research playbooks and recommended CLI sequences.
+10. `compare` writes deterministic before/after score movement for the prior and current software snapshots.
+11. `audit` reports package parity: version, commands, fixture count, output artifact count, workflow absence, and skill presence.
+12. `release-assets` validates the expected release notes, docs, generated examples, manifests, maturity evidence, skill, and review template for the current package version.
+13. `demo` writes reproducible bundles for all fixtures: legacy `demo_*`, `demo_prior_*`, `demo_compare.*`, `energy_infrastructure_*`, `public_apple_static_case_study_*`, `demo_review_queue_items.jsonl`, `handoff_packet.*`, `handoff_packet_examples.*`, playbook catalogs, playbook output examples, package audit files, and `release_manifest.json`.
+14. `maturity-evidence` writes a basic release evidence bundle with test commands, artifact paths, skill path, review template path, and privacy scan status.
 
 Sample output excerpt:
 
@@ -165,9 +174,18 @@ Outputs are plain Markdown, JSON, and self-contained HTML. They can be handed to
 - [docs/gallery.md](docs/gallery.md) lists the generated demo artifacts and machine-readable handoff examples.
 - [docs/pages-demo.md](docs/pages-demo.md) explains how to view the static HTML dashboards locally and what to screenshot.
 - [docs/public-case-study.md](docs/public-case-study.md) documents the static public-source Apple case study and its attribution boundary.
+- [docs/case-study-limitations.md](docs/case-study-limitations.md) explains static source limitations, source freshness, fixture replacement, and non-advice safeguards.
 - [docs/release-readiness.md](docs/release-readiness.md) documents the release review template and maturity evidence bundle.
 - [docs/reviewer-evidence.md](docs/reviewer-evidence.md) summarizes exact reviewer verification commands, fresh clone validation, release assets, and maturity scores.
 - `examples/output/integration_notes.json` contains static example records derived from the demo snapshot and review queue.
+
+## Research Playbooks
+
+The repo includes deterministic playbooks for recurring research workflows:
+
+- [Quarterly Review](examples/playbooks/quarterly-review.md): full quarter-end report, review queue, dashboard, and compare flow.
+- [Catalyst Check-In](examples/playbooks/catalyst-check-in.md): focused catalyst-date, stale-data, and missing-evidence review.
+- [Post-Earnings Thesis Refresh](examples/playbooks/post-earnings-thesis-refresh.md): post-call source-boundary review before updating a thesis ledger or memo.
 
 ## Quickstart
 
@@ -188,9 +206,12 @@ For `pipx`, wheel dry-run, and troubleshooting notes, see [docs/distribution.md]
 - `analyze`: reads one JSON fixture and writes or prints a Markdown report plus optional JSON snapshot and static HTML dashboard.
 - `review-queue`: writes or prints deterministic Markdown/JSON for only stale data, missing evidence, and high-impact language.
 - `review-queue-jsonl`: writes or prints deterministic JSON Lines review item records across bundled demo fixtures, including fixture context and normalized review item payloads.
+- `handoff-packet`: writes or prints deterministic Markdown/JSON summarizing the report path, review queue JSONL path, compare path, handoff targets, and cautions for portfolio/thesis workflows.
+- `playbooks`: writes or prints available research playbooks and recommended CLI sequences in Markdown or JSON.
 - `demo`: builds `demo_*`, `energy_infrastructure_*`, and `public_apple_static_case_study_*` artifacts, package audit files, and a demo release manifest.
 - `compare`: compares two analyzed JSON snapshots and adds a plain-language interpretation section. Positive deltas mean a topic drew more deterministic risk or opportunity score in the later snapshot; negative deltas mean the later snapshot drew less score. Deltas are review prompts only, so reviewers should verify source documents and freshness badges before treating a movement as resolved or newly material.
 - `audit`: writes or prints package parity in JSON or Markdown.
+- `release-assets`: writes or prints a JSON/Markdown checklist for expected release assets and exits nonzero when any are missing.
 - `manifest`: writes a deterministic release manifest with file hashes.
 - `maturity-evidence`: writes JSON and Markdown release maturity evidence under `reports/maturity` by default.
 - `version`: prints the package version.
@@ -204,6 +225,7 @@ Input fixtures are documented in [docs/input-schema.md](docs/input-schema.md). R
 - `src/earnings_call_risk_map/`: standard-library-only package.
 - `examples/input/`: deterministic public fixtures.
 - `examples/output/`: demo output artifacts.
+- `examples/playbooks/`: deterministic research workflow playbooks.
 - `docs/assets/`: static documentation assets, including the SVG dashboard preview.
 - `docs/`: usage, scoring, gallery, and integration notes.
 - `reports/reviews/`: release review templates.

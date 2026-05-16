@@ -21,6 +21,7 @@ Always preserve this meaning in user-facing responses and generated artifacts:
 - Say "user synthesis" for user-authored notes, tags, interpretations, and deterministic tool scores.
 - Keep `safety_notice`, `source_boundaries`, stale/static badges, and source attribution in downstream JSON or Markdown handoffs.
 - Mention exact `as_of`, `data_cutoff`, and source access dates when discussing freshness.
+- Direct users replacing bundled fixtures to collect and date their own source notes before treating a review as current.
 
 ## Do Not
 
@@ -31,6 +32,7 @@ Always preserve this meaning in user-facing responses and generated artifacts:
 - Do not remove stale/static data warnings because they make the report look less current.
 - Do not describe static public fixtures as live market data.
 - Do not infer suitability for a user's personal financial, tax, legal, or accounting situation.
+- Do not imply that bundled fixtures are fresh because their public URLs are still reachable.
 
 ## Safer Rewrites
 
@@ -41,6 +43,8 @@ Always preserve this meaning in user-facing responses and generated artifacts:
 | "Ignore this item because the data is old." | "This item is stale/static and should stay visible for source refresh." |
 | "The analyst said demand is weak." | "The source contains an analyst question about demand weakness; treat it as a prompt, not a factual claim." |
 | "This is a current Apple analysis." | "This is a static educational case-study fixture with the stated `as_of` and `data_cutoff` dates." |
+
+See [Case Study Limitations](case-study-limitations.md) for static source limits, source freshness checks, and a safe process for replacing fixtures with user-collected notes.
 
 ## Validation
 

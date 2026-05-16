@@ -1,10 +1,10 @@
 # Package Audit
 
 - Package: `earnings-call-risk-map`
-- Version: `0.5.0`
-- Commands: 10 (`analyze`, `audit`, `compare`, `demo`, `fixture-catalog`, `manifest`, `maturity-evidence`, `review-queue`, `review-queue-jsonl`, `version`)
+- Version: `0.6.0`
+- Commands: 13 (`analyze`, `audit`, `compare`, `demo`, `fixture-catalog`, `handoff-packet`, `manifest`, `maturity-evidence`, `playbooks`, `release-assets`, `review-queue`, `review-queue-jsonl`, `version`)
 - Fixtures: 4
-- Output artifacts: 24
+- Output artifacts: 32
 - Workflow files present: no
 - Skill present: yes (`skills/agent/earnings-call-risk-map/SKILL.md`)
 - Local-only audit: passed
@@ -32,8 +32,11 @@
 - `compare`: network required `false`, credentials required `false`
 - `demo`: network required `false`, credentials required `false`
 - `fixture-catalog`: network required `false`, credentials required `false`
+- `handoff-packet`: network required `false`, credentials required `false`
 - `manifest`: network required `false`, credentials required `false`
 - `maturity-evidence`: network required `false`, credentials required `false`
+- `playbooks`: network required `false`, credentials required `false`
+- `release-assets`: network required `false`, credentials required `false`
 - `review-queue`: network required `false`, credentials required `false`
 - `review-queue-jsonl`: network required `false`, credentials required `false`
 - `version`: network required `false`, credentials required `false`
@@ -63,7 +66,15 @@
 - `examples/output/energy_infrastructure_review_queue.md`
 - `examples/output/energy_infrastructure_snapshot.json`
 - `examples/output/fixture_catalog.md`
+- `examples/output/handoff_packet.json`
+- `examples/output/handoff_packet.md`
+- `examples/output/handoff_packet_examples.json`
+- `examples/output/handoff_packet_examples.md`
 - `examples/output/integration_notes.json`
+- `examples/output/playbook_output_examples.json`
+- `examples/output/playbook_output_examples.md`
+- `examples/output/playbooks.json`
+- `examples/output/playbooks.md`
 - `examples/output/public_apple_static_case_study_dashboard.html`
 - `examples/output/public_apple_static_case_study_report.md`
 - `examples/output/public_apple_static_case_study_review_queue.json`

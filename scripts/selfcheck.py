@@ -14,15 +14,23 @@ ENV = {"PYTHONPATH": str(ROOT / "src")}
 MARKDOWN_LINK_RE = re.compile(r"!?\[[^\]]+\]\(([^)]+)\)")
 DOC_LINK_CHECK_PATHS = (
     Path("README.md"),
+    Path("examples/playbooks/README.md"),
+    Path("examples/playbooks/quarterly-review.md"),
+    Path("examples/playbooks/catalyst-check-in.md"),
+    Path("examples/playbooks/post-earnings-thesis-refresh.md"),
     Path("docs/tutorial-earnings-review.md"),
     Path("docs/distribution.md"),
     Path("docs/non-advice-boundary.md"),
     Path("docs/release-readiness.md"),
     Path("docs/reviewer-evidence.md"),
-    Path("docs/release-notes-v0.5.0.md"),
+    Path("docs/release-notes-v0.6.0.md"),
 )
 REQUIRED_DOC_PATHS = (
     Path("docs/tutorial-earnings-review.md"),
+    Path("examples/playbooks/README.md"),
+    Path("examples/playbooks/quarterly-review.md"),
+    Path("examples/playbooks/catalyst-check-in.md"),
+    Path("examples/playbooks/post-earnings-thesis-refresh.md"),
 )
 
 
@@ -233,6 +241,151 @@ def check_required_docs() -> int:
     return 0
 
 
+def check_playbooks() -> int:
+    print("== research playbooks ==", flush=True)
+    required = {
+        Path("examples/playbooks/README.md"): (
+            "Quarterly Review",
+            "Catalyst Check-In",
+            "Post-Earnings Thesis Refresh",
+            "deterministic",
+            "Educational research review only",
+        ),
+        Path("examples/playbooks/quarterly-review.md"): (
+            "Deterministic Steps",
+            "review-queue",
+            "compare",
+            "Expected Artifacts",
+            "Educational research review only",
+        ),
+        Path("examples/playbooks/catalyst-check-in.md"): (
+            "Deterministic Steps",
+            "catalyst",
+            "review-queue-jsonl",
+            "Expected Artifacts",
+            "Educational research review only",
+        ),
+        Path("examples/playbooks/post-earnings-thesis-refresh.md"): (
+            "Deterministic Steps",
+            "Source Boundaries",
+            "integration_notes.json",
+            "Expected Artifacts",
+            "Educational research review only",
+        ),
+    }
+    failures = []
+    for relative_path, markers in required.items():
+        path = ROOT / relative_path
+        if not path.is_file():
+            failures.append(f"{relative_path.as_posix()} is missing")
+            continue
+        text = path.read_text(encoding="utf-8")
+        missing = [marker for marker in markers if marker not in text]
+        if missing:
+            failures.append(f"{relative_path.as_posix()} missing marker(s): " + ", ".join(missing))
+    if failures:
+        for failure in failures:
+            print(failure)
+        return 1
+    print("research playbooks passed")
+    return 0
+
+
+def check_playbook_output_examples() -> int:
+    print("== playbook output examples ==", flush=True)
+    json_path = ROOT / "examples/output/playbook_output_examples.json"
+    md_path = ROOT / "examples/output/playbook_output_examples.md"
+    missing = [
+        path.relative_to(ROOT).as_posix()
+        for path in (json_path, md_path)
+        if not path.is_file()
+    ]
+    if missing:
+        print("missing playbook output example artifact(s): " + ", ".join(missing))
+        return 1
+
+    payload = json.loads(json_path.read_text(encoding="utf-8"))
+    if payload.get("artifact_type") != "playbook_output_examples" or payload.get("playbook_count") != 3:
+        print("playbook output examples have unexpected type or count")
+        return 1
+    required_slugs = {"quarterly-review", "catalyst-check-in", "post-earnings-thesis-refresh"}
+    slugs = {example.get("slug") for example in payload.get("examples", [])}
+    if slugs != required_slugs:
+        print("playbook output examples missing slug(s): " + ", ".join(sorted(required_slugs - slugs)))
+        return 1
+    for example in payload.get("examples", []):
+        artifacts = example.get("generated_artifacts", [])
+        if not artifacts:
+            print(f"{example.get('slug')} has no generated artifacts")
+            return 1
+        for artifact in artifacts:
+            path = artifact.get("path", "")
+            if not path.startswith("examples/output/") or not artifact.get("format") or not artifact.get("role"):
+                print(f"{example.get('slug')} has malformed generated artifact metadata")
+                return 1
+            if not (ROOT / path).is_file():
+                print(f"{example.get('slug')} points at missing artifact: {path}")
+                return 1
+    markdown = md_path.read_text(encoding="utf-8")
+    required_markers = ("Playbook Output Examples", "Quarterly Review", "Catalyst Check-In", "Selfcheck")
+    missing_markers = [marker for marker in required_markers if marker not in markdown]
+    if missing_markers:
+        print("playbook output examples markdown missing marker(s): " + ", ".join(missing_markers))
+        return 1
+    print("playbook output examples passed")
+    return 0
+
+
+def check_handoff_packet_examples() -> int:
+    print("== handoff packet examples ==", flush=True)
+    json_path = ROOT / "examples/output/handoff_packet_examples.json"
+    md_path = ROOT / "examples/output/handoff_packet_examples.md"
+    missing = [
+        path.relative_to(ROOT).as_posix()
+        for path in (json_path, md_path)
+        if not path.is_file()
+    ]
+    if missing:
+        print("missing handoff packet example artifact(s): " + ", ".join(missing))
+        return 1
+
+    payload = json.loads(json_path.read_text(encoding="utf-8"))
+    if payload.get("artifact_type") != "handoff_packet_examples" or payload.get("example_count") != 3:
+        print("handoff packet examples have unexpected type or count")
+        return 1
+    for example in payload.get("examples", []):
+        packet = example.get("packet", {})
+        if packet.get("packet_type") != "portfolio_thesis_handoff":
+            print(f"{example.get('slug')} has unexpected handoff packet type")
+            return 1
+        artifacts = packet.get("artifacts", [])
+        if len(artifacts) != 3 or artifacts[1].get("format") != "jsonl":
+            print(f"{example.get('slug')} has malformed handoff artifact metadata")
+            return 1
+        if packet.get("handoff_targets") != ["portfolio_risk_review", "thesis_ledger"]:
+            print(f"{example.get('slug')} has unexpected handoff targets")
+            return 1
+        for artifact in artifacts:
+            path = artifact.get("path", "")
+            if not path.startswith("examples/output/") or not (ROOT / path).is_file():
+                print(f"{example.get('slug')} points at missing handoff artifact: {path}")
+                return 1
+    markdown = md_path.read_text(encoding="utf-8")
+    required_markers = (
+        "Handoff Packet Examples",
+        "Quarterly Review Handoff",
+        "Catalyst Check-In Handoff",
+        "Post-Earnings Thesis Refresh Handoff",
+        "Downstream portfolio and thesis systems own exposure sizing",
+    )
+    missing_markers = [marker for marker in required_markers if marker not in markdown]
+    if missing_markers:
+        print("handoff packet examples markdown missing marker(s): " + ", ".join(missing_markers))
+        return 1
+    print("handoff packet examples passed")
+    return 0
+
+
 def _is_external_or_anchor(target: str) -> bool:
     lowered = target.lower()
     return (
@@ -248,6 +401,7 @@ def main() -> int:
         ("unit tests", [sys.executable, "-m", "unittest", "discover", "-s", "tests"]),
         ("demo", [sys.executable, "-m", "earnings_call_risk_map", "demo", "--out-dir", "examples/output"]),
         ("audit", [sys.executable, "-m", "earnings_call_risk_map", "audit"]),
+        ("release assets", [sys.executable, "-m", "earnings_call_risk_map", "release-assets"]),
         ("manifest", [sys.executable, "-m", "earnings_call_risk_map", "manifest", "--out", "release_manifest.json"]),
         ("privacy scan", [sys.executable, "scripts/privacy_scan.py"]),
         ("maturity evidence", [sys.executable, "-m", "earnings_call_risk_map", "maturity-evidence", "--out-dir", "reports/maturity"]),
@@ -273,6 +427,15 @@ def main() -> int:
             if code:
                 return code
             code = check_required_docs()
+            if code:
+                return code
+            code = check_playbooks()
+            if code:
+                return code
+            code = check_playbook_output_examples()
+            if code:
+                return code
+            code = check_handoff_packet_examples()
             if code:
                 return code
             code = check_docs_links()

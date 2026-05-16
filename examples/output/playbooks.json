@@ -1,0 +1,60 @@
+{
+  "playbook_count": 3,
+  "playbooks": [
+    {
+      "expected_artifacts": [
+        "examples/output/demo_report.md",
+        "examples/output/demo_snapshot.json",
+        "examples/output/demo_review_queue.md",
+        "examples/output/demo_compare.md",
+        "examples/output/demo_dashboard.html"
+      ],
+      "path": "examples/playbooks/quarterly-review.md",
+      "recommended_cli_sequence": [
+        "PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output",
+        "PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json --json-out examples/output/demo_snapshot.json --md-out examples/output/demo_report.md --html-out examples/output/demo_dashboard.html",
+        "PYTHONPATH=src python -m earnings_call_risk_map review-queue examples/input/demo_company.json --md-out examples/output/demo_review_queue.md --json-out examples/output/demo_review_queue.json",
+        "PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company_prior.json --json-out examples/output/demo_prior_snapshot.json",
+        "PYTHONPATH=src python -m earnings_call_risk_map compare examples/output/demo_prior_snapshot.json examples/output/demo_snapshot.json --md-out examples/output/demo_compare.md --json-out examples/output/demo_compare.json"
+      ],
+      "slug": "quarterly-review",
+      "summary": "Full quarter-end refresh from fixture validation through report, review queue, dashboard, and prior/current compare artifact.",
+      "title": "Quarterly Review"
+    },
+    {
+      "expected_artifacts": [
+        "examples/output/energy_infrastructure_report.md",
+        "examples/output/energy_infrastructure_review_queue.md",
+        "examples/output/energy_infrastructure_snapshot.json",
+        "examples/output/demo_review_queue_items.jsonl"
+      ],
+      "path": "examples/playbooks/catalyst-check-in.md",
+      "recommended_cli_sequence": [
+        "PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_energy_infrastructure.json --json-out examples/output/energy_infrastructure_snapshot.json --md-out examples/output/energy_infrastructure_report.md --html-out examples/output/energy_infrastructure_dashboard.html",
+        "PYTHONPATH=src python -m earnings_call_risk_map review-queue examples/input/demo_energy_infrastructure.json --md-out examples/output/energy_infrastructure_review_queue.md --json-out examples/output/energy_infrastructure_review_queue.json",
+        "PYTHONPATH=src python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl"
+      ],
+      "slug": "catalyst-check-in",
+      "summary": "Focused event-date review that emphasizes catalysts, stale badges, and missing evidence before an upcoming milestone.",
+      "title": "Catalyst Check-In"
+    },
+    {
+      "expected_artifacts": [
+        "examples/output/public_apple_static_case_study_report.md",
+        "examples/output/public_apple_static_case_study_review_queue.md",
+        "examples/output/public_apple_static_case_study_snapshot.json",
+        "examples/output/integration_notes.json"
+      ],
+      "path": "examples/playbooks/post-earnings-thesis-refresh.md",
+      "recommended_cli_sequence": [
+        "PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/public_apple_static_case_study.json --json-out examples/output/public_apple_static_case_study_snapshot.json --md-out examples/output/public_apple_static_case_study_report.md --html-out examples/output/public_apple_static_case_study_dashboard.html",
+        "PYTHONPATH=src python -m earnings_call_risk_map review-queue examples/input/public_apple_static_case_study.json --md-out examples/output/public_apple_static_case_study_review_queue.md --json-out examples/output/public_apple_static_case_study_review_queue.json",
+        "PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output"
+      ],
+      "slug": "post-earnings-thesis-refresh",
+      "summary": "Post-call refresh that separates management claims, analyst questions, and user synthesis before updating a thesis ledger.",
+      "title": "Post-Earnings Thesis Refresh"
+    }
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions."
+}
