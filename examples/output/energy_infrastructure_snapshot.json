@@ -1,0 +1,437 @@
+{
+  "as_of": "2026-05-15",
+  "catalyst_timeline": [
+    {
+      "date": "2026-06-30",
+      "description": "Review whether the pipeline interconnect receives final environmental clearance.",
+      "evidence_url": "https://example.com/nglp/permitting-calendar",
+      "expected_impact": "risk validation",
+      "title": "Federal permit milestone"
+    },
+    {
+      "date": "2026-07-18",
+      "description": "Updated capital plan may clarify allowed returns, recovery timing, and customer bill pressure.",
+      "evidence_url": null,
+      "expected_impact": "risk/opportunity review",
+      "title": "Rate-case filing"
+    },
+    {
+      "date": "2026-09-15",
+      "description": "Confirm whether construction progress supports the late-year commissioning target.",
+      "evidence_url": "https://example.com/nglp/project-calendar",
+      "expected_impact": "execution review",
+      "title": "LNG train mechanical completion window"
+    }
+  ],
+  "company": "Northstar Grid & LNG Partners",
+  "data_cutoff": "2026-04-25",
+  "opportunities": [
+    {
+      "date": "2026-04-25",
+      "evidence_url": null,
+      "id": "nglp-n4",
+      "opportunity_keywords": [
+        "accelerate",
+        "expand",
+        "growth",
+        "pipeline"
+      ],
+      "opportunity_level": "high",
+      "opportunity_score": 10,
+      "review_reasons": [
+        "missing evidence URL",
+        "high-impact language"
+      ],
+      "review_required": true,
+      "risk_keywords": [
+        "miss"
+      ],
+      "risk_level": "low",
+      "risk_score": 3,
+      "stale_badge": {
+        "age_days": 20,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "New take-or-pay transmission contracts expand the rate-base pipeline and may accelerate EBITDA growth once the substations enter service.",
+      "topic": "contracted growth backlog",
+      "type": "transcript_excerpt"
+    },
+    {
+      "date": "2026-04-25",
+      "direction": "positive",
+      "evidence_url": null,
+      "name": "Contracted capacity backlog",
+      "observation": "Long-term contracted pipeline supports cash flow visibility and expansion opportunity.",
+      "opportunity_keywords": [
+        "expansion",
+        "opportunity",
+        "pipeline"
+      ],
+      "opportunity_level": "high",
+      "opportunity_score": 8,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "stale_badge": {
+        "age_days": 20,
+        "label": "current",
+        "status": "current"
+      },
+      "value": "92%"
+    },
+    {
+      "date": "2026-04-25",
+      "direction": "up",
+      "evidence_url": "https://example.com/nglp/q1-2026-deck",
+      "name": "Construction work in progress",
+      "observation": "Higher capital deployed into regulated transmission and LNG expansion projects.",
+      "opportunity_keywords": [
+        "expansion"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 4,
+      "risk_keywords": [
+        "miss"
+      ],
+      "risk_level": "low",
+      "risk_score": 3,
+      "stale_badge": {
+        "age_days": 20,
+        "label": "current",
+        "status": "current"
+      },
+      "value": "$8.4B"
+    },
+    {
+      "date": "2026-01-10",
+      "evidence_url": "https://example.com/nglp/infrastructure-conference",
+      "id": "nglp-n2",
+      "opportunity_keywords": [
+        "expansion",
+        "pipeline"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 4,
+      "review_reasons": [
+        "data is stale",
+        "high-impact language"
+      ],
+      "review_required": true,
+      "risk_keywords": [
+        "delay",
+        "headwind",
+        "investigation",
+        "regulatory"
+      ],
+      "risk_level": "high",
+      "risk_score": 12,
+      "stale_badge": {
+        "age_days": 125,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "text": "Analysts asked whether a regulatory investigation into pipeline right-of-way compliance could delay the interconnect expansion or create a permitting headwind.",
+      "topic": "permitting and regulatory",
+      "type": "analyst_question"
+    },
+    {
+      "date": "2026-03-20",
+      "evidence_url": null,
+      "id": "nglp-n5",
+      "opportunity_keywords": [
+        "record"
+      ],
+      "opportunity_level": "low",
+      "opportunity_score": 2,
+      "review_reasons": [
+        "missing evidence URL"
+      ],
+      "review_required": true,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "stale_badge": {
+        "age_days": 56,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "Management highlighted a record order book and said asset-sale proceeds could reduce external equity needs, but final proceeds are still unverified.",
+      "topic": "financing plan",
+      "type": "note"
+    }
+  ],
+  "review_queue": [
+    {
+      "evidence_url": "https://example.com/nglp/infrastructure-conference",
+      "id": "nglp-n2",
+      "reasons": [
+        "data is stale",
+        "high-impact language"
+      ],
+      "topic": "permitting and regulatory"
+    },
+    {
+      "evidence_url": "https://example.com/nglp/static-project-tracker",
+      "id": "nglp-n3",
+      "reasons": [
+        "data is stale",
+        "high-impact language"
+      ],
+      "topic": "capital cost inflation"
+    },
+    {
+      "evidence_url": null,
+      "id": "nglp-n4",
+      "reasons": [
+        "missing evidence URL",
+        "high-impact language"
+      ],
+      "topic": "contracted growth backlog"
+    },
+    {
+      "evidence_url": null,
+      "id": "nglp-n5",
+      "reasons": [
+        "missing evidence URL"
+      ],
+      "topic": "financing plan"
+    }
+  ],
+  "risks": [
+    {
+      "date": "2026-01-10",
+      "evidence_url": "https://example.com/nglp/infrastructure-conference",
+      "id": "nglp-n2",
+      "opportunity_keywords": [
+        "expansion",
+        "pipeline"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 4,
+      "review_reasons": [
+        "data is stale",
+        "high-impact language"
+      ],
+      "review_required": true,
+      "risk_keywords": [
+        "delay",
+        "headwind",
+        "investigation",
+        "regulatory"
+      ],
+      "risk_level": "high",
+      "risk_score": 12,
+      "stale_badge": {
+        "age_days": 125,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "text": "Analysts asked whether a regulatory investigation into pipeline right-of-way compliance could delay the interconnect expansion or create a permitting headwind.",
+      "topic": "permitting and regulatory",
+      "type": "analyst_question"
+    },
+    {
+      "date": "2025-12-31",
+      "direction": "worse",
+      "evidence_url": "https://example.com/nglp/project-controls",
+      "name": "Project cost variance",
+      "observation": "Static KPI shows cost pressure and supply delay exposure on transformers and gas turbines.",
+      "opportunity_keywords": [],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "risk_keywords": [
+        "delay",
+        "pressure",
+        "supply"
+      ],
+      "risk_level": "high",
+      "risk_score": 8,
+      "stale_badge": {
+        "age_days": 135,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "value": "+11%"
+    },
+    {
+      "date": "2025-09-30",
+      "evidence_url": "https://example.com/nglp/static-project-tracker",
+      "id": "nglp-n3",
+      "opportunity_keywords": [],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "review_reasons": [
+        "data is stale",
+        "high-impact language"
+      ],
+      "review_required": true,
+      "risk_keywords": [
+        "margin compression",
+        "risk"
+      ],
+      "risk_level": "high",
+      "risk_score": 7,
+      "stale_badge": {
+        "age_days": 227,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "text": "Static project tracker shows steel, transformer, and contractor costs increased, creating margin compression risk if fixed-price EPC protections are exhausted.",
+      "topic": "capital cost inflation",
+      "type": "user_synthesis"
+    },
+    {
+      "date": "2026-02-01",
+      "direction": "negative",
+      "evidence_url": "https://example.com/nglp/balance-sheet",
+      "name": "Debt to capital",
+      "observation": "Elevated leverage may increase refinancing risk if rates remain high.",
+      "opportunity_keywords": [],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "risk_keywords": [
+        "risk"
+      ],
+      "risk_level": "medium",
+      "risk_score": 4,
+      "stale_badge": {
+        "age_days": 103,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "value": "63%"
+    },
+    {
+      "date": "2026-04-25",
+      "evidence_url": "https://example.com/nglp/q1-2026-call",
+      "id": "nglp-n1",
+      "opportunity_keywords": [],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "review_reasons": [],
+      "review_required": false,
+      "risk_keywords": [
+        "risk",
+        "supply"
+      ],
+      "risk_level": "medium",
+      "risk_score": 4,
+      "stale_badge": {
+        "age_days": 20,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "Management said the Gulf Coast liquefaction train remains on schedule, but construction labor availability and turbine supply remain execution risks.",
+      "topic": "project execution",
+      "type": "management_claim"
+    },
+    {
+      "date": "2026-04-25",
+      "direction": "up",
+      "evidence_url": "https://example.com/nglp/q1-2026-deck",
+      "name": "Construction work in progress",
+      "observation": "Higher capital deployed into regulated transmission and LNG expansion projects.",
+      "opportunity_keywords": [
+        "expansion"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 4,
+      "risk_keywords": [
+        "miss"
+      ],
+      "risk_level": "low",
+      "risk_score": 3,
+      "stale_badge": {
+        "age_days": 20,
+        "label": "current",
+        "status": "current"
+      },
+      "value": "$8.4B"
+    },
+    {
+      "date": "2026-04-25",
+      "evidence_url": null,
+      "id": "nglp-n4",
+      "opportunity_keywords": [
+        "accelerate",
+        "expand",
+        "growth",
+        "pipeline"
+      ],
+      "opportunity_level": "high",
+      "opportunity_score": 10,
+      "review_reasons": [
+        "missing evidence URL",
+        "high-impact language"
+      ],
+      "review_required": true,
+      "risk_keywords": [
+        "miss"
+      ],
+      "risk_level": "low",
+      "risk_score": 3,
+      "stale_badge": {
+        "age_days": 20,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "New take-or-pay transmission contracts expand the rate-base pipeline and may accelerate EBITDA growth once the substations enter service.",
+      "topic": "contracted growth backlog",
+      "type": "transcript_excerpt"
+    }
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "stale_badges": [
+    {
+      "badge": {
+        "age_days": 125,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "id": "nglp-n2",
+      "topic": "permitting and regulatory"
+    },
+    {
+      "badge": {
+        "age_days": 227,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "id": "nglp-n3",
+      "topic": "capital cost inflation"
+    },
+    {
+      "badge": {
+        "age_days": 135,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "id": "Project cost variance",
+      "topic": "Project cost variance"
+    },
+    {
+      "badge": {
+        "age_days": 103,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "id": "Debt to capital",
+      "topic": "Debt to capital"
+    }
+  ],
+  "summary": {
+    "opportunity_count": 5,
+    "review_queue_count": 4,
+    "risk_count": 7,
+    "stale_badge_count": 4
+  },
+  "ticker": "NGLP",
+  "tool_version": "0.1.0"
+}

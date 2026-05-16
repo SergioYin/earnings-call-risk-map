@@ -1,0 +1,41 @@
+# Review Queue Export: Example Systems Inc. (EXM)
+
+- As of: `2026-05-15`
+- Static data cutoff: `2026-04-30`
+- Tool version: `0.1.0`
+
+> Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
+
+## Source Boundaries
+
+- Management claims: source-provided company statements or prepared remarks; verify against filings and transcripts.
+- Analyst questions: source-provided questions or prompts; they are not treated as factual claims.
+- User synthesis: user-authored notes, tags, and deterministic tool scores; they are review prompts, not advice.
+
+## Focus
+
+- stale data
+- missing evidence
+- high-impact language
+
+## Summary
+
+- Review items: 4
+- Stale data: 2
+- Missing evidence: 2
+- High-impact language: 1
+
+## Items
+
+- **gross margin** (note): stale or unverified data; high-impact language
+  Date: `2025-11-01`; badge: `stale>90d` age=195; risk=11; opportunity=0
+  Evidence: https://example.com/exm/channel-check
+- **Inventory days** (kpi): stale or unverified data
+  Date: `2025-12-31`; badge: `stale>90d` age=135; risk=4; opportunity=0
+  Evidence: https://example.com/exm/static-kpi
+- **product launch** (transcript_excerpt): missing evidence URL
+  Date: `2026-04-30`; badge: `current` age=15; risk=0; opportunity=6
+  Evidence: missing evidence URL
+- **Next earnings report** (catalyst): missing evidence URL
+  Date: `2026-08-05`; badge: `n/a` age=n/a; risk=0; opportunity=0
+  Evidence: missing evidence URL

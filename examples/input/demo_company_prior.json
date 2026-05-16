@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1",
+  "company": "Example Systems Inc.",
+  "ticker": "EXM",
+  "as_of": "2026-02-15",
+  "data_cutoff": "2026-01-31",
+  "notes": [
+    {
+      "id": "p1",
+      "date": "2026-01-31",
+      "topic": "revenue durability",
+      "type": "transcript_excerpt",
+      "text": "Management cited growth in the enterprise pipeline.",
+      "evidence_url": "https://example.com/exm/q4-2025-call"
+    },
+    {
+      "id": "p2",
+      "date": "2026-01-31",
+      "topic": "gross margin",
+      "type": "note",
+      "text": "Margin improvement remained a target for the next fiscal year.",
+      "evidence_url": "https://example.com/exm/q4-2025-deck"
+    }
+  ],
+  "kpis": [
+    {
+      "name": "Net retention",
+      "value": "109%",
+      "direction": "up",
+      "date": "2026-01-31",
+      "observation": "Growth recovered modestly.",
+      "evidence_url": "https://example.com/exm/q4-2025-deck"
+    }
+  ],
+  "catalysts": [
+    {
+      "date": "2026-05-15",
+      "title": "Q1 earnings review",
+      "description": "Compare pipeline comments with reported growth.",
+      "expected_impact": "opportunity validation"
+    }
+  ]
+}

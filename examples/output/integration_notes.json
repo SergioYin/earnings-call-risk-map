@@ -1,0 +1,109 @@
+{
+  "integration_note_version": "0.1",
+  "source_tool": "earnings-call-risk-map",
+  "source_artifacts": [
+    "examples/output/demo_snapshot.json",
+    "examples/output/demo_review_queue.json"
+  ],
+  "notes": [
+    {
+      "id": "example-thesis-ledger-exm-gross-margin",
+      "integration": "thesis_ledger",
+      "source_artifact": "examples/output/demo_snapshot.json",
+      "as_of": "2026-05-15",
+      "subject": {
+        "ticker": "EXM",
+        "company": "Example Systems Inc."
+      },
+      "thesis_point": "gross margin",
+      "direction": "risk",
+      "signals": {
+        "score": 11,
+        "level": "high"
+      },
+      "evidence": {
+        "url": "https://example.com/exm/channel-check"
+      },
+      "freshness": {
+        "status": "stale",
+        "label": "stale>90d",
+        "age_days": 195
+      },
+      "review": {
+        "required": true,
+        "reasons": [
+          "data is stale",
+          "high-impact language"
+        ]
+      },
+      "source_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions."
+    },
+    {
+      "id": "example-thesis-ledger-exm-product-launch",
+      "integration": "thesis_ledger",
+      "source_artifact": "examples/output/demo_snapshot.json",
+      "as_of": "2026-05-15",
+      "subject": {
+        "ticker": "EXM",
+        "company": "Example Systems Inc."
+      },
+      "thesis_point": "product launch",
+      "direction": "opportunity",
+      "signals": {
+        "score": 6,
+        "level": "medium"
+      },
+      "evidence": {
+        "url": null
+      },
+      "freshness": {
+        "status": "current",
+        "label": "current",
+        "age_days": 15
+      },
+      "review": {
+        "required": true,
+        "reasons": [
+          "missing evidence URL"
+        ]
+      },
+      "source_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions."
+    },
+    {
+      "id": "example-portfolio-risk-exm-review-queue",
+      "integration": "portfolio_risk_review",
+      "source_artifact": "examples/output/demo_review_queue.json",
+      "as_of": "2026-05-15",
+      "exposure": {
+        "ticker": "EXM",
+        "company": "Example Systems Inc."
+      },
+      "issue": {
+        "title": "gross margin",
+        "categories": [
+          "stale_data",
+          "high_impact_language"
+        ],
+        "review_reasons": [
+          "stale or unverified data",
+          "high-impact language"
+        ]
+      },
+      "evidence": {
+        "url": "https://example.com/exm/channel-check"
+      },
+      "rollup": {
+        "review_item_count": 4,
+        "stale_data_count": 2,
+        "missing_evidence_count": 2,
+        "high_impact_language_count": 1
+      },
+      "review_boundaries": {
+        "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+        "analyst_questions": "source-provided questions or prompts; not treated as factual claims",
+        "user_synthesis": "user-authored notes, tags, and deterministic scoring output; review prompts, not advice"
+      },
+      "source_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions."
+    }
+  ]
+}

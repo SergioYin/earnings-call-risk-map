@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.1",
+  "company": "Example Systems Inc.",
+  "ticker": "EXM",
+  "as_of": "2026-05-15",
+  "data_cutoff": "2026-04-30",
+  "notes": [
+    {
+      "id": "n1",
+      "date": "2026-04-30",
+      "topic": "revenue durability",
+      "type": "transcript_excerpt",
+      "text": "Management described continued growth in enterprise pipeline, but noted demand pressure in one international region.",
+      "evidence_url": "https://example.com/exm/q1-2026-call"
+    },
+    {
+      "id": "n2",
+      "date": "2025-11-01",
+      "topic": "gross margin",
+      "type": "note",
+      "text": "Older channel checks flagged margin compression and supply delay risk.",
+      "evidence_url": "https://example.com/exm/channel-check"
+    },
+    {
+      "id": "n3",
+      "date": "2026-04-30",
+      "topic": "product launch",
+      "type": "transcript_excerpt",
+      "text": "The new platform launch may expand attach rates and create a tailwind in the second half."
+    }
+  ],
+  "kpis": [
+    {
+      "name": "Net retention",
+      "value": "112%",
+      "direction": "up",
+      "date": "2026-04-30",
+      "observation": "Improved versus prior quarter with growth in larger accounts.",
+      "evidence_url": "https://example.com/exm/q1-2026-deck"
+    },
+    {
+      "name": "Inventory days",
+      "value": "78",
+      "direction": "worse",
+      "date": "2025-12-31",
+      "observation": "Static data shows elevated supply exposure.",
+      "evidence_url": "https://example.com/exm/static-kpi"
+    }
+  ],
+  "catalysts": [
+    {
+      "date": "2026-06-10",
+      "title": "Investor day",
+      "description": "Management expected to update long-term margin framework.",
+      "expected_impact": "risk/opportunity review",
+      "evidence_url": "https://example.com/exm/events"
+    },
+    {
+      "date": "2026-08-05",
+      "title": "Next earnings report",
+      "description": "Review whether regional pressure persisted after quarter close.",
+      "expected_impact": "risk validation"
+    }
+  ]
+}

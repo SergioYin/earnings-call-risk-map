@@ -1,0 +1,112 @@
+{
+  "as_of": "2026-05-15",
+  "company": "Example Systems Inc.",
+  "data_cutoff": "2026-04-30",
+  "items": [
+    {
+      "date": "2025-11-01",
+      "evidence_url": "https://example.com/exm/channel-check",
+      "excerpt": "Older channel checks flagged margin compression and supply delay risk.",
+      "id": "n2",
+      "issue_categories": [
+        "stale_data",
+        "high_impact_language"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "stale or unverified data",
+        "high-impact language"
+      ],
+      "risk_level": "high",
+      "risk_score": 11,
+      "source_type": "note",
+      "stale_badge": {
+        "age_days": 195,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "topic": "gross margin"
+    },
+    {
+      "date": "2025-12-31",
+      "evidence_url": "https://example.com/exm/static-kpi",
+      "excerpt": "Static data shows elevated supply exposure.",
+      "id": "Inventory days",
+      "issue_categories": [
+        "stale_data"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "stale or unverified data"
+      ],
+      "risk_level": "medium",
+      "risk_score": 4,
+      "source_type": "kpi",
+      "stale_badge": {
+        "age_days": 135,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "topic": "Inventory days"
+    },
+    {
+      "date": "2026-04-30",
+      "evidence_url": null,
+      "excerpt": "The new platform launch may expand attach rates and create a tailwind in the second half.",
+      "id": "n3",
+      "issue_categories": [
+        "missing_evidence"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 6,
+      "reasons": [
+        "missing evidence URL"
+      ],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_type": "transcript_excerpt",
+      "stale_badge": {
+        "age_days": 15,
+        "label": "current",
+        "status": "current"
+      },
+      "topic": "product launch"
+    },
+    {
+      "date": "2026-08-05",
+      "evidence_url": null,
+      "excerpt": "Review whether regional pressure persisted after quarter close.",
+      "id": "catalyst:2026-08-05:Next earnings report",
+      "issue_categories": [
+        "missing_evidence"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "missing evidence URL"
+      ],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_type": "catalyst",
+      "stale_badge": null,
+      "topic": "Next earnings report"
+    }
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "summary": {
+    "high_impact_language_count": 1,
+    "missing_evidence_count": 2,
+    "review_item_count": 4,
+    "stale_data_count": 2
+  },
+  "ticker": "EXM",
+  "tool_version": "0.1.0"
+}

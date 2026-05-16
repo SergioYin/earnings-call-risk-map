@@ -1,0 +1,229 @@
+{
+  "as_of": "2026-05-15",
+  "catalyst_timeline": [
+    {
+      "date": "2026-06-10",
+      "description": "Management expected to update long-term margin framework.",
+      "evidence_url": "https://example.com/exm/events",
+      "expected_impact": "risk/opportunity review",
+      "title": "Investor day"
+    },
+    {
+      "date": "2026-08-05",
+      "description": "Review whether regional pressure persisted after quarter close.",
+      "evidence_url": null,
+      "expected_impact": "risk validation",
+      "title": "Next earnings report"
+    }
+  ],
+  "company": "Example Systems Inc.",
+  "data_cutoff": "2026-04-30",
+  "opportunities": [
+    {
+      "date": "2026-04-30",
+      "evidence_url": null,
+      "id": "n3",
+      "opportunity_keywords": [
+        "expand",
+        "launch",
+        "tailwind"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 6,
+      "review_reasons": [
+        "missing evidence URL"
+      ],
+      "review_required": true,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "stale_badge": {
+        "age_days": 15,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "The new platform launch may expand attach rates and create a tailwind in the second half.",
+      "topic": "product launch",
+      "type": "transcript_excerpt"
+    },
+    {
+      "date": "2026-04-30",
+      "direction": "up",
+      "evidence_url": "https://example.com/exm/q1-2026-deck",
+      "name": "Net retention",
+      "observation": "Improved versus prior quarter with growth in larger accounts.",
+      "opportunity_keywords": [
+        "growth"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 5,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "stale_badge": {
+        "age_days": 15,
+        "label": "current",
+        "status": "current"
+      },
+      "value": "112%"
+    },
+    {
+      "date": "2026-04-30",
+      "evidence_url": "https://example.com/exm/q1-2026-call",
+      "id": "n1",
+      "opportunity_keywords": [
+        "growth",
+        "pipeline"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 5,
+      "review_reasons": [],
+      "review_required": false,
+      "risk_keywords": [
+        "pressure"
+      ],
+      "risk_level": "low",
+      "risk_score": 2,
+      "stale_badge": {
+        "age_days": 15,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "Management described continued growth in enterprise pipeline, but noted demand pressure in one international region.",
+      "topic": "revenue durability",
+      "type": "transcript_excerpt"
+    }
+  ],
+  "review_queue": [
+    {
+      "evidence_url": "https://example.com/exm/channel-check",
+      "id": "n2",
+      "reasons": [
+        "data is stale",
+        "high-impact language"
+      ],
+      "topic": "gross margin"
+    },
+    {
+      "evidence_url": null,
+      "id": "n3",
+      "reasons": [
+        "missing evidence URL"
+      ],
+      "topic": "product launch"
+    }
+  ],
+  "risks": [
+    {
+      "date": "2025-11-01",
+      "evidence_url": "https://example.com/exm/channel-check",
+      "id": "n2",
+      "opportunity_keywords": [],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "review_reasons": [
+        "data is stale",
+        "high-impact language"
+      ],
+      "review_required": true,
+      "risk_keywords": [
+        "delay",
+        "margin compression",
+        "risk",
+        "supply"
+      ],
+      "risk_level": "high",
+      "risk_score": 11,
+      "stale_badge": {
+        "age_days": 195,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "text": "Older channel checks flagged margin compression and supply delay risk.",
+      "topic": "gross margin",
+      "type": "note"
+    },
+    {
+      "date": "2025-12-31",
+      "direction": "worse",
+      "evidence_url": "https://example.com/exm/static-kpi",
+      "name": "Inventory days",
+      "observation": "Static data shows elevated supply exposure.",
+      "opportunity_keywords": [],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "risk_keywords": [
+        "supply"
+      ],
+      "risk_level": "medium",
+      "risk_score": 4,
+      "stale_badge": {
+        "age_days": 135,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "value": "78"
+    },
+    {
+      "date": "2026-04-30",
+      "evidence_url": "https://example.com/exm/q1-2026-call",
+      "id": "n1",
+      "opportunity_keywords": [
+        "growth",
+        "pipeline"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 5,
+      "review_reasons": [],
+      "review_required": false,
+      "risk_keywords": [
+        "pressure"
+      ],
+      "risk_level": "low",
+      "risk_score": 2,
+      "stale_badge": {
+        "age_days": 15,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "Management described continued growth in enterprise pipeline, but noted demand pressure in one international region.",
+      "topic": "revenue durability",
+      "type": "transcript_excerpt"
+    }
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "stale_badges": [
+    {
+      "badge": {
+        "age_days": 195,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "id": "n2",
+      "topic": "gross margin"
+    },
+    {
+      "badge": {
+        "age_days": 135,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "id": "Inventory days",
+      "topic": "Inventory days"
+    }
+  ],
+  "summary": {
+    "opportunity_count": 3,
+    "review_queue_count": 2,
+    "risk_count": 3,
+    "stale_badge_count": 2
+  },
+  "ticker": "EXM",
+  "tool_version": "0.1.0"
+}

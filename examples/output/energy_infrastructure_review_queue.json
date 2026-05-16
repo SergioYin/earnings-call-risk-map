@@ -1,0 +1,212 @@
+{
+  "as_of": "2026-05-15",
+  "company": "Northstar Grid & LNG Partners",
+  "data_cutoff": "2026-04-25",
+  "items": [
+    {
+      "date": "2026-01-10",
+      "evidence_url": "https://example.com/nglp/infrastructure-conference",
+      "excerpt": "Analysts asked whether a regulatory investigation into pipeline right-of-way compliance could delay the interconnect expansion or create a permitting headwind.",
+      "id": "nglp-n2",
+      "issue_categories": [
+        "stale_data",
+        "high_impact_language"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 4,
+      "reasons": [
+        "stale or unverified data",
+        "high-impact language"
+      ],
+      "risk_level": "high",
+      "risk_score": 12,
+      "source_type": "analyst_question",
+      "stale_badge": {
+        "age_days": 125,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "topic": "permitting and regulatory"
+    },
+    {
+      "date": "2025-12-31",
+      "evidence_url": "https://example.com/nglp/project-controls",
+      "excerpt": "Static KPI shows cost pressure and supply delay exposure on transformers and gas turbines.",
+      "id": "Project cost variance",
+      "issue_categories": [
+        "stale_data",
+        "high_impact_language"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "stale or unverified data",
+        "high-impact language"
+      ],
+      "risk_level": "high",
+      "risk_score": 8,
+      "source_type": "kpi",
+      "stale_badge": {
+        "age_days": 135,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "topic": "Project cost variance"
+    },
+    {
+      "date": "2025-09-30",
+      "evidence_url": "https://example.com/nglp/static-project-tracker",
+      "excerpt": "Static project tracker shows steel, transformer, and contractor costs increased, creating margin compression risk if fixed-price EPC protections are exhausted.",
+      "id": "nglp-n3",
+      "issue_categories": [
+        "stale_data",
+        "high_impact_language"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "stale or unverified data",
+        "high-impact language"
+      ],
+      "risk_level": "high",
+      "risk_score": 7,
+      "source_type": "user_synthesis",
+      "stale_badge": {
+        "age_days": 227,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "topic": "capital cost inflation"
+    },
+    {
+      "date": "2026-04-25",
+      "evidence_url": null,
+      "excerpt": "New take-or-pay transmission contracts expand the rate-base pipeline and may accelerate EBITDA growth once the substations enter service.",
+      "id": "nglp-n4",
+      "issue_categories": [
+        "missing_evidence",
+        "high_impact_language"
+      ],
+      "opportunity_level": "high",
+      "opportunity_score": 10,
+      "reasons": [
+        "missing evidence URL",
+        "high-impact language"
+      ],
+      "risk_level": "low",
+      "risk_score": 3,
+      "source_type": "transcript_excerpt",
+      "stale_badge": {
+        "age_days": 20,
+        "label": "current",
+        "status": "current"
+      },
+      "topic": "contracted growth backlog"
+    },
+    {
+      "date": "2026-04-25",
+      "evidence_url": null,
+      "excerpt": "Long-term contracted pipeline supports cash flow visibility and expansion opportunity.",
+      "id": "Contracted capacity backlog",
+      "issue_categories": [
+        "missing_evidence",
+        "high_impact_language"
+      ],
+      "opportunity_level": "high",
+      "opportunity_score": 8,
+      "reasons": [
+        "missing evidence URL",
+        "high-impact language"
+      ],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_type": "kpi",
+      "stale_badge": {
+        "age_days": 20,
+        "label": "current",
+        "status": "current"
+      },
+      "topic": "Contracted capacity backlog"
+    },
+    {
+      "date": "2026-02-01",
+      "evidence_url": "https://example.com/nglp/balance-sheet",
+      "excerpt": "Elevated leverage may increase refinancing risk if rates remain high.",
+      "id": "Debt to capital",
+      "issue_categories": [
+        "stale_data"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "stale or unverified data"
+      ],
+      "risk_level": "medium",
+      "risk_score": 4,
+      "source_type": "kpi",
+      "stale_badge": {
+        "age_days": 103,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "topic": "Debt to capital"
+    },
+    {
+      "date": "2026-03-20",
+      "evidence_url": null,
+      "excerpt": "Management highlighted a record order book and said asset-sale proceeds could reduce external equity needs, but final proceeds are still unverified.",
+      "id": "nglp-n5",
+      "issue_categories": [
+        "missing_evidence"
+      ],
+      "opportunity_level": "low",
+      "opportunity_score": 2,
+      "reasons": [
+        "missing evidence URL"
+      ],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_type": "note",
+      "stale_badge": {
+        "age_days": 56,
+        "label": "current",
+        "status": "current"
+      },
+      "topic": "financing plan"
+    },
+    {
+      "date": "2026-07-18",
+      "evidence_url": null,
+      "excerpt": "Updated capital plan may clarify allowed returns, recovery timing, and customer bill pressure.",
+      "id": "catalyst:2026-07-18:Rate-case filing",
+      "issue_categories": [
+        "missing_evidence"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "missing evidence URL"
+      ],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_type": "catalyst",
+      "stale_badge": null,
+      "topic": "Rate-case filing"
+    }
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "summary": {
+    "high_impact_language_count": 5,
+    "missing_evidence_count": 4,
+    "review_item_count": 8,
+    "stale_data_count": 4
+  },
+  "ticker": "NGLP",
+  "tool_version": "0.1.0"
+}
