@@ -1,0 +1,84 @@
+{
+  "artifact_type": "demo_screenshot_guide",
+  "best_screenshot_targets": [
+    {
+      "path": "examples/output/public_apple_static_case_study_dashboard.html",
+      "use": "Best primary README screenshot. It shows the static public-source case study, source attribution, stale/static labels, risk and opportunity panels, review queue signals, and the non-advice boundary."
+    },
+    {
+      "path": "examples/output/demo_dashboard.html",
+      "use": "Good compact fallback when the README needs a smaller software-style fixture."
+    },
+    {
+      "path": "examples/output/energy_infrastructure_dashboard.html",
+      "use": "Good sector-contrast screenshot for capital projects, catalysts, and stale/static project data."
+    },
+    {
+      "path": "examples/output/consumer_hardware_dashboard.html",
+      "use": "Good sector-contrast screenshot for hardware launch, supply chain, inventory, and margin review examples."
+    },
+    {
+      "path": "examples/output/semiconductor_equipment_dashboard.html",
+      "use": "Good sector-contrast screenshot for backlog, export control, China exposure, and equipment-cycle examples."
+    },
+    {
+      "path": "docs/assets/showcase-dashboard-preview.svg",
+      "use": "Best PNG-free README visual when the repository page should render without a browser screenshot file."
+    },
+    {
+      "path": "examples/output/showcase_dashboard_preview.svg",
+      "use": "Best release artifact copy of the PNG-free preview SVG."
+    },
+    {
+      "path": "docs/demo-index.html",
+      "use": "Good overview screenshot for the local static demo launcher and bundled artifacts."
+    }
+  ],
+  "boundaries": [
+    "Do not use screenshots to imply live market data.",
+    "Do not use screenshots to imply real-time monitoring, price targets, buy/sell/hold recommendations, or personalized investment advice.",
+    "Preserve stale/static badges, source attribution, and the visible non-advice notice."
+  ],
+  "goal": "Choose generated artifacts for README visuals, release notes, gallery pages, or a public demo page without implying live data or investment advice.",
+  "good_readme_visuals": [
+    "Static HTML dashboards that can be opened directly from disk.",
+    "The PNG-free preview SVG when a stable README image is better than a manually captured screenshot.",
+    "A short crop of `examples/output/demo_review_queue.md` or `examples/output/public_apple_static_case_study_review_queue.md` for human review handoff.",
+    "A short crop of `examples/output/demo_compare.md` for deterministic prior-vs-current comparison.",
+    "A short crop of `examples/output/case_study_map.md` for bundled fixtures and sector coverage.",
+    "A short crop of `examples/output/handoff_packet.md` for downstream thesis-ledger or portfolio-risk handoff.",
+    "A short crop of `examples/output/promotion_pack.md` for a release page or external project listing."
+  ],
+  "less_useful_visuals": [
+    "examples/output/*_snapshot.json",
+    "examples/output/*_review_queue.json",
+    "examples/output/demo_review_queue_items.jsonl",
+    "examples/output/release_manifest.json",
+    "examples/output/package_audit.json",
+    "examples/output/doctor.json",
+    "docs/schema-reference.json"
+  ],
+  "related_docs": [
+    "docs/pages-demo.md",
+    "docs/gallery.md",
+    "docs/promotion-page-outline.md",
+    "docs/source-attribution-guide.md",
+    "docs/non-advice-boundary.md"
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "screenshot_framing": {
+    "dashboard": [
+      "Capture the top of the dashboard through the summary tiles.",
+      "Keep the static educational case-study warning or non-advice notice visible.",
+      "Include source attribution or stale/static labels when space allows.",
+      "Include the review queue panel when the screenshot is meant to explain analyst handoff.",
+      "Use a browser window wide enough that summary tiles and risk panels are legible."
+    ],
+    "markdown": [
+      "Use sections with headings, counts, artifact paths, source-boundary notes, or review queue items.",
+      "Keep crops short enough for README readability.",
+      "Prefer generated Markdown artifacts over manually rewritten summaries."
+    ]
+  },
+  "source_doc": "docs/demo-screenshot-guide.md"
+}

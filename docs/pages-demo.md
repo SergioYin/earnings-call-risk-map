@@ -16,7 +16,7 @@ Open one of these files directly in a browser:
 - `examples/output/energy_infrastructure_dashboard.html`
 - `examples/output/public_apple_static_case_study_dashboard.html`
 
-For a Pages-style preview, use the same files as static artifacts. The repository also includes a PNG-free screenshot substitute at `docs/assets/showcase-dashboard-preview.svg` and a release artifact copy at `examples/output/showcase_dashboard_preview.svg`.
+For a Pages-style preview, use the same files as static artifacts. The repository also includes a PNG-free screenshot substitute at `docs/assets/showcase-dashboard-preview.svg` and a release artifact copy at `examples/output/showcase_dashboard_preview.svg`. See [Demo Screenshot Guide](demo-screenshot-guide.md) for README visual choices across generated HTML, SVG, and Markdown artifacts.
 
 ## What To Screenshot
 

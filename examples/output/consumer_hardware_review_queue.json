@@ -1,0 +1,92 @@
+{
+  "as_of": "2024-05-01",
+  "company": "Logitech International S.A. Public-Source Consumer Hardware Fixture",
+  "data_cutoff": "2024-04-29",
+  "items": [
+    {
+      "date": "2024-04-29",
+      "evidence_url": "https://ir.logitech.com/press-releases/press-release-details/2024/Logitech-Announces-Q4-and-Full-Fiscal-Year-2024-Results/default.aspx",
+      "excerpt": "Forward-looking risk language cited demand variability, supply chain challenges, logistics delay, tariffs, and competitive pressure as factors that could affect results.",
+      "id": "logi-demand-supply-risks",
+      "issue_categories": [
+        "high_impact_language"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "high-impact language"
+      ],
+      "risk_level": "high",
+      "risk_score": 8,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "Logitech Investor Relations",
+          "source_name": "Logitech Q4 FY2024 results release",
+          "source_type": "company_investor_relations",
+          "source_url": "https://ir.logitech.com/press-releases/press-release-details/2024/Logitech-Announces-Q4-and-Full-Fiscal-Year-2024-Results/default.aspx",
+          "static_notice": "Static public-source risk-language excerpt; verify against the original release."
+        }
+      ],
+      "source_type": "company_risk_language",
+      "stale_badge": {
+        "age_days": 2,
+        "label": "current",
+        "status": "current"
+      },
+      "topic": "demand and supply chain"
+    }
+  ],
+  "prioritization": {
+    "human_handoff": [
+      "verify stale data against current source documents before treating it as resolved or material",
+      "fill or reject missing evidence URLs with source-specific reviewer notes",
+      "send high-impact or multi-issue items to portfolio-risk or thesis-ledger owners for approval workflow"
+    ],
+    "ordered_by": [
+      "items with more review issue categories first",
+      "higher risk score next",
+      "higher opportunity score next",
+      "topic and id as deterministic tie-breakers"
+    ],
+    "severity_stale_interaction": [
+      "high-impact language is triggered by risk or opportunity score >= 7",
+      "stale or unverified dates add a stale_data issue category and keep the stale badge visible",
+      "stale note data can add +1 to risk severity before high-impact review checks",
+      "stale-only items can rank below current items that combine missing evidence with high-impact language"
+    ]
+  },
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_attribution": [
+    {
+      "accessed_at": "2026-05-17",
+      "publisher": "Logitech Investor Relations",
+      "source_name": "Logitech Announces Q4 and Full Fiscal Year 2024 Results",
+      "source_type": "company_investor_relations",
+      "source_url": "https://ir.logitech.com/press-releases/press-release-details/2024/Logitech-Announces-Q4-and-Full-Fiscal-Year-2024-Results/default.aspx",
+      "static_notice": "Static educational fixture assembled from a public company release; not live data."
+    },
+    {
+      "accessed_at": "2026-05-17",
+      "publisher": "Logitech Investor Relations",
+      "source_name": "Logitech Q4 FY2024 shareholder letter",
+      "source_type": "shareholder_letter",
+      "source_url": "https://ir.logitech.com/files/financials/2024/q4/Logitech_Q4-2024_Shareholder-Letter.pdf",
+      "static_notice": "Static educational fixture assembled from a public shareholder letter; not live data."
+    }
+  ],
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "summary": {
+    "high_impact_language_count": 1,
+    "missing_evidence_count": 0,
+    "review_item_count": 1,
+    "stale_data_count": 0
+  },
+  "ticker": "LOGI",
+  "tool_version": "0.8.0"
+}

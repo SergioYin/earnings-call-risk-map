@@ -2,7 +2,7 @@
 
 - As of: `2026-05-15`
 - Static data cutoff: `2026-04-30`
-- Tool version: `0.6.0`
+- Tool version: `0.8.0`
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
 
@@ -28,6 +28,25 @@
 - Stale data: 2
 - Missing evidence: 2
 - High-impact language: 1
+
+## Prioritization
+
+Ordering:
+- items with more review issue categories first
+- higher risk score next
+- higher opportunity score next
+- topic and id as deterministic tie-breakers
+
+Severity and stale badges:
+- high-impact language is triggered by risk or opportunity score >= 7
+- stale or unverified dates add a stale_data issue category and keep the stale badge visible
+- stale note data can add +1 to risk severity before high-impact review checks
+- stale-only items can rank below current items that combine missing evidence with high-impact language
+
+Human handoff:
+- verify stale data against current source documents before treating it as resolved or material
+- fill or reject missing evidence URLs with source-specific reviewer notes
+- send high-impact or multi-issue items to portfolio-risk or thesis-ledger owners for approval workflow
 
 ## Items
 

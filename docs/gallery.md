@@ -6,8 +6,11 @@ The repository includes deterministic artifacts under `examples/output/` for qui
 
 - [Dashboards](#dashboards)
 - [Reports And Queues](#reports-and-queues)
+- [Case Study Map](#case-study-map)
 - [Compare Example](#compare-example)
 - [Integration Examples](#integration-examples)
+- [Promotion Page Assets](#promotion-page-assets)
+- [Roadmap Use Cases](#roadmap-use-cases)
 
 ## Dashboards
 
@@ -17,7 +20,7 @@ The repository includes deterministic artifacts under `examples/output/` for qui
 - `examples/output/showcase_dashboard_preview.svg`: PNG-free static dashboard preview for release pages and screenshots.
 - `docs/assets/showcase-dashboard-preview.svg`: documentation asset copy of the static dashboard preview.
 
-See `docs/pages-demo.md` for local static HTML viewing and screenshot framing guidance.
+See `docs/pages-demo.md` for local static HTML viewing and `docs/demo-screenshot-guide.md` for screenshot and README visual guidance.
 
 ## Reports And Queues
 
@@ -38,10 +41,28 @@ See `docs/pages-demo.md` for local static HTML viewing and screenshot framing gu
 - `examples/output/handoff_packet_examples.md` and `examples/output/handoff_packet_examples.json`: deterministic handoff packet variants for quarterly review, catalyst check-in, and post-earnings thesis refresh.
 - `examples/output/playbook_output_examples.md` and `examples/output/playbook_output_examples.json`: generated artifact inventory for each research playbook with regeneration and selfcheck commands.
 - `examples/output/fixture_catalog.md`: bundled fixture catalog with tickers, data cutoffs, static/live status, and recommended commands.
+- `examples/output/semiconductor_equipment_report/fixture_summary/fixture_summary.md` and `examples/output/semiconductor_equipment_report/fixture_summary/fixture_summary.json`: compact source-type, stale-badge, source-boundary, and count summaries for the semiconductor equipment fixture.
+- `examples/output/risk_language_taxonomy.md`: generated Markdown taxonomy for deterministic score bands, high-impact language, stale or missing-evidence priority, and human review boundaries.
+- `examples/output/template_catalog.md` and `examples/output/template_catalog.json`: reusable blank template catalog with recommended fields and starter commands.
+- `examples/output/command_cheat_sheet.md` and `examples/output/command_cheat_sheet.json`: lightweight list of every public CLI command and its short purpose.
+
+## Case Study Map
+
+- `examples/output/case_study_map.md`: human-readable map from each bundled fixture to its target sector, useful reviewer question, and generated reports, dashboards, snapshots, and review queues.
+- `examples/output/case_study_map.json`: machine-readable companion for docs, release checks, and downstream artifact discovery.
+- `docs/case-study-map.md`: documentation page for how to use the fixture map alongside fixture catalogs and static-source limitations.
 
 ## Compare Example
 
 The compare example uses `examples/input/demo_company_prior.json` as the earlier snapshot and `examples/input/demo_company.json` as the later snapshot. Positive risk or opportunity deltas mean the later snapshot triggered more deterministic keyword score for that topic; negative deltas mean less score. The interpretation section is a reading aid for reviewer triage, not a claim that the company's risk profile improved or worsened.
+
+For a software-vs-energy infrastructure contrast, generate `examples/output/demo_snapshot.json` and `examples/output/energy_infrastructure_snapshot.json`, then run:
+
+```bash
+PYTHONPATH=src python -m earnings_call_risk_map compare examples/output/demo_snapshot.json examples/output/energy_infrastructure_snapshot.json --md-out examples/output/software_vs_energy_compare.md --json-out examples/output/software_vs_energy_compare.json
+```
+
+Treat this as a cross-fixture comparison of checked-in inputs. Higher or lower score movement can come from different domain language, source dates, project catalysts, capital intensity, missing evidence, or stale/static badges. It is not an investment ranking and should not be restated as buy, sell, hold, allocation, valuation, or sector-rotation advice.
 
 ## Integration Examples
 
@@ -49,3 +70,16 @@ The compare example uses `examples/input/demo_company_prior.json` as the earlier
 - `examples/output/demo_review_queue_items.jsonl`: checklist handoff with one `review_queue_item` JSON object per line.
 - `examples/output/handoff_packet.json`: deterministic packet for adjacent portfolio/thesis systems that need artifact paths plus source and non-advice cautions.
 - `examples/output/handoff_packet_examples.json`: multiple packet examples for downstream systems that want playbook-specific routing samples.
+
+## Promotion Page Assets
+
+Use [Promotion Page Outline](promotion-page-outline.md) when preparing a public landing page, README badge link, or release-page description. It lists the dashboard, preview SVG, review queue, compare report, public static case-study report, handoff packet, and fixture map artifacts that are appropriate to screenshot.
+
+Use [Demo Screenshot Guide](demo-screenshot-guide.md) to choose generated HTML, SVG, and Markdown artifacts for screenshots or README visuals without implying live data or investment advice.
+
+- [examples/output/promotion_pack.md](../examples/output/promotion_pack.md): public promotion pack with quickstart commands, demo artifact links, proof commands, and non-advice boundaries.
+- [examples/output/promotion_pack.json](../examples/output/promotion_pack.json): machine-readable companion for release pages, galleries, and downstream packaging checks.
+
+## Roadmap Use Cases
+
+For v0.7+ integration ideas, project boundaries, and star-worthy use cases, see [Roadmap](roadmap.md). The gallery artifacts are intended to support those use cases without adding live data, hosted services, or advice-producing workflows.

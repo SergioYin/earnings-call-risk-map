@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1",
+  "company": "Consumer Hardware Earnings Review Template",
+  "ticker": "HARDWARE-TEMPLATE",
+  "as_of": "2026-01-01",
+  "data_cutoff": "2026-01-01",
+  "notes": [
+    {
+      "id": "hardware-note-1",
+      "date": "2026-01-01",
+      "topic": "product demand",
+      "type": "management_claim",
+      "text": "",
+      "evidence_url": ""
+    },
+    {
+      "id": "hardware-note-2",
+      "date": "2026-01-01",
+      "topic": "channel inventory",
+      "type": "analyst_question",
+      "text": "",
+      "evidence_url": ""
+    },
+    {
+      "id": "hardware-note-3",
+      "date": "2026-01-01",
+      "topic": "supply chain and margin watchlist",
+      "type": "user_synthesis",
+      "text": "",
+      "evidence_url": ""
+    }
+  ],
+  "kpis": [
+    {
+      "name": "Units shipped",
+      "value": "",
+      "direction": "",
+      "date": "2026-01-01",
+      "observation": "",
+      "evidence_url": ""
+    },
+    {
+      "name": "Channel inventory",
+      "value": "",
+      "direction": "",
+      "date": "2026-01-01",
+      "observation": "",
+      "evidence_url": ""
+    },
+    {
+      "name": "Gross margin",
+      "value": "",
+      "direction": "",
+      "date": "2026-01-01",
+      "observation": "",
+      "evidence_url": ""
+    },
+    {
+      "name": "Warranty accrual",
+      "value": "",
+      "direction": "",
+      "date": "2026-01-01",
+      "observation": "",
+      "evidence_url": ""
+    }
+  ],
+  "catalysts": [
+    {
+      "date": "2026-01-01",
+      "title": "Product launch window",
+      "description": "",
+      "expected_impact": "",
+      "evidence_url": ""
+    },
+    {
+      "date": "2026-01-01",
+      "title": "Holiday or seasonal demand update",
+      "description": "",
+      "expected_impact": "",
+      "evidence_url": ""
+    }
+  ]
+}

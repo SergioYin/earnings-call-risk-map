@@ -1,0 +1,120 @@
+{
+  "artifact_type": "case_study_map",
+  "case_studies": [
+    {
+      "fixture": "examples/input/demo_company.json",
+      "generated_artifacts": [
+        "examples/output/demo_report.md",
+        "examples/output/demo_snapshot.json",
+        "examples/output/demo_review_queue.md",
+        "examples/output/demo_review_queue.json",
+        "examples/output/demo_review_queue_items.jsonl",
+        "examples/output/demo_dashboard.html"
+      ],
+      "target_sector": "Software and enterprise platform",
+      "useful_question": "Which software risks need review after a mixed enterprise-demand and margin update?"
+    },
+    {
+      "fixture": "examples/input/demo_company_prior.json",
+      "generated_artifacts": [
+        "examples/output/demo_prior_report.md",
+        "examples/output/demo_prior_snapshot.json",
+        "examples/output/demo_compare.md",
+        "examples/output/demo_compare.json"
+      ],
+      "target_sector": "Software and enterprise platform prior-period baseline",
+      "useful_question": "What changed between the prior software baseline and the current demo company fixture?"
+    },
+    {
+      "fixture": "examples/input/demo_energy_infrastructure.json",
+      "generated_artifacts": [
+        "examples/output/energy_infrastructure_report.md",
+        "examples/output/energy_infrastructure_snapshot.json",
+        "examples/output/energy_infrastructure_review_queue.md",
+        "examples/output/energy_infrastructure_review_queue.json",
+        "examples/output/energy_infrastructure_dashboard.html"
+      ],
+      "target_sector": "Energy infrastructure, regulated assets, and large capital projects",
+      "useful_question": "Which project execution, financing, permitting, and backlog items deserve follow-up before the next infrastructure review?"
+    },
+    {
+      "fixture": "examples/input/consumer_hardware.json",
+      "generated_artifacts": [
+        "examples/output/consumer_hardware_report.md",
+        "examples/output/consumer_hardware_snapshot.json",
+        "examples/output/consumer_hardware_review_queue.md",
+        "examples/output/consumer_hardware_review_queue.json",
+        "examples/output/consumer_hardware_dashboard.html"
+      ],
+      "target_sector": "Consumer hardware and device supply chains",
+      "useful_question": "Which demand, channel, supply-chain, and revenue-growth items require reviewer attention in a hardware case study?"
+    },
+    {
+      "fixture": "examples/input/semiconductor_equipment.json",
+      "generated_artifacts": [
+        "examples/output/semiconductor_equipment_report.md",
+        "examples/output/semiconductor_equipment_snapshot.json",
+        "examples/output/semiconductor_equipment_review_queue.md",
+        "examples/output/semiconductor_equipment_review_queue.json",
+        "examples/output/semiconductor_equipment_dashboard.html",
+        "examples/output/semiconductor_equipment_report/report.md",
+        "examples/output/semiconductor_equipment_report/dashboard/dashboard.html",
+        "examples/output/semiconductor_equipment_report/review_queue/review_queue.md",
+        "examples/output/semiconductor_equipment_report/review_queue/review_queue.json",
+        "examples/output/semiconductor_equipment_report/snapshot/snapshot.json",
+        "examples/output/semiconductor_equipment_report/fixture_summary/fixture_summary.md",
+        "examples/output/semiconductor_equipment_report/fixture_summary/fixture_summary.json"
+      ],
+      "target_sector": "Semiconductor equipment and capital equipment cycles",
+      "useful_question": "How should reviewers triage net sales, gross margin, bookings, backlog, demand timing, and export-control risk in a semiconductor equipment case study?"
+    },
+    {
+      "fixture": "examples/input/public_apple_static_case_study.json",
+      "generated_artifacts": [
+        "examples/output/public_apple_static_case_study_report.md",
+        "examples/output/public_apple_static_case_study_snapshot.json",
+        "examples/output/public_apple_static_case_study_review_queue.md",
+        "examples/output/public_apple_static_case_study_review_queue.json",
+        "examples/output/public_apple_static_case_study_dashboard.html"
+      ],
+      "target_sector": "Consumer hardware, services, and mega-cap public-source case study",
+      "useful_question": "Which static public-source Apple revenue, services, and risk-factor signals should be reviewed without treating the fixture as live analysis?"
+    },
+    {
+      "fixture": "examples/input/sample_filled_template_workflow.json",
+      "generated_artifacts": [
+        "examples/output/sample_filled_template_report.md",
+        "examples/output/sample_filled_template_snapshot.json",
+        "examples/output/sample_filled_template_review_queue.md",
+        "examples/output/sample_filled_template_review_queue.json"
+      ],
+      "target_sector": "Filled software template workflow",
+      "useful_question": "How does a completed blank template become a report, snapshot, and review queue for a software-style earnings review?"
+    }
+  ],
+  "fixture_count": 7,
+  "regenerate_commands": [
+    "PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output",
+    "PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/semiconductor_equipment.json --json-out examples/output/semiconductor_equipment_report/snapshot/snapshot.json --md-out examples/output/semiconductor_equipment_report/report.md --html-out examples/output/semiconductor_equipment_report/dashboard/dashboard.html"
+  ],
+  "related_docs": [
+    "docs/fixture-catalog.md",
+    "docs/case-study-limitations.md",
+    "examples/output/examples_index.md"
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "shared_generated_artifacts": [
+    "examples/output/fixture_catalog.md",
+    "examples/output/examples_index.md",
+    "examples/output/examples_index.json",
+    "examples/output/handoff_packet.md",
+    "examples/output/handoff_packet.json",
+    "examples/output/handoff_packet_examples.md",
+    "examples/output/handoff_packet_examples.json",
+    "examples/output/playbook_output_examples.md",
+    "examples/output/playbook_output_examples.json",
+    "examples/output/release_manifest.json",
+    "examples/output/showcase_dashboard_preview.svg"
+  ]
+}

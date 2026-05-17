@@ -1,0 +1,178 @@
+{
+  "artifact_type": "template_catalog",
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "template_count": 3,
+  "templates": [
+    {
+      "path": "examples/templates/software_earnings_review.json",
+      "purpose": "SaaS, cloud, platform, or other software earnings review starting point.",
+      "recommended_commands": [
+        "earnings-call-risk-map analyze examples/templates/software_earnings_review.json",
+        "earnings-call-risk-map review-queue examples/templates/software_earnings_review.json --md-out examples/output/software_template_review_queue.md --json-out examples/output/software_template_review_queue.json",
+        "earnings-call-risk-map analyze examples/templates/software_earnings_review.json --json-out examples/output/software_template_snapshot.json --md-out examples/output/software_template_report.md"
+      ],
+      "recommended_fields": {
+        "catalyst_fields": [
+          "date",
+          "description",
+          "evidence_url",
+          "expected_impact",
+          "title"
+        ],
+        "catalyst_titles": [
+          "Next earnings report",
+          "Investor day or product launch"
+        ],
+        "kpi_fields": [
+          "date",
+          "direction",
+          "evidence_url",
+          "name",
+          "observation",
+          "value"
+        ],
+        "kpi_names": [
+          "Revenue growth",
+          "Net retention",
+          "Gross margin"
+        ],
+        "note_fields": [
+          "date",
+          "evidence_url",
+          "id",
+          "text",
+          "topic",
+          "type"
+        ],
+        "note_topics": [
+          "revenue durability",
+          "enterprise demand",
+          "margin and retention watchlist"
+        ],
+        "top_level": [
+          "company",
+          "ticker",
+          "as_of",
+          "data_cutoff"
+        ]
+      },
+      "slug": "software",
+      "title": "Software Earnings Review"
+    },
+    {
+      "path": "examples/templates/energy_infrastructure_earnings_review.json",
+      "purpose": "Capital-intensive utility, energy infrastructure, project, or regulated-asset review starting point.",
+      "recommended_commands": [
+        "earnings-call-risk-map analyze examples/templates/energy_infrastructure_earnings_review.json",
+        "earnings-call-risk-map review-queue examples/templates/energy_infrastructure_earnings_review.json --md-out examples/output/energy_infrastructure_template_review_queue.md --json-out examples/output/energy_infrastructure_template_review_queue.json",
+        "earnings-call-risk-map analyze examples/templates/energy_infrastructure_earnings_review.json --json-out examples/output/energy_infrastructure_template_snapshot.json --md-out examples/output/energy_infrastructure_template_report.md"
+      ],
+      "recommended_fields": {
+        "catalyst_fields": [
+          "date",
+          "description",
+          "evidence_url",
+          "expected_impact",
+          "title"
+        ],
+        "catalyst_titles": [
+          "Permit or rate-case milestone",
+          "Project commissioning window"
+        ],
+        "kpi_fields": [
+          "date",
+          "direction",
+          "evidence_url",
+          "name",
+          "observation",
+          "value"
+        ],
+        "kpi_names": [
+          "Construction work in progress",
+          "Project cost variance",
+          "Contracted capacity backlog",
+          "Debt to capital"
+        ],
+        "note_fields": [
+          "date",
+          "evidence_url",
+          "id",
+          "text",
+          "topic",
+          "type"
+        ],
+        "note_topics": [
+          "project execution",
+          "permitting and regulatory",
+          "capital cost and financing watchlist"
+        ],
+        "top_level": [
+          "company",
+          "ticker",
+          "as_of",
+          "data_cutoff"
+        ]
+      },
+      "slug": "energy_infrastructure",
+      "title": "Energy Infrastructure Earnings Review"
+    },
+    {
+      "path": "examples/templates/consumer_hardware_earnings_review.json",
+      "purpose": "Device, channel inventory, product launch, supply chain, or warranty review starting point.",
+      "recommended_commands": [
+        "earnings-call-risk-map analyze examples/templates/consumer_hardware_earnings_review.json",
+        "earnings-call-risk-map review-queue examples/templates/consumer_hardware_earnings_review.json --md-out examples/output/consumer_hardware_template_review_queue.md --json-out examples/output/consumer_hardware_template_review_queue.json",
+        "earnings-call-risk-map analyze examples/templates/consumer_hardware_earnings_review.json --json-out examples/output/consumer_hardware_template_snapshot.json --md-out examples/output/consumer_hardware_template_report.md"
+      ],
+      "recommended_fields": {
+        "catalyst_fields": [
+          "date",
+          "description",
+          "evidence_url",
+          "expected_impact",
+          "title"
+        ],
+        "catalyst_titles": [
+          "Product launch window",
+          "Holiday or seasonal demand update"
+        ],
+        "kpi_fields": [
+          "date",
+          "direction",
+          "evidence_url",
+          "name",
+          "observation",
+          "value"
+        ],
+        "kpi_names": [
+          "Units shipped",
+          "Channel inventory",
+          "Gross margin",
+          "Warranty accrual"
+        ],
+        "note_fields": [
+          "date",
+          "evidence_url",
+          "id",
+          "text",
+          "topic",
+          "type"
+        ],
+        "note_topics": [
+          "product demand",
+          "channel inventory",
+          "supply chain and margin watchlist"
+        ],
+        "top_level": [
+          "company",
+          "ticker",
+          "as_of",
+          "data_cutoff"
+        ]
+      },
+      "slug": "consumer_hardware",
+      "title": "Consumer Hardware Earnings Review"
+    }
+  ]
+}

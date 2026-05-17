@@ -1,6 +1,8 @@
 # Usage
 
-`earnings-call-risk-map` is a zero-dependency Python CLI for turning public earnings-call notes, transcript excerpts, KPI observations, evidence links, and static-data dates into a deterministic research review artifact.
+`earnings-call-risk-map` is a zero-dependency Python CLI for turning earnings-call notes, KPI observations, evidence links, and static-data dates into deterministic review artifacts.
+
+Related docs: [Comparison To Spreadsheets And Generic Notes](comparison-to-spreadsheets.md), [Comparison To Generic LLM Notes](comparison-to-generic-llm-notes.md), [Promotion Page Outline](promotion-page-outline.md), [Decision Ledger Integration](decision-ledger-integration.md), [Data Entry Checklist](data-entry-checklist.md), [Earnings Review Templates](templates.md), [Fixture Summary](fixture-summary.md), [Semiconductor Equipment Adaptation](sector-adaptation-semiconductor-equipment.md), [Troubleshooting](troubleshooting.md), [Risk Language Taxonomy](risk-language-taxonomy.md), and [Security And Privacy](security-and-privacy.md).
 
 It is intentionally conservative:
 
@@ -32,14 +34,16 @@ PYTHONPATH=src python -m earnings_call_risk_map handoff-packet --md-out examples
 PYTHONPATH=src python -m earnings_call_risk_map playbooks --format markdown --out examples/output/playbooks.md
 PYTHONPATH=src python -m earnings_call_risk_map compare examples/output/demo_prior_snapshot.json examples/output/demo_snapshot.json --md-out examples/output/demo_compare.md --json-out examples/output/demo_compare.json
 PYTHONPATH=src python -m earnings_call_risk_map fixture-catalog --out examples/output/fixture_catalog.md
+PYTHONPATH=src python -m earnings_call_risk_map fixture-summary examples/input/semiconductor_equipment.json --out examples/output/semiconductor_equipment_report/fixture_summary/fixture_summary.md
+PYTHONPATH=src python -m earnings_call_risk_map case-study-map --format markdown --out examples/output/case_study_map.md
+PYTHONPATH=src python -m earnings_call_risk_map template-catalog --format markdown --out examples/output/template_catalog.md
+PYTHONPATH=src python -m earnings_call_risk_map cheat-sheet --format markdown --out examples/output/command_cheat_sheet.md
 PYTHONPATH=src python -m earnings_call_risk_map audit --format markdown
 PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
 PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
 ```
 
-The first command verifies imports, the next two print Markdown reports for the software fixture and the capital-intensive energy/infrastructure fixture, and the public Apple static case study demonstrates investor-relations/SEC-style source attribution without claiming live data. The HTML command writes a self-contained dashboard, `review-queue` writes a focused review export, `review-queue-jsonl` writes one deterministic JSON Lines record per demo review item for downstream review handoff, `handoff-packet` summarizes the report, review-queue JSONL, compare path, and cautions for portfolio/thesis handoff, `playbooks` lists research workflows and recommended CLI sequences, `compare` writes prior/current score movement with interpretation, `fixture-catalog` lists bundled fixtures and recommended commands, `audit` reports package parity, and `demo` writes deterministic bundles under `examples/output/`.
-
-The final command writes a basic release maturity evidence bundle listing test commands, generated artifact paths, the public skill path, the release review template path, and privacy scan status.
+These commands verify imports, generate Markdown/JSON/JSONL/HTML review artifacts, list fixtures/templates/playbooks/commands, and write release evidence. The public Apple case study demonstrates static investor-relations/SEC-style attribution without claiming live data.
 
 `demo` preserves the original `demo_*` filenames for `examples/input/demo_company.json` and also writes `demo_prior_*` and `demo_compare.*` artifacts for the prior/current compare example, `energy_infrastructure_*` files for `examples/input/demo_energy_infrastructure.json`, and `public_apple_static_case_study_*` files for `examples/input/public_apple_static_case_study.json`.
 
@@ -74,6 +78,8 @@ python -m earnings_call_risk_map review-queue examples/input/demo_company.json -
 python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl
 python -m earnings_call_risk_map handoff-packet --json-out examples/output/handoff_packet.json --md-out examples/output/handoff_packet.md
 python -m earnings_call_risk_map playbooks --format json --out examples/output/playbooks.json
+python -m earnings_call_risk_map template-catalog --format json --out examples/output/template_catalog.json
+python -m earnings_call_risk_map fixture-summary examples/input/semiconductor_equipment.json --format json --out examples/output/semiconductor_equipment_report/fixture_summary/fixture_summary.json
 python -m earnings_call_risk_map demo --out-dir examples/output
 python -m earnings_call_risk_map compare before.json after.json --json-out compare.json --md-out compare.md
 python -m earnings_call_risk_map fixture-catalog --out examples/output/fixture_catalog.md
@@ -103,6 +109,16 @@ The dashboard summarizes:
 - stale or unverified data
 - missing evidence URL
 - high-impact language, defined as risk or opportunity score `>= 7`
+
+Review queue prioritization is deterministic and explained in both JSON and Markdown output. JSON uses `prioritization.ordered_by`, `prioritization.severity_stale_interaction`, and `prioritization.human_handoff`:
+
+- Items with more review issue categories appear first.
+- Higher risk score is the next ordering key, followed by higher opportunity score.
+- Topic and id are final tie-breakers so repeated runs stay stable.
+- Severity and stale badges interact in two places: stale note data can add `+1` to risk severity before high-impact checks, and stale or unverified dates add a separate `stale_data` review category with a visible badge.
+- A stale-only item can rank below a current item that combines missing evidence with high-impact language.
+
+For human handoff, reviewers should verify stale data against current source documents, fill or reject missing evidence URLs with notes, and send high-impact or multi-issue items to portfolio-risk or thesis-ledger owners for their approval workflow.
 
 When no output path is supplied, the command prints Markdown. Supplying `--json-out`, `--md-out`, or both writes deterministic files suitable for review handoff or demos.
 
@@ -140,17 +156,73 @@ python -m earnings_call_risk_map handoff-packet \
 
 The generated demo bundle writes `examples/output/playbooks.md`, `examples/output/playbooks.json`, `examples/output/playbook_output_examples.md`, and `examples/output/playbook_output_examples.json`.
 
+## Publication Checklist
+
+`publication-checklist` prints the public GitHub release owner checklist in Markdown or JSON. It mirrors the owner steps in `docs/publication-checklist.md`, including release-candidate checks, smoke checks, privacy scan, public skill path review, tag creation, `gh release create`, and post-publish smoke commands.
+
+The generated demo bundle writes `examples/output/publication_checklist.md` and `examples/output/publication_checklist.json`.
+
+## Template Catalog
+
+`template-catalog` prints available blank templates, recommended top-level, note, KPI, and catalyst fields, suggested domain rows, and starter `analyze`/`review-queue` commands. Markdown is the default output; `--format json` writes the same catalog as structured data for automation.
+
+The generated demo bundle writes `examples/output/template_catalog.md` and `examples/output/template_catalog.json`.
+
+## Fixture Summary
+
+`fixture-summary` prints a compact Markdown or JSON checkpoint for one fixture. It reports company context, source type counts, stale badge rows, source-boundary labels, and counts for notes, KPIs, catalysts, risks, opportunities, review queue items, stale badges, and source attribution records.
+
+Use it during cold-user onboarding after selecting or filling a fixture and before reading the full report. It helps a reviewer confirm source coverage and freshness without starting from the dashboard or a long analysis report. See [Fixture Summary](fixture-summary.md) for the onboarding workflow.
+
+The generated demo bundle writes `examples/output/semiconductor_equipment_report/fixture_summary/fixture_summary.md` and `examples/output/semiconductor_equipment_report/fixture_summary/fixture_summary.json`.
+
+## Case Study Map
+
+`case-study-map` prints the bundled case study map in Markdown or JSON. It lists each fixture, target sector, useful reviewer question, generated artifacts, shared demo artifacts, and regenerate commands.
+
+The generated demo bundle writes `examples/output/case_study_map.md` and `examples/output/case_study_map.json`.
+
+## Data Entry Checklist
+
+`data-entry-checklist` prints the fixture author checklist in Markdown or JSON. It covers source-boundary rules, field mappings, final review checks, and validation commands for converting transcripts, filing excerpts, and reviewer notes into JSON fixtures.
+
+The generated demo bundle writes `examples/output/data_entry_checklist.md` and `examples/output/data_entry_checklist.json`.
+
+## Demo Screenshot Guide
+
+`demo-screenshot-guide` prints screenshot target, README visual, framing, and boundary guidance in Markdown or JSON. It mirrors `docs/demo-screenshot-guide.md` as structured CLI output for release artifacts and automation.
+
+The generated demo bundle writes `examples/output/demo_screenshot_guide.md` and `examples/output/demo_screenshot_guide.json`.
+
+## Command Cheat Sheet
+
+`cheat-sheet` prints every public CLI command with a short purpose. Markdown is the default output; `--format json` writes the same command list as structured data for automation.
+
+The generated demo bundle writes `examples/output/command_cheat_sheet.md` and `examples/output/command_cheat_sheet.json`.
+
 ## Compare Reports
 
 `compare` expects two analyzed snapshots, not raw input fixtures. The demo bundle writes `examples/output/demo_prior_snapshot.json`, `examples/output/demo_snapshot.json`, `examples/output/demo_compare.json`, and `examples/output/demo_compare.md` to show the intended flow.
 
 Positive deltas mean the later snapshot triggered more deterministic keyword score for that risk or opportunity topic. Negative deltas mean the later snapshot triggered less score. The "How To Read This Compare" section explains the movement as reviewer triage: it does not claim that a risk or opportunity has changed in the real world without source verification.
 
+You can also compare two different fixture domains, such as the software demo and the energy infrastructure demo:
+
+```bash
+PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json --json-out examples/output/demo_snapshot.json
+PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_energy_infrastructure.json --json-out examples/output/energy_infrastructure_snapshot.json
+PYTHONPATH=src python -m earnings_call_risk_map compare examples/output/demo_snapshot.json examples/output/energy_infrastructure_snapshot.json --md-out examples/output/software_vs_energy_compare.md --json-out examples/output/software_vs_energy_compare.json
+```
+
+Read this as a cross-fixture contrast, not a time-series delta. Software-vs-energy infrastructure differences usually reflect fixture vocabulary, business model assumptions, source freshness, project/capital intensity, and evidence coverage. They do not rank companies, sectors, securities, or investment attractiveness, and they must not be converted into buy, sell, hold, portfolio-weight, or price-target advice.
+
 ## Package Audit
 
 `audit` emits a deterministic parity report in JSON or Markdown. It includes the package version, command list, fixture count, output artifact count, workflow-file absence, and whether the public agent skill exists at `skills/agent/earnings-call-risk-map/SKILL.md`.
 
 The audit report also includes a "Local-Only No-Network Guarantee" section. That section records `network_required: false` and `credentials_required: false` for every public command, plus checks for an empty runtime dependency list, absence of network-client imports, absence of credential environment variable reads, and absence of required workflow files.
+
+For the security boundary behind those checks, see [Security And Privacy](security-and-privacy.md).
 
 The demo bundle writes both `examples/output/package_audit.json` and `examples/output/package_audit.md`, then includes them in `examples/output/release_manifest.json`. The audit output files themselves are excluded from the output artifact count so repeated audit runs do not change the count.
 
@@ -170,7 +242,7 @@ See [Release Readiness](release-readiness.md) for the checklist workflow and tem
 
 ## Input Shape
 
-See [JSON Fixture Schema Reference](input-schema.md) for the complete field reference and validation examples.
+See [JSON Fixture Schema Reference](input-schema.md) for the complete field reference and validation examples, and [Source Attribution Guide](source-attribution-guide.md) for `source_type`, `accessed_at`, stale badges, and source-boundary choices.
 
 Required top-level fields:
 
@@ -189,14 +261,26 @@ Optional lists:
 - `kpis`: KPI observations with `name`, `value`, `direction`, `date`, `observation`, and `evidence_url`
 - `catalysts`: dated events with `date`, `title`, `description`, `expected_impact`, and `evidence_url`
 
-The repository includes three current demo fixtures plus one prior-period comparison fixture:
+The repository includes public/static demo fixtures plus one prior-period comparison fixture:
 
 - `examples/input/demo_company.json`: compact software-style company example.
 - `examples/input/demo_energy_infrastructure.json`: capital-intensive energy/infrastructure example with project catalysts, KPI observations, stale static data, and intentionally missing evidence URLs.
+- `examples/input/consumer_hardware.json`: public-source consumer hardware fixture with investor-relations source attribution.
+- `examples/input/semiconductor_equipment.json`: public-source semiconductor equipment fixture with ASML investor-relations source attribution.
 - `examples/input/public_apple_static_case_study.json`: static public-source Apple case study with Apple and SEC URLs, source attribution, and non-live-data labels.
 - `examples/input/demo_company_prior.json`: earlier snapshot for `compare` examples.
 
 See [Fixture Catalog](fixture-catalog.md) for tickers, data cutoffs, static/live status, and recommended commands for each bundled fixture.
+
+For a sector-specific walkthrough of the ASML-style fixture, see [Semiconductor Equipment Adaptation](sector-adaptation-semiconductor-equipment.md). It covers demand timing, bookings, backlog, export controls, product ramps, non-advice wording, and static-data boundaries.
+
+Reusable blank templates live under `examples/templates/`:
+
+- `examples/templates/software_earnings_review.json`
+- `examples/templates/energy_infrastructure_earnings_review.json`
+- `examples/templates/consumer_hardware_earnings_review.json`
+
+See [Earnings Review Templates](templates.md) or run `python -m earnings_call_risk_map template-catalog` for recommended fields and commands.
 
 Dates must use `YYYY-MM-DD` format and must be valid calendar dates. Items older than 90 days relative to `as_of` receive a stale/static data badge.
 

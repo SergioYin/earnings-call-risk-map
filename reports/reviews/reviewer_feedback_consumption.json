@@ -1,0 +1,133 @@
+{
+  "name": "reviewer_feedback_consumption",
+  "release": "0.8.0",
+  "summary": "Prior reviewer feedback moved v0.8 toward clearer product positioning, stronger local reproducibility, more demo evidence, and stricter risk boundaries while preserving the educational, local-only, source-provided-data scope.",
+  "source_doc": "docs/reviewer-feedback-consumption.md",
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice.",
+  "feedback_threads": [
+    {
+      "id": "product_clarity",
+      "title": "Product Clarity",
+      "status": "consumed",
+      "v0_8_result": {
+        "score": "15/15",
+        "source": "reports/reviews/2026-05-17-v0.8.0-internal-review.md"
+      },
+      "feedback_consumed": [
+        "v0.1 flagged synthetic data as the main trust gap and asked for a public static fixture and clearer promotion path.",
+        "v0.2 closed the public static fixture gap and shifted remaining clarity work toward preview and distribution evidence.",
+        "v0.7 added adoption positioning through the spreadsheet comparison.",
+        "v0.8 aligns README, usage docs, release notes, reviewer evidence, publication checklist, templates, examples index, doctor output, and generated maturity evidence around the 0.8.0 release line."
+      ],
+      "evidence": [
+        "reports/reviews/2026-05-17-v0.1.0-internal-review.md",
+        "reports/reviews/2026-05-17-v0.2.0-internal-review.md",
+        "docs/comparison-to-spreadsheets.md",
+        "docs/release-notes-v0.8.0.md",
+        "docs/reviewer-evidence.md",
+        "reports/maturity/maturity_evidence.md"
+      ]
+    },
+    {
+      "id": "reproducibility",
+      "title": "Reproducibility",
+      "status": "consumed",
+      "v0_8_result": {
+        "score": "15/15",
+        "source": "reports/reviews/2026-05-17-v0.8.0-internal-review.md"
+      },
+      "feedback_consumed": [
+        "v0.3 and v0.4 treated deterministic previews, manifests, and reviewer evidence as release-quality requirements.",
+        "v0.6 expanded reproducibility evidence to include playbooks, playbook output examples, handoff packet examples, release assets, and maturity evidence.",
+        "v0.8 records exact verification commands and fresh clone validation."
+      ],
+      "evidence": [
+        "reports/reviews/2026-05-17-v0.3.0-internal-review.md",
+        "reports/reviews/2026-05-17-v0.4.0-internal-review.md",
+        "reports/reviews/2026-05-17-v0.6.0-internal-review.md",
+        "docs/reviewer-evidence.md",
+        "docs/release-readiness.md",
+        "scripts/selfcheck.py",
+        "scripts/privacy_scan.py",
+        "release_manifest.json"
+      ]
+    },
+    {
+      "id": "demo_evidence",
+      "title": "Demo Evidence",
+      "status": "consumed_with_owner_gate",
+      "v0_8_result": {
+        "score": "8/10",
+        "source": "reports/reviews/2026-05-17-v0.8.0-internal-review.md",
+        "remaining_constraint": "Hosted demo deployment is a release-owner decision, not a package requirement."
+      },
+      "feedback_consumed": [
+        "v0.1 and v0.2 requested screenshot, GIF, or Pages-style preview evidence.",
+        "v0.3 closed preview evidence with a PNG-free SVG preview and local static dashboard guidance.",
+        "v0.4 improved evidence quality with schema, compare artifacts, package and reviewer evidence docs, and generated manifests.",
+        "v0.6 added recurring workflow evidence through research playbooks and generated playbook examples.",
+        "v0.8 keeps demo evidence inspectable through gallery, public case study, case study map, and reviewer evidence."
+      ],
+      "evidence": [
+        "docs/pages-demo.md",
+        "docs/gallery.md",
+        "docs/public-case-study.md",
+        "docs/case-study-map.md",
+        "docs/assets/showcase-dashboard-preview.svg",
+        "examples/output/public_apple_static_case_study_dashboard.html",
+        "examples/playbooks/README.md",
+        "examples/output/playbook_output_examples.json"
+      ]
+    },
+    {
+      "id": "risk_boundaries",
+      "title": "Risk Boundaries",
+      "status": "consumed_with_owner_gate",
+      "v0_8_result": {
+        "score": "7/10",
+        "source": "reports/reviews/2026-05-17-v0.8.0-internal-review.md",
+        "remaining_constraint": "Release-owner approval is required before public promotion, hosted deployment, package publishing, or any live-source integration."
+      },
+      "feedback_consumed": [
+        "v0.1 and v0.2 risk reviewers accepted the boundary but warned against implying source data is live, current, or verified.",
+        "v0.4 and later reviews reinforced that public examples, dashboards, and promotion copy must preserve stale/static badges and source-boundary labels.",
+        "v0.7 clarified when spreadsheets, generic notes, or other tools are better fits.",
+        "v0.8 keeps public copy and handoff docs inside the educational, non-advice, source-attributed, local-only boundary."
+      ],
+      "evidence": [
+        "docs/non-advice-boundary.md",
+        "docs/case-study-limitations.md",
+        "docs/source-attribution-guide.md",
+        "docs/security-and-privacy.md",
+        "docs/comparison-to-spreadsheets.md",
+        "docs/publication-checklist.md"
+      ]
+    }
+  ],
+  "p0": {
+    "status": "none_found",
+    "scope": "v0.8.0 aligned checkout",
+    "evidence": [
+      "reports/reviews/2026-05-17-v0.8.0-internal-review.md",
+      "reports/reviews/2026-05-17-v0.8.0-final-review.md",
+      "docs/reviewer-evidence.md",
+      "reports/maturity/maturity_evidence.json"
+    ]
+  },
+  "p1": {
+    "status": "none_found_for_small_scope_release",
+    "scope": "small-scope owner handoff",
+    "owner_gates": [
+      "dirty worktree inspection",
+      "package publish dry run if publishing",
+      "hosted demo decision",
+      "public-copy review"
+    ],
+    "evidence": [
+      "reports/reviews/2026-05-17-v0.8.0-internal-review.md",
+      "reports/reviews/2026-05-17-v0.8.0-final-review.md",
+      "docs/publication-checklist.md",
+      "docs/reviewer-feedback-consumption.md"
+    ]
+  }
+}

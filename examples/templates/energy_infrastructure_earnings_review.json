@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1",
+  "company": "Energy Infrastructure Earnings Review Template",
+  "ticker": "ENERGY-TEMPLATE",
+  "as_of": "2026-01-01",
+  "data_cutoff": "2026-01-01",
+  "notes": [
+    {
+      "id": "energy-note-1",
+      "date": "2026-01-01",
+      "topic": "project execution",
+      "type": "management_claim",
+      "text": "",
+      "evidence_url": ""
+    },
+    {
+      "id": "energy-note-2",
+      "date": "2026-01-01",
+      "topic": "permitting and regulatory",
+      "type": "analyst_question",
+      "text": "",
+      "evidence_url": ""
+    },
+    {
+      "id": "energy-note-3",
+      "date": "2026-01-01",
+      "topic": "capital cost and financing watchlist",
+      "type": "user_synthesis",
+      "text": "",
+      "evidence_url": ""
+    }
+  ],
+  "kpis": [
+    {
+      "name": "Construction work in progress",
+      "value": "",
+      "direction": "",
+      "date": "2026-01-01",
+      "observation": "",
+      "evidence_url": ""
+    },
+    {
+      "name": "Project cost variance",
+      "value": "",
+      "direction": "",
+      "date": "2026-01-01",
+      "observation": "",
+      "evidence_url": ""
+    },
+    {
+      "name": "Contracted capacity backlog",
+      "value": "",
+      "direction": "",
+      "date": "2026-01-01",
+      "observation": "",
+      "evidence_url": ""
+    },
+    {
+      "name": "Debt to capital",
+      "value": "",
+      "direction": "",
+      "date": "2026-01-01",
+      "observation": "",
+      "evidence_url": ""
+    }
+  ],
+  "catalysts": [
+    {
+      "date": "2026-01-01",
+      "title": "Permit or rate-case milestone",
+      "description": "",
+      "expected_impact": "",
+      "evidence_url": ""
+    },
+    {
+      "date": "2026-01-01",
+      "title": "Project commissioning window",
+      "description": "",
+      "expected_impact": "",
+      "evidence_url": ""
+    }
+  ]
+}

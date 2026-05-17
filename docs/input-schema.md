@@ -6,6 +6,7 @@ The CLI validates the top-level contract before scoring so fixture mistakes fail
 ## Machine-Readable Reference
 
 [`docs/schema-reference.json`](schema-reference.json) is a JSON Schema reference example for fixture authors and integrators. It is machine-readable documentation, not a new runtime dependency.
+For a field-by-field authoring guide in plain language, see [Schema Authoring Reference](schema-authoring-reference.md).
 
 The schema mirrors the accepted fixture fields described below:
 
@@ -40,6 +41,10 @@ Optional fields:
 ## Source Attribution
 
 `source_attribution` can be supplied at the top level and on individual notes, KPIs, and catalysts. It is intended for public investor-relations, SEC, transcript, or user-authored source labels. It does not make the data live or verified; it records where the static fixture says the item came from.
+
+See [Source Attribution Guide](source-attribution-guide.md) for `source_type` choices, `accessed_at` usage, stale badge interpretation, and management/analyst/user-synthesis boundaries.
+
+When supplied, each source-attribution record must include at least one supported field, and supported text fields must be non-empty strings.
 
 Supported fields:
 
@@ -137,9 +142,20 @@ This validates:
 - `company` and `ticker` are strings;
 - `as_of`, `data_cutoff`, and item-level `date` values use valid `YYYY-MM-DD` calendar dates;
 - `notes`, `kpis`, and `catalysts` are arrays when provided;
-- each note, KPI, and catalyst item is a JSON object.
+- each note, KPI, and catalyst item is a JSON object;
+- each source-attribution record is a JSON object with at least one supported field.
 
 The runtime validator does not require optional text fields, source attribution, evidence URLs, or the JSON Schema package. Those fields are documented so producers can generate stable fixtures and consumers can safely read known keys.
+
+## Reusable Templates
+
+Blank starting templates are available for common review types:
+
+- `examples/templates/software_earnings_review.json`
+- `examples/templates/energy_infrastructure_earnings_review.json`
+- `examples/templates/consumer_hardware_earnings_review.json`
+
+These files are intentionally valid before customization. They use placeholder company metadata and valid placeholder dates while leaving review text, KPI values, observations, descriptions, and evidence URLs empty for the author to replace.
 
 ## Minimal Fixture
 

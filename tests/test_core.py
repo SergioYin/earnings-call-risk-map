@@ -59,7 +59,7 @@ class CoreTests(unittest.TestCase):
 
     def test_analyze_scores_and_review_queue(self):
         snapshot = analyze_document(self.fixture())
-        self.assertEqual(snapshot["tool_version"], "0.6.0")
+        self.assertEqual(snapshot["tool_version"], "0.8.0")
         self.assertEqual(snapshot["summary"]["risk_count"], 1)
         self.assertEqual(snapshot["summary"]["opportunity_count"], 2)
         self.assertEqual(snapshot["review_queue"][0]["topic"], "gross margin")
@@ -128,6 +128,20 @@ class CoreTests(unittest.TestCase):
         self.assertTrue(result["interpretation"])
         self.assertIn("deterministic keyword scores", result["interpretation"][0])
 
+    def test_compare_snapshots_marks_cross_fixture_scope(self):
+        before = analyze_document(self.fixture())
+        after_fixture = self.fixture()
+        after_fixture["company"] = "Northstar Grid & LNG Partners"
+        after_fixture["ticker"] = "NGLP"
+        after = analyze_document(after_fixture)
+
+        result = compare_snapshots(before, after)
+
+        self.assertEqual(result["comparison_scope"], "cross_fixture")
+        self.assertEqual(result["before_ticker"], "EXM")
+        self.assertEqual(result["after_ticker"], "NGLP")
+        self.assertTrue(any("do not rank companies, sectors, or securities" in line for line in result["interpretation"]))
+
     def test_review_queue_export_is_focused(self):
         snapshot = analyze_document(self.fixture())
         export = build_review_queue_export(snapshot)
@@ -140,6 +154,35 @@ class CoreTests(unittest.TestCase):
         self.assertEqual(gross_margin["issue_categories"], ["stale_data", "high_impact_language"])
         launch = next(item for item in export["items"] if item["topic"] == "launch")
         self.assertEqual(launch["issue_categories"], ["missing_evidence", "high_impact_language"])
+
+    def test_review_queue_export_explains_prioritization(self):
+        snapshot = analyze_document(self.fixture())
+        export = build_review_queue_export(snapshot)
+
+        self.assertEqual(
+            export["prioritization"]["ordered_by"],
+            [
+                "items with more review issue categories first",
+                "higher risk score next",
+                "higher opportunity score next",
+                "topic and id as deterministic tie-breakers",
+            ],
+        )
+        self.assertIn(
+            "stale note data can add +1 to risk severity before high-impact review checks",
+            export["prioritization"]["severity_stale_interaction"],
+        )
+        self.assertIn(
+            "send high-impact or multi-issue items to portfolio-risk or thesis-ledger owners for approval workflow",
+            export["prioritization"]["human_handoff"],
+        )
+
+        markdown = render_review_queue_markdown(export)
+        self.assertIn("## Prioritization", markdown)
+        self.assertIn("Ordering:", markdown)
+        self.assertIn("Severity and stale badges:", markdown)
+        self.assertIn("Human handoff:", markdown)
+        self.assertIn("higher risk score next", markdown)
 
     def test_review_queue_jsonl_records_are_deterministic_agent_handoff(self):
         snapshot = analyze_document(self.fixture())

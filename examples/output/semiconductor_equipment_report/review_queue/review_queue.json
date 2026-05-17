@@ -1,0 +1,213 @@
+{
+  "as_of": "2025-01-30",
+  "company": "ASML Holding N.V. Public-Source Semiconductor Equipment Fixture",
+  "data_cutoff": "2025-01-29",
+  "items": [
+    {
+      "date": "2024-10-15",
+      "evidence_url": "https://www.asml.com/en/news/press-releases/2024/q3-2024-financial-results-dd3ac76a9d4d0f8c",
+      "excerpt": "Prior quarter context flagged memory weakness and customer schedule delay risk while the industry recovery remained uneven.",
+      "id": "asml-q3-memory-cycle",
+      "issue_categories": [
+        "stale_data",
+        "high_impact_language"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "stale or unverified data",
+        "high-impact language"
+      ],
+      "risk_level": "high",
+      "risk_score": 9,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q3 2024 financial results",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/en/news/press-releases/2024/q3-2024-financial-results-dd3ac76a9d4d0f8c",
+          "static_notice": "Static public-source context older than the fixture cutoff; verify freshness before reuse."
+        }
+      ],
+      "source_type": "user_synthesis",
+      "stale_badge": {
+        "age_days": 107,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "topic": "memory customer cycle"
+    },
+    {
+      "date": "2025-01-29",
+      "evidence_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+      "excerpt": "Forward-looking language noted customer demand timing, regulatory export controls, supply constraints, and customer delay risk could pressure results.",
+      "id": "asml-export-demand-risk",
+      "issue_categories": [
+        "high_impact_language"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "high-impact language"
+      ],
+      "risk_level": "high",
+      "risk_score": 11,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q4 and full-year 2024 financial results",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+          "static_notice": "Static public-source risk-language excerpt; verify against the original release."
+        }
+      ],
+      "source_type": "company_risk_language",
+      "stale_badge": {
+        "age_days": 1,
+        "label": "current",
+        "status": "current"
+      },
+      "topic": "demand timing and export controls"
+    },
+    {
+      "date": "2025-01-29",
+      "evidence_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+      "excerpt": "Bookings support pipeline visibility and future system shipment growth review.",
+      "id": "Q4 2024 net bookings",
+      "issue_categories": [
+        "high_impact_language"
+      ],
+      "opportunity_level": "high",
+      "opportunity_score": 7,
+      "reasons": [
+        "high-impact language"
+      ],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q4 and full-year 2024 financial results",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+          "static_notice": "Static case-study KPI; not live data."
+        }
+      ],
+      "source_type": "kpi",
+      "stale_badge": {
+        "age_days": 1,
+        "label": "current",
+        "status": "current"
+      },
+      "topic": "Q4 2024 net bookings"
+    },
+    {
+      "date": "2025-01-29",
+      "evidence_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+      "excerpt": "Static release value shows quarterly growth at the end of a record fiscal year.",
+      "id": "Q4 2024 net sales",
+      "issue_categories": [
+        "high_impact_language"
+      ],
+      "opportunity_level": "high",
+      "opportunity_score": 7,
+      "reasons": [
+        "high-impact language"
+      ],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q4 and full-year 2024 financial results",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+          "static_notice": "Static case-study KPI; not live data."
+        }
+      ],
+      "source_type": "kpi",
+      "stale_badge": {
+        "age_days": 1,
+        "label": "current",
+        "status": "current"
+      },
+      "topic": "Q4 2024 net sales"
+    },
+    {
+      "date": "2025-03-14",
+      "evidence_url": null,
+      "excerpt": "Check the filed annual report for risk factors around export controls, supplier concentration, and customer demand timing.",
+      "id": "catalyst:2025-03-14:Annual report review",
+      "issue_categories": [
+        "missing_evidence"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "missing evidence URL"
+      ],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [],
+      "source_type": "catalyst",
+      "stale_badge": null,
+      "topic": "Annual report review"
+    }
+  ],
+  "prioritization": {
+    "human_handoff": [
+      "verify stale data against current source documents before treating it as resolved or material",
+      "fill or reject missing evidence URLs with source-specific reviewer notes",
+      "send high-impact or multi-issue items to portfolio-risk or thesis-ledger owners for approval workflow"
+    ],
+    "ordered_by": [
+      "items with more review issue categories first",
+      "higher risk score next",
+      "higher opportunity score next",
+      "topic and id as deterministic tie-breakers"
+    ],
+    "severity_stale_interaction": [
+      "high-impact language is triggered by risk or opportunity score >= 7",
+      "stale or unverified dates add a stale_data issue category and keep the stale badge visible",
+      "stale note data can add +1 to risk severity before high-impact review checks",
+      "stale-only items can rank below current items that combine missing evidence with high-impact language"
+    ]
+  },
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_attribution": [
+    {
+      "accessed_at": "2026-05-17",
+      "publisher": "ASML Investor Relations",
+      "source_name": "ASML Q4 and full-year 2024 financial results",
+      "source_type": "company_investor_relations",
+      "source_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+      "static_notice": "Static educational fixture assembled from a public company release; not live data."
+    },
+    {
+      "accessed_at": "2026-05-17",
+      "publisher": "ASML Investor Relations",
+      "source_name": "ASML publishes 2024 Annual Reports",
+      "source_type": "press_release",
+      "source_url": "https://www.asml.com/news/press-releases/2025/asml-publishes-2024-annual-reports",
+      "static_notice": "Static educational fixture assembled from public annual-report publication context; not live data."
+    }
+  ],
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "summary": {
+    "high_impact_language_count": 4,
+    "missing_evidence_count": 1,
+    "review_item_count": 5,
+    "stale_data_count": 1
+  },
+  "ticker": "ASML",
+  "tool_version": "0.8.0"
+}

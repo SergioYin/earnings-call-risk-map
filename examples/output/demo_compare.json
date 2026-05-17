@@ -1,7 +1,12 @@
 {
   "after_as_of": "2026-05-15",
+  "after_company": "Example Systems Inc.",
+  "after_ticker": "EXM",
   "before_as_of": "2026-02-15",
+  "before_company": "Example Systems Inc.",
+  "before_ticker": "EXM",
   "company": "Example Systems Inc.",
+  "comparison_scope": "same_fixture",
   "interpretation": [
     "Deltas compare deterministic keyword scores between analyzed snapshots; they are prompts for source review, not investment conclusions.",
     "Risk attention increased for: gross margin, Inventory days, revenue durability.",
@@ -61,5 +66,5 @@
   },
   "stale_badge_delta": 2,
   "ticker": "EXM",
-  "tool_version": "0.6.0"
+  "tool_version": "0.8.0"
 }

@@ -1,0 +1,126 @@
+{
+  "artifact_type": "command_cheat_sheet",
+  "command_count": 30,
+  "commands": [
+    {
+      "command": "analyze",
+      "purpose": "Analyze one earnings-call JSON input"
+    },
+    {
+      "command": "demo",
+      "purpose": "Generate demo bundles from examples/input fixtures"
+    },
+    {
+      "command": "doctor",
+      "purpose": "Report deterministic package health and release-readiness hints"
+    },
+    {
+      "command": "compare",
+      "purpose": "Compare two analyzed JSON snapshots"
+    },
+    {
+      "command": "review-queue",
+      "purpose": "Export only stale, missing-evidence, and high-impact review items"
+    },
+    {
+      "command": "review-queue-jsonl",
+      "purpose": "Export deterministic JSON Lines review items across bundled demo fixtures"
+    },
+    {
+      "command": "handoff-packet",
+      "purpose": "Export deterministic portfolio/thesis handoff packet paths and cautions"
+    },
+    {
+      "command": "audit",
+      "purpose": "Report package audit parity as JSON or Markdown"
+    },
+    {
+      "command": "agent-workflow",
+      "purpose": "Render generic agent workflow instructions as Markdown or JSON"
+    },
+    {
+      "command": "cheat-sheet",
+      "purpose": "Print lightweight command cheat sheet as Markdown or JSON"
+    },
+    {
+      "command": "case-study-map",
+      "purpose": "Render bundled case study map as Markdown or JSON"
+    },
+    {
+      "command": "release-assets",
+      "purpose": "Validate expected release assets for the current version"
+    },
+    {
+      "command": "release-notes",
+      "purpose": "Render current audit, release assets, and changelog excerpt as Markdown"
+    },
+    {
+      "command": "fixture-catalog",
+      "purpose": "List bundled fixtures and recommended commands"
+    },
+    {
+      "command": "fixture-summary",
+      "purpose": "Summarize one input fixture's source types, stale badges, and counts"
+    },
+    {
+      "command": "risk-taxonomy",
+      "purpose": "Render deterministic risk language taxonomy Markdown"
+    },
+    {
+      "command": "examples-index",
+      "purpose": "Summarize bundled examples, generated outputs, and recommended next commands"
+    },
+    {
+      "command": "template-catalog",
+      "purpose": "List blank templates with recommended fields and commands"
+    },
+    {
+      "command": "schema-reference",
+      "purpose": "Render the JSON fixture schema reference"
+    },
+    {
+      "command": "schema-authoring-reference",
+      "purpose": "Render fixture schema authoring reference as Markdown or JSON"
+    },
+    {
+      "command": "playbooks",
+      "purpose": "List research playbooks and recommended CLI sequences"
+    },
+    {
+      "command": "publication-checklist",
+      "purpose": "Render public release owner steps as Markdown or JSON"
+    },
+    {
+      "command": "release-owner-handoff",
+      "purpose": "Render final release owner handoff as Markdown or JSON"
+    },
+    {
+      "command": "promotion-pack",
+      "purpose": "Render public promotion pack as Markdown or JSON"
+    },
+    {
+      "command": "data-entry-checklist",
+      "purpose": "Render fixture author data-entry checklist as Markdown or JSON"
+    },
+    {
+      "command": "demo-screenshot-guide",
+      "purpose": "Render demo screenshot guide as Markdown or JSON"
+    },
+    {
+      "command": "fresh-clone-plan",
+      "purpose": "Render fresh clone verification plan as Markdown or JSON"
+    },
+    {
+      "command": "manifest",
+      "purpose": "Print or write release manifest"
+    },
+    {
+      "command": "maturity-evidence",
+      "purpose": "Generate a basic maturity evidence bundle"
+    },
+    {
+      "command": "version",
+      "purpose": "Print version"
+    }
+  ]
+}

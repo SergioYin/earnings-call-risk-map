@@ -1,0 +1,110 @@
+{
+  "artifact_type": "data_entry_checklist",
+  "field_mapping_count": 9,
+  "field_mappings": [
+    {
+      "field": "company",
+      "rule": "Use the visible legal or display name; do not normalize from memory.",
+      "use": "Company name shown in the source packet."
+    },
+    {
+      "field": "ticker",
+      "rule": "If the source does not show a ticker, use the user's provided identifier.",
+      "use": "Ticker or short identifier used by the author."
+    },
+    {
+      "field": "as_of",
+      "rule": "Use the actual authoring or review date in `YYYY-MM-DD`.",
+      "use": "Date of this review."
+    },
+    {
+      "field": "data_cutoff",
+      "rule": "Use the latest transcript, filing, release, or note date that is present.",
+      "use": "Latest date represented by the source packet."
+    },
+    {
+      "field": "notes[].type",
+      "rule": "Use `management_claim`, `analyst_question`, or `user_synthesis` based on who made the statement.",
+      "use": "Provenance label for text."
+    },
+    {
+      "field": "notes[].text",
+      "rule": "Preserve source meaning; do not add claims that are not present.",
+      "use": "Short source excerpt or author note."
+    },
+    {
+      "field": "kpis[].value",
+      "rule": "Keep the source's units and wording; label any calculation as `user_synthesis`.",
+      "use": "KPI value as shown in source material."
+    },
+    {
+      "field": "evidence_url",
+      "rule": "Leave empty when no URL was actually captured.",
+      "use": "Public URL for the item."
+    },
+    {
+      "field": "source_attribution",
+      "rule": "Use only observed source details and allowed `source_type` values.",
+      "use": "Static provenance metadata."
+    }
+  ],
+  "goal": "Create a valid JSON fixture without hallucinating sources.",
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "section_count": 4,
+  "sections": [
+    {
+      "checks": [
+        "Save the transcript or notes in a stable review location outside the fixture.",
+        "Record the exact review date as `as_of`.",
+        "Record the latest source date represented by the material as `data_cutoff`.",
+        "Identify the source container: transcript, company investor-relations page, SEC filing, shareholder letter, press release, news article, or user synthesis.",
+        "Keep a list of source URLs that were actually opened."
+      ],
+      "slug": "before-entry",
+      "title": "Before Entry"
+    },
+    {
+      "checks": [
+        "Do not invent source URLs, publishers, source names, accessed dates, speaker names, KPI values, or fiscal periods.",
+        "Do not promote an analyst question into a company fact.",
+        "Do not promote user summaries into source evidence.",
+        "Use `accessed_at` only when the source URL was actually checked.",
+        "Do not remove stale dates to avoid stale badges."
+      ],
+      "slug": "source-boundary-rules",
+      "title": "Source Boundary Rules"
+    },
+    {
+      "checks": [
+        "Start from a valid template in `docs/templates.md`.",
+        "Fill top-level `company`, `ticker`, `as_of`, and `data_cutoff`.",
+        "Add top-level `source_attribution` only when source details are known.",
+        "Split transcript content into `management_claim`, `analyst_question`, and `user_synthesis` notes.",
+        "Add KPIs only when the source packet contains the exact KPI label and value.",
+        "Add catalysts only when the date or event is present or clearly labeled as user synthesis.",
+        "Keep blank `evidence_url` fields when evidence is missing.",
+        "Run validation before committing the fixture."
+      ],
+      "slug": "entry-steps",
+      "title": "Entry Steps"
+    },
+    {
+      "checks": [
+        "The fixture is valid JSON.",
+        "`as_of`, `data_cutoff`, item `date`, and `accessed_at` dates are real calendar dates.",
+        "Every `source_url` and `evidence_url` was actually captured from source material.",
+        "Missing evidence remains blank and will be surfaced in the review queue.",
+        "Management claims, analyst questions, and user synthesis are separated.",
+        "Stale badges are preserved until sources are refreshed.",
+        "The non-advice disclaimer is preserved in downstream Markdown, JSON, and handoff artifacts."
+      ],
+      "slug": "final-review",
+      "title": "Final Review"
+    }
+  ],
+  "source_doc": "docs/data-entry-checklist.md",
+  "validation_commands": [
+    "PYTHONPATH=src python -m earnings_call_risk_map analyze path/to/fixture.json",
+    "PYTHONPATH=src python -m earnings_call_risk_map review-queue path/to/fixture.json"
+  ]
+}

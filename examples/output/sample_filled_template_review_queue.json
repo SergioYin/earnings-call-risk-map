@@ -1,0 +1,180 @@
+{
+  "as_of": "2026-05-16",
+  "company": "Northwind Analytics Inc.",
+  "data_cutoff": "2026-05-10",
+  "items": [
+    {
+      "date": "2026-05-16",
+      "evidence_url": null,
+      "excerpt": "User synthesis: review margin pressure, delayed migration risk, and whether retention improvement offsets regional demand weakness.",
+      "id": "nwa-q1-user-1",
+      "issue_categories": [
+        "missing_evidence",
+        "high_impact_language"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "missing evidence URL",
+        "high-impact language"
+      ],
+      "risk_level": "high",
+      "risk_score": 12,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Fixture author",
+          "source_name": "User-authored template fill notes",
+          "source_type": "user_synthesis",
+          "static_notice": "User synthesis is a review aid and not source evidence."
+        }
+      ],
+      "source_type": "user_synthesis",
+      "stale_badge": {
+        "age_days": 0,
+        "label": "current",
+        "status": "current"
+      },
+      "topic": "margin and retention watchlist"
+    },
+    {
+      "date": "2026-02-01",
+      "evidence_url": "",
+      "excerpt": "Older migration support costs remained a margin pressure item and should be refreshed.",
+      "id": "Gross margin",
+      "issue_categories": [
+        "stale_data",
+        "missing_evidence"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "stale or unverified data",
+        "missing evidence URL"
+      ],
+      "risk_level": "medium",
+      "risk_score": 4,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Fixture author",
+          "source_name": "Prior quarter operating metrics note",
+          "source_type": "user_synthesis",
+          "static_notice": "Static prior-quarter note intentionally keeps missing evidence visible."
+        }
+      ],
+      "source_type": "kpi",
+      "stale_badge": {
+        "age_days": 104,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "topic": "Gross margin"
+    },
+    {
+      "date": "2026-05-10",
+      "evidence_url": "https://example.com/nwa/q1-2026-call-transcript",
+      "excerpt": "Analyst asked whether delayed platform migrations could create churn risk in the second half.",
+      "id": "nwa-q1-analyst-1",
+      "issue_categories": [
+        "high_impact_language"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "high-impact language"
+      ],
+      "risk_level": "high",
+      "risk_score": 9,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Northwind Analytics Investor Relations",
+          "source_name": "Q1 2026 earnings call transcript",
+          "source_type": "transcript",
+          "source_url": "https://example.com/nwa/q1-2026-call-transcript",
+          "static_notice": "Fictional source URL for deterministic documentation workflow."
+        }
+      ],
+      "source_type": "analyst_question",
+      "stale_badge": {
+        "age_days": 6,
+        "label": "current",
+        "status": "current"
+      },
+      "topic": "enterprise demand"
+    },
+    {
+      "date": "2026-08-08",
+      "evidence_url": null,
+      "excerpt": "Review whether Europe demand pressure and migration churn risk persisted after quarter close.",
+      "id": "catalyst:2026-08-08:Next earnings report",
+      "issue_categories": [
+        "missing_evidence"
+      ],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "reasons": [
+        "missing evidence URL"
+      ],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Fixture author",
+          "source_name": "User-authored catalyst watchlist",
+          "source_type": "user_synthesis",
+          "static_notice": "User synthesis is a review aid and not source evidence."
+        }
+      ],
+      "source_type": "catalyst",
+      "stale_badge": null,
+      "topic": "Next earnings report"
+    }
+  ],
+  "prioritization": {
+    "human_handoff": [
+      "verify stale data against current source documents before treating it as resolved or material",
+      "fill or reject missing evidence URLs with source-specific reviewer notes",
+      "send high-impact or multi-issue items to portfolio-risk or thesis-ledger owners for approval workflow"
+    ],
+    "ordered_by": [
+      "items with more review issue categories first",
+      "higher risk score next",
+      "higher opportunity score next",
+      "topic and id as deterministic tie-breakers"
+    ],
+    "severity_stale_interaction": [
+      "high-impact language is triggered by risk or opportunity score >= 7",
+      "stale or unverified dates add a stale_data issue category and keep the stale badge visible",
+      "stale note data can add +1 to risk severity before high-impact review checks",
+      "stale-only items can rank below current items that combine missing evidence with high-impact language"
+    ]
+  },
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_attribution": [
+    {
+      "accessed_at": "2026-05-16",
+      "publisher": "Fixture author",
+      "source_name": "Q1 2026 earnings-call template fill sample",
+      "source_type": "user_synthesis",
+      "source_url": "https://example.com/nwa/q1-2026-template-sample",
+      "static_notice": "Fictional deterministic sample derived from the software earnings review template; not live company data."
+    }
+  ],
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "summary": {
+    "high_impact_language_count": 2,
+    "missing_evidence_count": 3,
+    "review_item_count": 4,
+    "stale_data_count": 1
+  },
+  "ticker": "NWA",
+  "tool_version": "0.8.0"
+}

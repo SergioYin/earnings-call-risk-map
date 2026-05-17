@@ -1,0 +1,30 @@
+{
+  "artifact_type": "doctor_report",
+  "docs_links": {
+    "checked_document_count": 23,
+    "checked_link_count": 142,
+    "expected_document_count": 23,
+    "failure_count": 0,
+    "failures": [],
+    "status": "passed"
+  },
+  "fixture_count": 7,
+  "output_artifact_count": 73,
+  "package": "earnings-call-risk-map",
+  "package_health": {
+    "credential_environment_status": "passed",
+    "local_only_status": "passed",
+    "network_import_status": "passed",
+    "runtime_dependency_status": "passed"
+  },
+  "privacy_scan_command_hints": [
+    "python scripts/privacy_scan.py",
+    "PYTHONPATH=src python scripts/selfcheck.py",
+    "PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity"
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "status": "passed",
+  "version": "0.8.0",
+  "workflow_files": [],
+  "workflow_files_absent": true
+}

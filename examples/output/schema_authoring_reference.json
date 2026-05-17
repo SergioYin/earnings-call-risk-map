@@ -1,0 +1,230 @@
+{
+  "artifact_type": "schema_authoring_reference",
+  "authoring_model": "A fixture is a static review packet. It describes one company, the date of the review, the latest source date represented by the packet, and optional notes, KPIs, and catalysts.",
+  "date_rule": "Use exact calendar dates in YYYY-MM-DD format. Invalid dates such as 2026/05/15, 05-15-2026, or 2026-02-30 should be fixed before running the CLI.",
+  "extra_metadata_rule": "Additional properties are allowed for local metadata, but documented fields should be used for anything that affects reports, review queues, or snapshots.",
+  "field_count": 35,
+  "field_section_count": 5,
+  "minimal_starting_point": {
+    "as_of": "2026-05-15",
+    "catalysts": [],
+    "company": "Example Systems Inc.",
+    "data_cutoff": "2026-04-30",
+    "kpis": [],
+    "notes": [],
+    "schema_version": "0.1",
+    "ticker": "EXM"
+  },
+  "no_hallucination_rule": "Do not invent source names, publishers, URLs, dates, speaker labels, KPI values, or fiscal periods to make the fixture look complete.",
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_reference": "docs/schema-reference.json",
+  "sections": [
+    {
+      "fields": [
+        {
+          "field": "schema_version",
+          "guidance": "Use `0.1` for the current format when you include it.",
+          "meaning": "Which fixture shape this file was written for."
+        },
+        {
+          "field": "company",
+          "guidance": "Required. Use the display name a reviewer will recognize.",
+          "meaning": "The company name shown in reports and dashboards."
+        },
+        {
+          "field": "ticker",
+          "guidance": "Required. Use the public ticker when available; otherwise use a stable short label.",
+          "meaning": "The ticker or short company identifier."
+        },
+        {
+          "field": "as_of",
+          "guidance": "Required. Use `YYYY-MM-DD`. This is the anchor date for stale/static-data checks.",
+          "meaning": "The date of this review."
+        },
+        {
+          "field": "data_cutoff",
+          "guidance": "Required. Use `YYYY-MM-DD`. Do not set this later than the material actually reviewed.",
+          "meaning": "The newest source date represented in the fixture."
+        },
+        {
+          "field": "notes",
+          "guidance": "Use an array of note objects. Use `[]` when there are no notes yet.",
+          "meaning": "Text snippets or research notes to score."
+        },
+        {
+          "field": "kpis",
+          "guidance": "Use an array of KPI objects. Keep values as they appeared in source material.",
+          "meaning": "Metrics or operational observations to show in the review."
+        },
+        {
+          "field": "catalysts",
+          "guidance": "Use an array of catalyst objects. These should be events, not recommendations.",
+          "meaning": "Dated future events or review reminders."
+        },
+        {
+          "field": "source_attribution",
+          "guidance": "Use this for the source bundle behind the file. Item-level source attribution can override or add detail.",
+          "meaning": "Source records that apply to the whole fixture."
+        }
+      ],
+      "slug": "top_level",
+      "title": "Top-Level Fields"
+    },
+    {
+      "fields": [
+        {
+          "field": "id",
+          "guidance": "Useful for review comments and diffs. Keep it short, such as `n1` or `margin-qna-1`.",
+          "meaning": "A stable label for the note."
+        },
+        {
+          "field": "date",
+          "guidance": "Use `YYYY-MM-DD`. If omitted, the tool falls back to `data_cutoff`.",
+          "meaning": "The date of the source text."
+        },
+        {
+          "field": "topic",
+          "guidance": "Use reviewer-friendly wording such as `demand`, `margin`, or `capital allocation`.",
+          "meaning": "The section label for the note."
+        },
+        {
+          "field": "type",
+          "guidance": "Use values like `management_claim`, `analyst_question`, `user_synthesis`, `transcript_excerpt`, or `note`.",
+          "meaning": "How the text should be treated."
+        },
+        {
+          "field": "text",
+          "guidance": "Paste only the static excerpt or authored note you want reviewed. Do not blend source text with your interpretation unless the type is `user_synthesis`.",
+          "meaning": "The actual language to score."
+        },
+        {
+          "field": "evidence_url",
+          "guidance": "Leave blank or omit when unavailable; missing URLs are surfaced in the review queue.",
+          "meaning": "A public URL supporting the note."
+        },
+        {
+          "field": "source_attribution",
+          "guidance": "Use when the note comes from a specific filing, transcript, presentation, or user-authored source.",
+          "meaning": "Source record for this note."
+        }
+      ],
+      "slug": "notes",
+      "title": "Note Fields"
+    },
+    {
+      "fields": [
+        {
+          "field": "name",
+          "guidance": "Use the label from the source when possible, such as `Revenue growth` or `Net retention`.",
+          "meaning": "Metric name."
+        },
+        {
+          "field": "value",
+          "guidance": "Use a string for values with units, percentages, or ranges; a number is also accepted.",
+          "meaning": "Metric value as reported."
+        },
+        {
+          "field": "direction",
+          "guidance": "`up`, `better`, or `positive` adds opportunity weight. `down`, `worse`, or `negative` adds risk weight.",
+          "meaning": "Whether the movement reads positive or negative."
+        },
+        {
+          "field": "date",
+          "guidance": "Use `YYYY-MM-DD`. If omitted, the tool falls back to `data_cutoff`.",
+          "meaning": "Date of the KPI observation."
+        },
+        {
+          "field": "observation",
+          "guidance": "Use this for source-grounded context, not a forecast or valuation call.",
+          "meaning": "Short context about the KPI."
+        },
+        {
+          "field": "evidence_url",
+          "guidance": "Leave blank or omit when unavailable; missing URLs can be reviewed later.",
+          "meaning": "A public URL supporting the KPI."
+        },
+        {
+          "field": "source_attribution",
+          "guidance": "Use when the KPI comes from a specific table, filing, deck, or user worksheet.",
+          "meaning": "Source record for this KPI."
+        }
+      ],
+      "slug": "kpis",
+      "title": "KPI Fields"
+    },
+    {
+      "fields": [
+        {
+          "field": "date",
+          "guidance": "Use `YYYY-MM-DD`. The timeline sorts catalysts by this date.",
+          "meaning": "Event or review-trigger date."
+        },
+        {
+          "field": "title",
+          "guidance": "Use a concise label such as `Investor day`, `Product launch`, or `Next earnings report`.",
+          "meaning": "Short event name."
+        },
+        {
+          "field": "description",
+          "guidance": "Describe what should be checked, not what an investor should do.",
+          "meaning": "Why the event matters for review."
+        },
+        {
+          "field": "expected_impact",
+          "guidance": "Use neutral labels such as `risk review`, `opportunity review`, or `risk/opportunity review`.",
+          "meaning": "High-level risk/opportunity label."
+        },
+        {
+          "field": "evidence_url",
+          "guidance": "Leave blank or omit when unavailable.",
+          "meaning": "A public URL supporting the catalyst."
+        },
+        {
+          "field": "source_attribution",
+          "guidance": "Use when the catalyst came from an events page, filing, transcript, or user-authored plan.",
+          "meaning": "Source record for this catalyst."
+        }
+      ],
+      "slug": "catalysts",
+      "title": "Catalyst Fields"
+    },
+    {
+      "fields": [
+        {
+          "field": "source_name",
+          "guidance": "Example: `Q1 2026 earnings call transcript` or `FY2025 Form 10-K`.",
+          "meaning": "Human-readable source label."
+        },
+        {
+          "field": "publisher",
+          "guidance": "Example: a company name, `U.S. SEC EDGAR`, a transcript provider, or `User worksheet`.",
+          "meaning": "Who published or supplied the source."
+        },
+        {
+          "field": "source_type",
+          "guidance": "Use the closest allowed category from the generated schema, such as `company_investor_relations`, `sec_filing`, `transcript`, `shareholder_letter`, or `user_synthesis`.",
+          "meaning": "Provenance category."
+        },
+        {
+          "field": "source_url",
+          "guidance": "The tool records the URL but does not fetch, refresh, or verify it.",
+          "meaning": "Public URL for the static source."
+        },
+        {
+          "field": "accessed_at",
+          "guidance": "Use `YYYY-MM-DD` only when the URL was actually checked. This is not the event date.",
+          "meaning": "Date the URL was checked by the fixture author."
+        },
+        {
+          "field": "static_notice",
+          "guidance": "Use to remind readers that the fixture is static, non-live, or source-limited.",
+          "meaning": "A short boundary note."
+        }
+      ],
+      "slug": "source_attribution",
+      "title": "Source Attribution Fields"
+    }
+  ],
+  "source_doc": "docs/schema-authoring-reference.md",
+  "technical_reference": "docs/input-schema.md"
+}

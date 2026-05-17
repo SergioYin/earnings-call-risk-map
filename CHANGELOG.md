@@ -1,5 +1,46 @@
 # Changelog
 
+## 0.8.0 - 2026-05-17
+
+Release-evidence alignment release.
+
+### Added
+
+- Release notes draft at `docs/release-notes-v0.8.0.md`.
+- Internal maturity review record at `reports/reviews/2026-05-17-v0.8.0-internal-review.md`.
+
+### Changed
+
+- README, release readiness, publication checklist, distribution guide, reviewer evidence, agent skill, and generated release evidence now identify v0.8.0 as the current release line.
+- Release-asset checks and maturity evidence now expect the v0.8.0 notes and v0.8.0 internal review evidence.
+- Package version is now `0.8.0`.
+
+### Safety
+
+- The release remains educational research review only and preserves the local-only, no-network, no-credentials boundary.
+
+## 0.7.0 - 2026-05-17
+
+Spreadsheet and notes comparison documentation release.
+
+### Added
+
+- Comparison guide at `docs/comparison-to-spreadsheets.md`.
+- README and usage links to the comparison guide.
+- Release notes draft at `docs/release-notes-v0.7.0.md`.
+- Internal maturity review record at `reports/reviews/2026-05-17-v0.7.0-internal-review.md`.
+- Unit-test and selfcheck coverage for comparison-guide presence, first-run links, and Markdown link resolution.
+
+### Changed
+
+- README links now point to v0.7.0 release notes.
+- Release-asset checks and maturity evidence include the comparison guide and v0.7.0 review evidence.
+- Package version is now `0.7.0`.
+
+### Safety
+
+- The comparison guide explicitly states where the tool is worse than spreadsheets or generic notes, including financial models, live data, recommendations, ratings, price targets, portfolio actions, and open-ended writing.
+
 ## 0.6.0 - 2026-05-17
 
 Playbook-oriented release line.

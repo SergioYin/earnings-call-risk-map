@@ -1,0 +1,120 @@
+{
+  "schema_version": "0.1",
+  "company": "Logitech International S.A. Public-Source Consumer Hardware Fixture",
+  "ticker": "LOGI",
+  "as_of": "2024-05-01",
+  "data_cutoff": "2024-04-29",
+  "source_attribution": [
+    {
+      "source_name": "Logitech Announces Q4 and Full Fiscal Year 2024 Results",
+      "publisher": "Logitech Investor Relations",
+      "source_type": "company_investor_relations",
+      "source_url": "https://ir.logitech.com/press-releases/press-release-details/2024/Logitech-Announces-Q4-and-Full-Fiscal-Year-2024-Results/default.aspx",
+      "accessed_at": "2026-05-17",
+      "static_notice": "Static educational fixture assembled from a public company release; not live data."
+    },
+    {
+      "source_name": "Logitech Q4 FY2024 shareholder letter",
+      "publisher": "Logitech Investor Relations",
+      "source_type": "shareholder_letter",
+      "source_url": "https://ir.logitech.com/files/financials/2024/q4/Logitech_Q4-2024_Shareholder-Letter.pdf",
+      "accessed_at": "2026-05-17",
+      "static_notice": "Static educational fixture assembled from a public shareholder letter; not live data."
+    }
+  ],
+  "notes": [
+    {
+      "id": "logi-q4-return-to-growth",
+      "date": "2024-04-29",
+      "topic": "revenue growth",
+      "type": "management_claim",
+      "text": "Company release described Q4 as a return to growth with expanded gross margins after a period of category normalization.",
+      "evidence_url": "https://ir.logitech.com/press-releases/press-release-details/2024/Logitech-Announces-Q4-and-Full-Fiscal-Year-2024-Results/default.aspx",
+      "source_attribution": [
+        {
+          "source_name": "Logitech Q4 FY2024 results release",
+          "publisher": "Logitech Investor Relations",
+          "source_type": "company_investor_relations",
+          "source_url": "https://ir.logitech.com/press-releases/press-release-details/2024/Logitech-Announces-Q4-and-Full-Fiscal-Year-2024-Results/default.aspx",
+          "accessed_at": "2026-05-17",
+          "static_notice": "Static public-source excerpt; verify against the original release."
+        }
+      ]
+    },
+    {
+      "id": "logi-demand-supply-risks",
+      "date": "2024-04-29",
+      "topic": "demand and supply chain",
+      "type": "company_risk_language",
+      "text": "Forward-looking risk language cited demand variability, supply chain challenges, logistics delay, tariffs, and competitive pressure as factors that could affect results.",
+      "evidence_url": "https://ir.logitech.com/press-releases/press-release-details/2024/Logitech-Announces-Q4-and-Full-Fiscal-Year-2024-Results/default.aspx",
+      "source_attribution": [
+        {
+          "source_name": "Logitech Q4 FY2024 results release",
+          "publisher": "Logitech Investor Relations",
+          "source_type": "company_investor_relations",
+          "source_url": "https://ir.logitech.com/press-releases/press-release-details/2024/Logitech-Announces-Q4-and-Full-Fiscal-Year-2024-Results/default.aspx",
+          "accessed_at": "2026-05-17",
+          "static_notice": "Static public-source risk-language excerpt; verify against the original release."
+        }
+      ]
+    }
+  ],
+  "kpis": [
+    {
+      "name": "Q4 FY2024 net sales",
+      "value": "$1.01B",
+      "direction": "up",
+      "date": "2024-04-29",
+      "observation": "Static release value indicates Q4 returned to growth year over year.",
+      "evidence_url": "https://ir.logitech.com/press-releases/press-release-details/2024/Logitech-Announces-Q4-and-Full-Fiscal-Year-2024-Results/default.aspx",
+      "source_attribution": [
+        {
+          "source_name": "Logitech Q4 FY2024 results release",
+          "publisher": "Logitech Investor Relations",
+          "source_type": "company_investor_relations",
+          "source_url": "https://ir.logitech.com/press-releases/press-release-details/2024/Logitech-Announces-Q4-and-Full-Fiscal-Year-2024-Results/default.aspx",
+          "accessed_at": "2026-05-17",
+          "static_notice": "Static case-study KPI; not live data."
+        }
+      ]
+    },
+    {
+      "name": "FY2024 net sales",
+      "value": "$4.30B",
+      "direction": "down",
+      "date": "2024-04-29",
+      "observation": "Static release value shows fiscal-year sales declined versus the prior year despite Q4 improvement.",
+      "evidence_url": "https://ir.logitech.com/press-releases/press-release-details/2024/Logitech-Announces-Q4-and-Full-Fiscal-Year-2024-Results/default.aspx",
+      "source_attribution": [
+        {
+          "source_name": "Logitech Q4 FY2024 results release",
+          "publisher": "Logitech Investor Relations",
+          "source_type": "company_investor_relations",
+          "source_url": "https://ir.logitech.com/press-releases/press-release-details/2024/Logitech-Announces-Q4-and-Full-Fiscal-Year-2024-Results/default.aspx",
+          "accessed_at": "2026-05-17",
+          "static_notice": "Static case-study KPI; not live data."
+        }
+      ]
+    }
+  ],
+  "catalysts": [
+    {
+      "date": "2024-07-22",
+      "title": "FY2025 first-quarter update",
+      "description": "Review whether Q4 growth, category demand, and gross-margin expansion persisted into the next reporting period.",
+      "expected_impact": "risk/opportunity review",
+      "evidence_url": "https://ir.logitech.com/files/financials/2024/q4/Logitech_Q4-2024_Shareholder-Letter.pdf",
+      "source_attribution": [
+        {
+          "source_name": "Logitech Q4 FY2024 shareholder letter",
+          "publisher": "Logitech Investor Relations",
+          "source_type": "shareholder_letter",
+          "source_url": "https://ir.logitech.com/files/financials/2024/q4/Logitech_Q4-2024_Shareholder-Letter.pdf",
+          "accessed_at": "2026-05-17",
+          "static_notice": "Static catalyst context; not live data."
+        }
+      ]
+    }
+  ]
+}

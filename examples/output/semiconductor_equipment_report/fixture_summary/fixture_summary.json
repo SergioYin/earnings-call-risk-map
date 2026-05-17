@@ -1,0 +1,49 @@
+{
+  "artifact_type": "fixture_summary",
+  "as_of": "2025-01-30",
+  "company": "ASML Holding N.V. Public-Source Semiconductor Equipment Fixture",
+  "counts": {
+    "catalysts": 2,
+    "kpis": 3,
+    "notes": 4,
+    "opportunities": 5,
+    "review_queue": 2,
+    "risks": 2,
+    "source_attribution_records": 10,
+    "stale_badges": 1
+  },
+  "data_cutoff": "2025-01-29",
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "source_types": [
+    {
+      "count": 9,
+      "source_type": "company_investor_relations"
+    },
+    {
+      "count": 1,
+      "source_type": "press_release"
+    }
+  ],
+  "stale_badges": [
+    {
+      "badge": {
+        "age_days": 107,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "id": "asml-q3-memory-cycle",
+      "topic": "memory customer cycle"
+    }
+  ],
+  "stale_status_counts": {
+    "stale": 1
+  },
+  "ticker": "ASML",
+  "tool_version": "0.8.0"
+}

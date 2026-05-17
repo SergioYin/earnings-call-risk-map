@@ -1,0 +1,71 @@
+# Demo Screenshot Guide
+
+Choose generated artifacts for README visuals, release notes, gallery pages, or a public demo page without implying live data or investment advice.
+
+> Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
+
+- Source doc: `docs/demo-screenshot-guide.md`
+- Best screenshot targets: 8
+
+## Best Screenshot Targets
+
+- `examples/output/public_apple_static_case_study_dashboard.html`: Best primary README screenshot. It shows the static public-source case study, source attribution, stale/static labels, risk and opportunity panels, review queue signals, and the non-advice boundary.
+- `examples/output/demo_dashboard.html`: Good compact fallback when the README needs a smaller software-style fixture.
+- `examples/output/energy_infrastructure_dashboard.html`: Good sector-contrast screenshot for capital projects, catalysts, and stale/static project data.
+- `examples/output/consumer_hardware_dashboard.html`: Good sector-contrast screenshot for hardware launch, supply chain, inventory, and margin review examples.
+- `examples/output/semiconductor_equipment_dashboard.html`: Good sector-contrast screenshot for backlog, export control, China exposure, and equipment-cycle examples.
+- `docs/assets/showcase-dashboard-preview.svg`: Best PNG-free README visual when the repository page should render without a browser screenshot file.
+- `examples/output/showcase_dashboard_preview.svg`: Best release artifact copy of the PNG-free preview SVG.
+- `docs/demo-index.html`: Good overview screenshot for the local static demo launcher and bundled artifacts.
+
+## Good README Visuals
+
+- Static HTML dashboards that can be opened directly from disk.
+- The PNG-free preview SVG when a stable README image is better than a manually captured screenshot.
+- A short crop of `examples/output/demo_review_queue.md` or `examples/output/public_apple_static_case_study_review_queue.md` for human review handoff.
+- A short crop of `examples/output/demo_compare.md` for deterministic prior-vs-current comparison.
+- A short crop of `examples/output/case_study_map.md` for bundled fixtures and sector coverage.
+- A short crop of `examples/output/handoff_packet.md` for downstream thesis-ledger or portfolio-risk handoff.
+- A short crop of `examples/output/promotion_pack.md` for a release page or external project listing.
+
+## Screenshot Framing
+
+### Dashboards
+
+- Capture the top of the dashboard through the summary tiles.
+- Keep the static educational case-study warning or non-advice notice visible.
+- Include source attribution or stale/static labels when space allows.
+- Include the review queue panel when the screenshot is meant to explain analyst handoff.
+- Use a browser window wide enough that summary tiles and risk panels are legible.
+
+### Markdown
+
+- Use sections with headings, counts, artifact paths, source-boundary notes, or review queue items.
+- Keep crops short enough for README readability.
+- Prefer generated Markdown artifacts over manually rewritten summaries.
+
+## Less Useful Visuals
+
+- `examples/output/*_snapshot.json`
+- `examples/output/*_review_queue.json`
+- `examples/output/demo_review_queue_items.jsonl`
+- `examples/output/release_manifest.json`
+- `examples/output/package_audit.json`
+- `examples/output/doctor.json`
+- `docs/schema-reference.json`
+
+Use these JSON and JSONL files as linked evidence or downloadable artifacts instead of README images.
+
+## Boundaries
+
+- Do not use screenshots to imply live market data.
+- Do not use screenshots to imply real-time monitoring, price targets, buy/sell/hold recommendations, or personalized investment advice.
+- Preserve stale/static badges, source attribution, and the visible non-advice notice.
+
+## Related Docs
+
+- `docs/pages-demo.md`
+- `docs/gallery.md`
+- `docs/promotion-page-outline.md`
+- `docs/source-attribution-guide.md`
+- `docs/non-advice-boundary.md`

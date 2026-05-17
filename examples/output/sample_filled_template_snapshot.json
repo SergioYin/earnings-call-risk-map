@@ -1,0 +1,357 @@
+{
+  "as_of": "2026-05-16",
+  "catalyst_timeline": [
+    {
+      "date": "2026-06-20",
+      "description": "Management is expected to update the long-term operating margin framework.",
+      "evidence_url": "https://example.com/nwa/events",
+      "expected_impact": "risk/opportunity review",
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Northwind Analytics Investor Relations",
+          "source_name": "Investor events page",
+          "source_type": "company_investor_relations",
+          "source_url": "https://example.com/nwa/events",
+          "static_notice": "Fictional source URL for deterministic documentation workflow."
+        }
+      ],
+      "title": "Investor day"
+    },
+    {
+      "date": "2026-08-08",
+      "description": "Review whether Europe demand pressure and migration churn risk persisted after quarter close.",
+      "evidence_url": "",
+      "expected_impact": "risk validation",
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Fixture author",
+          "source_name": "User-authored catalyst watchlist",
+          "source_type": "user_synthesis",
+          "static_notice": "User synthesis is a review aid and not source evidence."
+        }
+      ],
+      "title": "Next earnings report"
+    }
+  ],
+  "company": "Northwind Analytics Inc.",
+  "data_cutoff": "2026-05-10",
+  "opportunities": [
+    {
+      "date": "2026-05-10",
+      "evidence_url": "https://example.com/nwa/q1-2026-call-transcript",
+      "id": "nwa-q1-mgmt-1",
+      "opportunity_keywords": [
+        "growth",
+        "pipeline"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 5,
+      "review_reasons": [],
+      "review_required": false,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Northwind Analytics Investor Relations",
+          "source_name": "Q1 2026 earnings call transcript",
+          "source_type": "transcript",
+          "source_url": "https://example.com/nwa/q1-2026-call-transcript",
+          "static_notice": "Fictional source URL for deterministic documentation workflow."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 6,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "Management said annual recurring revenue growth remained steady, but new enterprise pipeline conversion slowed in Europe.",
+      "topic": "revenue durability",
+      "type": "management_claim"
+    },
+    {
+      "date": "2026-05-10",
+      "direction": "up",
+      "evidence_url": "https://example.com/nwa/q1-2026-shareholder-letter",
+      "name": "Net retention",
+      "observation": "Retention improved versus the prior quarter, driven by larger-account expansion.",
+      "opportunity_keywords": [
+        "expansion"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 4,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Northwind Analytics Investor Relations",
+          "source_name": "Q1 2026 shareholder letter",
+          "source_type": "shareholder_letter",
+          "source_url": "https://example.com/nwa/q1-2026-shareholder-letter",
+          "static_notice": "Fictional source URL for deterministic documentation workflow."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 6,
+        "label": "current",
+        "status": "current"
+      },
+      "value": "109%"
+    },
+    {
+      "date": "2026-05-10",
+      "direction": "flat",
+      "evidence_url": "https://example.com/nwa/q1-2026-shareholder-letter",
+      "name": "Revenue growth",
+      "observation": "Growth was described as steady, while regional deal conversion was weaker.",
+      "opportunity_keywords": [
+        "growth"
+      ],
+      "opportunity_level": "low",
+      "opportunity_score": 3,
+      "risk_keywords": [
+        "weak"
+      ],
+      "risk_level": "low",
+      "risk_score": 2,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Northwind Analytics Investor Relations",
+          "source_name": "Q1 2026 shareholder letter",
+          "source_type": "shareholder_letter",
+          "source_url": "https://example.com/nwa/q1-2026-shareholder-letter",
+          "static_notice": "Fictional source URL for deterministic documentation workflow."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 6,
+        "label": "current",
+        "status": "current"
+      },
+      "value": "18%"
+    }
+  ],
+  "review_queue": [
+    {
+      "evidence_url": "https://example.com/nwa/q1-2026-call-transcript",
+      "id": "nwa-q1-analyst-1",
+      "reasons": [
+        "high-impact language"
+      ],
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Northwind Analytics Investor Relations",
+          "source_name": "Q1 2026 earnings call transcript",
+          "source_type": "transcript",
+          "source_url": "https://example.com/nwa/q1-2026-call-transcript",
+          "static_notice": "Fictional source URL for deterministic documentation workflow."
+        }
+      ],
+      "topic": "enterprise demand"
+    },
+    {
+      "evidence_url": null,
+      "id": "nwa-q1-user-1",
+      "reasons": [
+        "missing evidence URL",
+        "high-impact language"
+      ],
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Fixture author",
+          "source_name": "User-authored template fill notes",
+          "source_type": "user_synthesis",
+          "static_notice": "User synthesis is a review aid and not source evidence."
+        }
+      ],
+      "topic": "margin and retention watchlist"
+    }
+  ],
+  "risks": [
+    {
+      "date": "2026-05-16",
+      "evidence_url": null,
+      "id": "nwa-q1-user-1",
+      "opportunity_keywords": [],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "review_reasons": [
+        "missing evidence URL",
+        "high-impact language"
+      ],
+      "review_required": true,
+      "risk_keywords": [
+        "delay",
+        "delayed",
+        "pressure",
+        "risk",
+        "weak",
+        "weakness"
+      ],
+      "risk_level": "high",
+      "risk_score": 12,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Fixture author",
+          "source_name": "User-authored template fill notes",
+          "source_type": "user_synthesis",
+          "static_notice": "User synthesis is a review aid and not source evidence."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 0,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "User synthesis: review margin pressure, delayed migration risk, and whether retention improvement offsets regional demand weakness.",
+      "topic": "margin and retention watchlist",
+      "type": "user_synthesis"
+    },
+    {
+      "date": "2026-05-10",
+      "evidence_url": "https://example.com/nwa/q1-2026-call-transcript",
+      "id": "nwa-q1-analyst-1",
+      "opportunity_keywords": [],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "review_reasons": [
+        "high-impact language"
+      ],
+      "review_required": true,
+      "risk_keywords": [
+        "churn",
+        "delay",
+        "delayed",
+        "risk"
+      ],
+      "risk_level": "high",
+      "risk_score": 9,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Northwind Analytics Investor Relations",
+          "source_name": "Q1 2026 earnings call transcript",
+          "source_type": "transcript",
+          "source_url": "https://example.com/nwa/q1-2026-call-transcript",
+          "static_notice": "Fictional source URL for deterministic documentation workflow."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 6,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "Analyst asked whether delayed platform migrations could create churn risk in the second half.",
+      "topic": "enterprise demand",
+      "type": "analyst_question"
+    },
+    {
+      "date": "2026-02-01",
+      "direction": "worse",
+      "evidence_url": "",
+      "name": "Gross margin",
+      "observation": "Older migration support costs remained a margin pressure item and should be refreshed.",
+      "opportunity_keywords": [],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "risk_keywords": [
+        "pressure"
+      ],
+      "risk_level": "medium",
+      "risk_score": 4,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Fixture author",
+          "source_name": "Prior quarter operating metrics note",
+          "source_type": "user_synthesis",
+          "static_notice": "Static prior-quarter note intentionally keeps missing evidence visible."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 104,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "value": "71%"
+    },
+    {
+      "date": "2026-05-10",
+      "direction": "flat",
+      "evidence_url": "https://example.com/nwa/q1-2026-shareholder-letter",
+      "name": "Revenue growth",
+      "observation": "Growth was described as steady, while regional deal conversion was weaker.",
+      "opportunity_keywords": [
+        "growth"
+      ],
+      "opportunity_level": "low",
+      "opportunity_score": 3,
+      "risk_keywords": [
+        "weak"
+      ],
+      "risk_level": "low",
+      "risk_score": 2,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-16",
+          "publisher": "Northwind Analytics Investor Relations",
+          "source_name": "Q1 2026 shareholder letter",
+          "source_type": "shareholder_letter",
+          "source_url": "https://example.com/nwa/q1-2026-shareholder-letter",
+          "static_notice": "Fictional source URL for deterministic documentation workflow."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 6,
+        "label": "current",
+        "status": "current"
+      },
+      "value": "18%"
+    }
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_attribution": [
+    {
+      "accessed_at": "2026-05-16",
+      "publisher": "Fixture author",
+      "source_name": "Q1 2026 earnings-call template fill sample",
+      "source_type": "user_synthesis",
+      "source_url": "https://example.com/nwa/q1-2026-template-sample",
+      "static_notice": "Fictional deterministic sample derived from the software earnings review template; not live company data."
+    }
+  ],
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "stale_badges": [
+    {
+      "badge": {
+        "age_days": 104,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "id": "Gross margin",
+      "topic": "Gross margin"
+    }
+  ],
+  "summary": {
+    "opportunity_count": 3,
+    "review_queue_count": 2,
+    "risk_count": 4,
+    "stale_badge_count": 1
+  },
+  "ticker": "NWA",
+  "tool_version": "0.8.0"
+}

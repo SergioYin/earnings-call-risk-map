@@ -29,6 +29,26 @@ FIXTURE_CATALOG = (
         ),
     },
     {
+        "slug": "consumer_hardware",
+        "path": Path("examples/input/consumer_hardware.json"),
+        "status": "static public-source consumer hardware fixture",
+        "recommended_commands": (
+            "earnings-call-risk-map analyze examples/input/consumer_hardware.json",
+            "earnings-call-risk-map review-queue examples/input/consumer_hardware.json --md-out examples/output/consumer_hardware_review_queue.md --json-out examples/output/consumer_hardware_review_queue.json",
+            "earnings-call-risk-map analyze examples/input/consumer_hardware.json --html-out examples/output/consumer_hardware_dashboard.html",
+        ),
+    },
+    {
+        "slug": "semiconductor_equipment",
+        "path": Path("examples/input/semiconductor_equipment.json"),
+        "status": "static public-source semiconductor equipment fixture",
+        "recommended_commands": (
+            "earnings-call-risk-map analyze examples/input/semiconductor_equipment.json",
+            "earnings-call-risk-map review-queue examples/input/semiconductor_equipment.json --md-out examples/output/semiconductor_equipment_review_queue.md --json-out examples/output/semiconductor_equipment_review_queue.json",
+            "earnings-call-risk-map analyze examples/input/semiconductor_equipment.json --html-out examples/output/semiconductor_equipment_dashboard.html",
+        ),
+    },
+    {
         "slug": "public_apple_static_case_study",
         "path": Path("examples/input/public_apple_static_case_study.json"),
         "status": "static public-source case study",
@@ -75,6 +95,8 @@ def render_fixture_catalog_markdown(catalog: list[dict[str, Any]]) -> str:
         "# Fixture Catalog",
         "",
         "Bundled fixtures are deterministic examples for local demos and tests. None of the bundled fixtures fetch live market, filing, or transcript data at runtime.",
+        "",
+        "Regenerate this catalog with `earnings-call-risk-map fixture-catalog`.",
         "",
         "| Fixture | Ticker | Data cutoff | Static/live status | Recommended command |",
         "| --- | --- | --- | --- | --- |",

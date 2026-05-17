@@ -15,6 +15,25 @@ REVIEW_REASON_LABELS = {
     "missing_evidence": "missing evidence URL",
     "high_impact_language": "high-impact language",
 }
+REVIEW_QUEUE_PRIORITIZATION = {
+    "ordered_by": [
+        "items with more review issue categories first",
+        "higher risk score next",
+        "higher opportunity score next",
+        "topic and id as deterministic tie-breakers",
+    ],
+    "severity_stale_interaction": [
+        "high-impact language is triggered by risk or opportunity score >= 7",
+        "stale or unverified dates add a stale_data issue category and keep the stale badge visible",
+        "stale note data can add +1 to risk severity before high-impact review checks",
+        "stale-only items can rank below current items that combine missing evidence with high-impact language",
+    ],
+    "human_handoff": [
+        "verify stale data against current source documents before treating it as resolved or material",
+        "fill or reject missing evidence URLs with source-specific reviewer notes",
+        "send high-impact or multi-issue items to portfolio-risk or thesis-ledger owners for approval workflow",
+    ],
+}
 HANDOFF_PACKET_CAUTIONS = (
     "Educational research review only; not personalized investment, legal, accounting, tax, buy, sell, or hold advice.",
     "Artifact paths are local file handoffs and should be regenerated from current fixtures before portfolio or thesis use.",
@@ -86,6 +105,15 @@ def analyze_document(data: dict[str, Any]) -> dict[str, Any]:
 def compare_snapshots(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:
     """Compare two analyzed snapshots."""
 
+    before_company = before.get("company")
+    after_company = after.get("company")
+    before_ticker = before.get("ticker")
+    after_ticker = after.get("ticker")
+    comparison_scope = (
+        "same_fixture"
+        if (before_company, before_ticker) == (after_company, after_ticker)
+        else "cross_fixture"
+    )
     before_risks = _score_by_key(before.get("risks", []))
     after_risks = _score_by_key(after.get("risks", []))
     before_opps = _score_by_key(before.get("opportunities", []))
@@ -101,8 +129,13 @@ def compare_snapshots(before: dict[str, Any], after: dict[str, Any]) -> dict[str
     return {
         "schema_version": "0.1",
         "tool_version": __version__,
-        "company": after.get("company") or before.get("company"),
-        "ticker": after.get("ticker") or before.get("ticker"),
+        "company": after_company or before_company,
+        "ticker": after_ticker or before_ticker,
+        "before_company": before_company,
+        "before_ticker": before_ticker,
+        "after_company": after_company,
+        "after_ticker": after_ticker,
+        "comparison_scope": comparison_scope,
         "before_as_of": before.get("as_of"),
         "after_as_of": after.get("as_of"),
         "safety_notice": after.get("safety_notice") or before.get("safety_notice") or SAFETY_NOTICE,
@@ -117,6 +150,7 @@ def compare_snapshots(before: dict[str, Any], after: dict[str, Any]) -> dict[str
             opportunity_changes,
             review_queue_delta,
             stale_badge_delta,
+            comparison_scope,
         ),
     }
 
@@ -227,6 +261,7 @@ def build_review_queue_export(snapshot: dict[str, Any]) -> dict[str, Any]:
             "missing_evidence_count": counts["missing_evidence"],
             "high_impact_language_count": counts["high_impact_language"],
         },
+        "prioritization": REVIEW_QUEUE_PRIORITIZATION,
         "items": items,
     }
 
@@ -346,10 +381,15 @@ def _compare_interpretation(
     opportunity_changes: list[dict[str, Any]],
     review_queue_delta: int,
     stale_badge_delta: int,
+    comparison_scope: str = "same_fixture",
 ) -> list[str]:
     lines = [
         "Deltas compare deterministic keyword scores between analyzed snapshots; they are prompts for source review, not investment conclusions.",
     ]
+    if comparison_scope == "cross_fixture":
+        lines.append(
+            "Cross-fixture comparisons show differences in checked-in fixture inputs and domain vocabulary; they do not rank companies, sectors, or securities."
+        )
     lines.extend(_attention_movement_lines("Risk", risk_changes, "risk-score"))
     lines.extend(_attention_movement_lines("Opportunity", opportunity_changes, "opportunity-score"))
     if review_queue_delta > 0:

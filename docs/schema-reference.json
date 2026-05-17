@@ -63,7 +63,7 @@
     },
     "source_attribution": {
       "$ref": "#/$defs/source_attribution",
-      "description": "Public-source attribution records for the fixture."
+      "description": "Static provenance records for the fixture-level source bundle."
     }
   },
   "$defs": {
@@ -76,6 +76,7 @@
       ]
     },
     "source_attribution": {
+      "description": "A single source attribution record or a list of records.",
       "oneOf": [
         {
           "$ref": "#/$defs/source_record"
@@ -90,31 +91,77 @@
     },
     "source_record": {
       "type": "object",
+      "description": "Static source metadata supplied by the fixture author. It records attribution and source boundaries without implying live fetching, verification, or advice.",
       "additionalProperties": true,
+      "anyOf": [
+        {
+          "required": [
+            "source_name"
+          ]
+        },
+        {
+          "required": [
+            "publisher"
+          ]
+        },
+        {
+          "required": [
+            "source_type"
+          ]
+        },
+        {
+          "required": [
+            "source_url"
+          ]
+        },
+        {
+          "required": [
+            "accessed_at"
+          ]
+        },
+        {
+          "required": [
+            "static_notice"
+          ]
+        }
+      ],
       "properties": {
         "source_name": {
           "type": "string",
-          "description": "Human-readable source label."
+          "minLength": 1,
+          "description": "Human-readable source label, such as a filing title, transcript name, release title, or worksheet label."
         },
         "publisher": {
           "type": "string",
-          "description": "Publisher or source system."
+          "minLength": 1,
+          "description": "Organization, venue, or source system that published or supplied the static source record."
         },
         "source_type": {
           "type": "string",
-          "description": "Provenance class such as company_investor_relations, sec_filing, transcript, or user_synthesis."
+          "enum": [
+            "company_investor_relations",
+            "sec_filing",
+            "transcript",
+            "shareholder_letter",
+            "press_release",
+            "news_article",
+            "user_synthesis"
+          ],
+          "description": "Allowed provenance class for the source container; use the enum value that best describes where the source record came from."
         },
         "source_url": {
           "type": "string",
-          "description": "Public URL for the source."
+          "minLength": 1,
+          "description": "Public URL for the source record when available. The tool does not fetch or refresh this URL."
         },
         "accessed_at": {
           "$ref": "#/$defs/date",
-          "description": "Date the static fixture author recorded the source URL."
+          "description": "Date the static fixture author captured or checked the source URL, in YYYY-MM-DD format."
         },
         "static_notice": {
           "type": "string",
-          "description": "Short label clarifying that the fixture is static and not live data."
+          "minLength": 1,
+          "description": "Short warning that preserves the static, non-live, or source-boundary limitation for this record."
         }
       }
     },
@@ -148,7 +195,7 @@
         },
         "source_attribution": {
           "$ref": "#/$defs/source_attribution",
-          "description": "Public-source attribution rendered with the item."
+          "description": "Static source attribution rendered with the item."
         }
       }
     },
@@ -185,7 +232,7 @@
         },
         "source_attribution": {
           "$ref": "#/$defs/source_attribution",
-          "description": "Public-source attribution rendered with the KPI."
+          "description": "Static source attribution rendered with the KPI."
         }
       }
     },
@@ -215,7 +262,7 @@
         },
         "source_attribution": {
           "$ref": "#/$defs/source_attribution",
-          "description": "Public-source attribution rendered with the catalyst."
+          "description": "Static source attribution rendered with the catalyst."
         }
       }
     }

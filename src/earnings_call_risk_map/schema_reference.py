@@ -1,0 +1,281 @@
+"""JSON Schema reference generation."""
+
+from __future__ import annotations
+
+import json
+from typing import Any
+
+from .io import ALLOWED_SOURCE_TYPES
+from .models import REQUIRED_TOP_LEVEL
+
+SOURCE_ATTRIBUTION_FIELD_DESCRIPTIONS = {
+    "source_name": "Human-readable source label, such as a filing title, transcript name, release title, or worksheet label.",
+    "publisher": "Organization, venue, or source system that published or supplied the static source record.",
+    "source_type": "Allowed provenance class for the source container; use the enum value that best describes where the source record came from.",
+    "source_url": "Public URL for the source record when available. The tool does not fetch or refresh this URL.",
+    "accessed_at": "Date the static fixture author captured or checked the source URL, in YYYY-MM-DD format.",
+    "static_notice": "Short warning that preserves the static, non-live, or source-boundary limitation for this record.",
+}
+
+
+def build_schema_reference() -> dict[str, Any]:
+    return {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://example.com/earnings-call-risk-map/docs/schema-reference.json",
+        "title": "Earnings Call Risk Map Input Fixture",
+        "description": (
+            "Machine-readable reference for the zero-dependency input fixture shape accepted by "
+            "earnings-call-risk-map. Runtime validation remains intentionally lightweight; this file "
+            "documents supported fields for authors and integrators."
+        ),
+        "type": "object",
+        "required": list(REQUIRED_TOP_LEVEL),
+        "additionalProperties": True,
+        "properties": {
+            "schema_version": {
+                "type": "string",
+                "description": "Fixture schema version. Use 0.1 for the current input shape.",
+                "examples": ["0.1"],
+            },
+            "company": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Company display name used in reports.",
+            },
+            "ticker": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Public ticker or short identifier.",
+            },
+            "as_of": {
+                "$ref": "#/$defs/date",
+                "description": "Review date used for stale/static-data comparisons.",
+            },
+            "data_cutoff": {
+                "$ref": "#/$defs/date",
+                "description": "Latest source-data date represented by the fixture.",
+            },
+            "notes": {
+                "type": "array",
+                "description": "Transcript excerpts or research notes.",
+                "items": {"$ref": "#/$defs/note"},
+                "default": [],
+            },
+            "kpis": {
+                "type": "array",
+                "description": "KPI observations.",
+                "items": {"$ref": "#/$defs/kpi"},
+                "default": [],
+            },
+            "catalysts": {
+                "type": "array",
+                "description": "Dated future events or review triggers.",
+                "items": {"$ref": "#/$defs/catalyst"},
+                "default": [],
+            },
+            "source_attribution": {
+                "$ref": "#/$defs/source_attribution",
+                "description": "Static provenance records for the fixture-level source bundle.",
+            },
+        },
+        "$defs": {
+            "date": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Calendar date in YYYY-MM-DD format.",
+                "examples": ["2026-05-15"],
+            },
+            "source_attribution": {
+                "description": "A single source attribution record or a list of records.",
+                "oneOf": [
+                    {"$ref": "#/$defs/source_record"},
+                    {
+                        "type": "array",
+                        "items": {"$ref": "#/$defs/source_record"},
+                    },
+                ],
+            },
+            "source_record": {
+                "type": "object",
+                "description": (
+                    "Static source metadata supplied by the fixture author. It records attribution "
+                    "and source boundaries without implying live fetching, verification, or advice."
+                ),
+                "additionalProperties": True,
+                "anyOf": [
+                    {"required": ["source_name"]},
+                    {"required": ["publisher"]},
+                    {"required": ["source_type"]},
+                    {"required": ["source_url"]},
+                    {"required": ["accessed_at"]},
+                    {"required": ["static_notice"]},
+                ],
+                "properties": {
+                    "source_name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": SOURCE_ATTRIBUTION_FIELD_DESCRIPTIONS["source_name"],
+                    },
+                    "publisher": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": SOURCE_ATTRIBUTION_FIELD_DESCRIPTIONS["publisher"],
+                    },
+                    "source_type": {
+                        "type": "string",
+                        "enum": list(ALLOWED_SOURCE_TYPES),
+                        "description": SOURCE_ATTRIBUTION_FIELD_DESCRIPTIONS["source_type"],
+                    },
+                    "source_url": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": SOURCE_ATTRIBUTION_FIELD_DESCRIPTIONS["source_url"],
+                    },
+                    "accessed_at": {
+                        "$ref": "#/$defs/date",
+                        "description": SOURCE_ATTRIBUTION_FIELD_DESCRIPTIONS["accessed_at"],
+                    },
+                    "static_notice": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": SOURCE_ATTRIBUTION_FIELD_DESCRIPTIONS["static_notice"],
+                    },
+                },
+            },
+            "note": {
+                "type": "object",
+                "additionalProperties": True,
+                "properties": {
+                    "id": {"type": "string", "description": "Stable note identifier."},
+                    "date": {
+                        "$ref": "#/$defs/date",
+                        "description": "Source date. Falls back to data_cutoff if omitted.",
+                    },
+                    "topic": {"type": "string", "description": "Topic label used in report sections."},
+                    "type": {
+                        "type": "string",
+                        "description": (
+                            "Note provenance, such as management_claim, analyst_question, "
+                            "user_synthesis, transcript_excerpt, or note."
+                        ),
+                    },
+                    "text": {"type": "string", "description": "Text scored for risk and opportunity keywords."},
+                    "evidence_url": {
+                        "type": "string",
+                        "description": "Public source URL. Missing URLs enter the review queue.",
+                    },
+                    "source_attribution": {
+                        "$ref": "#/$defs/source_attribution",
+                        "description": "Static source attribution rendered with the item.",
+                    },
+                },
+            },
+            "kpi": {
+                "type": "object",
+                "additionalProperties": True,
+                "properties": {
+                    "name": {"type": "string", "description": "KPI label."},
+                    "value": {
+                        "description": "KPI value as shown in source material.",
+                        "type": ["string", "number"],
+                    },
+                    "direction": {
+                        "type": "string",
+                        "description": "up, better, or positive adds opportunity weight; down, worse, or negative adds risk weight.",
+                    },
+                    "date": {
+                        "$ref": "#/$defs/date",
+                        "description": "KPI observation date. Falls back to data_cutoff if omitted.",
+                    },
+                    "observation": {
+                        "type": "string",
+                        "description": "Text scored alongside the KPI name and direction.",
+                    },
+                    "evidence_url": {"type": "string", "description": "Public source URL."},
+                    "source_attribution": {
+                        "$ref": "#/$defs/source_attribution",
+                        "description": "Static source attribution rendered with the KPI.",
+                    },
+                },
+            },
+            "catalyst": {
+                "type": "object",
+                "additionalProperties": True,
+                "properties": {
+                    "date": {
+                        "$ref": "#/$defs/date",
+                        "description": "Catalyst date used for timeline sorting.",
+                    },
+                    "title": {"type": "string", "description": "Catalyst title."},
+                    "description": {
+                        "type": "string",
+                        "description": "Context for the event or review trigger.",
+                    },
+                    "expected_impact": {
+                        "type": "string",
+                        "description": "Expected risk/opportunity impact label.",
+                    },
+                    "evidence_url": {"type": "string", "description": "Public source URL."},
+                    "source_attribution": {
+                        "$ref": "#/$defs/source_attribution",
+                        "description": "Static source attribution rendered with the catalyst.",
+                    },
+                },
+            },
+        },
+        "examples": [
+            {
+                "schema_version": "0.1",
+                "company": "Example Systems Inc.",
+                "ticker": "EXM",
+                "as_of": "2026-05-15",
+                "data_cutoff": "2026-04-30",
+                "source_attribution": [
+                    {
+                        "source_name": "Example Systems Q1 2026 results",
+                        "publisher": "Example Systems",
+                        "source_type": "company_investor_relations",
+                        "source_url": "https://example.com/exm/q1-2026-results",
+                        "accessed_at": "2026-05-15",
+                        "static_notice": "Static educational fixture; not live data.",
+                    }
+                ],
+                "notes": [
+                    {
+                        "id": "n1",
+                        "date": "2026-04-30",
+                        "topic": "revenue durability",
+                        "type": "transcript_excerpt",
+                        "text": (
+                            "Management described continued growth in enterprise pipeline, but noted "
+                            "demand pressure in one international region."
+                        ),
+                        "evidence_url": "https://example.com/exm/q1-2026-call",
+                    }
+                ],
+                "kpis": [
+                    {
+                        "name": "Net retention",
+                        "value": "112%",
+                        "direction": "up",
+                        "date": "2026-04-30",
+                        "observation": "Improved versus prior quarter with growth in larger accounts.",
+                        "evidence_url": "https://example.com/exm/q1-2026-deck",
+                    }
+                ],
+                "catalysts": [
+                    {
+                        "date": "2026-06-10",
+                        "title": "Investor day",
+                        "description": "Management expected to update long-term margin framework.",
+                        "expected_impact": "risk/opportunity review",
+                        "evidence_url": "https://example.com/exm/events",
+                    }
+                ],
+            }
+        ],
+    }
+
+
+def schema_reference_json() -> str:
+    return json.dumps(build_schema_reference(), indent=2) + "\n"

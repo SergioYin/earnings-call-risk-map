@@ -1,0 +1,358 @@
+{
+  "as_of": "2025-01-30",
+  "catalyst_timeline": [
+    {
+      "date": "2025-03-14",
+      "description": "Check the filed annual report for risk factors around export controls, supplier concentration, and customer demand timing.",
+      "evidence_url": null,
+      "expected_impact": "source validation",
+      "source_attribution": [],
+      "title": "Annual report review"
+    },
+    {
+      "date": "2025-04-16",
+      "description": "Review whether bookings, customer demand timing, and gross margin trends remained consistent with the January outlook.",
+      "evidence_url": "https://www.asml.com/investors/financial-results/q4-2024",
+      "expected_impact": "risk/opportunity review",
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q4 2024 financial results page",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/investors/financial-results/q4-2024",
+          "static_notice": "Static catalyst context; not live data."
+        }
+      ],
+      "title": "Q1 2025 results update"
+    }
+  ],
+  "company": "ASML Holding N.V. Public-Source Semiconductor Equipment Fixture",
+  "data_cutoff": "2025-01-29",
+  "opportunities": [
+    {
+      "date": "2025-01-29",
+      "direction": "positive",
+      "evidence_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+      "name": "Q4 2024 net bookings",
+      "observation": "Bookings support pipeline visibility and future system shipment growth review.",
+      "opportunity_keywords": [
+        "growth",
+        "pipeline"
+      ],
+      "opportunity_level": "high",
+      "opportunity_score": 7,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q4 and full-year 2024 financial results",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+          "static_notice": "Static case-study KPI; not live data."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 1,
+        "label": "current",
+        "status": "current"
+      },
+      "value": "EUR 7.1B"
+    },
+    {
+      "date": "2025-01-29",
+      "direction": "up",
+      "evidence_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+      "name": "Q4 2024 net sales",
+      "observation": "Static release value shows quarterly growth at the end of a record fiscal year.",
+      "opportunity_keywords": [
+        "growth",
+        "record"
+      ],
+      "opportunity_level": "high",
+      "opportunity_score": 7,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q4 and full-year 2024 financial results",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+          "static_notice": "Static case-study KPI; not live data."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 1,
+        "label": "current",
+        "status": "current"
+      },
+      "value": "EUR 9.3B"
+    },
+    {
+      "date": "2025-01-29",
+      "evidence_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+      "id": "asml-fy2024-record-sales",
+      "opportunity_keywords": [
+        "growth",
+        "record"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 5,
+      "review_reasons": [],
+      "review_required": false,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q4 and full-year 2024 financial results",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+          "static_notice": "Static public-source excerpt; verify against the original release."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 1,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "Company release described 2024 as a record year with total net sales growth and resilient gross margin.",
+      "topic": "2024 net sales and gross margin",
+      "type": "management_claim"
+    },
+    {
+      "date": "2025-01-29",
+      "evidence_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+      "id": "asml-bookings-backlog",
+      "opportunity_keywords": [
+        "growth",
+        "opportunity"
+      ],
+      "opportunity_level": "medium",
+      "opportunity_score": 5,
+      "review_reasons": [],
+      "review_required": false,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q4 and full-year 2024 financial results",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+          "static_notice": "Static public-source excerpt; verify against the original release."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 1,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "Management highlighted Q4 bookings and backlog as support for future growth opportunity in lithography demand.",
+      "topic": "bookings and backlog",
+      "type": "management_claim"
+    },
+    {
+      "date": "2025-01-29",
+      "direction": "positive",
+      "evidence_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+      "name": "FY2024 gross margin",
+      "observation": "Static release value indicates gross margin remained positive despite mixed end-market conditions.",
+      "opportunity_keywords": [],
+      "opportunity_level": "low",
+      "opportunity_score": 2,
+      "risk_keywords": [],
+      "risk_level": "none",
+      "risk_score": 0,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q4 and full-year 2024 financial results",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+          "static_notice": "Static case-study KPI; not live data."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 1,
+        "label": "current",
+        "status": "current"
+      },
+      "value": "51.3%"
+    }
+  ],
+  "review_queue": [
+    {
+      "evidence_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+      "id": "asml-export-demand-risk",
+      "reasons": [
+        "high-impact language"
+      ],
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q4 and full-year 2024 financial results",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+          "static_notice": "Static public-source risk-language excerpt; verify against the original release."
+        }
+      ],
+      "topic": "demand timing and export controls"
+    },
+    {
+      "evidence_url": "https://www.asml.com/en/news/press-releases/2024/q3-2024-financial-results-dd3ac76a9d4d0f8c",
+      "id": "asml-q3-memory-cycle",
+      "reasons": [
+        "data is stale",
+        "high-impact language"
+      ],
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q3 2024 financial results",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/en/news/press-releases/2024/q3-2024-financial-results-dd3ac76a9d4d0f8c",
+          "static_notice": "Static public-source context older than the fixture cutoff; verify freshness before reuse."
+        }
+      ],
+      "topic": "memory customer cycle"
+    }
+  ],
+  "risks": [
+    {
+      "date": "2025-01-29",
+      "evidence_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+      "id": "asml-export-demand-risk",
+      "opportunity_keywords": [],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "review_reasons": [
+        "high-impact language"
+      ],
+      "review_required": true,
+      "risk_keywords": [
+        "delay",
+        "pressure",
+        "regulatory",
+        "risk",
+        "supply"
+      ],
+      "risk_level": "high",
+      "risk_score": 11,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q4 and full-year 2024 financial results",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+          "static_notice": "Static public-source risk-language excerpt; verify against the original release."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 1,
+        "label": "current",
+        "status": "current"
+      },
+      "text": "Forward-looking language noted customer demand timing, regulatory export controls, supply constraints, and customer delay risk could pressure results.",
+      "topic": "demand timing and export controls",
+      "type": "company_risk_language"
+    },
+    {
+      "date": "2024-10-15",
+      "evidence_url": "https://www.asml.com/en/news/press-releases/2024/q3-2024-financial-results-dd3ac76a9d4d0f8c",
+      "id": "asml-q3-memory-cycle",
+      "opportunity_keywords": [],
+      "opportunity_level": "none",
+      "opportunity_score": 0,
+      "review_reasons": [
+        "data is stale",
+        "high-impact language"
+      ],
+      "review_required": true,
+      "risk_keywords": [
+        "delay",
+        "risk",
+        "weak",
+        "weakness"
+      ],
+      "risk_level": "high",
+      "risk_score": 9,
+      "source_attribution": [
+        {
+          "accessed_at": "2026-05-17",
+          "publisher": "ASML Investor Relations",
+          "source_name": "ASML Q3 2024 financial results",
+          "source_type": "company_investor_relations",
+          "source_url": "https://www.asml.com/en/news/press-releases/2024/q3-2024-financial-results-dd3ac76a9d4d0f8c",
+          "static_notice": "Static public-source context older than the fixture cutoff; verify freshness before reuse."
+        }
+      ],
+      "stale_badge": {
+        "age_days": 107,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "text": "Prior quarter context flagged memory weakness and customer schedule delay risk while the industry recovery remained uneven.",
+      "topic": "memory customer cycle",
+      "type": "user_synthesis"
+    }
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_attribution": [
+    {
+      "accessed_at": "2026-05-17",
+      "publisher": "ASML Investor Relations",
+      "source_name": "ASML Q4 and full-year 2024 financial results",
+      "source_type": "company_investor_relations",
+      "source_url": "https://www.asml.com/news/press-releases/2025/q4-2024-financial-results",
+      "static_notice": "Static educational fixture assembled from a public company release; not live data."
+    },
+    {
+      "accessed_at": "2026-05-17",
+      "publisher": "ASML Investor Relations",
+      "source_name": "ASML publishes 2024 Annual Reports",
+      "source_type": "press_release",
+      "source_url": "https://www.asml.com/news/press-releases/2025/asml-publishes-2024-annual-reports",
+      "static_notice": "Static educational fixture assembled from public annual-report publication context; not live data."
+    }
+  ],
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "stale_badges": [
+    {
+      "badge": {
+        "age_days": 107,
+        "label": "stale>90d",
+        "status": "stale"
+      },
+      "id": "asml-q3-memory-cycle",
+      "topic": "memory customer cycle"
+    }
+  ],
+  "summary": {
+    "opportunity_count": 5,
+    "review_queue_count": 2,
+    "risk_count": 2,
+    "stale_badge_count": 1
+  },
+  "ticker": "ASML",
+  "tool_version": "0.8.0"
+}

@@ -57,10 +57,22 @@ def render_compare_markdown(compare: dict[str, Any]) -> str:
         f"- After: `{compare.get('after_as_of')}`",
         f"- Review queue delta: {compare.get('review_queue_delta')}",
         f"- Stale/static badge delta: {compare.get('stale_badge_delta')}",
-        "",
-        f"> {compare.get('safety_notice', SAFETY_NOTICE)}",
-        "",
     ]
+    if compare.get("comparison_scope") == "cross_fixture":
+        lines.extend(
+            [
+                f"- Before fixture: {compare.get('before_company')} ({compare.get('before_ticker')})",
+                f"- After fixture: {compare.get('after_company')} ({compare.get('after_ticker')})",
+                "- Comparison scope: cross-fixture",
+            ]
+        )
+    lines.extend(
+        [
+            "",
+            f"> {compare.get('safety_notice', SAFETY_NOTICE)}",
+            "",
+        ]
+    )
     lines.extend(SOURCE_BOUNDARY_LINES)
     lines.extend(_source_attribution_section(compare.get("source_attribution", [])))
     lines.extend(_compare_interpretation(compare.get("interpretation", [])))
@@ -98,10 +110,10 @@ def render_review_queue_markdown(export: dict[str, Any]) -> str:
             f"- Missing evidence: {summary.get('missing_evidence_count', 0)}",
             f"- High-impact language: {summary.get('high_impact_language_count', 0)}",
             "",
-            "## Items",
-            "",
         ]
     )
+    lines.extend(_review_queue_prioritization(export.get("prioritization", {})))
+    lines.extend(["## Items", ""])
     items = export.get("items", [])
     if not items:
         lines.append("- Empty.")
@@ -122,6 +134,31 @@ def render_review_queue_markdown(export: dict[str, Any]) -> str:
         lines.append(f"  Evidence: {evidence}")
         lines.extend(f"  Source attribution: {line}" for line in _source_attribution_lines(item.get("source_attribution", [])))
     return "\n".join(lines).rstrip() + "\n"
+
+
+def _review_queue_prioritization(prioritization: dict[str, Any]) -> list[str]:
+    lines = ["## Prioritization", ""]
+    ordered_by = prioritization.get("ordered_by") or []
+    severity_stale = prioritization.get("severity_stale_interaction") or []
+    human_handoff = prioritization.get("human_handoff") or []
+    if not ordered_by and not severity_stale and not human_handoff:
+        return lines + [
+            "- Items are ordered deterministically for human review triage.",
+            "",
+        ]
+    if ordered_by:
+        lines.append("Ordering:")
+        lines.extend(f"- {item}" for item in ordered_by)
+        lines.append("")
+    if severity_stale:
+        lines.append("Severity and stale badges:")
+        lines.extend(f"- {item}" for item in severity_stale)
+        lines.append("")
+    if human_handoff:
+        lines.append("Human handoff:")
+        lines.extend(f"- {item}" for item in human_handoff)
+        lines.append("")
+    return lines
 
 
 def render_handoff_packet_markdown(packet: dict[str, Any]) -> str:

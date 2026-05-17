@@ -12,6 +12,30 @@ from typing import Any
 from .models import REQUIRED_TOP_LEVEL
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+SOURCE_ATTRIBUTION_FIELDS = {
+    "source_name",
+    "publisher",
+    "source_type",
+    "source_url",
+    "accessed_at",
+    "static_notice",
+}
+SOURCE_ATTRIBUTION_STRING_FIELDS = {
+    "source_name",
+    "publisher",
+    "source_type",
+    "static_notice",
+}
+SOURCE_ATTRIBUTION_TEXT_FIELDS = SOURCE_ATTRIBUTION_STRING_FIELDS | {"source_url"}
+ALLOWED_SOURCE_TYPES = (
+    "company_investor_relations",
+    "sec_filing",
+    "transcript",
+    "shareholder_letter",
+    "press_release",
+    "news_article",
+    "user_synthesis",
+)
 
 
 def read_json(path: str | Path) -> dict[str, Any]:
@@ -69,8 +93,10 @@ def validate_input(data: dict[str, Any], label: str = "input") -> None:
         for index, item in enumerate(data.get(collection, [])):
             if not isinstance(item, dict):
                 raise ValueError(f"{label}.{collection}[{index}] must be a JSON object")
-            if item.get("date"):
+            if "date" in item:
                 _validate_date(item["date"], f"{label}.{collection}[{index}].date")
+            if "evidence_url" in item:
+                _validate_evidence_url(item["evidence_url"], f"{label}.{collection}[{index}].evidence_url")
             if "source_attribution" in item:
                 _validate_source_attribution(
                     item["source_attribution"],
@@ -103,5 +129,23 @@ def _validate_source_attribution(value: Any, field: str) -> None:
 
 
 def _validate_source_record(source: dict[str, Any], field: str) -> None:
-    if source.get("accessed_at"):
+    supported_fields = SOURCE_ATTRIBUTION_FIELDS.intersection(source)
+    if not supported_fields:
+        raise ValueError(f"{field} must include at least one supported source-attribution field")
+    for source_field in sorted(SOURCE_ATTRIBUTION_TEXT_FIELDS.intersection(source)):
+        _validate_string(source[source_field], f"{field}.{source_field}")
+    if "source_type" in source and source["source_type"] not in ALLOWED_SOURCE_TYPES:
+        allowed = ", ".join(ALLOWED_SOURCE_TYPES)
+        raise ValueError(f"{field}.source_type must be one of: {allowed}; got {source['source_type']!r}")
+    if "accessed_at" in source:
         _validate_date(source["accessed_at"], f"{field}.accessed_at")
+
+
+def _validate_string(value: Any, field: str) -> None:
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"{field} must be a non-empty string when provided")
+
+
+def _validate_evidence_url(value: Any, field: str) -> None:
+    if not isinstance(value, str):
+        raise ValueError(f"{field} must be a string when provided")

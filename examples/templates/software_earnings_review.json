@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1",
+  "company": "Software Earnings Review Template",
+  "ticker": "SOFTWARE-TEMPLATE",
+  "as_of": "2026-01-01",
+  "data_cutoff": "2026-01-01",
+  "notes": [
+    {
+      "id": "software-note-1",
+      "date": "2026-01-01",
+      "topic": "revenue durability",
+      "type": "management_claim",
+      "text": "",
+      "evidence_url": ""
+    },
+    {
+      "id": "software-note-2",
+      "date": "2026-01-01",
+      "topic": "enterprise demand",
+      "type": "analyst_question",
+      "text": "",
+      "evidence_url": ""
+    },
+    {
+      "id": "software-note-3",
+      "date": "2026-01-01",
+      "topic": "margin and retention watchlist",
+      "type": "user_synthesis",
+      "text": "",
+      "evidence_url": ""
+    }
+  ],
+  "kpis": [
+    {
+      "name": "Revenue growth",
+      "value": "",
+      "direction": "",
+      "date": "2026-01-01",
+      "observation": "",
+      "evidence_url": ""
+    },
+    {
+      "name": "Net retention",
+      "value": "",
+      "direction": "",
+      "date": "2026-01-01",
+      "observation": "",
+      "evidence_url": ""
+    },
+    {
+      "name": "Gross margin",
+      "value": "",
+      "direction": "",
+      "date": "2026-01-01",
+      "observation": "",
+      "evidence_url": ""
+    }
+  ],
+  "catalysts": [
+    {
+      "date": "2026-01-01",
+      "title": "Next earnings report",
+      "description": "",
+      "expected_impact": "",
+      "evidence_url": ""
+    },
+    {
+      "date": "2026-01-01",
+      "title": "Investor day or product launch",
+      "description": "",
+      "expected_impact": "",
+      "evidence_url": ""
+    }
+  ]
+}

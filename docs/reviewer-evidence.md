@@ -41,7 +41,7 @@ python -m pip install .
 earnings-call-risk-map version
 ```
 
-Expected version for this release line: `0.6.0`.
+Expected version for this release line: `0.8.0`.
 
 ## Release Assets
 
@@ -49,7 +49,8 @@ Primary release and reviewer assets:
 
 - `README.md`
 - `CHANGELOG.md`
-- `docs/release-notes-v0.6.0.md`
+- `docs/release-notes-v0.8.0.md`
+- `docs/comparison-to-spreadsheets.md`
 - `examples/playbooks/README.md`
 - `examples/playbooks/quarterly-review.md`
 - `examples/playbooks/catalyst-check-in.md`
@@ -75,6 +76,8 @@ Primary release and reviewer assets:
 - `examples/output/public_apple_static_case_study_review_queue.md`
 - `examples/output/demo_review_queue_items.jsonl`
 - `examples/output/fixture_catalog.md`
+- `examples/output/template_catalog.md`
+- `examples/output/template_catalog.json`
 - `examples/output/demo_snapshot.json`
 - `examples/output/demo_prior_snapshot.json`
 - `examples/output/energy_infrastructure_snapshot.json`
@@ -95,7 +98,8 @@ Primary release and reviewer assets:
 - `release_manifest.json`
 - `reports/maturity/maturity_evidence.md`
 - `reports/maturity/maturity_evidence.json`
-- `reports/reviews/2026-05-17-v0.6.0-internal-review.md`
+- `reports/reviews/2026-05-17-v0.8.0-internal-review.md`
+- `reports/reviews/2026-05-17-v0.8.0-final-review.md`
 - `skills/agent/earnings-call-risk-map/SKILL.md`
 - `reports/reviews/release-readiness-review.md`
 
@@ -103,14 +107,14 @@ Generated release hashes are recorded in `release_manifest.json`. The demo-copy 
 
 ## Maturity Scores
 
-Latest recorded internal maturity review:
+Latest recorded final internal maturity review:
 
-- Source: `reports/reviews/2026-05-17-v0.6.0-internal-review.md`
+- Source: `reports/reviews/2026-05-17-v0.8.0-final-review.md`
 - Review date: `2026-05-17`
-- Overall score: `95/100`
-- Level: `L4 -> target L4+`
-- Release gate: `PASS for owner handoff`
-- Promotion gate: `PASS small-scope after release owner approval`
+- Overall score: `94/100`
+- Level: `L4+`
+- Release gate: `PASS for owner-controlled v0.8.0 release after final worktree inspection`
+- Promotion gate: `PASS for small-scope public promotion after release owner approval`
 
 Scorecard:
 
@@ -120,14 +124,14 @@ Scorecard:
 - Evidence quality: `15/15`
 - Engineering quality: `14/15`
 - Showcase: `9/10`
-- Risk boundary: `8/10`
+- Risk boundary: `7/10`
 
 Four-role review:
 
 - Product reviewer: `5/5 accept`
 - Engineering reviewer: `5/5 accept`
 - Cold-user reviewer: `4/5 accept`
-- Risk reviewer: `4/5 accept`
+- Risk reviewer: `4/5 accept for controlled promotion`
 
 ## Generated Evidence Bundle
 

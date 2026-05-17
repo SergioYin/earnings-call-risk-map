@@ -1,26 +1,46 @@
 {
-  "command_count": 13,
+  "command_count": 30,
   "commands": [
+    "agent-workflow",
     "analyze",
     "audit",
+    "case-study-map",
+    "cheat-sheet",
     "compare",
+    "data-entry-checklist",
     "demo",
+    "demo-screenshot-guide",
+    "doctor",
+    "examples-index",
     "fixture-catalog",
+    "fixture-summary",
+    "fresh-clone-plan",
     "handoff-packet",
     "manifest",
     "maturity-evidence",
     "playbooks",
+    "promotion-pack",
+    "publication-checklist",
+    "release-owner-handoff",
     "release-assets",
+    "release-notes",
     "review-queue",
     "review-queue-jsonl",
+    "risk-taxonomy",
+    "schema-authoring-reference",
+    "schema-reference",
+    "template-catalog",
     "version"
   ],
-  "fixture_count": 4,
+  "fixture_count": 7,
   "fixtures": [
+    "examples/input/consumer_hardware.json",
     "examples/input/demo_company.json",
     "examples/input/demo_company_prior.json",
     "examples/input/demo_energy_infrastructure.json",
-    "examples/input/public_apple_static_case_study.json"
+    "examples/input/public_apple_static_case_study.json",
+    "examples/input/sample_filled_template_workflow.json",
+    "examples/input/semiconductor_equipment.json"
   ],
   "has_workflow_files": false,
   "local_only": {
@@ -50,6 +70,11 @@
     "commands": [
       {
         "credentials_required": false,
+        "name": "agent-workflow",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
         "name": "analyze",
         "network_required": false
       },
@@ -60,7 +85,22 @@
       },
       {
         "credentials_required": false,
+        "name": "case-study-map",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "cheat-sheet",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
         "name": "compare",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "data-entry-checklist",
         "network_required": false
       },
       {
@@ -70,7 +110,32 @@
       },
       {
         "credentials_required": false,
+        "name": "demo-screenshot-guide",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "doctor",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "examples-index",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
         "name": "fixture-catalog",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "fixture-summary",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "fresh-clone-plan",
         "network_required": false
       },
       {
@@ -95,7 +160,27 @@
       },
       {
         "credentials_required": false,
+        "name": "promotion-pack",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "publication-checklist",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "release-owner-handoff",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
         "name": "release-assets",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "release-notes",
         "network_required": false
       },
       {
@@ -110,6 +195,26 @@
       },
       {
         "credentials_required": false,
+        "name": "risk-taxonomy",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "schema-authoring-reference",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "schema-reference",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "template-catalog",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
         "name": "version",
         "network_required": false
       }
@@ -120,8 +225,23 @@
     "status": "passed"
   },
   "name": "earnings-call-risk-map",
-  "output_artifact_count": 32,
+  "output_artifact_count": 73,
   "output_artifacts": [
+    "examples/output/agent_workflow.json",
+    "examples/output/agent_workflow.md",
+    "examples/output/case_study_map.json",
+    "examples/output/case_study_map.md",
+    "examples/output/command_cheat_sheet.json",
+    "examples/output/command_cheat_sheet.md",
+    "examples/output/command_cheatsheet.json",
+    "examples/output/command_cheatsheet.md",
+    "examples/output/consumer_hardware_dashboard.html",
+    "examples/output/consumer_hardware_report.md",
+    "examples/output/consumer_hardware_review_queue.json",
+    "examples/output/consumer_hardware_review_queue.md",
+    "examples/output/consumer_hardware_snapshot.json",
+    "examples/output/data_entry_checklist.json",
+    "examples/output/data_entry_checklist.md",
     "examples/output/demo_compare.json",
     "examples/output/demo_compare.md",
     "examples/output/demo_dashboard.html",
@@ -131,13 +251,21 @@
     "examples/output/demo_review_queue.json",
     "examples/output/demo_review_queue.md",
     "examples/output/demo_review_queue_items.jsonl",
+    "examples/output/demo_screenshot_guide.json",
+    "examples/output/demo_screenshot_guide.md",
     "examples/output/demo_snapshot.json",
+    "examples/output/doctor.json",
+    "examples/output/doctor.md",
     "examples/output/energy_infrastructure_dashboard.html",
     "examples/output/energy_infrastructure_report.md",
     "examples/output/energy_infrastructure_review_queue.json",
     "examples/output/energy_infrastructure_review_queue.md",
     "examples/output/energy_infrastructure_snapshot.json",
+    "examples/output/examples_index.json",
+    "examples/output/examples_index.md",
     "examples/output/fixture_catalog.md",
+    "examples/output/fresh_clone_plan.json",
+    "examples/output/fresh_clone_plan.md",
     "examples/output/handoff_packet.json",
     "examples/output/handoff_packet.md",
     "examples/output/handoff_packet_examples.json",
@@ -147,18 +275,36 @@
     "examples/output/playbook_output_examples.md",
     "examples/output/playbooks.json",
     "examples/output/playbooks.md",
+    "examples/output/promotion_pack.json",
+    "examples/output/promotion_pack.md",
     "examples/output/public_apple_static_case_study_dashboard.html",
     "examples/output/public_apple_static_case_study_report.md",
     "examples/output/public_apple_static_case_study_review_queue.json",
     "examples/output/public_apple_static_case_study_review_queue.md",
     "examples/output/public_apple_static_case_study_snapshot.json",
+    "examples/output/publication_checklist.json",
+    "examples/output/publication_checklist.md",
     "examples/output/release_manifest.json",
-    "examples/output/showcase_dashboard_preview.svg"
+    "examples/output/risk_language_taxonomy.md",
+    "examples/output/sample_filled_template_report.md",
+    "examples/output/sample_filled_template_review_queue.json",
+    "examples/output/sample_filled_template_review_queue.md",
+    "examples/output/sample_filled_template_snapshot.json",
+    "examples/output/schema_authoring_reference.json",
+    "examples/output/schema_authoring_reference.md",
+    "examples/output/semiconductor_equipment_dashboard.html",
+    "examples/output/semiconductor_equipment_report.md",
+    "examples/output/semiconductor_equipment_review_queue.json",
+    "examples/output/semiconductor_equipment_review_queue.md",
+    "examples/output/semiconductor_equipment_snapshot.json",
+    "examples/output/showcase_dashboard_preview.svg",
+    "examples/output/template_catalog.json",
+    "examples/output/template_catalog.md"
   ],
   "skill": {
     "path": "skills/agent/earnings-call-risk-map/SKILL.md",
     "present": true
   },
-  "version": "0.6.0",
+  "version": "0.8.0",
   "workflow_files": []
 }

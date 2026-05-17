@@ -10,6 +10,8 @@ The two most useful artifacts are:
 
 The examples below show how those outputs can feed adjacent research tools without making this package aware of those tools.
 
+For a paste-oriented investment thesis ledger workflow, see [Decision Ledger Integration](decision-ledger-integration.md). It shows how to copy report, review-queue, compare, and handoff-packet excerpts while preserving the non-advice boundary.
+
 ## Thesis Ledger Handoff
 
 A thesis ledger usually tracks claims, evidence, dates, and review status. Treat each risk, opportunity, or catalyst as a candidate ledger note, then preserve the source artifact path and stale/static badge so the ledger can decide whether to accept, reject, or refresh it.
@@ -67,6 +69,8 @@ The downstream ledger should own deduplication, human approval, position linking
 
 A portfolio risk review usually wants issue categories, affected ticker, severity hints, and evidence gaps. Use `review-queue` output for this because it is already scoped to items that need attention.
 
+The review queue explains its prioritization in `prioritization.ordered_by`, `prioritization.severity_stale_interaction`, and `prioritization.human_handoff`. Downstream systems should preserve that text or convert it into reviewer instructions so humans understand why multi-issue, high-severity, and stale-badged items are ordered the way they are before sending high-impact items to portfolio-risk or thesis-ledger owners.
+
 Example mapping:
 
 | Review-queue field | Portfolio-risk review field |
@@ -78,6 +82,9 @@ Example mapping:
 | `items[].reasons` | `issue.review_reasons` |
 | `items[].evidence_url` | `evidence.url` |
 | `summary.*_count` | `rollup` |
+| `prioritization.ordered_by` | `triage.ordering_explanation` |
+| `prioritization.severity_stale_interaction` | `triage.severity_freshness_notes` |
+| `prioritization.human_handoff` | `triage.human_handoff_steps` |
 | `source_boundaries` | `review_boundaries` |
 
 Minimal standard-library extraction:
@@ -101,6 +108,11 @@ risk_review_items = [
             "review_reasons": item["reasons"],
         },
         "evidence": {"url": item.get("evidence_url")},
+        "triage": {
+            "ordering_explanation": queue["prioritization"]["ordered_by"],
+            "severity_freshness_notes": queue["prioritization"]["severity_stale_interaction"],
+            "human_handoff_steps": queue["prioritization"]["human_handoff"],
+        },
         "review_boundaries": queue["source_boundaries"],
         "source_notice": queue["safety_notice"],
     }

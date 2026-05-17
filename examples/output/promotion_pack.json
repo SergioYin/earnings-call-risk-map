@@ -1,0 +1,83 @@
+{
+  "artifact_type": "promotion_pack",
+  "audience": [
+    "Analysts, builders, and reviewers who already collect earnings-call notes and evidence links.",
+    "Users who want deterministic local artifacts instead of a hosted workflow or LLM summarizer.",
+    "Review owners who need visible stale/static labels, source attribution, and handoff files."
+  ],
+  "boundaries": [
+    "Educational research review only; not personalized investment, legal, accounting, tax, buy, sell, or hold advice.",
+    "No live market data, current company coverage, price targets, expected returns, portfolio actions, or valuation support.",
+    "Scores are deterministic review prompts, not facts about company quality, security attractiveness, or future performance.",
+    "Bundled fixtures are static examples; public-source fixtures are not live analysis.",
+    "The tool preserves management claims, analyst questions, and user synthesis as source-bound review inputs.",
+    "No hosted service, database, API, workflow automation, credentials, or network-backed product is implied."
+  ],
+  "demos": [
+    {
+      "label": "Static public-source dashboard",
+      "path": "examples/output/public_apple_static_case_study_dashboard.html",
+      "why": "Shows attribution, static educational labels, summary tiles, and review panels."
+    },
+    {
+      "label": "Review queue",
+      "path": "examples/output/demo_review_queue.md",
+      "why": "Shows stale-data, missing-evidence, and high-impact-language prompts."
+    },
+    {
+      "label": "Compare narrative",
+      "path": "examples/output/demo_compare.md",
+      "why": "Shows deterministic before/after score movement without investment conclusions."
+    },
+    {
+      "label": "Public case-study report",
+      "path": "examples/output/public_apple_static_case_study_report.md",
+      "why": "Shows public-source attribution and static case-study warnings in Markdown."
+    },
+    {
+      "label": "Handoff packet",
+      "path": "examples/output/handoff_packet.md",
+      "why": "Shows generated artifact paths and cautions for adjacent review workflows."
+    },
+    {
+      "label": "Case study map",
+      "path": "examples/output/case_study_map.md",
+      "why": "Shows bundled fixtures, reviewer questions, and generated artifacts."
+    }
+  ],
+  "name": "earnings-call-risk-map",
+  "proof_commands": [
+    "PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output",
+    "PYTHONPATH=src python -m earnings_call_risk_map audit --format markdown",
+    "PYTHONPATH=src python scripts/selfcheck.py",
+    "PYTHONPATH=src python -m unittest discover -s tests",
+    "python scripts/privacy_scan.py"
+  ],
+  "purpose": "Turn earnings-call notes into deterministic risk maps, review queues, snapshots, handoff packets, and static dashboards from local JSON fixtures.",
+  "quickstart": [
+    {
+      "command": "PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output",
+      "label": "Generate the bundled demo artifacts"
+    },
+    {
+      "command": "PYTHONPATH=src python -m earnings_call_risk_map analyze examples/input/demo_company.json",
+      "label": "Analyze one fixture"
+    },
+    {
+      "command": "open docs/demo-index.html",
+      "label": "Open the static demo index"
+    }
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_evidence": [
+    "README.md",
+    "docs/promotion-page-outline.md",
+    "docs/non-advice-boundary.md",
+    "docs/case-study-limitations.md",
+    "docs/source-attribution-guide.md",
+    "docs/reviewer-evidence.md",
+    "examples/output/case_study_map.md"
+  ],
+  "version": "0.8.0"
+}

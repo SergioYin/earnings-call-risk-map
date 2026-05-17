@@ -1,0 +1,87 @@
+{
+  "artifact_type": "agent_workflow",
+  "goal": "Route generic coding or research agents through deterministic local CLI commands while preserving source attribution, stale/static warnings, human review queues, and non-advice boundaries.",
+  "handoff_checklist": [
+    "Confirm the output includes the educational research boundary.",
+    "Confirm source boundaries are preserved.",
+    "Confirm stale/static badges are still visible.",
+    "Confirm missing evidence and high-impact language remain in the review queue.",
+    "Confirm compare language describes scoring movement, not a recommendation.",
+    "Confirm cited source attribution uses fixture records and does not imply live-data freshness."
+  ],
+  "recommended_sequence": [
+    "analyze",
+    "review-queue",
+    "compare when prior/current snapshots exist",
+    "summarize with source attribution"
+  ],
+  "routes": [
+    {
+      "agent_checks": [
+        "`safety_notice`",
+        "`source_boundaries`",
+        "risk and opportunity scores",
+        "stale/static badges",
+        "review queue count",
+        "evidence URLs and source attribution records"
+      ],
+      "command": "PYTHONPATH=src python -m earnings_call_risk_map analyze input.json --json-out snapshot.json --md-out report.md",
+      "slug": "analyze",
+      "title": "Analyze Route",
+      "when_to_use": "Use when the user provides one raw input fixture or asks for a report, dashboard, or snapshot."
+    },
+    {
+      "agent_checks": [
+        "before and after snapshot dates",
+        "comparison scope",
+        "risk and opportunity score deltas",
+        "interpretation text that describes review attention, not real-world company quality"
+      ],
+      "command": "PYTHONPATH=src python -m earnings_call_risk_map compare before.json after.json --json-out compare.json --md-out compare.md",
+      "slug": "compare",
+      "title": "Compare Route",
+      "when_to_use": "Use when the user provides two analyzed JSON snapshots or asks what changed between reviews."
+    },
+    {
+      "agent_checks": [
+        "stale or unverified dates",
+        "missing evidence URLs",
+        "high-impact language",
+        "visible review reasons for every queued item"
+      ],
+      "command": "PYTHONPATH=src python -m earnings_call_risk_map review-queue input.json --json-out review_queue.json --md-out review_queue.md",
+      "slug": "review-queue",
+      "title": "Review Queue Route",
+      "when_to_use": "Use when the user asks what needs checking, evidence cleanup, stale-data review, or handoff."
+    },
+    {
+      "agent_checks": [
+        "source name",
+        "publisher",
+        "source type",
+        "source URL",
+        "access date",
+        "`as_of` and `data_cutoff`",
+        "static-data notice"
+      ],
+      "command": "",
+      "slug": "source-attribution",
+      "title": "Source Attribution Route",
+      "when_to_use": "Use whenever an answer repeats or summarizes source-backed content from a fixture."
+    }
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "source_boundaries": [
+    "Management claims are source-provided company statements or prepared remarks.",
+    "Analyst questions are source-provided questions or prompts; they are not assertions.",
+    "User synthesis covers user-authored notes, labels, tags, and deterministic scoring output."
+  ],
+  "source_doc": "docs/agent-workflow.md",
+  "stop_boundaries": [
+    "Do not fetch or refresh live market data unless the user explicitly changes scope and provides an approved method.",
+    "Do not verify source URLs by network access as part of this local-only workflow.",
+    "Do not create price targets, ratings, forecasts, expected returns, allocations, or trade instructions.",
+    "Do not recommend buy, sell, hold, short, reduce, add, underweight, or overweight actions.",
+    "Do not remove stale/static warnings, missing-evidence reasons, or safety notices."
+  ]
+}

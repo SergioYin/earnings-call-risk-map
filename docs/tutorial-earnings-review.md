@@ -4,6 +4,8 @@ This walkthrough follows one analyst-style review from a checked-in fixture to a
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Use the output as a review aid and verify source documents before relying on any item.
 
+If you are starting from a fresh clone and choosing a blank template, begin with [Tutorial: First 30 Minutes](tutorial-first-30-minutes.md), then return here for the bundled analyst-style review.
+
 ## Contents
 
 - [Goal](#goal)

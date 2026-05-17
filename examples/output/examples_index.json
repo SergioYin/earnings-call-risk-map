@@ -1,0 +1,743 @@
+{
+  "artifact_type": "examples_index",
+  "fixtures": [
+    {
+      "as_of": "2026-05-15",
+      "company": "Example Systems Inc.",
+      "data_cutoff": "2026-04-30",
+      "path": "examples/input/demo_company.json",
+      "recommended_commands": [
+        "earnings-call-risk-map analyze examples/input/demo_company.json",
+        "earnings-call-risk-map review-queue examples/input/demo_company.json --md-out examples/output/demo_review_queue.md --json-out examples/output/demo_review_queue.json",
+        "earnings-call-risk-map analyze examples/input/demo_company.json --html-out examples/output/demo_dashboard.html"
+      ],
+      "recommended_next_command": "earnings-call-risk-map analyze examples/input/demo_company.json",
+      "slug": "demo_company",
+      "static_live_status": "static demo fixture",
+      "ticker": "EXM"
+    },
+    {
+      "as_of": "2026-05-15",
+      "company": "Northstar Grid & LNG Partners",
+      "data_cutoff": "2026-04-25",
+      "path": "examples/input/demo_energy_infrastructure.json",
+      "recommended_commands": [
+        "earnings-call-risk-map analyze examples/input/demo_energy_infrastructure.json",
+        "earnings-call-risk-map review-queue examples/input/demo_energy_infrastructure.json --md-out examples/output/energy_infrastructure_review_queue.md --json-out examples/output/energy_infrastructure_review_queue.json",
+        "earnings-call-risk-map analyze examples/input/demo_energy_infrastructure.json --html-out examples/output/energy_infrastructure_dashboard.html"
+      ],
+      "recommended_next_command": "earnings-call-risk-map analyze examples/input/demo_energy_infrastructure.json",
+      "slug": "demo_energy_infrastructure",
+      "static_live_status": "static demo fixture",
+      "ticker": "NGLP"
+    },
+    {
+      "as_of": "2024-05-01",
+      "company": "Logitech International S.A. Public-Source Consumer Hardware Fixture",
+      "data_cutoff": "2024-04-29",
+      "path": "examples/input/consumer_hardware.json",
+      "recommended_commands": [
+        "earnings-call-risk-map analyze examples/input/consumer_hardware.json",
+        "earnings-call-risk-map review-queue examples/input/consumer_hardware.json --md-out examples/output/consumer_hardware_review_queue.md --json-out examples/output/consumer_hardware_review_queue.json",
+        "earnings-call-risk-map analyze examples/input/consumer_hardware.json --html-out examples/output/consumer_hardware_dashboard.html"
+      ],
+      "recommended_next_command": "earnings-call-risk-map analyze examples/input/consumer_hardware.json",
+      "slug": "consumer_hardware",
+      "static_live_status": "static public-source consumer hardware fixture",
+      "ticker": "LOGI"
+    },
+    {
+      "as_of": "2025-01-30",
+      "company": "ASML Holding N.V. Public-Source Semiconductor Equipment Fixture",
+      "data_cutoff": "2025-01-29",
+      "path": "examples/input/semiconductor_equipment.json",
+      "recommended_commands": [
+        "earnings-call-risk-map analyze examples/input/semiconductor_equipment.json",
+        "earnings-call-risk-map review-queue examples/input/semiconductor_equipment.json --md-out examples/output/semiconductor_equipment_review_queue.md --json-out examples/output/semiconductor_equipment_review_queue.json",
+        "earnings-call-risk-map analyze examples/input/semiconductor_equipment.json --html-out examples/output/semiconductor_equipment_dashboard.html"
+      ],
+      "recommended_next_command": "earnings-call-risk-map analyze examples/input/semiconductor_equipment.json",
+      "slug": "semiconductor_equipment",
+      "static_live_status": "static public-source semiconductor equipment fixture",
+      "ticker": "ASML"
+    },
+    {
+      "as_of": "2024-05-03",
+      "company": "Apple Inc. Public-Source Static Case Study",
+      "data_cutoff": "2024-05-02",
+      "path": "examples/input/public_apple_static_case_study.json",
+      "recommended_commands": [
+        "earnings-call-risk-map analyze examples/input/public_apple_static_case_study.json",
+        "earnings-call-risk-map review-queue examples/input/public_apple_static_case_study.json --md-out examples/output/public_apple_static_case_study_review_queue.md --json-out examples/output/public_apple_static_case_study_review_queue.json",
+        "earnings-call-risk-map analyze examples/input/public_apple_static_case_study.json --html-out examples/output/public_apple_static_case_study_dashboard.html"
+      ],
+      "recommended_next_command": "earnings-call-risk-map analyze examples/input/public_apple_static_case_study.json",
+      "slug": "public_apple_static_case_study",
+      "static_live_status": "static public-source case study",
+      "ticker": "AAPL"
+    },
+    {
+      "as_of": "2026-02-15",
+      "company": "Example Systems Inc.",
+      "data_cutoff": "2026-01-31",
+      "path": "examples/input/demo_company_prior.json",
+      "recommended_commands": [
+        "earnings-call-risk-map analyze examples/input/demo_company_prior.json --json-out examples/output/demo_prior_snapshot.json --md-out examples/output/demo_prior_report.md",
+        "earnings-call-risk-map compare examples/output/demo_prior_snapshot.json examples/output/demo_snapshot.json --md-out examples/output/demo_compare.md --json-out examples/output/demo_compare.json"
+      ],
+      "recommended_next_command": "earnings-call-risk-map analyze examples/input/demo_company_prior.json --json-out examples/output/demo_prior_snapshot.json --md-out examples/output/demo_prior_report.md",
+      "slug": "demo_company_prior",
+      "static_live_status": "static compare baseline",
+      "ticker": "EXM"
+    },
+    {
+      "as_of": "2026-05-16",
+      "company": "Northwind Analytics Inc.",
+      "data_cutoff": "2026-05-10",
+      "path": "examples/input/sample_filled_template_workflow.json",
+      "recommended_commands": [
+        "earnings-call-risk-map analyze examples/input/sample_filled_template_workflow.json",
+        "earnings-call-risk-map review-queue examples/input/sample_filled_template_workflow.json"
+      ],
+      "recommended_next_command": "earnings-call-risk-map analyze examples/input/sample_filled_template_workflow.json",
+      "slug": "sample_filled_template_workflow",
+      "static_live_status": "static filled-template workflow fixture",
+      "ticker": "NWA"
+    }
+  ],
+  "generated_outputs": [
+    {
+      "artifact_group": "generated output",
+      "format": "json",
+      "path": "examples/output/agent_workflow.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "md",
+      "path": "examples/output/agent_workflow.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "case study map",
+      "format": "json",
+      "path": "examples/output/case_study_map.json",
+      "recommended_next_command": "earnings-call-risk-map case-study-map --format json --out examples/output/case_study_map.json"
+    },
+    {
+      "artifact_group": "case study map",
+      "format": "md",
+      "path": "examples/output/case_study_map.md",
+      "recommended_next_command": "earnings-call-risk-map case-study-map --format markdown --out examples/output/case_study_map.md"
+    },
+    {
+      "artifact_group": "command cheat sheet",
+      "format": "json",
+      "path": "examples/output/command_cheat_sheet.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "command cheat sheet",
+      "format": "md",
+      "path": "examples/output/command_cheat_sheet.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "command cheat sheet",
+      "format": "json",
+      "path": "examples/output/command_cheatsheet.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "command cheat sheet",
+      "format": "md",
+      "path": "examples/output/command_cheatsheet.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "dashboard",
+      "format": "html",
+      "path": "examples/output/consumer_hardware_dashboard.html",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "markdown report",
+      "format": "md",
+      "path": "examples/output/consumer_hardware_report.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "review queue",
+      "format": "json",
+      "path": "examples/output/consumer_hardware_review_queue.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "review queue",
+      "format": "md",
+      "path": "examples/output/consumer_hardware_review_queue.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "analyzed snapshot",
+      "format": "json",
+      "path": "examples/output/consumer_hardware_snapshot.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "json",
+      "path": "examples/output/data_entry_checklist.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "md",
+      "path": "examples/output/data_entry_checklist.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "snapshot compare",
+      "format": "json",
+      "path": "examples/output/demo_compare.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "snapshot compare",
+      "format": "md",
+      "path": "examples/output/demo_compare.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "dashboard",
+      "format": "html",
+      "path": "examples/output/demo_dashboard.html",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "markdown report",
+      "format": "md",
+      "path": "examples/output/demo_prior_report.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "analyzed snapshot",
+      "format": "json",
+      "path": "examples/output/demo_prior_snapshot.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "markdown report",
+      "format": "md",
+      "path": "examples/output/demo_report.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "review queue",
+      "format": "json",
+      "path": "examples/output/demo_review_queue.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "review queue",
+      "format": "md",
+      "path": "examples/output/demo_review_queue.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "review queue",
+      "format": "jsonl",
+      "path": "examples/output/demo_review_queue_items.jsonl",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "json",
+      "path": "examples/output/demo_screenshot_guide.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "md",
+      "path": "examples/output/demo_screenshot_guide.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "analyzed snapshot",
+      "format": "json",
+      "path": "examples/output/demo_snapshot.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "doctor",
+      "format": "json",
+      "path": "examples/output/doctor.json",
+      "recommended_next_command": "earnings-call-risk-map doctor --format json --out examples/output/doctor.json"
+    },
+    {
+      "artifact_group": "doctor",
+      "format": "md",
+      "path": "examples/output/doctor.md",
+      "recommended_next_command": "earnings-call-risk-map doctor --format markdown --out examples/output/doctor.md"
+    },
+    {
+      "artifact_group": "dashboard",
+      "format": "html",
+      "path": "examples/output/energy_infrastructure_dashboard.html",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "markdown report",
+      "format": "md",
+      "path": "examples/output/energy_infrastructure_report.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "review queue",
+      "format": "json",
+      "path": "examples/output/energy_infrastructure_review_queue.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "review queue",
+      "format": "md",
+      "path": "examples/output/energy_infrastructure_review_queue.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "analyzed snapshot",
+      "format": "json",
+      "path": "examples/output/energy_infrastructure_snapshot.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "json",
+      "path": "examples/output/examples_index.json",
+      "recommended_next_command": "earnings-call-risk-map examples-index --format json --out examples/output/examples_index.json"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "md",
+      "path": "examples/output/examples_index.md",
+      "recommended_next_command": "earnings-call-risk-map examples-index --format markdown --out examples/output/examples_index.md"
+    },
+    {
+      "artifact_group": "catalog",
+      "format": "md",
+      "path": "examples/output/fixture_catalog.md",
+      "recommended_next_command": "earnings-call-risk-map fixture-catalog --out examples/output/fixture_catalog.md"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "json",
+      "path": "examples/output/fresh_clone_plan.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "md",
+      "path": "examples/output/fresh_clone_plan.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "handoff packet",
+      "format": "json",
+      "path": "examples/output/handoff_packet.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "handoff packet",
+      "format": "md",
+      "path": "examples/output/handoff_packet.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "handoff packet",
+      "format": "json",
+      "path": "examples/output/handoff_packet_examples.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "handoff packet",
+      "format": "md",
+      "path": "examples/output/handoff_packet_examples.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "json",
+      "path": "examples/output/integration_notes.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "audit",
+      "format": "json",
+      "path": "examples/output/package_audit.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "audit",
+      "format": "md",
+      "path": "examples/output/package_audit.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "playbook",
+      "format": "json",
+      "path": "examples/output/playbook_output_examples.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "playbook",
+      "format": "md",
+      "path": "examples/output/playbook_output_examples.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "playbook",
+      "format": "json",
+      "path": "examples/output/playbooks.json",
+      "recommended_next_command": "earnings-call-risk-map playbooks --format json --out examples/output/playbooks.json"
+    },
+    {
+      "artifact_group": "playbook",
+      "format": "md",
+      "path": "examples/output/playbooks.md",
+      "recommended_next_command": "earnings-call-risk-map playbooks --format markdown --out examples/output/playbooks.md"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "json",
+      "path": "examples/output/promotion_pack.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "md",
+      "path": "examples/output/promotion_pack.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "dashboard",
+      "format": "html",
+      "path": "examples/output/public_apple_static_case_study_dashboard.html",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "markdown report",
+      "format": "md",
+      "path": "examples/output/public_apple_static_case_study_report.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "review queue",
+      "format": "json",
+      "path": "examples/output/public_apple_static_case_study_review_queue.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "review queue",
+      "format": "md",
+      "path": "examples/output/public_apple_static_case_study_review_queue.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "analyzed snapshot",
+      "format": "json",
+      "path": "examples/output/public_apple_static_case_study_snapshot.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "json",
+      "path": "examples/output/publication_checklist.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "md",
+      "path": "examples/output/publication_checklist.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "manifest",
+      "format": "json",
+      "path": "examples/output/release_manifest.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "taxonomy",
+      "format": "md",
+      "path": "examples/output/risk_language_taxonomy.md",
+      "recommended_next_command": "earnings-call-risk-map risk-taxonomy --out examples/output/risk_language_taxonomy.md"
+    },
+    {
+      "artifact_group": "markdown report",
+      "format": "md",
+      "path": "examples/output/sample_filled_template_report.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "review queue",
+      "format": "json",
+      "path": "examples/output/sample_filled_template_review_queue.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "review queue",
+      "format": "md",
+      "path": "examples/output/sample_filled_template_review_queue.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "analyzed snapshot",
+      "format": "json",
+      "path": "examples/output/sample_filled_template_snapshot.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "json",
+      "path": "examples/output/schema_authoring_reference.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "md",
+      "path": "examples/output/schema_authoring_reference.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "dashboard",
+      "format": "html",
+      "path": "examples/output/semiconductor_equipment_dashboard.html",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "markdown report",
+      "format": "md",
+      "path": "examples/output/semiconductor_equipment_report.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "review queue",
+      "format": "json",
+      "path": "examples/output/semiconductor_equipment_review_queue.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "review queue",
+      "format": "md",
+      "path": "examples/output/semiconductor_equipment_review_queue.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "analyzed snapshot",
+      "format": "json",
+      "path": "examples/output/semiconductor_equipment_snapshot.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "dashboard",
+      "format": "svg",
+      "path": "examples/output/showcase_dashboard_preview.svg",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "catalog",
+      "format": "json",
+      "path": "examples/output/template_catalog.json",
+      "recommended_next_command": "earnings-call-risk-map template-catalog --format json --out examples/output/template_catalog.json"
+    },
+    {
+      "artifact_group": "catalog",
+      "format": "md",
+      "path": "examples/output/template_catalog.md",
+      "recommended_next_command": "earnings-call-risk-map template-catalog --format markdown --out examples/output/template_catalog.md"
+    }
+  ],
+  "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output",
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "summary": {
+    "fixture_count": 7,
+    "generated_output_count": 75,
+    "template_count": 3
+  },
+  "templates": [
+    {
+      "path": "examples/templates/software_earnings_review.json",
+      "purpose": "SaaS, cloud, platform, or other software earnings review starting point.",
+      "recommended_commands": [
+        "earnings-call-risk-map analyze examples/templates/software_earnings_review.json",
+        "earnings-call-risk-map review-queue examples/templates/software_earnings_review.json --md-out examples/output/software_template_review_queue.md --json-out examples/output/software_template_review_queue.json",
+        "earnings-call-risk-map analyze examples/templates/software_earnings_review.json --json-out examples/output/software_template_snapshot.json --md-out examples/output/software_template_report.md"
+      ],
+      "recommended_fields": {
+        "catalyst_fields": [
+          "date",
+          "description",
+          "evidence_url",
+          "expected_impact",
+          "title"
+        ],
+        "catalyst_titles": [
+          "Next earnings report",
+          "Investor day or product launch"
+        ],
+        "kpi_fields": [
+          "date",
+          "direction",
+          "evidence_url",
+          "name",
+          "observation",
+          "value"
+        ],
+        "kpi_names": [
+          "Revenue growth",
+          "Net retention",
+          "Gross margin"
+        ],
+        "note_fields": [
+          "date",
+          "evidence_url",
+          "id",
+          "text",
+          "topic",
+          "type"
+        ],
+        "note_topics": [
+          "revenue durability",
+          "enterprise demand",
+          "margin and retention watchlist"
+        ],
+        "top_level": [
+          "company",
+          "ticker",
+          "as_of",
+          "data_cutoff"
+        ]
+      },
+      "recommended_next_command": "earnings-call-risk-map analyze examples/templates/software_earnings_review.json",
+      "slug": "software",
+      "title": "Software Earnings Review"
+    },
+    {
+      "path": "examples/templates/energy_infrastructure_earnings_review.json",
+      "purpose": "Capital-intensive utility, energy infrastructure, project, or regulated-asset review starting point.",
+      "recommended_commands": [
+        "earnings-call-risk-map analyze examples/templates/energy_infrastructure_earnings_review.json",
+        "earnings-call-risk-map review-queue examples/templates/energy_infrastructure_earnings_review.json --md-out examples/output/energy_infrastructure_template_review_queue.md --json-out examples/output/energy_infrastructure_template_review_queue.json",
+        "earnings-call-risk-map analyze examples/templates/energy_infrastructure_earnings_review.json --json-out examples/output/energy_infrastructure_template_snapshot.json --md-out examples/output/energy_infrastructure_template_report.md"
+      ],
+      "recommended_fields": {
+        "catalyst_fields": [
+          "date",
+          "description",
+          "evidence_url",
+          "expected_impact",
+          "title"
+        ],
+        "catalyst_titles": [
+          "Permit or rate-case milestone",
+          "Project commissioning window"
+        ],
+        "kpi_fields": [
+          "date",
+          "direction",
+          "evidence_url",
+          "name",
+          "observation",
+          "value"
+        ],
+        "kpi_names": [
+          "Construction work in progress",
+          "Project cost variance",
+          "Contracted capacity backlog",
+          "Debt to capital"
+        ],
+        "note_fields": [
+          "date",
+          "evidence_url",
+          "id",
+          "text",
+          "topic",
+          "type"
+        ],
+        "note_topics": [
+          "project execution",
+          "permitting and regulatory",
+          "capital cost and financing watchlist"
+        ],
+        "top_level": [
+          "company",
+          "ticker",
+          "as_of",
+          "data_cutoff"
+        ]
+      },
+      "recommended_next_command": "earnings-call-risk-map analyze examples/templates/energy_infrastructure_earnings_review.json",
+      "slug": "energy_infrastructure",
+      "title": "Energy Infrastructure Earnings Review"
+    },
+    {
+      "path": "examples/templates/consumer_hardware_earnings_review.json",
+      "purpose": "Device, channel inventory, product launch, supply chain, or warranty review starting point.",
+      "recommended_commands": [
+        "earnings-call-risk-map analyze examples/templates/consumer_hardware_earnings_review.json",
+        "earnings-call-risk-map review-queue examples/templates/consumer_hardware_earnings_review.json --md-out examples/output/consumer_hardware_template_review_queue.md --json-out examples/output/consumer_hardware_template_review_queue.json",
+        "earnings-call-risk-map analyze examples/templates/consumer_hardware_earnings_review.json --json-out examples/output/consumer_hardware_template_snapshot.json --md-out examples/output/consumer_hardware_template_report.md"
+      ],
+      "recommended_fields": {
+        "catalyst_fields": [
+          "date",
+          "description",
+          "evidence_url",
+          "expected_impact",
+          "title"
+        ],
+        "catalyst_titles": [
+          "Product launch window",
+          "Holiday or seasonal demand update"
+        ],
+        "kpi_fields": [
+          "date",
+          "direction",
+          "evidence_url",
+          "name",
+          "observation",
+          "value"
+        ],
+        "kpi_names": [
+          "Units shipped",
+          "Channel inventory",
+          "Gross margin",
+          "Warranty accrual"
+        ],
+        "note_fields": [
+          "date",
+          "evidence_url",
+          "id",
+          "text",
+          "topic",
+          "type"
+        ],
+        "note_topics": [
+          "product demand",
+          "channel inventory",
+          "supply chain and margin watchlist"
+        ],
+        "top_level": [
+          "company",
+          "ticker",
+          "as_of",
+          "data_cutoff"
+        ]
+      },
+      "recommended_next_command": "earnings-call-risk-map analyze examples/templates/consumer_hardware_earnings_review.json",
+      "slug": "consumer_hardware",
+      "title": "Consumer Hardware Earnings Review"
+    }
+  ]
+}
