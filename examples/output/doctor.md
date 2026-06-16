@@ -5,7 +5,7 @@
 - Status: `passed`
 - Local-only package health: `passed`
 - Fixture count: 7
-- Output artifact count: 73
+- Output artifact count: 75
 - Docs links: `passed` (142 checked)
 - Workflow files absent: yes
 

@@ -258,6 +258,109 @@ def check_review_queue_jsonl() -> int:
     return 0
 
 
+def check_source_boundary_evidence() -> int:
+    print("== source boundary evidence ==", flush=True)
+    json_path = ROOT / "examples/output/source_boundary_evidence.json"
+    md_path = ROOT / "examples/output/source_boundary_evidence.md"
+    missing = [
+        path.relative_to(ROOT).as_posix()
+        for path in (json_path, md_path)
+        if not path.is_file()
+    ]
+    if missing:
+        print("missing source boundary evidence artifact(s): " + ", ".join(missing))
+        return 1
+
+    payload = json.loads(json_path.read_text(encoding="utf-8"))
+    if payload.get("artifact_type") != "source_boundary_evidence" or payload.get("fixture_count") != 6:
+        print("source boundary evidence has unexpected artifact type or fixture count")
+        return 1
+    checks = payload.get("checks", {})
+    required_true_checks = (
+        "all_fixture_paths_exist",
+        "all_fixtures_are_static_or_local",
+        "no_private_paths_found",
+        "no_live_fetching_required",
+        "no_broker_or_api_credentials_required",
+        "no_advice_claim_present",
+    )
+    for check in required_true_checks:
+        if checks.get(check) is not True:
+            print(f"source boundary evidence failed check: {check}")
+            return 1
+
+    fixture_paths = {fixture.get("path") for fixture in payload.get("fixtures", [])}
+    required_fixtures = {
+        "examples/input/demo_company.json",
+        "examples/input/demo_company_prior.json",
+        "examples/input/demo_energy_infrastructure.json",
+        "examples/input/consumer_hardware.json",
+        "examples/input/semiconductor_equipment.json",
+        "examples/input/public_apple_static_case_study.json",
+    }
+    if fixture_paths != required_fixtures:
+        print("source boundary evidence fixture path mismatch")
+        return 1
+    for fixture in payload.get("fixtures", []):
+        if fixture.get("has_private_path") or not (ROOT / fixture.get("path", "")).is_file():
+            print(f"source boundary evidence fixture has private or missing path: {fixture.get('path')}")
+            return 1
+        if fixture.get("fixture_boundary") not in {
+            "static_fixture",
+            "static_public_source_fixture",
+            "static_compare_baseline",
+        }:
+            print(f"source boundary evidence fixture has unexpected boundary: {fixture.get('path')}")
+            return 1
+
+    markdown = md_path.read_text(encoding="utf-8")
+    required_markers = (
+        "Source Boundary Evidence",
+        "No live data",
+        "No advice",
+        "examples/input/public_apple_static_case_study.json",
+        "examples/input/semiconductor_equipment.json",
+        "Educational research review only",
+    )
+    missing_markers = [marker for marker in required_markers if marker not in markdown]
+    if missing_markers:
+        print("source boundary evidence markdown missing marker(s): " + ", ".join(missing_markers))
+        return 1
+
+    release_assets = json.loads(
+        subprocess.run(
+            [sys.executable, "-m", "earnings_call_risk_map", "release-assets"],
+            cwd=ROOT,
+            env=ENV,
+            text=True,
+            capture_output=True,
+            check=True,
+        ).stdout
+    )
+    release_manifest_paths = {
+        item.get("path")
+        for item in json.loads((ROOT / "release_manifest.json").read_text(encoding="utf-8")).get("files", [])
+    }
+    demo_manifest_paths = {
+        item.get("path")
+        for item in json.loads((ROOT / "examples/output/release_manifest.json").read_text(encoding="utf-8")).get(
+            "files", []
+        )
+    }
+    for path in ("examples/output/source_boundary_evidence.md", "examples/output/source_boundary_evidence.json"):
+        if path not in release_assets.get("expected_assets", []):
+            print(f"release assets missing source boundary evidence path: {path}")
+            return 1
+        if path not in release_manifest_paths:
+            print(f"release manifest missing source boundary evidence path: {path}")
+            return 1
+        if path not in demo_manifest_paths:
+            print(f"demo release manifest missing source boundary evidence path: {path}")
+            return 1
+    print("source boundary evidence passed")
+    return 0
+
+
 def check_docs_links() -> int:
     print("== docs links ==", flush=True)
     failures = []
@@ -1191,6 +1294,7 @@ def check_command_cheat_sheet() -> int:
         "risk-taxonomy",
         "schema-authoring-reference",
         "schema-reference",
+        "source-boundary-evidence",
         "template-catalog",
         "version",
     }
@@ -1470,6 +1574,9 @@ def main() -> int:
             if code:
                 return code
             code = check_review_queue_jsonl()
+            if code:
+                return code
+            code = check_source_boundary_evidence()
             if code:
                 return code
             code = check_required_docs()

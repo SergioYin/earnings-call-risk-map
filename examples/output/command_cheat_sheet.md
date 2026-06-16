@@ -17,6 +17,7 @@
 | `release-notes` | Render current audit, release assets, and changelog excerpt as Markdown |
 | `fixture-catalog` | List bundled fixtures and recommended commands |
 | `fixture-summary` | Summarize one input fixture's source types, stale badges, and counts |
+| `source-boundary-evidence` | Render fixture source-boundary and reviewer handoff evidence as Markdown or JSON |
 | `risk-taxonomy` | Render deterministic risk language taxonomy Markdown |
 | `examples-index` | Summarize bundled examples, generated outputs, and recommended next commands |
 | `template-catalog` | List blank templates with recommended fields and commands |

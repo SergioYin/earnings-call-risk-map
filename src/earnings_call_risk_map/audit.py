@@ -39,6 +39,7 @@ COMMANDS = (
     "risk-taxonomy",
     "schema-authoring-reference",
     "schema-reference",
+    "source-boundary-evidence",
     "template-catalog",
     "version",
 )

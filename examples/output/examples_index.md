@@ -8,7 +8,7 @@ Bundled examples are local deterministic fixtures, templates, and generated arti
 
 - Fixtures: 7
 - Templates: 3
-- Generated outputs: 75
+- Generated outputs: 77
 - Recommended next command: `earnings-call-risk-map demo --out-dir examples/output`
 
 ## Bundled Fixtures
@@ -108,5 +108,7 @@ Bundled examples are local deterministic fixtures, templates, and generated arti
 | `examples/output/semiconductor_equipment_review_queue.md` | `md` | review queue | `earnings-call-risk-map demo --out-dir examples/output` |
 | `examples/output/semiconductor_equipment_snapshot.json` | `json` | analyzed snapshot | `earnings-call-risk-map demo --out-dir examples/output` |
 | `examples/output/showcase_dashboard_preview.svg` | `svg` | dashboard | `earnings-call-risk-map demo --out-dir examples/output` |
+| `examples/output/source_boundary_evidence.json` | `json` | generated output | `earnings-call-risk-map demo --out-dir examples/output` |
+| `examples/output/source_boundary_evidence.md` | `md` | generated output | `earnings-call-risk-map demo --out-dir examples/output` |
 | `examples/output/template_catalog.json` | `json` | catalog | `earnings-call-risk-map template-catalog --format json --out examples/output/template_catalog.json` |
 | `examples/output/template_catalog.md` | `md` | catalog | `earnings-call-risk-map template-catalog --format markdown --out examples/output/template_catalog.md` |

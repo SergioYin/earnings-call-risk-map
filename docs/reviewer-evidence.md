@@ -13,6 +13,8 @@ PYTHONPATH=src python -m unittest discover -s tests
 PYTHONPATH=src python scripts/selfcheck.py
 PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
 PYTHONPATH=src python -m earnings_call_risk_map review-queue-jsonl --out examples/output/demo_review_queue_items.jsonl
+PYTHONPATH=src python -m earnings_call_risk_map source-boundary-evidence --format markdown --out examples/output/source_boundary_evidence.md
+PYTHONPATH=src python -m earnings_call_risk_map source-boundary-evidence --format json --out examples/output/source_boundary_evidence.json
 PYTHONPATH=src python -m earnings_call_risk_map playbooks --format markdown --out examples/output/playbooks.md
 PYTHONPATH=src python -m earnings_call_risk_map audit
 PYTHONPATH=src python -m earnings_call_risk_map release-assets
@@ -86,6 +88,8 @@ Primary release and reviewer assets:
 - `examples/output/demo_compare.json`
 - `examples/output/package_audit.md`
 - `examples/output/package_audit.json`
+- `examples/output/source_boundary_evidence.md`
+- `examples/output/source_boundary_evidence.json`
 - `examples/output/playbooks.md`
 - `examples/output/playbooks.json`
 - `examples/output/playbook_output_examples.md`
@@ -104,6 +108,17 @@ Primary release and reviewer assets:
 - `reports/reviews/release-readiness-review.md`
 
 Generated release hashes are recorded in `release_manifest.json`. The demo-copy manifest is `examples/output/release_manifest.json`.
+
+## Source Boundary Handoff Evidence
+
+Regenerate the deterministic source-boundary handoff bundle with:
+
+```bash
+PYTHONPATH=src python -m earnings_call_risk_map source-boundary-evidence --format markdown --out examples/output/source_boundary_evidence.md
+PYTHONPATH=src python -m earnings_call_risk_map source-boundary-evidence --format json --out examples/output/source_boundary_evidence.json
+```
+
+The JSON artifact records fixture paths, data cutoffs, source domains, static fixture status, private-path checks, and explicit no-live-data/no-advice claims. It is local fixture evidence only; it does not fetch broker data, APIs, filings, market data, or live transcripts.
 
 ## Maturity Scores
 

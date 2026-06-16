@@ -1,0 +1,176 @@
+{
+  "artifact_type": "source_boundary_evidence",
+  "checks": {
+    "all_fixture_paths_exist": true,
+    "all_fixtures_are_static_or_local": true,
+    "no_advice_claim_present": true,
+    "no_broker_or_api_credentials_required": true,
+    "no_live_fetching_required": true,
+    "no_private_paths_found": true
+  },
+  "fixture_count": 6,
+  "fixtures": [
+    {
+      "as_of": "2026-05-15",
+      "company": "Example Systems Inc.",
+      "data_cutoff": "2026-04-30",
+      "evidence_url_count": 5,
+      "exists": true,
+      "fixture_boundary": "static_fixture",
+      "freshness_boundary": "review freshness before reuse; static fixture dates are evidence metadata, not current analysis",
+      "has_private_path": false,
+      "path": "examples/input/demo_company.json",
+      "slug": "demo_company",
+      "source_domains": [
+        "example.com"
+      ],
+      "source_record_count": 0,
+      "source_types": [],
+      "source_url_count": 0,
+      "static_live_status": "static demo fixture",
+      "static_notice_count": 0,
+      "ticker": "EXM"
+    },
+    {
+      "as_of": "2026-05-15",
+      "company": "Northstar Grid & LNG Partners",
+      "data_cutoff": "2026-04-25",
+      "evidence_url_count": 8,
+      "exists": true,
+      "fixture_boundary": "static_fixture",
+      "freshness_boundary": "review freshness before reuse; static fixture dates are evidence metadata, not current analysis",
+      "has_private_path": false,
+      "path": "examples/input/demo_energy_infrastructure.json",
+      "slug": "demo_energy_infrastructure",
+      "source_domains": [
+        "example.com"
+      ],
+      "source_record_count": 0,
+      "source_types": [],
+      "source_url_count": 0,
+      "static_live_status": "static demo fixture",
+      "static_notice_count": 0,
+      "ticker": "NGLP"
+    },
+    {
+      "as_of": "2024-05-01",
+      "company": "Logitech International S.A. Public-Source Consumer Hardware Fixture",
+      "data_cutoff": "2024-04-29",
+      "evidence_url_count": 5,
+      "exists": true,
+      "fixture_boundary": "static_public_source_fixture",
+      "freshness_boundary": "review freshness before reuse; static fixture dates are evidence metadata, not current analysis",
+      "has_private_path": false,
+      "path": "examples/input/consumer_hardware.json",
+      "slug": "consumer_hardware",
+      "source_domains": [
+        "ir.logitech.com"
+      ],
+      "source_record_count": 7,
+      "source_types": [
+        "company_investor_relations",
+        "shareholder_letter"
+      ],
+      "source_url_count": 7,
+      "static_live_status": "static public-source consumer hardware fixture",
+      "static_notice_count": 7,
+      "ticker": "LOGI"
+    },
+    {
+      "as_of": "2025-01-30",
+      "company": "ASML Holding N.V. Public-Source Semiconductor Equipment Fixture",
+      "data_cutoff": "2025-01-29",
+      "evidence_url_count": 8,
+      "exists": true,
+      "fixture_boundary": "static_public_source_fixture",
+      "freshness_boundary": "review freshness before reuse; static fixture dates are evidence metadata, not current analysis",
+      "has_private_path": false,
+      "path": "examples/input/semiconductor_equipment.json",
+      "slug": "semiconductor_equipment",
+      "source_domains": [
+        "www.asml.com"
+      ],
+      "source_record_count": 10,
+      "source_types": [
+        "company_investor_relations",
+        "press_release"
+      ],
+      "source_url_count": 10,
+      "static_live_status": "static public-source semiconductor equipment fixture",
+      "static_notice_count": 10,
+      "ticker": "ASML"
+    },
+    {
+      "as_of": "2024-05-03",
+      "company": "Apple Inc. Public-Source Static Case Study",
+      "data_cutoff": "2024-05-02",
+      "evidence_url_count": 6,
+      "exists": true,
+      "fixture_boundary": "static_public_source_fixture",
+      "freshness_boundary": "review freshness before reuse; static fixture dates are evidence metadata, not current analysis",
+      "has_private_path": false,
+      "path": "examples/input/public_apple_static_case_study.json",
+      "slug": "public_apple_static_case_study",
+      "source_domains": [
+        "www.apple.com",
+        "www.sec.gov"
+      ],
+      "source_record_count": 8,
+      "source_types": [
+        "company_investor_relations",
+        "sec_filing"
+      ],
+      "source_url_count": 8,
+      "static_live_status": "static public-source case study",
+      "static_notice_count": 8,
+      "ticker": "AAPL"
+    },
+    {
+      "as_of": "2026-02-15",
+      "company": "Example Systems Inc.",
+      "data_cutoff": "2026-01-31",
+      "evidence_url_count": 3,
+      "exists": true,
+      "fixture_boundary": "static_compare_baseline",
+      "freshness_boundary": "review freshness before reuse; static fixture dates are evidence metadata, not current analysis",
+      "has_private_path": false,
+      "path": "examples/input/demo_company_prior.json",
+      "slug": "demo_company_prior",
+      "source_domains": [
+        "example.com"
+      ],
+      "source_record_count": 0,
+      "source_types": [],
+      "source_url_count": 0,
+      "static_live_status": "static compare baseline",
+      "static_notice_count": 0,
+      "ticker": "EXM"
+    }
+  ],
+  "generated_artifacts": [
+    "examples/output/source_boundary_evidence.md",
+    "examples/output/source_boundary_evidence.json",
+    "examples/output/fixture_catalog.md",
+    "examples/output/demo_review_queue_items.jsonl",
+    "examples/output/handoff_packet.md",
+    "examples/output/handoff_packet.json"
+  ],
+  "no_advice_claim": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "no_live_data_claim": "This evidence bundle is generated from bundled local fixture JSON files only. It does not fetch live market data, broker data, filings, API data, or earnings-call transcripts.",
+  "reviewer_handoff_claim": "Cold reviewers can verify fixture existence, source metadata, static boundaries, and generated handoff artifacts from repository files without broker/API credentials or private paths.",
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "source_docs": [
+    "docs/reviewer-evidence.md",
+    "docs/non-advice-boundary.md",
+    "docs/security-and-privacy.md",
+    "docs/source-attribution-guide.md",
+    "docs/fixture-catalog.md"
+  ],
+  "tool_version": "0.8.0"
+}

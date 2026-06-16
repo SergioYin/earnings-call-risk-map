@@ -84,6 +84,7 @@ VERIFICATION_COMMANDS: tuple[str, ...] = (
     "PYTHONPATH=src python scripts/selfcheck.py",
     "PYTHONPATH=src python -m earnings_call_risk_map audit --format json",
     "PYTHONPATH=src python -m earnings_call_risk_map release-assets --format json",
+    "PYTHONPATH=src python -m earnings_call_risk_map source-boundary-evidence --format json",
     "PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity",
     "python scripts/privacy_scan.py",
     "git diff --check",
@@ -95,6 +96,7 @@ EXPECTED_RESULTS: tuple[str, ...] = (
     "`PYTHONPATH=src python scripts/selfcheck.py` ends with `selfcheck passed`.",
     "`PYTHONPATH=src python -m earnings_call_risk_map audit --format json` reports local-only checks as passed.",
     "`PYTHONPATH=src python -m earnings_call_risk_map release-assets --format json` reports `missing_count` as `0`.",
+    "`PYTHONPATH=src python -m earnings_call_risk_map source-boundary-evidence --format json` reports fixture paths, source boundaries, no-live-data, and no-advice checks.",
     "`PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity` refreshes the maturity evidence bundle.",
     "`python scripts/privacy_scan.py` prints `privacy scan passed`.",
     "`git diff --check` exits with no whitespace findings.",
@@ -138,6 +140,8 @@ PROMOTION_EVIDENCE_PATHS: tuple[str, ...] = (
     "examples/output/package_audit.json",
     "examples/output/doctor.md",
     "examples/output/doctor.json",
+    "examples/output/source_boundary_evidence.md",
+    "examples/output/source_boundary_evidence.json",
     "docs/assets/showcase-dashboard-preview.svg",
     "examples/output/showcase_dashboard_preview.svg",
     "docs/demo-index.html",
@@ -167,8 +171,8 @@ def build_release_owner_handoff() -> dict[str, Any]:
         "promotion_evidence_paths": list(PROMOTION_EVIDENCE_PATHS),
         "owner_controlled_promotion_gate": (
             "The evidence supports owner handoff and small-scope public promotion after release owner approval; "
-            "it does not perform or approve tag creation, pushing, package-index publication, hosted demo deployment, "
-            "or broad public announcement."
+            "it does not itself perform or approve tag creation, pushing, package-index publication, "
+            "hosted demo deployment, or broad public announcement."
         ),
     }
 
@@ -194,9 +198,13 @@ def render_release_owner_handoff_markdown(handoff: dict[str, Any]) -> str:
         "",
         "## Final Release Owner Checklist",
         "",
+        f"Final v{'.'.join(str(handoff['version']).split('.')[:2])} Release Owner Checklist.",
+        "",
     ]
     for item in handoff["checklist"]:
         lines.extend([f"### {item['number']}. {item['title']}", "", item["summary"], ""])
+        if item["slug"] == "confirm-release-metadata":
+            lines.extend([f"Confirm release metadata agrees on `{handoff['version']}`.", ""])
         lines.extend(f"- {check}" for check in item["checks"])
         lines.append("")
 
@@ -209,5 +217,5 @@ def render_release_owner_handoff_markdown(handoff: dict[str, Any]) -> str:
     lines.extend(["```", "", f"Expected package dry-run version output: `{handoff['version']}`.", ""])
     lines.extend(["## Promotion Evidence Paths", ""])
     lines.extend(f"- `{path}`" for path in handoff["promotion_evidence_paths"])
-    lines.extend(["", "## Owner-Controlled Promotion Gate", "", handoff["owner_controlled_promotion_gate"], ""])
+    lines.extend(["", "## Owner-Controlled Promotion Gates", "", handoff["owner_controlled_promotion_gate"], ""])
     return "\n".join(lines)

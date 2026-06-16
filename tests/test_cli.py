@@ -10,6 +10,7 @@ import unittest
 from pathlib import Path
 
 from earnings_call_risk_map.cli import build_parser
+from earnings_call_risk_map.source_boundary_evidence import render_source_boundary_evidence_markdown
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -465,6 +466,81 @@ class CliTests(unittest.TestCase):
             self.assertEqual(payload["stale_status_counts"], {"stale": 1})
             self.assertEqual(payload["stale_badges"][0]["badge"]["label"], "stale>90d")
             self.assertIn(NON_ADVICE_TEXT, payload["safety_notice"])
+
+    def test_source_boundary_evidence_outputs_markdown_and_json(self):
+        md_result = self.run_cli("source-boundary-evidence")
+        self.assertEqual(md_result.returncode, 0, md_result.stderr)
+        self.assertIn("# Source Boundary Evidence", md_result.stdout)
+        self.assertIn("examples/input/public_apple_static_case_study.json", md_result.stdout)
+        self.assertIn("examples/input/semiconductor_equipment.json", md_result.stdout)
+        self.assertIn("No live data", md_result.stdout)
+        self.assertIn(NON_ADVICE_TEXT, md_result.stdout)
+
+        json_result = self.run_cli("source-boundary-evidence", "--format", "json")
+        self.assertEqual(json_result.returncode, 0, json_result.stderr)
+        payload = json.loads(json_result.stdout)
+        self.assertEqual(payload["artifact_type"], "source_boundary_evidence")
+        self.assertEqual(payload["fixture_count"], 6)
+        self.assertTrue(payload["checks"]["all_fixture_paths_exist"])
+        self.assertTrue(payload["checks"]["all_fixtures_are_static_or_local"])
+        self.assertTrue(payload["checks"]["no_private_paths_found"])
+        self.assertTrue(payload["checks"]["no_live_fetching_required"])
+        self.assertTrue(payload["checks"]["no_advice_claim_present"])
+        fixture_paths = {fixture["path"] for fixture in payload["fixtures"]}
+        self.assertIn("examples/input/public_apple_static_case_study.json", fixture_paths)
+        self.assertIn("examples/input/semiconductor_equipment.json", fixture_paths)
+        public_fixture = next(
+            fixture for fixture in payload["fixtures"] if fixture["path"] == "examples/input/public_apple_static_case_study.json"
+        )
+        self.assertEqual(public_fixture["fixture_boundary"], "static_public_source_fixture")
+        self.assertIn("www.apple.com", public_fixture["source_domains"])
+        self.assertIn("www.sec.gov", public_fixture["source_domains"])
+        self.assertGreaterEqual(public_fixture["static_notice_count"], 1)
+        self.assertIn(NON_ADVICE_TEXT, payload["safety_notice"])
+
+    def test_source_boundary_evidence_writes_output_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "source_boundary_evidence.json"
+            result = self.run_cli("source-boundary-evidence", "--format", "json", "--out", str(out))
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "")
+            payload = json.loads(out.read_text(encoding="utf-8"))
+            self.assertEqual(payload["artifact_type"], "source_boundary_evidence")
+            self.assertIn("examples/output/source_boundary_evidence.md", payload["generated_artifacts"])
+
+    def test_source_boundary_evidence_markdown_escapes_fixture_table_cells(self):
+        markdown = render_source_boundary_evidence_markdown(
+            {
+                "tool_version": "0.test",
+                "fixture_count": 1,
+                "safety_notice": NON_ADVICE_TEXT,
+                "no_live_data_claim": "No live fetches.",
+                "no_advice_claim": NON_ADVICE_TEXT,
+                "reviewer_handoff_claim": "Local files only.",
+                "checks": {"no_live_fetching_required": True},
+                "fixtures": [
+                    {
+                        "path": "examples/input/public|fixture.json",
+                        "ticker": "ABC|DEF\nGHI",
+                        "data_cutoff": "2026-05-17",
+                        "fixture_boundary": "static|fixture",
+                        "source_domains": ["issuer.example|sec.example", "docs.example\\archive"],
+                        "static_notice_count": 1,
+                        "has_private_path": False,
+                    }
+                ],
+                "source_boundaries": {},
+                "generated_artifacts": [],
+                "source_docs": [],
+            }
+        )
+
+        fixture_row = next(line for line in markdown.splitlines() if "public\\|fixture" in line)
+        self.assertIn("examples/input/public\\|fixture.json", fixture_row)
+        self.assertIn("ABC\\|DEF GHI", fixture_row)
+        self.assertIn("static\\|fixture", fixture_row)
+        self.assertIn("issuer.example\\|sec.example", fixture_row)
+        self.assertIn("docs.example\\\\archive", fixture_row)
 
     def test_playbooks_outputs_markdown_and_json(self):
         md_result = self.run_cli("playbooks")
@@ -1366,6 +1442,13 @@ class CliTests(unittest.TestCase):
             self.assertIn("examples/input/public_apple_static_case_study.json", fixture_catalog)
             self.assertIn("examples/input/semiconductor_equipment.json", fixture_catalog)
             self.assertIn("static public-source case study", fixture_catalog)
+            source_boundary_evidence = json.loads((Path(tmp) / "source_boundary_evidence.json").read_text(encoding="utf-8"))
+            self.assertEqual(source_boundary_evidence["artifact_type"], "source_boundary_evidence")
+            self.assertTrue(source_boundary_evidence["checks"]["no_live_fetching_required"])
+            self.assertTrue(source_boundary_evidence["checks"]["no_advice_claim_present"])
+            source_boundary_markdown = (Path(tmp) / "source_boundary_evidence.md").read_text(encoding="utf-8")
+            self.assertIn("Source Boundary Evidence", source_boundary_markdown)
+            self.assertIn("examples/input/semiconductor_equipment.json", source_boundary_markdown)
             risk_taxonomy = (Path(tmp) / "risk_language_taxonomy.md").read_text(encoding="utf-8")
             self.assertIn("Risk Language Taxonomy", risk_taxonomy)
             self.assertIn("../../docs/scoring.md", risk_taxonomy)
@@ -1555,7 +1638,7 @@ class CliTests(unittest.TestCase):
             json_path = Path(tmp) / "maturity_evidence.json"
             md_path = Path(tmp) / "maturity_evidence.md"
             payload = json.loads(json_path.read_text(encoding="utf-8"))
-            self.assertEqual(payload["command_count"], 30)
+            self.assertEqual(payload["command_count"], 31)
             self.assertEqual(payload["fixture_count"], 7)
             self.assertIn("PYTHONPATH=src python -m unittest discover -s tests", payload["test_commands"])
             self.assertIn("PYTHONPATH=src python -m earnings_call_risk_map release-assets", payload["verification_commands"])
@@ -1604,6 +1687,10 @@ class CliTests(unittest.TestCase):
                 payload["verification_commands"],
             )
             self.assertIn(
+                "PYTHONPATH=src python -m earnings_call_risk_map source-boundary-evidence --format json --out examples/output/source_boundary_evidence.json",
+                payload["verification_commands"],
+            )
+            self.assertIn(
                 "PYTHONPATH=src python -m earnings_call_risk_map doctor --format json --out examples/output/doctor.json",
                 payload["verification_commands"],
             )
@@ -1618,6 +1705,7 @@ class CliTests(unittest.TestCase):
             self.assertIn("examples/output/schema_authoring_reference.json", payload["artifact_paths"])
             self.assertIn("examples/output/demo_screenshot_guide.md", payload["artifact_paths"])
             self.assertIn("examples/output/fresh_clone_plan.md", payload["artifact_paths"])
+            self.assertIn("examples/output/source_boundary_evidence.json", payload["artifact_paths"])
             self.assertEqual(payload["release_asset_checklist"]["status"], "passed")
             self.assertEqual(payload["release_asset_checklist"]["missing_assets"], [])
             self.assertGreater(payload["release_asset_checklist"]["present_count"], 0)
@@ -1638,7 +1726,7 @@ class CliTests(unittest.TestCase):
             self.assertIn(payload["privacy_scan"]["status"], {"passed", "failed"})
             markdown = md_path.read_text(encoding="utf-8")
             self.assertIn("Maturity Evidence Bundle", markdown)
-            self.assertIn("- Commands: 30", markdown)
+            self.assertIn("- Commands: 31", markdown)
             self.assertIn("- Fixtures: 7", markdown)
             self.assertIn("- Release assets: passed", markdown)
             self.assertIn("- Latest review score: 94/100", markdown)
@@ -1658,7 +1746,7 @@ class CliTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertIn("wrote maturity evidence bundle", result.stdout)
             payload = json.loads((Path(tmp) / "maturity_evidence.json").read_text(encoding="utf-8"))
-            self.assertEqual(payload["command_count"], 30)
+            self.assertEqual(payload["command_count"], 31)
             self.assertEqual(payload["fixture_count"], 7)
             self.assertEqual(payload["release_asset_checklist"]["status"], "passed")
             self.assertEqual(payload["latest_review_score"]["overall"], "94/100")

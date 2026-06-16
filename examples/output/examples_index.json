@@ -545,6 +545,18 @@
       "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
     },
     {
+      "artifact_group": "generated output",
+      "format": "json",
+      "path": "examples/output/source_boundary_evidence.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "generated output",
+      "format": "md",
+      "path": "examples/output/source_boundary_evidence.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
       "artifact_group": "catalog",
       "format": "json",
       "path": "examples/output/template_catalog.json",
@@ -562,7 +574,7 @@
   "schema_version": "0.1",
   "summary": {
     "fixture_count": 7,
-    "generated_output_count": 75,
+    "generated_output_count": 77,
     "template_count": 3
   },
   "templates": [

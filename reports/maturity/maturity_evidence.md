@@ -2,11 +2,11 @@
 
 - Package: `earnings-call-risk-map`
 - Version: `0.8.0`
-- Commands: 30
+- Commands: 31
 - Fixtures: 7
 - Skill path: `skills/agent/earnings-call-risk-map/SKILL.md` (present)
 - Review template: `reports/reviews/release-readiness-review.md` (present)
-- Release assets: passed (93/93 present)
+- Release assets: passed (95/95 present)
 - Privacy scan: passed (`python scripts/privacy_scan.py`)
 - Latest review score: 94/100 (reports/reviews/2026-05-17-v0.8.0-final-review.md)
 
@@ -31,6 +31,8 @@
 - `PYTHONPATH=src python -m earnings_call_risk_map case-study-map --format markdown --out examples/output/case_study_map.md`
 - `PYTHONPATH=src python -m earnings_call_risk_map case-study-map --format json --out examples/output/case_study_map.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map risk-taxonomy --out examples/output/risk_language_taxonomy.md`
+- `PYTHONPATH=src python -m earnings_call_risk_map source-boundary-evidence --format markdown --out examples/output/source_boundary_evidence.md`
+- `PYTHONPATH=src python -m earnings_call_risk_map source-boundary-evidence --format json --out examples/output/source_boundary_evidence.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map template-catalog --format markdown --out examples/output/template_catalog.md`
 - `PYTHONPATH=src python -m earnings_call_risk_map schema-authoring-reference --format markdown --out examples/output/schema_authoring_reference.md`
 - `PYTHONPATH=src python -m earnings_call_risk_map schema-authoring-reference --format json --out examples/output/schema_authoring_reference.json`
@@ -157,6 +159,8 @@
 - `examples/output/command_cheatsheet.md`
 - `examples/output/command_cheatsheet.json`
 - `examples/output/risk_language_taxonomy.md`
+- `examples/output/source_boundary_evidence.md`
+- `examples/output/source_boundary_evidence.json`
 - `examples/output/template_catalog.md`
 - `examples/output/template_catalog.json`
 - `examples/output/schema_authoring_reference.md`
@@ -271,6 +275,8 @@
 - `examples/output/semiconductor_equipment_review_queue.md`
 - `examples/output/semiconductor_equipment_snapshot.json`
 - `examples/output/showcase_dashboard_preview.svg`
+- `examples/output/source_boundary_evidence.json`
+- `examples/output/source_boundary_evidence.md`
 - `examples/output/template_catalog.json`
 - `examples/output/template_catalog.md`
 - `release_manifest.json`

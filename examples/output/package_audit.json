@@ -1,5 +1,5 @@
 {
-  "command_count": 30,
+  "command_count": 31,
   "commands": [
     "agent-workflow",
     "analyze",
@@ -29,6 +29,7 @@
     "risk-taxonomy",
     "schema-authoring-reference",
     "schema-reference",
+    "source-boundary-evidence",
     "template-catalog",
     "version"
   ],
@@ -210,6 +211,11 @@
       },
       {
         "credentials_required": false,
+        "name": "source-boundary-evidence",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
         "name": "template-catalog",
         "network_required": false
       },
@@ -225,7 +231,7 @@
     "status": "passed"
   },
   "name": "earnings-call-risk-map",
-  "output_artifact_count": 73,
+  "output_artifact_count": 75,
   "output_artifacts": [
     "examples/output/agent_workflow.json",
     "examples/output/agent_workflow.md",
@@ -298,6 +304,8 @@
     "examples/output/semiconductor_equipment_review_queue.md",
     "examples/output/semiconductor_equipment_snapshot.json",
     "examples/output/showcase_dashboard_preview.svg",
+    "examples/output/source_boundary_evidence.json",
+    "examples/output/source_boundary_evidence.md",
     "examples/output/template_catalog.json",
     "examples/output/template_catalog.md"
   ],

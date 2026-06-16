@@ -2,9 +2,9 @@
 
 - Package: `earnings-call-risk-map`
 - Version: `0.8.0`
-- Commands: 30 (`agent-workflow`, `analyze`, `audit`, `case-study-map`, `cheat-sheet`, `compare`, `data-entry-checklist`, `demo`, `demo-screenshot-guide`, `doctor`, `examples-index`, `fixture-catalog`, `fixture-summary`, `fresh-clone-plan`, `handoff-packet`, `manifest`, `maturity-evidence`, `playbooks`, `promotion-pack`, `publication-checklist`, `release-owner-handoff`, `release-assets`, `release-notes`, `review-queue`, `review-queue-jsonl`, `risk-taxonomy`, `schema-authoring-reference`, `schema-reference`, `template-catalog`, `version`)
+- Commands: 31 (`agent-workflow`, `analyze`, `audit`, `case-study-map`, `cheat-sheet`, `compare`, `data-entry-checklist`, `demo`, `demo-screenshot-guide`, `doctor`, `examples-index`, `fixture-catalog`, `fixture-summary`, `fresh-clone-plan`, `handoff-packet`, `manifest`, `maturity-evidence`, `playbooks`, `promotion-pack`, `publication-checklist`, `release-owner-handoff`, `release-assets`, `release-notes`, `review-queue`, `review-queue-jsonl`, `risk-taxonomy`, `schema-authoring-reference`, `schema-reference`, `source-boundary-evidence`, `template-catalog`, `version`)
 - Fixtures: 7
-- Output artifacts: 73
+- Output artifacts: 75
 - Workflow files present: no
 - Skill present: yes (`skills/agent/earnings-call-risk-map/SKILL.md`)
 - Local-only audit: passed
@@ -55,6 +55,7 @@
 - `risk-taxonomy`: network required `false`, credentials required `false`
 - `schema-authoring-reference`: network required `false`, credentials required `false`
 - `schema-reference`: network required `false`, credentials required `false`
+- `source-boundary-evidence`: network required `false`, credentials required `false`
 - `template-catalog`: network required `false`, credentials required `false`
 - `version`: network required `false`, credentials required `false`
 
@@ -141,6 +142,8 @@
 - `examples/output/semiconductor_equipment_review_queue.md`
 - `examples/output/semiconductor_equipment_snapshot.json`
 - `examples/output/showcase_dashboard_preview.svg`
+- `examples/output/source_boundary_evidence.json`
+- `examples/output/source_boundary_evidence.md`
 - `examples/output/template_catalog.json`
 - `examples/output/template_catalog.md`
 

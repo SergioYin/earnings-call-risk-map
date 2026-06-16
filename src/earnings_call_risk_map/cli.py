@@ -57,6 +57,7 @@ from .render import (
 from .risk_taxonomy import risk_language_taxonomy_markdown
 from .schema_authoring_reference import schema_authoring_reference_json, schema_authoring_reference_markdown
 from .schema_reference import schema_reference_json
+from .source_boundary_evidence import source_boundary_evidence_json, source_boundary_evidence_markdown
 from .template_catalog import template_catalog_json, template_catalog_markdown
 from .version import __version__
 
@@ -215,6 +216,19 @@ def build_parser() -> argparse.ArgumentParser:
     fixture_summary.add_argument("--format", choices=("json", "markdown"), default="markdown", help="Output format")
     fixture_summary.add_argument("--out", metavar="PATH", help="Write fixture summary to this path")
     fixture_summary.set_defaults(func=cmd_fixture_summary)
+
+    source_boundary_evidence = sub.add_parser(
+        "source-boundary-evidence",
+        help="Render fixture source-boundary and reviewer handoff evidence as Markdown or JSON",
+    )
+    source_boundary_evidence.add_argument(
+        "--format",
+        choices=("json", "markdown"),
+        default="markdown",
+        help="Output format",
+    )
+    source_boundary_evidence.add_argument("--out", metavar="PATH", help="Write source-boundary evidence to this path")
+    source_boundary_evidence.set_defaults(func=cmd_source_boundary_evidence)
 
     risk_taxonomy = sub.add_parser(
         "risk-taxonomy",
@@ -385,6 +399,8 @@ def cmd_demo(args: argparse.Namespace) -> int:
     write_text(out_dir / "command_cheatsheet.json", command_cheat_sheet_json_payload)
     write_text(out_dir / "command_cheatsheet.md", command_cheat_sheet_markdown_payload)
     write_text(out_dir / "fixture_catalog.md", fixture_catalog_markdown("."))
+    write_text(out_dir / "source_boundary_evidence.md", source_boundary_evidence_markdown("."))
+    write_text(out_dir / "source_boundary_evidence.json", source_boundary_evidence_json("."))
     write_text(out_dir / "case_study_map.md", case_study_map_markdown())
     write_text(out_dir / "case_study_map.json", case_study_map_json())
     write_text(
@@ -577,6 +593,18 @@ def cmd_fixture_summary(args: argparse.Namespace) -> int:
         return 0
 
     payload = fixture_summary_markdown(data)
+    if args.out:
+        write_text(args.out, payload)
+    else:
+        print(payload, end="")
+    return 0
+
+
+def cmd_source_boundary_evidence(args: argparse.Namespace) -> int:
+    if args.format == "json":
+        payload = source_boundary_evidence_json(".")
+    else:
+        payload = source_boundary_evidence_markdown(".")
     if args.out:
         write_text(args.out, payload)
     else:
