@@ -2,13 +2,13 @@
 
 Use the release readiness review template at `reports/reviews/release-readiness-review.md` before publishing a demo bundle or tagged release.
 
-Use `docs/release-notes-v0.8.0.md` as the deterministic release notes draft for v0.8.0. Prior notes remain in `docs/release-notes-v0.7.0.md`, `docs/release-notes-v0.6.0.md`, `docs/release-notes-v0.5.0.md`, `docs/release-notes-v0.4.0.md`, `docs/release-notes-v0.3.0.md`, `docs/release-notes-v0.2.0.md`, and `docs/release-notes-v0.1.0.md`.
+Use `docs/release-notes-v0.9.0.md` as the deterministic release notes draft for v0.9.0. Prior notes remain in `docs/release-notes-v0.8.0.md`, `docs/release-notes-v0.7.0.md`, `docs/release-notes-v0.6.0.md`, `docs/release-notes-v0.5.0.md`, `docs/release-notes-v0.4.0.md`, `docs/release-notes-v0.3.0.md`, `docs/release-notes-v0.2.0.md`, and `docs/release-notes-v0.1.0.md`.
 
 Use `docs/distribution.md` for local install, `pipx`, supported Python version, and wheel dry-run checks. Do not publish package artifacts as part of the dry run.
 
 Use `docs/publication-checklist.md` for the public GitHub release owner steps: smoke checks, privacy scan, public skill path check, annotated tag, `gh release create`, and post-publish smoke.
 
-Use `docs/release-owner-handoff.md` for the final v0.8 release owner checklist, exact verification commands, promotion evidence paths, and owner-controlled promotion gates.
+Use `docs/release-owner-handoff.md` for the final v0.9 release owner checklist, exact verification commands, promotion evidence paths, and owner-controlled promotion gates.
 
 Use `docs/maintenance.md` for the release owner maintenance routine, regeneration commands, known boundaries, and no-workflow-scope policy.
 

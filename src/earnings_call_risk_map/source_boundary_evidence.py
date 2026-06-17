@@ -26,9 +26,71 @@ GENERATED_ARTIFACTS = (
     "examples/output/handoff_packet.md",
     "examples/output/handoff_packet.json",
 )
+WALKTHROUGH_ARTIFACTS = (
+    "examples/output/fixture_catalog.md",
+    "examples/output/source_boundary_evidence.md",
+    "examples/output/source_boundary_evidence.json",
+    "examples/output/demo_review_queue_items.jsonl",
+    "examples/output/handoff_packet.md",
+    "examples/output/handoff_packet.json",
+    "examples/output/release_manifest.json",
+    "release_manifest.json",
+)
 NO_LIVE_DATA_CLAIM = (
     "This evidence bundle is generated from bundled local fixture JSON files only. "
     "It does not fetch live market data, broker data, filings, API data, or earnings-call transcripts."
+)
+WALKTHROUGH_STEPS = (
+    {
+        "step": "Verify bundled static fixtures",
+        "reviewer_action": (
+            "Open each examples/input/*.json fixture listed in this receipt and confirm company, ticker, as_of, "
+            "data_cutoff, source attribution, evidence URLs, and static notices are checked-in metadata."
+        ),
+        "evidence_paths": ("examples/input/*.json", "examples/output/fixture_catalog.md"),
+        "boundary": "Fixtures are static local examples; runtime generation does not fetch transcripts or live data.",
+    },
+    {
+        "step": "Verify source-boundary separation",
+        "reviewer_action": (
+            "Confirm management_claim, analyst_question, user_synthesis, source_type, accessed_at, and stale badge "
+            "language stay visible in generated reports and review queues."
+        ),
+        "evidence_paths": (
+            "docs/source-attribution-guide.md",
+            "examples/output/source_boundary_evidence.md",
+            "examples/output/demo_review_queue_items.jsonl",
+        ),
+        "boundary": "Source labels describe provenance and review posture; they are not source verification.",
+    },
+    {
+        "step": "Verify dashboard and release-owner handoff",
+        "reviewer_action": (
+            "Open the generated dashboard/report paths and handoff packet, then confirm downstream owners receive "
+            "local artifact paths, review queues, and cautions rather than portfolio actions."
+        ),
+        "evidence_paths": (
+            "docs/release-owner-handoff.md",
+            "examples/output/handoff_packet.md",
+            "examples/output/handoff_packet.json",
+            "examples/output/public_apple_static_case_study_dashboard.html",
+        ),
+        "boundary": "Dashboard and handoff artifacts are static local outputs for reviewer workflow ownership.",
+    },
+    {
+        "step": "Verify no-live-data and no-advice boundaries",
+        "reviewer_action": (
+            "Check the safety notice, no-live-data claim, release manifest, and privacy/security docs before treating "
+            "any fixture as a public demo or review handoff."
+        ),
+        "evidence_paths": (
+            "docs/non-advice-boundary.md",
+            "docs/security-and-privacy.md",
+            "examples/output/source_boundary_evidence.json",
+            "release_manifest.json",
+        ),
+        "boundary": "Outputs are educational review prompts, not current analysis or buy, sell, or hold advice.",
+    },
 )
 
 
@@ -84,6 +146,7 @@ def build_source_boundary_evidence(root: str | Path = ".") -> dict[str, Any]:
         "generated_artifacts": list(GENERATED_ARTIFACTS),
         "fixture_count": len(fixture_entries),
         "fixtures": fixture_entries,
+        "walkthrough_receipt": _build_walkthrough_receipt(base, fixture_entries),
         "checks": {
             "all_fixture_paths_exist": all(item["exists"] for item in fixture_entries),
             "all_fixtures_are_static_or_local": all(
@@ -94,6 +157,7 @@ def build_source_boundary_evidence(root: str | Path = ".") -> dict[str, Any]:
             "no_live_fetching_required": True,
             "no_broker_or_api_credentials_required": True,
             "no_advice_claim_present": "buy, sell, or hold advice" in SAFETY_NOTICE,
+            "walkthrough_receipt_present": True,
         },
     }
 
@@ -143,6 +207,33 @@ def render_source_boundary_evidence_markdown(evidence: dict[str, Any]) -> str:
             f"{_markdown_table_cell(fixture['static_notice_count'])} | "
             f"{_markdown_table_cell(fixture['has_private_path'])} |"
         )
+    receipt = evidence["walkthrough_receipt"]
+    lines.extend(
+        [
+            "",
+            "## Walkthrough Receipt",
+            "",
+            f"- Receipt type: `{receipt['receipt_type']}`",
+            f"- Scope: {receipt['scope']}",
+            f"- Public-source fixture count: {receipt['public_source_fixture_count']}",
+            f"- Static/local fixture count: {receipt['static_or_local_fixture_count']}",
+            f"- Missing receipt artifacts: {receipt['missing_artifact_count']}",
+            "",
+            "### Receipt Checks",
+            "",
+        ]
+    )
+    lines.extend(f"- {key.replace('_', ' ').title()}: `{value}`" for key, value in receipt["checks"].items())
+    lines.extend(["", "### Reviewer Walkthrough", ""])
+    for index, step in enumerate(receipt["steps"], start=1):
+        lines.extend(
+            [
+                f"{index}. {step['step']}",
+                f"   - Reviewer action: {step['reviewer_action']}",
+                f"   - Boundary: {step['boundary']}",
+                f"   - Evidence paths: {', '.join(f'`{path}`' for path in step['evidence_paths'])}",
+            ]
+        )
     lines.extend(["", "## Source Boundaries", ""])
     lines.extend(f"- {key.replace('_', ' ').title()}: {value}" for key, value in evidence["source_boundaries"].items())
     lines.extend(["", "## Reviewer Artifact Paths", ""])
@@ -158,6 +249,75 @@ def _fixture_boundary_status(status: str) -> str:
     if "public-source" in status or "public-source" in status.replace(" ", "-"):
         return "static_public_source_fixture"
     return "static_fixture"
+
+
+def _build_walkthrough_receipt(base: Path, fixture_entries: list[dict[str, Any]]) -> dict[str, Any]:
+    artifact_status = [
+        {"path": path, "exists": (base / path).is_file(), "role": _artifact_role(path)}
+        for path in WALKTHROUGH_ARTIFACTS
+    ]
+    public_fixture_paths = [
+        fixture["path"]
+        for fixture in fixture_entries
+        if fixture["fixture_boundary"] == "static_public_source_fixture"
+    ]
+    return {
+        "receipt_type": "public_source_boundary_walkthrough",
+        "scope": (
+            "cold reviewer verification of checked-in static fixtures, public-source metadata, dashboard and "
+            "release-owner handoff artifacts, and no-live-data/no-advice boundaries"
+        ),
+        "public_source_fixture_count": len(public_fixture_paths),
+        "public_source_fixture_paths": public_fixture_paths,
+        "static_or_local_fixture_count": len(
+            [
+                fixture
+                for fixture in fixture_entries
+                if fixture["fixture_boundary"]
+                in {"static_fixture", "static_public_source_fixture", "static_compare_baseline"}
+            ]
+        ),
+        "artifact_status": artifact_status,
+        "missing_artifact_count": len([artifact for artifact in artifact_status if not artifact["exists"]]),
+        "steps": [
+            {
+                "step": step["step"],
+                "reviewer_action": step["reviewer_action"],
+                "evidence_paths": list(step["evidence_paths"]),
+                "boundary": step["boundary"],
+            }
+            for step in WALKTHROUGH_STEPS
+        ],
+        "checks": {
+            "public_source_fixtures_present": bool(public_fixture_paths),
+            "all_receipt_artifacts_exist": all(artifact["exists"] for artifact in artifact_status),
+            "all_fixture_boundaries_static_or_local": all(
+                fixture["fixture_boundary"]
+                in {"static_fixture", "static_public_source_fixture", "static_compare_baseline"}
+                for fixture in fixture_entries
+            ),
+            "dashboard_handoff_paths_recorded": any(
+                artifact["path"] == "examples/output/handoff_packet.md" and artifact["exists"]
+                for artifact in artifact_status
+            ),
+            "no_live_data_boundary_recorded": True,
+            "no_advice_boundary_recorded": "buy, sell, or hold advice" in SAFETY_NOTICE,
+        },
+    }
+
+
+def _artifact_role(path: str) -> str:
+    if "fixture_catalog" in path:
+        return "fixture inventory"
+    if "source_boundary_evidence" in path:
+        return "source boundary receipt"
+    if "review_queue" in path:
+        return "review queue handoff"
+    if "handoff_packet" in path:
+        return "dashboard/release-owner handoff"
+    if "manifest" in path:
+        return "release file receipt"
+    return "review artifact"
 
 
 def _markdown_table_cell(value: Any) -> str:

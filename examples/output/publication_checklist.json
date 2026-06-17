@@ -72,8 +72,8 @@
       ],
       "commands": [
         "git status --short",
-        "git tag -a v0.8.0 -m \"v0.8.0\"",
-        "git push origin v0.8.0"
+        "git tag -a v0.9.0 -m \"v0.9.0\"",
+        "git push origin v0.9.0"
       ],
       "number": 5,
       "slug": "create-and-push-tag",
@@ -88,7 +88,7 @@
         "Do not upload package-index artifacts unless the separate distribution owner has approved that step."
       ],
       "commands": [
-        "gh release create v0.8.0 \\\n  --title \"v0.8.0\" \\\n  --notes-file docs/release-notes-v0.8.0.md"
+        "gh release create v0.9.0 \\\n  --title \"v0.9.0\" \\\n  --notes-file docs/release-notes-v0.9.0.md"
       ],
       "number": 6,
       "slug": "create-github-release",
@@ -113,5 +113,5 @@
       "title": "Post-Publish Smoke"
     }
   ],
-  "version": "0.8.0"
+  "version": "0.9.0"
 }

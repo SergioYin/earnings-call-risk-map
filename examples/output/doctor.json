@@ -2,7 +2,7 @@
   "artifact_type": "doctor_report",
   "docs_links": {
     "checked_document_count": 23,
-    "checked_link_count": 142,
+    "checked_link_count": 141,
     "expected_document_count": 23,
     "failure_count": 0,
     "failures": [],
@@ -24,7 +24,7 @@
   ],
   "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
   "status": "passed",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "workflow_files": [],
   "workflow_files_absent": true
 }

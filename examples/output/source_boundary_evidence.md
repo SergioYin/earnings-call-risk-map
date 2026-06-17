@@ -1,6 +1,6 @@
 # Source Boundary Evidence
 
-- Tool version: `0.8.0`
+- Tool version: `0.9.0`
 - Fixture count: 6
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
@@ -19,6 +19,7 @@
 - No Live Fetching Required: `True`
 - No Broker Or Api Credentials Required: `True`
 - No Advice Claim Present: `True`
+- Walkthrough Receipt Present: `True`
 
 ## Fixture Evidence
 
@@ -30,6 +31,42 @@
 | examples/input/semiconductor_equipment.json | ASML | 2025-01-29 | static_public_source_fixture | www.asml.com | 10 | False |
 | examples/input/public_apple_static_case_study.json | AAPL | 2024-05-02 | static_public_source_fixture | www.apple.com, www.sec.gov | 8 | False |
 | examples/input/demo_company_prior.json | EXM | 2026-01-31 | static_compare_baseline | example.com | 0 | False |
+
+## Walkthrough Receipt
+
+- Receipt type: `public_source_boundary_walkthrough`
+- Scope: cold reviewer verification of checked-in static fixtures, public-source metadata, dashboard and release-owner handoff artifacts, and no-live-data/no-advice boundaries
+- Public-source fixture count: 3
+- Static/local fixture count: 6
+- Missing receipt artifacts: 0
+
+### Receipt Checks
+
+- Public Source Fixtures Present: `True`
+- All Receipt Artifacts Exist: `True`
+- All Fixture Boundaries Static Or Local: `True`
+- Dashboard Handoff Paths Recorded: `True`
+- No Live Data Boundary Recorded: `True`
+- No Advice Boundary Recorded: `True`
+
+### Reviewer Walkthrough
+
+1. Verify bundled static fixtures
+   - Reviewer action: Open each examples/input/*.json fixture listed in this receipt and confirm company, ticker, as_of, data_cutoff, source attribution, evidence URLs, and static notices are checked-in metadata.
+   - Boundary: Fixtures are static local examples; runtime generation does not fetch transcripts or live data.
+   - Evidence paths: `examples/input/*.json`, `examples/output/fixture_catalog.md`
+2. Verify source-boundary separation
+   - Reviewer action: Confirm management_claim, analyst_question, user_synthesis, source_type, accessed_at, and stale badge language stay visible in generated reports and review queues.
+   - Boundary: Source labels describe provenance and review posture; they are not source verification.
+   - Evidence paths: `docs/source-attribution-guide.md`, `examples/output/source_boundary_evidence.md`, `examples/output/demo_review_queue_items.jsonl`
+3. Verify dashboard and release-owner handoff
+   - Reviewer action: Open the generated dashboard/report paths and handoff packet, then confirm downstream owners receive local artifact paths, review queues, and cautions rather than portfolio actions.
+   - Boundary: Dashboard and handoff artifacts are static local outputs for reviewer workflow ownership.
+   - Evidence paths: `docs/release-owner-handoff.md`, `examples/output/handoff_packet.md`, `examples/output/handoff_packet.json`, `examples/output/public_apple_static_case_study_dashboard.html`
+4. Verify no-live-data and no-advice boundaries
+   - Reviewer action: Check the safety notice, no-live-data claim, release manifest, and privacy/security docs before treating any fixture as a public demo or review handoff.
+   - Boundary: Outputs are educational review prompts, not current analysis or buy, sell, or hold advice.
+   - Evidence paths: `docs/non-advice-boundary.md`, `docs/security-and-privacy.md`, `examples/output/source_boundary_evidence.json`, `release_manifest.json`
 
 ## Source Boundaries
 

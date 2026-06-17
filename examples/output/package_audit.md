@@ -1,7 +1,7 @@
 # Package Audit
 
 - Package: `earnings-call-risk-map`
-- Version: `0.8.0`
+- Version: `0.9.0`
 - Commands: 31 (`agent-workflow`, `analyze`, `audit`, `case-study-map`, `cheat-sheet`, `compare`, `data-entry-checklist`, `demo`, `demo-screenshot-guide`, `doctor`, `examples-index`, `fixture-catalog`, `fixture-summary`, `fresh-clone-plan`, `handoff-packet`, `manifest`, `maturity-evidence`, `playbooks`, `promotion-pack`, `publication-checklist`, `release-owner-handoff`, `release-assets`, `release-notes`, `review-queue`, `review-queue-jsonl`, `risk-taxonomy`, `schema-authoring-reference`, `schema-reference`, `source-boundary-evidence`, `template-catalog`, `version`)
 - Fixtures: 7
 - Output artifacts: 75

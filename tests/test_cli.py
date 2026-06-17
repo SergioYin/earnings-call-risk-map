@@ -59,7 +59,7 @@ class CliTests(unittest.TestCase):
     def test_version(self):
         result = self.run_cli("version")
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout.strip(), "0.8.0")
+        self.assertEqual(result.stdout.strip(), "0.9.0")
 
     def test_help_uses_public_safe_wording(self):
         result = self.run_cli("--help")
@@ -486,9 +486,18 @@ class CliTests(unittest.TestCase):
         self.assertTrue(payload["checks"]["no_private_paths_found"])
         self.assertTrue(payload["checks"]["no_live_fetching_required"])
         self.assertTrue(payload["checks"]["no_advice_claim_present"])
+        self.assertTrue(payload["checks"]["walkthrough_receipt_present"])
         fixture_paths = {fixture["path"] for fixture in payload["fixtures"]}
         self.assertIn("examples/input/public_apple_static_case_study.json", fixture_paths)
         self.assertIn("examples/input/semiconductor_equipment.json", fixture_paths)
+        receipt = payload["walkthrough_receipt"]
+        self.assertEqual(receipt["receipt_type"], "public_source_boundary_walkthrough")
+        self.assertEqual(receipt["public_source_fixture_count"], 3)
+        self.assertIn("examples/input/public_apple_static_case_study.json", receipt["public_source_fixture_paths"])
+        self.assertTrue(receipt["checks"]["all_fixture_boundaries_static_or_local"])
+        self.assertTrue(receipt["checks"]["dashboard_handoff_paths_recorded"])
+        self.assertEqual(receipt["missing_artifact_count"], 0)
+        self.assertEqual(len(receipt["steps"]), 4)
         public_fixture = next(
             fixture for fixture in payload["fixtures"] if fixture["path"] == "examples/input/public_apple_static_case_study.json"
         )
@@ -529,6 +538,22 @@ class CliTests(unittest.TestCase):
                         "has_private_path": False,
                     }
                 ],
+                "walkthrough_receipt": {
+                    "receipt_type": "public_source_boundary_walkthrough",
+                    "scope": "Cold reviewer receipt.",
+                    "public_source_fixture_count": 1,
+                    "static_or_local_fixture_count": 1,
+                    "missing_artifact_count": 0,
+                    "checks": {"all_receipt_artifacts_exist": True},
+                    "steps": [
+                        {
+                            "step": "Verify fixture",
+                            "reviewer_action": "Open the local fixture.",
+                            "boundary": "Static only.",
+                            "evidence_paths": ["examples/input/public|fixture.json"],
+                        }
+                    ],
+                },
                 "source_boundaries": {},
                 "generated_artifacts": [],
                 "source_docs": [],
@@ -596,7 +621,7 @@ class CliTests(unittest.TestCase):
         payload = json.loads(json_result.stdout)
         self.assertEqual(payload["artifact_type"], "promotion_pack")
         self.assertEqual(payload["name"], "earnings-call-risk-map")
-        self.assertEqual(payload["version"], "0.8.0")
+        self.assertEqual(payload["version"], "0.9.0")
         self.assertGreaterEqual(len(payload["demos"]), 5)
         self.assertIn("docs/promotion-page-outline.md", payload["source_evidence"])
         self.assertIn(NON_ADVICE_TEXT, payload["safety_notice"])
@@ -618,8 +643,8 @@ class CliTests(unittest.TestCase):
         self.assertIn("# Publication Checklist", md_result.stdout)
         self.assertIn("## 1. Confirm The Release Candidate", md_result.stdout)
         self.assertIn("## 6. Create The GitHub Release", md_result.stdout)
-        self.assertIn("git tag -a v0.8.0", md_result.stdout)
-        self.assertIn("gh release create v0.8.0", md_result.stdout)
+        self.assertIn("git tag -a v0.9.0", md_result.stdout)
+        self.assertIn("gh release create v0.9.0", md_result.stdout)
         self.assertIn("python scripts/privacy_scan.py", md_result.stdout)
         self.assertIn(NON_ADVICE_TEXT, md_result.stdout)
 
@@ -627,7 +652,7 @@ class CliTests(unittest.TestCase):
         self.assertEqual(json_result.returncode, 0, json_result.stderr)
         payload = json.loads(json_result.stdout)
         self.assertEqual(payload["artifact_type"], "publication_checklist")
-        self.assertEqual(payload["version"], "0.8.0")
+        self.assertEqual(payload["version"], "0.9.0")
         self.assertEqual(payload["step_count"], 7)
         self.assertEqual(payload["source_doc"], "docs/publication-checklist.md")
         self.assertIn(NON_ADVICE_TEXT, payload["safety_notice"])
@@ -636,7 +661,7 @@ class CliTests(unittest.TestCase):
             any("maturity-evidence --out-dir reports/maturity" in command for command in payload["steps"][0]["commands"])
         )
         release_step = next(step for step in payload["steps"] if step["slug"] == "create-github-release")
-        self.assertIn("--notes-file docs/release-notes-v0.8.0.md", release_step["commands"][0])
+        self.assertIn("--notes-file docs/release-notes-v0.9.0.md", release_step["commands"][0])
 
     def test_publication_checklist_writes_output_file(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -657,7 +682,7 @@ class CliTests(unittest.TestCase):
         self.assertIn("PYTHONPATH=src python -m earnings_call_risk_map version", md_result.stdout)
         self.assertIn("git diff --check", md_result.stdout)
         self.assertIn("gh release create", md_result.stdout)
-        self.assertIn("docs/release-notes-v0.8.0.md", md_result.stdout)
+        self.assertIn("docs/release-notes-v0.9.0.md", md_result.stdout)
         self.assertIn("Owner-Controlled Promotion Gate", md_result.stdout)
         self.assertIn(NON_ADVICE_TEXT, md_result.stdout)
 
@@ -665,7 +690,7 @@ class CliTests(unittest.TestCase):
         self.assertEqual(json_result.returncode, 0, json_result.stderr)
         payload = json.loads(json_result.stdout)
         self.assertEqual(payload["artifact_type"], "release_owner_handoff")
-        self.assertEqual(payload["version"], "0.8.0")
+        self.assertEqual(payload["version"], "0.9.0")
         self.assertEqual(payload["source_doc"], "docs/release-owner-handoff.md")
         self.assertEqual(payload["check_count"], 6)
         self.assertIn(NON_ADVICE_TEXT, payload["safety_notice"])
@@ -791,7 +816,7 @@ class CliTests(unittest.TestCase):
         self.assertEqual(json_result.returncode, 0, json_result.stderr)
         payload = json.loads(json_result.stdout)
         self.assertEqual(payload["artifact_type"], "fresh_clone_verification_plan")
-        self.assertEqual(payload["version"], "0.8.0")
+        self.assertEqual(payload["version"], "0.9.0")
         self.assertEqual(payload["source_doc"], "docs/fresh-clone-verification.md")
         self.assertIn(NON_ADVICE_TEXT, payload["safety_notice"])
         self.assertIn("git clone <repo-url> earnings-call-risk-map", payload["commands"])
@@ -925,7 +950,7 @@ class CliTests(unittest.TestCase):
         result = self.run_cli("audit")
         self.assertEqual(result.returncode, 0, result.stderr)
         payload = json.loads(result.stdout)
-        self.assertEqual(payload["version"], "0.8.0")
+        self.assertEqual(payload["version"], "0.9.0")
         self.assertIn("agent-workflow", payload["commands"])
         self.assertIn("audit", payload["commands"])
         self.assertIn("case-study-map", payload["commands"])
@@ -1093,10 +1118,10 @@ class CliTests(unittest.TestCase):
         result = self.run_cli("release-assets")
         self.assertEqual(result.returncode, 0, result.stderr)
         payload = json.loads(result.stdout)
-        self.assertEqual(payload["version"], "0.8.0")
+        self.assertEqual(payload["version"], "0.9.0")
         self.assertEqual(payload["status"], "passed")
         self.assertEqual(payload["missing_assets"], [])
-        self.assertIn("docs/release-notes-v0.8.0.md", payload["expected_assets"])
+        self.assertIn("docs/release-notes-v0.9.0.md", payload["expected_assets"])
         self.assertIn("docs/comparison-to-spreadsheets.md", payload["expected_assets"])
         self.assertIn("docs/schema-authoring-reference.md", payload["expected_assets"])
         self.assertIn("examples/output/template_catalog.md", payload["expected_assets"])
@@ -1125,14 +1150,14 @@ class CliTests(unittest.TestCase):
         self.assertIn("examples/output/demo_screenshot_guide.json", payload["expected_assets"])
         self.assertIn("examples/output/fresh_clone_plan.md", payload["expected_assets"])
         self.assertIn("examples/output/fresh_clone_plan.json", payload["expected_assets"])
-        self.assertIn("reports/reviews/2026-05-17-v0.8.0-final-review.md", payload["expected_assets"])
+        self.assertIn("reports/reviews/2026-06-18-v0.9.0-final-review.md", payload["expected_assets"])
         self.assertIn("reports/reviews/release-readiness-review.md", payload["present_assets"])
 
         md_result = self.run_cli("release-assets", "--format", "markdown")
         self.assertEqual(md_result.returncode, 0, md_result.stderr)
         self.assertIn("# Release Asset Checklist", md_result.stdout)
         self.assertIn("- Status: `passed`", md_result.stdout)
-        self.assertIn("- [x] `docs/release-notes-v0.8.0.md`", md_result.stdout)
+        self.assertIn("- [x] `docs/release-notes-v0.9.0.md`", md_result.stdout)
         self.assertIn("- [x] `docs/comparison-to-spreadsheets.md`", md_result.stdout)
         self.assertIn("- [x] `docs/schema-authoring-reference.md`", md_result.stdout)
         self.assertIn("- [x] `examples/output/template_catalog.md`", md_result.stdout)
@@ -1158,13 +1183,13 @@ class CliTests(unittest.TestCase):
         self.assertIn("- [x] `examples/output/demo_screenshot_guide.json`", md_result.stdout)
         self.assertIn("- [x] `examples/output/fresh_clone_plan.md`", md_result.stdout)
         self.assertIn("- [x] `examples/output/fresh_clone_plan.json`", md_result.stdout)
-        self.assertIn("- [x] `reports/reviews/2026-05-17-v0.8.0-final-review.md`", md_result.stdout)
+        self.assertIn("- [x] `reports/reviews/2026-06-18-v0.9.0-final-review.md`", md_result.stdout)
 
     def test_release_assets_reports_missing_assets(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             (root / "docs").mkdir()
-            (root / "docs" / "release-notes-v0.8.0.md").write_text("release notes", encoding="utf-8")
+            (root / "docs" / "release-notes-v0.9.0.md").write_text("release notes", encoding="utf-8")
             out = root / "missing_assets.md"
 
             result = self.run_cli("release-assets", "--root", str(root), "--format", "markdown", "--out", str(out))
@@ -1174,7 +1199,7 @@ class CliTests(unittest.TestCase):
             markdown = out.read_text(encoding="utf-8")
             self.assertIn("- Status: `failed`", markdown)
             self.assertIn("## Missing Assets", markdown)
-            self.assertIn("- [x] `docs/release-notes-v0.8.0.md`", markdown)
+            self.assertIn("- [x] `docs/release-notes-v0.9.0.md`", markdown)
             self.assertIn("- [ ] `README.md`", markdown)
 
             json_result = self.run_cli("release-assets", "--root", str(root))
@@ -1188,7 +1213,7 @@ class CliTests(unittest.TestCase):
         result = self.run_cli("release-notes")
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("# Release Notes Summary", result.stdout)
-        self.assertIn("- Version: `0.8.0`", result.stdout)
+        self.assertIn("- Version: `0.9.0`", result.stdout)
         self.assertIn("- Local-only audit: passed", result.stdout)
         self.assertIn("- Release assets: `passed`", result.stdout)
         self.assertIn("## Package Audit", result.stdout)
@@ -1197,8 +1222,8 @@ class CliTests(unittest.TestCase):
         self.assertIn("### Missing Assets", result.stdout)
         self.assertIn("- None", result.stdout)
         self.assertIn("## Changelog Excerpt", result.stdout)
-        self.assertIn("## 0.8.0 - 2026-05-17", result.stdout)
-        self.assertIn("Release-evidence alignment release.", result.stdout)
+        self.assertIn("## 0.9.0 - 2026-06-18", result.stdout)
+        self.assertIn("Source-boundary walkthrough receipt release.", result.stdout)
         self.assertNotIn("## 0.6.0 - 2026-05-17", result.stdout)
         self.assertIn(NON_ADVICE_TEXT, result.stdout)
 
@@ -1211,7 +1236,7 @@ class CliTests(unittest.TestCase):
             (root / "scripts").mkdir()
             (root / "CHANGELOG.md").write_text(
                 "# Changelog\n\n"
-                "## 0.8.0 - 2026-05-17\n\n"
+                "## 0.9.0 - 2026-06-18\n\n"
                 "Current release excerpt.\n\n"
                 "### Added\n\n"
                 "- Deterministic renderer coverage.\n\n"
@@ -1220,7 +1245,7 @@ class CliTests(unittest.TestCase):
                 encoding="utf-8",
             )
             (root / "pyproject.toml").write_text("[project]\ndependencies = []\n", encoding="utf-8")
-            (root / "docs" / "release-notes-v0.8.0.md").write_text("release notes", encoding="utf-8")
+            (root / "docs" / "release-notes-v0.9.0.md").write_text("release notes", encoding="utf-8")
             out = Path(tmp) / "release_notes.md"
 
             result = self.run_cli("release-notes", "--root", str(root), "--out", str(out))
@@ -1483,7 +1508,7 @@ class CliTests(unittest.TestCase):
             self.assertEqual(publication_checklist["step_count"], 7)
             publication_checklist_md = (Path(tmp) / "publication_checklist.md").read_text(encoding="utf-8")
             self.assertIn("Create The GitHub Release", publication_checklist_md)
-            self.assertIn("gh release create v0.8.0", publication_checklist_md)
+            self.assertIn("gh release create v0.9.0", publication_checklist_md)
             data_entry_checklist = json.loads((Path(tmp) / "data_entry_checklist.json").read_text(encoding="utf-8"))
             self.assertEqual(data_entry_checklist["artifact_type"], "data_entry_checklist")
             data_entry_checklist_md = (Path(tmp) / "data_entry_checklist.md").read_text(encoding="utf-8")
@@ -1712,7 +1737,7 @@ class CliTests(unittest.TestCase):
             self.assertEqual(payload["latest_review_score"]["overall"], "94/100")
             self.assertEqual(
                 payload["latest_review_score"]["source"],
-                "reports/reviews/2026-05-17-v0.8.0-final-review.md",
+                "reports/reviews/2026-06-18-v0.9.0-final-review.md",
             )
             self.assertEqual(payload["evidence_summary"]["command_count"], payload["command_count"])
             self.assertEqual(payload["evidence_summary"]["fixture_count"], payload["fixture_count"])

@@ -82,7 +82,7 @@ REVIEW_TEMPLATE_PATH = "reports/reviews/release-readiness-review.md"
 RELEASE_ASSETS = (
     "README.md",
     "CHANGELOG.md",
-    "docs/release-notes-v0.8.0.md",
+    "docs/release-notes-v0.9.0.md",
     "docs/comparison-to-spreadsheets.md",
     "examples/playbooks/README.md",
     "examples/playbooks/quarterly-review.md",
@@ -171,17 +171,17 @@ RELEASE_ASSETS = (
     "release_manifest.json",
     "reports/maturity/maturity_evidence.md",
     "reports/maturity/maturity_evidence.json",
-    "reports/reviews/2026-05-17-v0.8.0-internal-review.md",
-    "reports/reviews/2026-05-17-v0.8.0-final-review.md",
+    "reports/reviews/2026-06-18-v0.9.0-internal-review.md",
+    "reports/reviews/2026-06-18-v0.9.0-final-review.md",
     SKILL_PATH,
     REVIEW_TEMPLATE_PATH,
 )
 MATURITY_SCORES = {
-    "source": "reports/reviews/2026-05-17-v0.8.0-final-review.md",
-    "review_date": "2026-05-17",
+    "source": "reports/reviews/2026-06-18-v0.9.0-final-review.md",
+    "review_date": "2026-06-18",
     "overall": "94/100",
     "level": "L4+",
-    "release_gate": "PASS for owner-controlled v0.8.0 release after final worktree inspection",
+    "release_gate": "PASS for owner-controlled v0.9.0 release after final worktree inspection",
     "promotion_gate": "PASS for small-scope public promotion after release owner approval",
     "categories": {
         "product_clarity": "15/15",

@@ -92,7 +92,7 @@
     "command_count": 31,
     "fixture_count": 7,
     "latest_review_score": "94/100",
-    "latest_review_source": "reports/reviews/2026-05-17-v0.8.0-final-review.md",
+    "latest_review_source": "reports/reviews/2026-06-18-v0.9.0-final-review.md",
     "privacy_scan_status": "passed",
     "release_asset_status": "passed",
     "release_assets_expected": 95,
@@ -115,9 +115,9 @@
     "level": "L4+",
     "overall": "94/100",
     "promotion_gate": "PASS for small-scope public promotion after release owner approval",
-    "release_gate": "PASS for owner-controlled v0.8.0 release after final worktree inspection",
-    "review_date": "2026-05-17",
-    "source": "reports/reviews/2026-05-17-v0.8.0-final-review.md"
+    "release_gate": "PASS for owner-controlled v0.9.0 release after final worktree inspection",
+    "review_date": "2026-06-18",
+    "source": "reports/reviews/2026-06-18-v0.9.0-final-review.md"
   },
   "maturity_scores": {
     "categories": {
@@ -138,9 +138,9 @@
     "level": "L4+",
     "overall": "94/100",
     "promotion_gate": "PASS for small-scope public promotion after release owner approval",
-    "release_gate": "PASS for owner-controlled v0.8.0 release after final worktree inspection",
-    "review_date": "2026-05-17",
-    "source": "reports/reviews/2026-05-17-v0.8.0-final-review.md"
+    "release_gate": "PASS for owner-controlled v0.9.0 release after final worktree inspection",
+    "review_date": "2026-06-18",
+    "source": "reports/reviews/2026-06-18-v0.9.0-final-review.md"
   },
   "name": "earnings-call-risk-map",
   "privacy_scan": {
@@ -160,7 +160,7 @@
   "release_assets": [
     "README.md",
     "CHANGELOG.md",
-    "docs/release-notes-v0.8.0.md",
+    "docs/release-notes-v0.9.0.md",
     "docs/comparison-to-spreadsheets.md",
     "examples/playbooks/README.md",
     "examples/playbooks/quarterly-review.md",
@@ -249,8 +249,8 @@
     "release_manifest.json",
     "reports/maturity/maturity_evidence.md",
     "reports/maturity/maturity_evidence.json",
-    "reports/reviews/2026-05-17-v0.8.0-internal-review.md",
-    "reports/reviews/2026-05-17-v0.8.0-final-review.md",
+    "reports/reviews/2026-06-18-v0.9.0-internal-review.md",
+    "reports/reviews/2026-06-18-v0.9.0-final-review.md",
     "skills/agent/earnings-call-risk-map/SKILL.md",
     "reports/reviews/release-readiness-review.md"
   ],
@@ -303,5 +303,5 @@
     "python scripts/privacy_scan.py",
     "git diff --check"
   ],
-  "version": "0.8.0"
+  "version": "0.9.0"
 }

@@ -1,12 +1,12 @@
 # Doctor Report
 
 - Package: `earnings-call-risk-map`
-- Version: `0.8.0`
+- Version: `0.9.0`
 - Status: `passed`
 - Local-only package health: `passed`
 - Fixture count: 7
 - Output artifact count: 75
-- Docs links: `passed` (142 checked)
+- Docs links: `passed` (141 checked)
 - Workflow files absent: yes
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
@@ -21,7 +21,7 @@
 ## Docs Links
 
 - Checked documents: 23
-- Checked links: 142
+- Checked links: 141
 - Failures: 0
 
 ## Workflow Files

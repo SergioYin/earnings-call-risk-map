@@ -43,7 +43,7 @@ python -m pip install .
 earnings-call-risk-map version
 ```
 
-Expected version for this release line: `0.8.0`.
+Expected version for this release line: `0.9.0`.
 
 ## Release Assets
 
@@ -51,7 +51,7 @@ Primary release and reviewer assets:
 
 - `README.md`
 - `CHANGELOG.md`
-- `docs/release-notes-v0.8.0.md`
+- `docs/release-notes-v0.9.0.md`
 - `docs/comparison-to-spreadsheets.md`
 - `examples/playbooks/README.md`
 - `examples/playbooks/quarterly-review.md`
@@ -102,8 +102,8 @@ Primary release and reviewer assets:
 - `release_manifest.json`
 - `reports/maturity/maturity_evidence.md`
 - `reports/maturity/maturity_evidence.json`
-- `reports/reviews/2026-05-17-v0.8.0-internal-review.md`
-- `reports/reviews/2026-05-17-v0.8.0-final-review.md`
+- `reports/reviews/2026-06-18-v0.9.0-internal-review.md`
+- `reports/reviews/2026-06-18-v0.9.0-final-review.md`
 - `skills/agent/earnings-call-risk-map/SKILL.md`
 - `reports/reviews/release-readiness-review.md`
 
@@ -118,17 +118,17 @@ PYTHONPATH=src python -m earnings_call_risk_map source-boundary-evidence --forma
 PYTHONPATH=src python -m earnings_call_risk_map source-boundary-evidence --format json --out examples/output/source_boundary_evidence.json
 ```
 
-The JSON artifact records fixture paths, data cutoffs, source domains, static fixture status, private-path checks, and explicit no-live-data/no-advice claims. It is local fixture evidence only; it does not fetch broker data, APIs, filings, market data, or live transcripts.
+The JSON artifact records fixture paths, data cutoffs, source domains, static fixture status, private-path checks, and explicit no-live-data/no-advice claims. It also includes a `public_source_boundary_walkthrough` receipt with reviewer steps for checking static fixture metadata, source-boundary separation, dashboard/release-owner handoff paths, release manifests, and no-live-data/no-advice boundaries. It is local fixture evidence only; it does not fetch broker data, APIs, filings, market data, or live transcripts.
 
 ## Maturity Scores
 
 Latest recorded final internal maturity review:
 
-- Source: `reports/reviews/2026-05-17-v0.8.0-final-review.md`
+- Source: `reports/reviews/2026-06-18-v0.9.0-final-review.md`
 - Review date: `2026-05-17`
 - Overall score: `94/100`
 - Level: `L4+`
-- Release gate: `PASS for owner-controlled v0.8.0 release after final worktree inspection`
+- Release gate: `PASS for owner-controlled v0.9.0 release after final worktree inspection`
 - Promotion gate: `PASS for small-scope public promotion after release owner approval`
 
 Scorecard:

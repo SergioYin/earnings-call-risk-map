@@ -24,7 +24,7 @@ DOC_LINK_CHECK_PATHS = (
     Path("docs/comparison-to-spreadsheets.md"),
     Path("docs/release-readiness.md"),
     Path("docs/reviewer-evidence.md"),
-    Path("docs/release-notes-v0.8.0.md"),
+    Path("docs/release-notes-v0.9.0.md"),
 )
 REQUIRED_DOC_PATHS = (
     Path("docs/tutorial-earnings-review.md"),
@@ -288,6 +288,9 @@ def check_source_boundary_evidence() -> int:
         if checks.get(check) is not True:
             print(f"source boundary evidence failed check: {check}")
             return 1
+    if checks.get("walkthrough_receipt_present") is not True:
+        print("source boundary evidence is missing walkthrough receipt check")
+        return 1
 
     fixture_paths = {fixture.get("path") for fixture in payload.get("fixtures", [])}
     required_fixtures = {
@@ -312,10 +315,35 @@ def check_source_boundary_evidence() -> int:
         }:
             print(f"source boundary evidence fixture has unexpected boundary: {fixture.get('path')}")
             return 1
+    receipt = payload.get("walkthrough_receipt", {})
+    if receipt.get("receipt_type") != "public_source_boundary_walkthrough":
+        print("source boundary evidence has unexpected walkthrough receipt type")
+        return 1
+    if receipt.get("public_source_fixture_count") != 3 or receipt.get("static_or_local_fixture_count") != 6:
+        print("source boundary evidence walkthrough receipt has unexpected fixture counts")
+        return 1
+    receipt_checks = receipt.get("checks", {})
+    for check in (
+        "public_source_fixtures_present",
+        "all_receipt_artifacts_exist",
+        "all_fixture_boundaries_static_or_local",
+        "dashboard_handoff_paths_recorded",
+        "no_live_data_boundary_recorded",
+        "no_advice_boundary_recorded",
+    ):
+        if receipt_checks.get(check) is not True:
+            print(f"source boundary walkthrough receipt failed check: {check}")
+            return 1
+    if receipt.get("missing_artifact_count") != 0 or len(receipt.get("steps", [])) != 4:
+        print("source boundary walkthrough receipt has missing artifacts or malformed steps")
+        return 1
 
     markdown = md_path.read_text(encoding="utf-8")
     required_markers = (
         "Source Boundary Evidence",
+        "Walkthrough Receipt",
+        "Verify bundled static fixtures",
+        "Verify dashboard and release-owner handoff",
         "No live data",
         "No advice",
         "examples/input/public_apple_static_case_study.json",
@@ -942,7 +970,7 @@ def check_publication_checklist() -> int:
         "Publication Checklist",
         "Confirm The Release Candidate",
         "Create The GitHub Release",
-        "gh release create v0.8.0",
+        "gh release create v0.9.0",
         "python scripts/privacy_scan.py",
         "Educational research review only",
     )

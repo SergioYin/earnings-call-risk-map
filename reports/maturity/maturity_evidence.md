@@ -1,14 +1,14 @@
 # Maturity Evidence Bundle
 
 - Package: `earnings-call-risk-map`
-- Version: `0.8.0`
+- Version: `0.9.0`
 - Commands: 31
 - Fixtures: 7
 - Skill path: `skills/agent/earnings-call-risk-map/SKILL.md` (present)
 - Review template: `reports/reviews/release-readiness-review.md` (present)
 - Release assets: passed (95/95 present)
 - Privacy scan: passed (`python scripts/privacy_scan.py`)
-- Latest review score: 94/100 (reports/reviews/2026-05-17-v0.8.0-final-review.md)
+- Latest review score: 94/100 (reports/reviews/2026-06-18-v0.9.0-final-review.md)
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
 
@@ -70,11 +70,11 @@
 
 ## Maturity Scores
 
-- Source: `reports/reviews/2026-05-17-v0.8.0-final-review.md`
-- Review date: `2026-05-17`
+- Source: `reports/reviews/2026-06-18-v0.9.0-final-review.md`
+- Review date: `2026-06-18`
 - Overall: `94/100`
 - Level: `L4+`
-- Release gate: `PASS for owner-controlled v0.8.0 release after final worktree inspection`
+- Release gate: `PASS for owner-controlled v0.9.0 release after final worktree inspection`
 - Promotion gate: `PASS for small-scope public promotion after release owner approval`
 
 ### Scorecard
@@ -98,7 +98,7 @@
 
 - `README.md`
 - `CHANGELOG.md`
-- `docs/release-notes-v0.8.0.md`
+- `docs/release-notes-v0.9.0.md`
 - `docs/comparison-to-spreadsheets.md`
 - `examples/playbooks/README.md`
 - `examples/playbooks/quarterly-review.md`
@@ -187,8 +187,8 @@
 - `release_manifest.json`
 - `reports/maturity/maturity_evidence.md`
 - `reports/maturity/maturity_evidence.json`
-- `reports/reviews/2026-05-17-v0.8.0-internal-review.md`
-- `reports/reviews/2026-05-17-v0.8.0-final-review.md`
+- `reports/reviews/2026-06-18-v0.9.0-internal-review.md`
+- `reports/reviews/2026-06-18-v0.9.0-final-review.md`
 - `skills/agent/earnings-call-risk-map/SKILL.md`
 - `reports/reviews/release-readiness-review.md`
 

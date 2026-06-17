@@ -323,7 +323,7 @@ class DocsTests(unittest.TestCase):
         expected_links = {
             "README.md": "docs/comparison-to-spreadsheets.md",
             "docs/usage.md": "comparison-to-spreadsheets.md",
-            "docs/release-notes-v0.8.0.md": "comparison-to-spreadsheets.md",
+            "docs/release-notes-v0.9.0.md": "comparison-to-spreadsheets.md",
         }
         for relative_path, marker in expected_links.items():
             with self.subTest(path=relative_path):
@@ -346,10 +346,10 @@ class DocsTests(unittest.TestCase):
             "release-owner approval",
             "Educational research review only",
             "reviewer-evidence.md",
-            "release-notes-v0.8.0.md",
+            "release-notes-v0.9.0.md",
             "../reports/reviews/2026-05-17-v0.1.0-internal-review.md",
             "../reports/reviews/2026-05-17-v0.2.0-internal-review.md",
-            "../reports/reviews/2026-05-17-v0.8.0-internal-review.md",
+            "../reports/reviews/2026-06-18-v0.9.0-internal-review.md",
             "comparison-to-spreadsheets.md",
             "pages-demo.md",
             "non-advice-boundary.md",
@@ -369,7 +369,7 @@ class DocsTests(unittest.TestCase):
         self.assertTrue(path.is_file())
         payload = json.loads(path.read_text(encoding="utf-8"))
 
-        self.assertEqual(payload["release"], "0.8.0")
+        self.assertEqual(payload["release"], "0.9.0")
         self.assertEqual(payload["source_doc"], "docs/reviewer-feedback-consumption.md")
         self.assertIn("Educational research review only", payload["safety_notice"])
 
@@ -391,7 +391,7 @@ class DocsTests(unittest.TestCase):
 
         self.assertEqual(payload["p0"]["status"], "none_found")
         self.assertEqual(payload["p1"]["status"], "none_found_for_small_scope_release")
-        self.assertIn("v0.8.0 aligned checkout", payload["p0"]["scope"])
+        self.assertIn("v0.9.0 aligned checkout", payload["p0"]["scope"])
         self.assertIn("small-scope owner handoff", payload["p1"]["scope"])
         self.assertIn("hosted demo decision", payload["p1"]["owner_gates"])
         for severity in ("p0", "p1"):
@@ -441,7 +441,7 @@ class DocsTests(unittest.TestCase):
         text = path.read_text(encoding="utf-8")
 
         for marker in (
-            "contains exactly `0.8.0`",
+            "contains exactly `0.9.0`",
             "contains `OK` and a `Ran ... tests` line",
             "`== unit tests ==`",
             "`== demo ==`",
@@ -655,14 +655,14 @@ class DocsTests(unittest.TestCase):
         text = path.read_text(encoding="utf-8")
         for marker in (
             "Release Owner Handoff",
-            "Final v0.8 Release Owner Checklist",
+            "Final v0.9 Release Owner Checklist",
             "Exact Verification Commands",
             "Promotion Evidence Paths",
             "Owner-Controlled Promotion Gates",
-            "Confirm release metadata agrees on `0.8.0`",
+            "Confirm release metadata agrees on `0.9.0`",
             "git status --short",
-            "git tag -a v0.8.0 -m \"v0.8.0\"",
-            "gh release create v0.8.0 --title \"v0.8.0\" --notes-file docs/release-notes-v0.8.0.md",
+            "git tag -a v0.9.0 -m \"v0.9.0\"",
+            "gh release create v0.9.0 --title \"v0.9.0\" --notes-file docs/release-notes-v0.9.0.md",
             "PYTHONPATH=src python -m earnings_call_risk_map version",
             "PYTHONPATH=src python -m unittest discover -s tests",
             "PYTHONPATH=src python scripts/selfcheck.py",
@@ -674,8 +674,8 @@ class DocsTests(unittest.TestCase):
             "selfcheck passed",
             "privacy scan passed",
             "missing_count",
-            "reports/reviews/2026-05-17-v0.8.0-final-review.md",
-            "reports/reviews/2026-05-17-v0.8.0-promotion-review.md",
+            "reports/reviews/2026-06-18-v0.9.0-final-review.md",
+            "reports/reviews/2026-06-18-v0.9.0-promotion-review.md",
             "reports/maturity/maturity_evidence.md",
             "examples/output/promotion_pack.md",
             "examples/output/public_apple_static_case_study_dashboard.html",

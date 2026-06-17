@@ -1,7 +1,7 @@
 {
   "name": "reviewer_feedback_consumption",
-  "release": "0.8.0",
-  "summary": "Prior reviewer feedback moved v0.8 toward clearer product positioning, stronger local reproducibility, more demo evidence, and stricter risk boundaries while preserving the educational, local-only, source-provided-data scope.",
+  "release": "0.9.0",
+  "summary": "Prior reviewer feedback moved v0.8 toward clearer product positioning, stronger local reproducibility, more demo evidence, and stricter risk boundaries; v0.9 carries that evidence forward with source-boundary walkthrough receipt coverage.",
   "source_doc": "docs/reviewer-feedback-consumption.md",
   "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice.",
   "feedback_threads": [
@@ -23,7 +23,7 @@
         "reports/reviews/2026-05-17-v0.1.0-internal-review.md",
         "reports/reviews/2026-05-17-v0.2.0-internal-review.md",
         "docs/comparison-to-spreadsheets.md",
-        "docs/release-notes-v0.8.0.md",
+        "docs/release-notes-v0.9.0.md",
         "docs/reviewer-evidence.md",
         "reports/maturity/maturity_evidence.md"
       ]
@@ -106,10 +106,10 @@
   ],
   "p0": {
     "status": "none_found",
-    "scope": "v0.8.0 aligned checkout",
+    "scope": "v0.9.0 aligned checkout",
     "evidence": [
-      "reports/reviews/2026-05-17-v0.8.0-internal-review.md",
-      "reports/reviews/2026-05-17-v0.8.0-final-review.md",
+      "reports/reviews/2026-06-18-v0.9.0-internal-review.md",
+      "reports/reviews/2026-06-18-v0.9.0-final-review.md",
       "docs/reviewer-evidence.md",
       "reports/maturity/maturity_evidence.json"
     ]
@@ -124,8 +124,8 @@
       "public-copy review"
     ],
     "evidence": [
-      "reports/reviews/2026-05-17-v0.8.0-internal-review.md",
-      "reports/reviews/2026-05-17-v0.8.0-final-review.md",
+      "reports/reviews/2026-06-18-v0.9.0-internal-review.md",
+      "reports/reviews/2026-06-18-v0.9.0-final-review.md",
       "docs/publication-checklist.md",
       "docs/reviewer-feedback-consumption.md"
     ]

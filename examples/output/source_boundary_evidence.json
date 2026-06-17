@@ -6,7 +6,8 @@
     "no_advice_claim_present": true,
     "no_broker_or_api_credentials_required": true,
     "no_live_fetching_required": true,
-    "no_private_paths_found": true
+    "no_private_paths_found": true,
+    "walkthrough_receipt_present": true
   },
   "fixture_count": 6,
   "fixtures": [
@@ -172,5 +173,110 @@
     "docs/source-attribution-guide.md",
     "docs/fixture-catalog.md"
   ],
-  "tool_version": "0.8.0"
+  "tool_version": "0.9.0",
+  "walkthrough_receipt": {
+    "artifact_status": [
+      {
+        "exists": true,
+        "path": "examples/output/fixture_catalog.md",
+        "role": "fixture inventory"
+      },
+      {
+        "exists": true,
+        "path": "examples/output/source_boundary_evidence.md",
+        "role": "source boundary receipt"
+      },
+      {
+        "exists": true,
+        "path": "examples/output/source_boundary_evidence.json",
+        "role": "source boundary receipt"
+      },
+      {
+        "exists": true,
+        "path": "examples/output/demo_review_queue_items.jsonl",
+        "role": "review queue handoff"
+      },
+      {
+        "exists": true,
+        "path": "examples/output/handoff_packet.md",
+        "role": "dashboard/release-owner handoff"
+      },
+      {
+        "exists": true,
+        "path": "examples/output/handoff_packet.json",
+        "role": "dashboard/release-owner handoff"
+      },
+      {
+        "exists": true,
+        "path": "examples/output/release_manifest.json",
+        "role": "release file receipt"
+      },
+      {
+        "exists": true,
+        "path": "release_manifest.json",
+        "role": "release file receipt"
+      }
+    ],
+    "checks": {
+      "all_fixture_boundaries_static_or_local": true,
+      "all_receipt_artifacts_exist": true,
+      "dashboard_handoff_paths_recorded": true,
+      "no_advice_boundary_recorded": true,
+      "no_live_data_boundary_recorded": true,
+      "public_source_fixtures_present": true
+    },
+    "missing_artifact_count": 0,
+    "public_source_fixture_count": 3,
+    "public_source_fixture_paths": [
+      "examples/input/consumer_hardware.json",
+      "examples/input/semiconductor_equipment.json",
+      "examples/input/public_apple_static_case_study.json"
+    ],
+    "receipt_type": "public_source_boundary_walkthrough",
+    "scope": "cold reviewer verification of checked-in static fixtures, public-source metadata, dashboard and release-owner handoff artifacts, and no-live-data/no-advice boundaries",
+    "static_or_local_fixture_count": 6,
+    "steps": [
+      {
+        "boundary": "Fixtures are static local examples; runtime generation does not fetch transcripts or live data.",
+        "evidence_paths": [
+          "examples/input/*.json",
+          "examples/output/fixture_catalog.md"
+        ],
+        "reviewer_action": "Open each examples/input/*.json fixture listed in this receipt and confirm company, ticker, as_of, data_cutoff, source attribution, evidence URLs, and static notices are checked-in metadata.",
+        "step": "Verify bundled static fixtures"
+      },
+      {
+        "boundary": "Source labels describe provenance and review posture; they are not source verification.",
+        "evidence_paths": [
+          "docs/source-attribution-guide.md",
+          "examples/output/source_boundary_evidence.md",
+          "examples/output/demo_review_queue_items.jsonl"
+        ],
+        "reviewer_action": "Confirm management_claim, analyst_question, user_synthesis, source_type, accessed_at, and stale badge language stay visible in generated reports and review queues.",
+        "step": "Verify source-boundary separation"
+      },
+      {
+        "boundary": "Dashboard and handoff artifacts are static local outputs for reviewer workflow ownership.",
+        "evidence_paths": [
+          "docs/release-owner-handoff.md",
+          "examples/output/handoff_packet.md",
+          "examples/output/handoff_packet.json",
+          "examples/output/public_apple_static_case_study_dashboard.html"
+        ],
+        "reviewer_action": "Open the generated dashboard/report paths and handoff packet, then confirm downstream owners receive local artifact paths, review queues, and cautions rather than portfolio actions.",
+        "step": "Verify dashboard and release-owner handoff"
+      },
+      {
+        "boundary": "Outputs are educational review prompts, not current analysis or buy, sell, or hold advice.",
+        "evidence_paths": [
+          "docs/non-advice-boundary.md",
+          "docs/security-and-privacy.md",
+          "examples/output/source_boundary_evidence.json",
+          "release_manifest.json"
+        ],
+        "reviewer_action": "Check the safety notice, no-live-data claim, release manifest, and privacy/security docs before treating any fixture as a public demo or review handoff.",
+        "step": "Verify no-live-data and no-advice boundaries"
+      }
+    ]
+  }
 }

@@ -43,7 +43,7 @@ Command details: [docs/usage.md](docs/usage.md). Positioning: [generic LLM compa
 
 ![Static dashboard preview](docs/assets/showcase-dashboard-preview.svg)
 
-**Release:** `v0.8.0` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
+**Release:** `v0.9.0` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
 
 - [Pages demo guide](docs/pages-demo.md)
 - [Demo screenshot guide](docs/demo-screenshot-guide.md)
@@ -74,7 +74,7 @@ Command details: [docs/usage.md](docs/usage.md). Positioning: [generic LLM compa
 - [Case study limitations](docs/case-study-limitations.md)
 - [Case study map docs](docs/case-study-map.md)
 - [Generated case study map](examples/output/case_study_map.md)
-- [v0.8.0 release notes draft](docs/release-notes-v0.8.0.md)
+- [v0.9.0 release notes draft](docs/release-notes-v0.9.0.md)
 - [Reviewer feedback consumption](docs/reviewer-feedback-consumption.md)
 - [Demo dashboard HTML](examples/output/demo_dashboard.html)
 - [PNG-free screenshot substitute](examples/output/showcase_dashboard_preview.svg)
@@ -207,10 +207,10 @@ Outputs are plain Markdown, JSON, and self-contained HTML. They can be handed to
 - [docs/sector-adaptation-semiconductor-equipment.md](docs/sector-adaptation-semiconductor-equipment.md) shows how to adapt the fixture workflow to semiconductor-equipment earnings review while preserving static-data and non-advice boundaries.
 - [docs/case-study-limitations.md](docs/case-study-limitations.md) explains static source limitations, source freshness, fixture replacement, and non-advice safeguards.
 - [docs/release-readiness.md](docs/release-readiness.md) documents the release review template and maturity evidence bundle.
-- [docs/release-owner-handoff.md](docs/release-owner-handoff.md) summarizes the final v0.8 release owner checklist, exact verification commands, and promotion evidence paths.
+- [docs/release-owner-handoff.md](docs/release-owner-handoff.md) summarizes the final v0.9 release owner checklist, exact verification commands, and promotion evidence paths.
 - [docs/publication-checklist.md](docs/publication-checklist.md) lists public GitHub release owner steps for smoke checks, privacy scan, skill path review, tagging, and `gh release`.
 - [docs/reviewer-evidence.md](docs/reviewer-evidence.md) summarizes exact reviewer verification commands, fresh clone validation, release assets, and maturity scores.
-- [docs/reviewer-feedback-consumption.md](docs/reviewer-feedback-consumption.md) summarizes how prior reviewer feedback shaped v0.8 product clarity, reproducibility, demo evidence, and risk boundaries.
+- [docs/reviewer-feedback-consumption.md](docs/reviewer-feedback-consumption.md) summarizes how prior reviewer feedback shaped v0.9 product clarity, reproducibility, demo evidence, and risk boundaries.
 - `examples/output/integration_notes.json` contains static example records derived from the demo snapshot and review queue.
 
 ## Research Playbooks

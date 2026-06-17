@@ -60,7 +60,7 @@ find verification/fresh-clone -maxdepth 3 -type f | sort | tee verification/fres
 
 Expected stdout or file evidence after the command block completes:
 
-- `verification/fresh-clone/version.txt`: contains exactly `0.8.0`.
+- `verification/fresh-clone/version.txt`: contains exactly `0.9.0`.
 - `verification/fresh-clone/unittest.txt`: contains `OK` and a `Ran ... tests` line.
 - `verification/fresh-clone/selfcheck.txt`: contains selfcheck section headers such as `== unit tests ==`, `== demo ==`, `== audit ==`, `== release assets ==`, `== privacy scan ==`, and `selfcheck passed`.
 - `verification/fresh-clone/privacy_scan.txt`: reports the privacy scan status without credential or network findings.
@@ -117,7 +117,7 @@ python -m json.tool verification/fresh-clone/maturity/maturity_evidence.json >/d
 
 Expected content signals:
 
-- `doctor.json`: `status` is `passed`, `workflow_files_absent` is `true`, and `version` is `0.8.0`.
+- `doctor.json`: `status` is `passed`, `workflow_files_absent` is `true`, and `version` is `0.9.0`.
 - `package_audit.json`: `local_only.status` is `passed`, `network_required` is `false`, `credentials_required` is `false`, and `has_workflow_files` is `false`.
 - `release_assets.json`: `missing_count` is `0`.
 - `demo_company_snapshot.json`: includes ticker `EXM`, source boundaries, stale/static badges, and the educational non-advice safety notice.

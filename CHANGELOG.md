@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.9.0 - 2026-06-18
+
+Source-boundary walkthrough receipt release.
+
+### Added
+
+- Release notes draft at `docs/release-notes-v0.9.0.md`.
+- Source-boundary evidence now includes a `public_source_boundary_walkthrough` receipt for cold reviewer checks.
+- Walkthrough receipt coverage in selfcheck and CLI tests.
+- Internal, final, and promotion review records for the v0.9.0 release-readiness pass.
+
+### Changed
+
+- Source-boundary evidence Markdown and JSON now record reviewer actions, evidence paths, artifact existence, fixture counts, and no-live-data/no-advice boundary checks.
+- Reviewer evidence, release readiness, publication checklist, release owner handoff, distribution docs, and generated maturity evidence now identify v0.9.0 as the current release line.
+- Package version is now `0.9.0`.
+
+### Safety
+
+- The release keeps fixture review local and static; it does not add live data, network calls, credentials, workflows, recommendations, ratings, price targets, portfolio actions, or personalized advice.
+
 ## 0.8.0 - 2026-05-17
 
 Release-evidence alignment release.

@@ -1,6 +1,6 @@
 # Reviewer Feedback Consumption
 
-This note summarizes how prior reviewer feedback shaped v0.8. It is a companion to the reviewer command appendix in [Reviewer Evidence](reviewer-evidence.md), the v0.8 release summary in [Release Notes v0.8.0](release-notes-v0.8.0.md), and the final score evidence in [Maturity Evidence](../reports/maturity/maturity_evidence.md).
+This note summarizes how prior reviewer feedback shaped v0.8 and carries that evidence forward for v0.9. It is a companion to the reviewer command appendix in [Reviewer Evidence](reviewer-evidence.md), the v0.9 release summary in [Release Notes v0.9.0](release-notes-v0.9.0.md), and the final score evidence in [Maturity Evidence](../reports/maturity/maturity_evidence.md).
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice.
 
@@ -14,6 +14,7 @@ Feedback consumed:
 - v0.2 closed the public static fixture gap and shifted the remaining clarity work toward preview and distribution evidence in [the v0.2 internal review](../reports/reviews/2026-05-17-v0.2.0-internal-review.md).
 - v0.7 added the adoption-positioning layer with [Comparison To Spreadsheets](comparison-to-spreadsheets.md), clarifying when deterministic artifacts are better or worse than spreadsheets and generic notes.
 - v0.8 aligns README, usage docs, release notes, reviewer evidence, publication checklist, templates, examples index, doctor output, and generated maturity evidence around the `0.8.0` release line.
+- v0.9 adds source-boundary walkthrough receipt evidence in [the v0.9 internal review](../reports/reviews/2026-06-18-v0.9.0-internal-review.md).
 
 Result in v0.8: product clarity is scored `15/15` in [the v0.8 internal review](../reports/reviews/2026-05-17-v0.8.0-internal-review.md).
 
