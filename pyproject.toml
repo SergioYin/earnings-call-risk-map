@@ -23,7 +23,7 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://example.com/earnings-call-risk-map"
+Homepage = "https://github.com/SergioYin/earnings-call-risk-map"
 
 [project.scripts]
 earnings-call-risk-map = "earnings_call_risk_map.cli:main"

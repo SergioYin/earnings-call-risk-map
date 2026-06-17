@@ -21,7 +21,7 @@ SOURCE_ATTRIBUTION_FIELD_DESCRIPTIONS = {
 def build_schema_reference() -> dict[str, Any]:
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "$id": "https://example.com/earnings-call-risk-map/docs/schema-reference.json",
+        "$id": "https://github.com/SergioYin/earnings-call-risk-map/blob/main/docs/schema-reference.json",
         "title": "Earnings Call Risk Map Input Fixture",
         "description": (
             "Machine-readable reference for the zero-dependency input fixture shape accepted by "

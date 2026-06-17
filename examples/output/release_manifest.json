@@ -237,9 +237,9 @@
       "sha256": "cb0e6e755a831365e504d85a0493a96a3022d3874584815a785ed1857a73b47f"
     },
     {
-      "bytes": 9621,
+      "bytes": 9640,
       "path": "docs/schema-reference.json",
-      "sha256": "cd00130d3470df4a58dc3a85b4265fcb741ea59939f6c45944f6a3a5fed970d8"
+      "sha256": "dc2752085431205628e64c568f6fdf7cfe0d9ed8a767c4fa55f4559c5359f9df"
     },
     {
       "bytes": 3512,
@@ -619,7 +619,7 @@
     {
       "bytes": 37607,
       "path": "examples/output/release_manifest.json",
-      "sha256": "e0c6a544a426d4420a9329f1888d4cffadb36611330373e08ee66ad096419931"
+      "sha256": "727f5be19d439f8d5f8695e0d0da62c0a754e1f7982e85310db605f18532bdab"
     },
     {
       "bytes": 3580,
@@ -777,9 +777,9 @@
       "sha256": "b7bd0c50a7f718bee4150cb10ce16623ac4791f8f2bf9cbd9f220e9ec4169dc7"
     },
     {
-      "bytes": 978,
+      "bytes": 987,
       "path": "pyproject.toml",
-      "sha256": "6d8d948139d54acbc95491f5e11d15cb2a0742217facf2b9e4f552c78731807d"
+      "sha256": "b285cfcd364c339e9a4b9c122540019f49ef195c11208755d3fcda1a2dd3c66e"
     },
     {
       "bytes": 15806,
@@ -1022,9 +1022,9 @@
       "sha256": "97754992316f8107eb896a877c64d770298f9766ddb46a27571fdae70e0c2733"
     },
     {
-      "bytes": 12613,
+      "bytes": 12632,
       "path": "src/earnings_call_risk_map/schema_reference.py",
-      "sha256": "a331115e8c799f3ffb43add21bf96aef20aab9f2ad3e87432215a3b1aaa30745"
+      "sha256": "7aef883cd344a612736d7747fded3c496c22afbbfd1a035d16bbb7de9fbf5beb"
     },
     {
       "bytes": 5320,
