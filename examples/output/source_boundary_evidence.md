@@ -1,6 +1,6 @@
 # Source Boundary Evidence
 
-- Tool version: `0.9.0`
+- Tool version: `0.9.2`
 - Fixture count: 6
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
@@ -37,12 +37,15 @@
 - Receipt type: `public_source_boundary_walkthrough`
 - Scope: cold reviewer verification of checked-in static fixtures, public-source metadata, dashboard and release-owner handoff artifacts, and no-live-data/no-advice boundaries
 - Public-source fixture count: 3
+- Fixture-scoped public-source demo receipts: 3
 - Static/local fixture count: 6
 - Missing receipt artifacts: 0
 
 ### Receipt Checks
 
 - Public Source Fixtures Present: `True`
+- All Public Source Demo Receipts Present: `True`
+- All Public Source Demo Receipt Artifacts Exist: `True`
 - All Receipt Artifacts Exist: `True`
 - All Fixture Boundaries Static Or Local: `True`
 - Dashboard Handoff Paths Recorded: `True`
@@ -67,6 +70,35 @@
    - Reviewer action: Check the safety notice, no-live-data claim, release manifest, and privacy/security docs before treating any fixture as a public demo or review handoff.
    - Boundary: Outputs are educational review prompts, not current analysis or buy, sell, or hold advice.
    - Evidence paths: `docs/non-advice-boundary.md`, `docs/security-and-privacy.md`, `examples/output/source_boundary_evidence.json`, `release_manifest.json`
+
+### Fixture-Scoped Public-Source Demo Receipts
+
+| Fixture | Ticker | Demo artifacts | Missing | Local-only |
+| --- | --- | ---: | ---: | --- |
+| examples/input/consumer_hardware.json | LOGI | 5 | 0 | True |
+| examples/input/semiconductor_equipment.json | ASML | 5 | 0 | True |
+| examples/input/public_apple_static_case_study.json | AAPL | 5 | 0 | True |
+
+#### Demo Receipt Artifact Paths
+
+- `consumer_hardware`:
+  - `examples/output/consumer_hardware_snapshot.json` (deterministic analysis snapshot; exists: `True`)
+  - `examples/output/consumer_hardware_report.md` (local Markdown report; exists: `True`)
+  - `examples/output/consumer_hardware_dashboard.html` (self-contained static dashboard; exists: `True`)
+  - `examples/output/consumer_hardware_review_queue.json` (review queue data; exists: `True`)
+  - `examples/output/consumer_hardware_review_queue.md` (review queue handoff; exists: `True`)
+- `semiconductor_equipment`:
+  - `examples/output/semiconductor_equipment_snapshot.json` (deterministic analysis snapshot; exists: `True`)
+  - `examples/output/semiconductor_equipment_report.md` (local Markdown report; exists: `True`)
+  - `examples/output/semiconductor_equipment_dashboard.html` (self-contained static dashboard; exists: `True`)
+  - `examples/output/semiconductor_equipment_review_queue.json` (review queue data; exists: `True`)
+  - `examples/output/semiconductor_equipment_review_queue.md` (review queue handoff; exists: `True`)
+- `public_apple_static_case_study`:
+  - `examples/output/public_apple_static_case_study_snapshot.json` (deterministic analysis snapshot; exists: `True`)
+  - `examples/output/public_apple_static_case_study_report.md` (local Markdown report; exists: `True`)
+  - `examples/output/public_apple_static_case_study_dashboard.html` (self-contained static dashboard; exists: `True`)
+  - `examples/output/public_apple_static_case_study_review_queue.json` (review queue data; exists: `True`)
+  - `examples/output/public_apple_static_case_study_review_queue.md` (review queue handoff; exists: `True`)
 
 ## Source Boundaries
 

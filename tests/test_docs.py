@@ -323,7 +323,7 @@ class DocsTests(unittest.TestCase):
         expected_links = {
             "README.md": "docs/comparison-to-spreadsheets.md",
             "docs/usage.md": "comparison-to-spreadsheets.md",
-            "docs/release-notes-v0.9.0.md": "comparison-to-spreadsheets.md",
+            "docs/release-notes-v0.9.2.md": "comparison-to-spreadsheets.md",
         }
         for relative_path, marker in expected_links.items():
             with self.subTest(path=relative_path):
@@ -346,7 +346,7 @@ class DocsTests(unittest.TestCase):
             "release-owner approval",
             "Educational research review only",
             "reviewer-evidence.md",
-            "release-notes-v0.9.0.md",
+            "release-notes-v0.9.2.md",
             "../reports/reviews/2026-05-17-v0.1.0-internal-review.md",
             "../reports/reviews/2026-05-17-v0.2.0-internal-review.md",
             "../reports/reviews/2026-06-18-v0.9.0-internal-review.md",
@@ -441,7 +441,7 @@ class DocsTests(unittest.TestCase):
         text = path.read_text(encoding="utf-8")
 
         for marker in (
-            "contains exactly `0.9.0`",
+            "contains exactly `0.9.2`",
             "contains `OK` and a `Ran ... tests` line",
             "`== unit tests ==`",
             "`== demo ==`",
@@ -659,10 +659,10 @@ class DocsTests(unittest.TestCase):
             "Exact Verification Commands",
             "Promotion Evidence Paths",
             "Owner-Controlled Promotion Gates",
-            "Confirm release metadata agrees on `0.9.0`",
+            "Confirm release metadata agrees on `0.9.2`",
             "git status --short",
-            "git tag -a v0.9.0 -m \"v0.9.0\"",
-            "gh release create v0.9.0 --title \"v0.9.0\" --notes-file docs/release-notes-v0.9.0.md",
+            "git tag -a v0.9.2 -m \"v0.9.2\"",
+            "gh release create v0.9.2 --title \"v0.9.2\" --notes-file docs/release-notes-v0.9.2.md",
             "PYTHONPATH=src python -m earnings_call_risk_map version",
             "PYTHONPATH=src python -m unittest discover -s tests",
             "PYTHONPATH=src python scripts/selfcheck.py",

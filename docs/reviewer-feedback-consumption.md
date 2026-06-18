@@ -1,6 +1,6 @@
 # Reviewer Feedback Consumption
 
-This note summarizes how prior reviewer feedback shaped v0.8 and carries that evidence forward for v0.9. It is a companion to the reviewer command appendix in [Reviewer Evidence](reviewer-evidence.md), the v0.9 release summary in [Release Notes v0.9.0](release-notes-v0.9.0.md), and the final score evidence in [Maturity Evidence](../reports/maturity/maturity_evidence.md).
+This note summarizes how prior reviewer feedback shaped v0.8 and carries that evidence forward for v0.9. It is a companion to the reviewer command appendix in [Reviewer Evidence](reviewer-evidence.md), the v0.9 release summary in [Release Notes v0.9.2](release-notes-v0.9.2.md), and the final score evidence in [Maturity Evidence](../reports/maturity/maturity_evidence.md).
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice.
 

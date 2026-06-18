@@ -1,7 +1,7 @@
 # Doctor Report
 
 - Package: `earnings-call-risk-map`
-- Version: `0.9.0`
+- Version: `0.9.2`
 - Status: `passed`
 - Local-only package health: `passed`
 - Fixture count: 7

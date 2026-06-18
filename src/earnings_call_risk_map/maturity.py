@@ -82,7 +82,7 @@ REVIEW_TEMPLATE_PATH = "reports/reviews/release-readiness-review.md"
 RELEASE_ASSETS = (
     "README.md",
     "CHANGELOG.md",
-    "docs/release-notes-v0.9.0.md",
+    "docs/release-notes-v0.9.2.md",
     "docs/comparison-to-spreadsheets.md",
     "examples/playbooks/README.md",
     "examples/playbooks/quarterly-review.md",
@@ -181,7 +181,7 @@ MATURITY_SCORES = {
     "review_date": "2026-06-18",
     "overall": "94/100",
     "level": "L4+",
-    "release_gate": "PASS for owner-controlled v0.9.0 release after final worktree inspection",
+    "release_gate": "PASS for owner-controlled v0.9.2 release after final worktree inspection",
     "promotion_gate": "PASS for small-scope public promotion after release owner approval",
     "categories": {
         "product_clarity": "15/15",

@@ -173,7 +173,7 @@
     "docs/source-attribution-guide.md",
     "docs/fixture-catalog.md"
   ],
-  "tool_version": "0.9.0",
+  "tool_version": "0.9.2",
   "walkthrough_receipt": {
     "artifact_status": [
       {
@@ -219,6 +219,8 @@
     ],
     "checks": {
       "all_fixture_boundaries_static_or_local": true,
+      "all_public_source_demo_receipt_artifacts_exist": true,
+      "all_public_source_demo_receipts_present": true,
       "all_receipt_artifacts_exist": true,
       "dashboard_handoff_paths_recorded": true,
       "no_advice_boundary_recorded": true,
@@ -226,6 +228,153 @@
       "public_source_fixtures_present": true
     },
     "missing_artifact_count": 0,
+    "public_source_demo_receipt_count": 3,
+    "public_source_demo_receipts": [
+      {
+        "checks": {
+          "all_demo_artifacts_exist": true,
+          "fixture_exists": true,
+          "fixture_is_public_source": true,
+          "local_only_demo_scope": true,
+          "no_advice_boundary_recorded": true,
+          "no_live_data_boundary_recorded": true,
+          "source_metadata_present": true,
+          "source_urls_recorded": true,
+          "static_notices_recorded": true
+        },
+        "company": "Logitech International S.A. Public-Source Consumer Hardware Fixture",
+        "data_cutoff": "2024-04-29",
+        "demo_artifact_status": [
+          {
+            "exists": true,
+            "path": "examples/output/consumer_hardware_snapshot.json",
+            "role": "deterministic analysis snapshot"
+          },
+          {
+            "exists": true,
+            "path": "examples/output/consumer_hardware_report.md",
+            "role": "local Markdown report"
+          },
+          {
+            "exists": true,
+            "path": "examples/output/consumer_hardware_dashboard.html",
+            "role": "self-contained static dashboard"
+          },
+          {
+            "exists": true,
+            "path": "examples/output/consumer_hardware_review_queue.json",
+            "role": "review queue data"
+          },
+          {
+            "exists": true,
+            "path": "examples/output/consumer_hardware_review_queue.md",
+            "role": "review queue handoff"
+          }
+        ],
+        "fixture_path": "examples/input/consumer_hardware.json",
+        "fixture_slug": "consumer_hardware",
+        "missing_demo_artifact_count": 0,
+        "receipt_type": "fixture_scoped_public_source_demo",
+        "scope": "local-only deterministic demo artifacts generated from this checked-in public-source fixture",
+        "ticker": "LOGI"
+      },
+      {
+        "checks": {
+          "all_demo_artifacts_exist": true,
+          "fixture_exists": true,
+          "fixture_is_public_source": true,
+          "local_only_demo_scope": true,
+          "no_advice_boundary_recorded": true,
+          "no_live_data_boundary_recorded": true,
+          "source_metadata_present": true,
+          "source_urls_recorded": true,
+          "static_notices_recorded": true
+        },
+        "company": "ASML Holding N.V. Public-Source Semiconductor Equipment Fixture",
+        "data_cutoff": "2025-01-29",
+        "demo_artifact_status": [
+          {
+            "exists": true,
+            "path": "examples/output/semiconductor_equipment_snapshot.json",
+            "role": "deterministic analysis snapshot"
+          },
+          {
+            "exists": true,
+            "path": "examples/output/semiconductor_equipment_report.md",
+            "role": "local Markdown report"
+          },
+          {
+            "exists": true,
+            "path": "examples/output/semiconductor_equipment_dashboard.html",
+            "role": "self-contained static dashboard"
+          },
+          {
+            "exists": true,
+            "path": "examples/output/semiconductor_equipment_review_queue.json",
+            "role": "review queue data"
+          },
+          {
+            "exists": true,
+            "path": "examples/output/semiconductor_equipment_review_queue.md",
+            "role": "review queue handoff"
+          }
+        ],
+        "fixture_path": "examples/input/semiconductor_equipment.json",
+        "fixture_slug": "semiconductor_equipment",
+        "missing_demo_artifact_count": 0,
+        "receipt_type": "fixture_scoped_public_source_demo",
+        "scope": "local-only deterministic demo artifacts generated from this checked-in public-source fixture",
+        "ticker": "ASML"
+      },
+      {
+        "checks": {
+          "all_demo_artifacts_exist": true,
+          "fixture_exists": true,
+          "fixture_is_public_source": true,
+          "local_only_demo_scope": true,
+          "no_advice_boundary_recorded": true,
+          "no_live_data_boundary_recorded": true,
+          "source_metadata_present": true,
+          "source_urls_recorded": true,
+          "static_notices_recorded": true
+        },
+        "company": "Apple Inc. Public-Source Static Case Study",
+        "data_cutoff": "2024-05-02",
+        "demo_artifact_status": [
+          {
+            "exists": true,
+            "path": "examples/output/public_apple_static_case_study_snapshot.json",
+            "role": "deterministic analysis snapshot"
+          },
+          {
+            "exists": true,
+            "path": "examples/output/public_apple_static_case_study_report.md",
+            "role": "local Markdown report"
+          },
+          {
+            "exists": true,
+            "path": "examples/output/public_apple_static_case_study_dashboard.html",
+            "role": "self-contained static dashboard"
+          },
+          {
+            "exists": true,
+            "path": "examples/output/public_apple_static_case_study_review_queue.json",
+            "role": "review queue data"
+          },
+          {
+            "exists": true,
+            "path": "examples/output/public_apple_static_case_study_review_queue.md",
+            "role": "review queue handoff"
+          }
+        ],
+        "fixture_path": "examples/input/public_apple_static_case_study.json",
+        "fixture_slug": "public_apple_static_case_study",
+        "missing_demo_artifact_count": 0,
+        "receipt_type": "fixture_scoped_public_source_demo",
+        "scope": "local-only deterministic demo artifacts generated from this checked-in public-source fixture",
+        "ticker": "AAPL"
+      }
+    ],
     "public_source_fixture_count": 3,
     "public_source_fixture_paths": [
       "examples/input/consumer_hardware.json",

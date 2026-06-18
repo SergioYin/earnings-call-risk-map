@@ -27,7 +27,7 @@ DOC_LINK_CHECK_PATHS = (
     Path("docs/publication-checklist.md"),
     Path("docs/release-readiness.md"),
     Path("docs/reviewer-evidence.md"),
-    Path("docs/release-notes-v0.9.0.md"),
+    Path("docs/release-notes-v0.9.2.md"),
     Path("docs/risk-language-taxonomy.md"),
     Path("docs/roadmap.md"),
     Path("docs/security-and-privacy.md"),

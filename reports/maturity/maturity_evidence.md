@@ -1,7 +1,7 @@
 # Maturity Evidence Bundle
 
 - Package: `earnings-call-risk-map`
-- Version: `0.9.0`
+- Version: `0.9.2`
 - Commands: 31
 - Fixtures: 7
 - Skill path: `skills/agent/earnings-call-risk-map/SKILL.md` (present)
@@ -74,7 +74,7 @@
 - Review date: `2026-06-18`
 - Overall: `94/100`
 - Level: `L4+`
-- Release gate: `PASS for owner-controlled v0.9.0 release after final worktree inspection`
+- Release gate: `PASS for owner-controlled v0.9.2 release after final worktree inspection`
 - Promotion gate: `PASS for small-scope public promotion after release owner approval`
 
 ### Scorecard
@@ -98,7 +98,7 @@
 
 - `README.md`
 - `CHANGELOG.md`
-- `docs/release-notes-v0.9.0.md`
+- `docs/release-notes-v0.9.2.md`
 - `docs/comparison-to-spreadsheets.md`
 - `examples/playbooks/README.md`
 - `examples/playbooks/quarterly-review.md`

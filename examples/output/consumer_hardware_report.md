@@ -2,7 +2,7 @@
 
 - As of: `2024-05-01`
 - Static data cutoff: `2024-04-29`
-- Tool version: `0.9.0`
+- Tool version: `0.9.2`
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
 

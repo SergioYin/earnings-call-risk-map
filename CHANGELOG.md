@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.9.2 - 2026-06-19
+
+Public-source demo receipt patch release.
+
+### Added
+
+- Release notes draft at `docs/release-notes-v0.9.2.md`.
+- Source-boundary walkthrough evidence now includes fixture-scoped `fixture_scoped_public_source_demo` receipts for each bundled public-source fixture.
+- Selfcheck and CLI coverage now validate the fixture-scoped receipt count, artifact checks, receipt fields, and Markdown section.
+
+### Changed
+
+- Source-boundary evidence Markdown and JSON now record fixture-scoped public-source demo artifact checks alongside the existing walkthrough receipt.
+- Release metadata, release-owner docs, generated manifests, and generated maturity evidence now identify `0.9.2` as the current package version.
+- Package version is now `0.9.2`.
+
+### Safety
+
+- The release remains local-only and static; the new receipts only reference checked-in fixtures and generated local artifacts, with no live data, network calls, credentials, workflows, recommendations, ratings, price targets, portfolio actions, or personalized advice.
+
 ## 0.9.0 - 2026-06-18
 
 Source-boundary walkthrough receipt release.

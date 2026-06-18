@@ -216,6 +216,7 @@ def render_source_boundary_evidence_markdown(evidence: dict[str, Any]) -> str:
             f"- Receipt type: `{receipt['receipt_type']}`",
             f"- Scope: {receipt['scope']}",
             f"- Public-source fixture count: {receipt['public_source_fixture_count']}",
+            f"- Fixture-scoped public-source demo receipts: {receipt.get('public_source_demo_receipt_count', 0)}",
             f"- Static/local fixture count: {receipt['static_or_local_fixture_count']}",
             f"- Missing receipt artifacts: {receipt['missing_artifact_count']}",
             "",
@@ -234,6 +235,35 @@ def render_source_boundary_evidence_markdown(evidence: dict[str, Any]) -> str:
                 f"   - Evidence paths: {', '.join(f'`{path}`' for path in step['evidence_paths'])}",
             ]
         )
+    if receipt.get("public_source_demo_receipts"):
+        lines.extend(
+            [
+                "",
+                "### Fixture-Scoped Public-Source Demo Receipts",
+                "",
+                "| Fixture | Ticker | Demo artifacts | Missing | Local-only |",
+                "| --- | --- | ---: | ---: | --- |",
+            ]
+        )
+        for demo_receipt in receipt["public_source_demo_receipts"]:
+            lines.append(
+                f"| {_markdown_table_cell(demo_receipt['fixture_path'])} | "
+                f"{_markdown_table_cell(demo_receipt['ticker'])} | "
+                f"{len(demo_receipt['demo_artifact_status'])} | "
+                f"{demo_receipt['missing_demo_artifact_count']} | "
+                f"{_markdown_table_cell(demo_receipt['checks']['local_only_demo_scope'])} |"
+            )
+        lines.extend(["", "#### Demo Receipt Artifact Paths", ""])
+        for demo_receipt in receipt["public_source_demo_receipts"]:
+            lines.extend(
+                [
+                    f"- `{demo_receipt['fixture_slug']}`:",
+                    *[
+                        f"  - `{artifact['path']}` ({artifact['role']}; exists: `{artifact['exists']}`)"
+                        for artifact in demo_receipt["demo_artifact_status"]
+                    ],
+                ]
+            )
     lines.extend(["", "## Source Boundaries", ""])
     lines.extend(f"- {key.replace('_', ' ').title()}: {value}" for key, value in evidence["source_boundaries"].items())
     lines.extend(["", "## Reviewer Artifact Paths", ""])
@@ -261,6 +291,11 @@ def _build_walkthrough_receipt(base: Path, fixture_entries: list[dict[str, Any]]
         for fixture in fixture_entries
         if fixture["fixture_boundary"] == "static_public_source_fixture"
     ]
+    public_source_demo_receipts = [
+        _build_public_source_demo_receipt(base, fixture)
+        for fixture in fixture_entries
+        if fixture["fixture_boundary"] == "static_public_source_fixture"
+    ]
     return {
         "receipt_type": "public_source_boundary_walkthrough",
         "scope": (
@@ -269,6 +304,8 @@ def _build_walkthrough_receipt(base: Path, fixture_entries: list[dict[str, Any]]
         ),
         "public_source_fixture_count": len(public_fixture_paths),
         "public_source_fixture_paths": public_fixture_paths,
+        "public_source_demo_receipt_count": len(public_source_demo_receipts),
+        "public_source_demo_receipts": public_source_demo_receipts,
         "static_or_local_fixture_count": len(
             [
                 fixture
@@ -290,6 +327,10 @@ def _build_walkthrough_receipt(base: Path, fixture_entries: list[dict[str, Any]]
         ],
         "checks": {
             "public_source_fixtures_present": bool(public_fixture_paths),
+            "all_public_source_demo_receipts_present": len(public_source_demo_receipts) == len(public_fixture_paths),
+            "all_public_source_demo_receipt_artifacts_exist": all(
+                receipt["checks"]["all_demo_artifacts_exist"] for receipt in public_source_demo_receipts
+            ),
             "all_receipt_artifacts_exist": all(artifact["exists"] for artifact in artifact_status),
             "all_fixture_boundaries_static_or_local": all(
                 fixture["fixture_boundary"]
@@ -304,6 +345,60 @@ def _build_walkthrough_receipt(base: Path, fixture_entries: list[dict[str, Any]]
             "no_advice_boundary_recorded": "buy, sell, or hold advice" in SAFETY_NOTICE,
         },
     }
+
+
+def _build_public_source_demo_receipt(base: Path, fixture: dict[str, Any]) -> dict[str, Any]:
+    artifact_paths = _public_source_demo_artifact_paths(fixture["slug"])
+    artifact_status = [
+        {"path": path, "exists": (base / path).is_file(), "role": _public_source_demo_artifact_role(path)}
+        for path in artifact_paths
+    ]
+    return {
+        "receipt_type": "fixture_scoped_public_source_demo",
+        "fixture_slug": fixture["slug"],
+        "fixture_path": fixture["path"],
+        "company": fixture["company"],
+        "ticker": fixture["ticker"],
+        "data_cutoff": fixture["data_cutoff"],
+        "scope": "local-only deterministic demo artifacts generated from this checked-in public-source fixture",
+        "demo_artifact_status": artifact_status,
+        "missing_demo_artifact_count": len([artifact for artifact in artifact_status if not artifact["exists"]]),
+        "checks": {
+            "fixture_exists": fixture["exists"],
+            "fixture_is_public_source": fixture["fixture_boundary"] == "static_public_source_fixture",
+            "source_metadata_present": fixture["source_record_count"] > 0,
+            "source_urls_recorded": fixture["source_url_count"] > 0,
+            "static_notices_recorded": fixture["static_notice_count"] > 0,
+            "all_demo_artifacts_exist": all(artifact["exists"] for artifact in artifact_status),
+            "local_only_demo_scope": True,
+            "no_live_data_boundary_recorded": True,
+            "no_advice_boundary_recorded": "buy, sell, or hold advice" in SAFETY_NOTICE,
+        },
+    }
+
+
+def _public_source_demo_artifact_paths(slug: str) -> list[str]:
+    return [
+        f"examples/output/{slug}_snapshot.json",
+        f"examples/output/{slug}_report.md",
+        f"examples/output/{slug}_dashboard.html",
+        f"examples/output/{slug}_review_queue.json",
+        f"examples/output/{slug}_review_queue.md",
+    ]
+
+
+def _public_source_demo_artifact_role(path: str) -> str:
+    if path.endswith("_snapshot.json"):
+        return "deterministic analysis snapshot"
+    if path.endswith("_report.md"):
+        return "local Markdown report"
+    if path.endswith("_dashboard.html"):
+        return "self-contained static dashboard"
+    if path.endswith("_review_queue.json"):
+        return "review queue data"
+    if path.endswith("_review_queue.md"):
+        return "review queue handoff"
+    return "public-source demo artifact"
 
 
 def _artifact_role(path: str) -> str:

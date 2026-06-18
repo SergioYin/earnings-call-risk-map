@@ -24,7 +24,7 @@ DOC_LINK_CHECK_PATHS = (
     Path("docs/comparison-to-spreadsheets.md"),
     Path("docs/release-readiness.md"),
     Path("docs/reviewer-evidence.md"),
-    Path("docs/release-notes-v0.9.0.md"),
+    Path("docs/release-notes-v0.9.2.md"),
 )
 REQUIRED_DOC_PATHS = (
     Path("docs/tutorial-earnings-review.md"),
@@ -322,9 +322,14 @@ def check_source_boundary_evidence() -> int:
     if receipt.get("public_source_fixture_count") != 3 or receipt.get("static_or_local_fixture_count") != 6:
         print("source boundary evidence walkthrough receipt has unexpected fixture counts")
         return 1
+    if receipt.get("public_source_demo_receipt_count") != 3:
+        print("source boundary evidence walkthrough receipt has unexpected fixture-scoped demo receipt count")
+        return 1
     receipt_checks = receipt.get("checks", {})
     for check in (
         "public_source_fixtures_present",
+        "all_public_source_demo_receipts_present",
+        "all_public_source_demo_receipt_artifacts_exist",
         "all_receipt_artifacts_exist",
         "all_fixture_boundaries_static_or_local",
         "dashboard_handoff_paths_recorded",
@@ -337,11 +342,44 @@ def check_source_boundary_evidence() -> int:
     if receipt.get("missing_artifact_count") != 0 or len(receipt.get("steps", [])) != 4:
         print("source boundary walkthrough receipt has missing artifacts or malformed steps")
         return 1
+    demo_receipts = receipt.get("public_source_demo_receipts", [])
+    demo_receipt_slugs = {item.get("fixture_slug") for item in demo_receipts}
+    required_demo_receipt_slugs = {
+        "consumer_hardware",
+        "semiconductor_equipment",
+        "public_apple_static_case_study",
+    }
+    if demo_receipt_slugs != required_demo_receipt_slugs:
+        print("source boundary walkthrough receipt has unexpected fixture-scoped demo receipt slugs")
+        return 1
+    for demo_receipt in demo_receipts:
+        if demo_receipt.get("receipt_type") != "fixture_scoped_public_source_demo":
+            print(f"source boundary walkthrough receipt has unexpected demo receipt type: {demo_receipt.get('fixture_slug')}")
+            return 1
+        if demo_receipt.get("missing_demo_artifact_count") != 0:
+            print(f"source boundary walkthrough receipt has missing demo artifacts: {demo_receipt.get('fixture_slug')}")
+            return 1
+        demo_checks = demo_receipt.get("checks", {})
+        for check in (
+            "fixture_exists",
+            "fixture_is_public_source",
+            "source_metadata_present",
+            "source_urls_recorded",
+            "static_notices_recorded",
+            "all_demo_artifacts_exist",
+            "local_only_demo_scope",
+            "no_live_data_boundary_recorded",
+            "no_advice_boundary_recorded",
+        ):
+            if demo_checks.get(check) is not True:
+                print(f"source boundary fixture-scoped demo receipt failed check: {demo_receipt.get('fixture_slug')} {check}")
+                return 1
 
     markdown = md_path.read_text(encoding="utf-8")
     required_markers = (
         "Source Boundary Evidence",
         "Walkthrough Receipt",
+        "Fixture-Scoped Public-Source Demo Receipts",
         "Verify bundled static fixtures",
         "Verify dashboard and release-owner handoff",
         "No live data",
@@ -970,7 +1008,7 @@ def check_publication_checklist() -> int:
         "Publication Checklist",
         "Confirm The Release Candidate",
         "Create The GitHub Release",
-        "gh release create v0.9.0",
+        "gh release create v0.9.2",
         "python scripts/privacy_scan.py",
         "Educational research review only",
     )
