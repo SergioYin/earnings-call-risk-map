@@ -1,12 +1,12 @@
 # Maturity Evidence Bundle
 
 - Package: `earnings-call-risk-map`
-- Version: `0.9.2`
-- Commands: 31
+- Version: `0.9.3`
+- Commands: 32
 - Fixtures: 7
 - Skill path: `skills/agent/earnings-call-risk-map/SKILL.md` (present)
 - Review template: `reports/reviews/release-readiness-review.md` (present)
-- Release assets: passed (95/95 present)
+- Release assets: passed (97/97 present)
 - Privacy scan: passed (`python scripts/privacy_scan.py`)
 - Latest review score: 94/100 (reports/reviews/2026-06-18-v0.9.0-final-review.md)
 
@@ -43,6 +43,8 @@
 - `PYTHONPATH=src python -m earnings_call_risk_map data-entry-checklist --format markdown --out examples/output/data_entry_checklist.md`
 - `PYTHONPATH=src python -m earnings_call_risk_map demo-screenshot-guide --format markdown --out examples/output/demo_screenshot_guide.md`
 - `PYTHONPATH=src python -m earnings_call_risk_map demo-screenshot-guide --format json --out examples/output/demo_screenshot_guide.json`
+- `PYTHONPATH=src python -m earnings_call_risk_map visual-evidence-receipt --format markdown --out examples/output/visual_evidence_receipt.md`
+- `PYTHONPATH=src python -m earnings_call_risk_map visual-evidence-receipt --format json --out examples/output/visual_evidence_receipt.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map fresh-clone-plan --format markdown --out examples/output/fresh_clone_plan.md`
 - `PYTHONPATH=src python -m earnings_call_risk_map fresh-clone-plan --format json --out examples/output/fresh_clone_plan.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map cheat-sheet --format markdown --out examples/output/command_cheat_sheet.md`
@@ -74,7 +76,7 @@
 - Review date: `2026-06-18`
 - Overall: `94/100`
 - Level: `L4+`
-- Release gate: `PASS for owner-controlled v0.9.2 release after final worktree inspection`
+- Release gate: `PASS for owner-controlled v0.9.3 release after final worktree inspection`
 - Promotion gate: `PASS for small-scope public promotion after release owner approval`
 
 ### Scorecard
@@ -98,7 +100,7 @@
 
 - `README.md`
 - `CHANGELOG.md`
-- `docs/release-notes-v0.9.2.md`
+- `docs/release-notes-v0.9.3.md`
 - `docs/comparison-to-spreadsheets.md`
 - `examples/playbooks/README.md`
 - `examples/playbooks/quarterly-review.md`
@@ -175,6 +177,8 @@
 - `examples/output/data_entry_checklist.json`
 - `examples/output/demo_screenshot_guide.md`
 - `examples/output/demo_screenshot_guide.json`
+- `examples/output/visual_evidence_receipt.md`
+- `examples/output/visual_evidence_receipt.json`
 - `examples/output/fresh_clone_plan.md`
 - `examples/output/fresh_clone_plan.json`
 - `examples/output/playbook_output_examples.md`
@@ -279,6 +283,8 @@
 - `examples/output/source_boundary_evidence.md`
 - `examples/output/template_catalog.json`
 - `examples/output/template_catalog.md`
+- `examples/output/visual_evidence_receipt.json`
+- `examples/output/visual_evidence_receipt.md`
 - `release_manifest.json`
 
 ## Privacy Scan

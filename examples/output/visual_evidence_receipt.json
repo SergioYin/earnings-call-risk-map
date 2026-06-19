@@ -1,0 +1,209 @@
+{
+  "artifact_type": "visual_evidence_receipt",
+  "checks": {
+    "all_screenshot_targets_exist": true,
+    "all_visual_targets_public_safe": true,
+    "no_broker_boundary_recorded": true,
+    "no_live_data_boundary_recorded": true,
+    "no_personalized_advice_boundary_recorded": true,
+    "primary_target_exists": true,
+    "primary_target_has_required_markers": true,
+    "public_source_fixture_limits_recorded": true,
+    "source_attribution_referenced": true,
+    "stale_or_static_warning_referenced": true
+  },
+  "no_advice_claim": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "no_broker_claim": "No broker, portfolio, order, account, credential, or personalized holding data is used.",
+  "no_live_data_claim": "This evidence bundle is generated from bundled local fixture JSON files only. It does not fetch live market data, broker data, filings, API data, or earnings-call transcripts.",
+  "no_personalized_advice_claim": "No personalized investment, legal, accounting, tax, buy, sell, or hold advice is provided.",
+  "primary_screenshot_target": {
+    "artifact_kind": "static_html_dashboard",
+    "blocked_markers_found": [],
+    "exists": true,
+    "has_required_markers": true,
+    "missing_required_markers": [],
+    "path": "examples/output/public_apple_static_case_study_dashboard.html",
+    "required_markers": [
+      "Educational research review only",
+      "Source Attribution",
+      "Static educational case study"
+    ],
+    "static_public_safe_scope": true,
+    "use": "Best primary README screenshot. It shows the static public-source case study, source attribution, stale/static labels, risk and opportunity panels, review queue signals, and the non-advice boundary."
+  },
+  "public_source_fixture_limit": "Public-source fixtures are checked-in static examples with source attribution metadata. They are limited to repository evidence and must not be presented as current market data, verified transcript coverage, broker data, or personalized investment, legal, accounting, tax, buy, sell, or hold advice.",
+  "public_source_fixtures": [
+    {
+      "data_cutoff": "2024-04-29",
+      "freshness_boundary": "review freshness before reuse; static fixture dates are evidence metadata, not current analysis",
+      "path": "examples/input/consumer_hardware.json",
+      "source_domains": [
+        "ir.logitech.com"
+      ],
+      "static_notice_count": 7,
+      "ticker": "LOGI"
+    },
+    {
+      "data_cutoff": "2025-01-29",
+      "freshness_boundary": "review freshness before reuse; static fixture dates are evidence metadata, not current analysis",
+      "path": "examples/input/semiconductor_equipment.json",
+      "source_domains": [
+        "www.asml.com"
+      ],
+      "static_notice_count": 10,
+      "ticker": "ASML"
+    },
+    {
+      "data_cutoff": "2024-05-02",
+      "freshness_boundary": "review freshness before reuse; static fixture dates are evidence metadata, not current analysis",
+      "path": "examples/input/public_apple_static_case_study.json",
+      "source_domains": [
+        "www.apple.com",
+        "www.sec.gov"
+      ],
+      "static_notice_count": 8,
+      "ticker": "AAPL"
+    }
+  ],
+  "required_public_safe_markers": [
+    "Educational research review only",
+    "Source Attribution",
+    "Static educational case study"
+  ],
+  "review_boundaries": [
+    "Keep visible source attribution, source-boundary labels, or stale/static warnings in the screenshot crop.",
+    "Use checked-in static HTML, Markdown, or SVG artifacts only; do not imply live dashboards or monitoring.",
+    "Do not include browser profiles, private paths, account names, credentials, portfolio holdings, or secrets.",
+    "Do not add price targets, ratings, recommendations, or buy/sell/hold language to screenshot captions."
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema_version": "0.1",
+  "screenshot_targets": [
+    {
+      "artifact_kind": "static_html_dashboard",
+      "blocked_markers_found": [],
+      "exists": true,
+      "has_required_markers": true,
+      "missing_required_markers": [],
+      "path": "examples/output/public_apple_static_case_study_dashboard.html",
+      "required_markers": [
+        "Educational research review only",
+        "Source Attribution",
+        "Static educational case study"
+      ],
+      "static_public_safe_scope": true,
+      "use": "Best primary README screenshot. It shows the static public-source case study, source attribution, stale/static labels, risk and opportunity panels, review queue signals, and the non-advice boundary."
+    },
+    {
+      "artifact_kind": "static_html_dashboard",
+      "blocked_markers_found": [],
+      "exists": true,
+      "has_required_markers": true,
+      "missing_required_markers": [],
+      "path": "examples/output/demo_dashboard.html",
+      "required_markers": [
+        "Educational research review only",
+        "Source Attribution",
+        "Static educational case study"
+      ],
+      "static_public_safe_scope": true,
+      "use": "Good compact fallback when the README needs a smaller software-style fixture."
+    },
+    {
+      "artifact_kind": "static_html_dashboard",
+      "blocked_markers_found": [],
+      "exists": true,
+      "has_required_markers": true,
+      "missing_required_markers": [],
+      "path": "examples/output/energy_infrastructure_dashboard.html",
+      "required_markers": [
+        "Educational research review only",
+        "Source Attribution",
+        "Static educational case study"
+      ],
+      "static_public_safe_scope": true,
+      "use": "Good sector-contrast screenshot for capital projects, catalysts, and stale/static project data."
+    },
+    {
+      "artifact_kind": "static_html_dashboard",
+      "blocked_markers_found": [],
+      "exists": true,
+      "has_required_markers": true,
+      "missing_required_markers": [],
+      "path": "examples/output/consumer_hardware_dashboard.html",
+      "required_markers": [
+        "Educational research review only",
+        "Source Attribution",
+        "Static educational case study"
+      ],
+      "static_public_safe_scope": true,
+      "use": "Good sector-contrast screenshot for hardware launch, supply chain, inventory, and margin review examples."
+    },
+    {
+      "artifact_kind": "static_html_dashboard",
+      "blocked_markers_found": [],
+      "exists": true,
+      "has_required_markers": true,
+      "missing_required_markers": [],
+      "path": "examples/output/semiconductor_equipment_dashboard.html",
+      "required_markers": [
+        "Educational research review only",
+        "Source Attribution",
+        "Static educational case study"
+      ],
+      "static_public_safe_scope": true,
+      "use": "Good sector-contrast screenshot for backlog, export control, China exposure, and equipment-cycle examples."
+    },
+    {
+      "artifact_kind": "static_svg_preview",
+      "blocked_markers_found": [],
+      "exists": true,
+      "has_required_markers": true,
+      "missing_required_markers": [],
+      "path": "docs/assets/showcase-dashboard-preview.svg",
+      "required_markers": [
+        "Review Queue",
+        "Static"
+      ],
+      "static_public_safe_scope": true,
+      "use": "Best PNG-free README visual when the repository page should render without a browser screenshot file."
+    },
+    {
+      "artifact_kind": "static_svg_preview",
+      "blocked_markers_found": [],
+      "exists": true,
+      "has_required_markers": true,
+      "missing_required_markers": [],
+      "path": "examples/output/showcase_dashboard_preview.svg",
+      "required_markers": [
+        "Review Queue",
+        "Static"
+      ],
+      "static_public_safe_scope": true,
+      "use": "Best release artifact copy of the PNG-free preview SVG."
+    },
+    {
+      "artifact_kind": "static_html_dashboard",
+      "blocked_markers_found": [],
+      "exists": true,
+      "has_required_markers": true,
+      "missing_required_markers": [],
+      "path": "docs/demo-index.html",
+      "required_markers": [
+        "Educational research review only",
+        "Source Attribution",
+        "Static educational case study"
+      ],
+      "static_public_safe_scope": true,
+      "use": "Good overview screenshot for the local static demo launcher and bundled artifacts."
+    }
+  ],
+  "source_boundaries": {
+    "analyst_questions": "source-provided questions or prompts; they are not treated as factual claims",
+    "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
+    "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
+  },
+  "source_boundary_artifact": "examples/output/source_boundary_evidence.json",
+  "source_doc": "docs/demo-screenshot-guide.md",
+  "tool_version": "0.9.3"
+}

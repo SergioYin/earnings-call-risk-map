@@ -1,7 +1,7 @@
 # Release Owner Handoff
 
 - Package: `earnings-call-risk-map`
-- Version: `0.9.2`
+- Version: `0.9.3`
 - Source doc: `docs/release-owner-handoff.md`
 - Owner scope: final release owner handoff before tagging, publishing, or promoting public artifacts
 
@@ -15,9 +15,9 @@ Final v0.9 Release Owner Checklist.
 
 Confirm all release metadata agrees on the current package version.
 
-Confirm release metadata agrees on `0.9.2`.
+Confirm release metadata agrees on `0.9.3`.
 
-- Confirm `README.md`, `CHANGELOG.md`, `pyproject.toml`, `src/earnings_call_risk_map/version.py`, and `docs/release-notes-v0.9.2.md` all identify `0.9.2`.
+- Confirm `README.md`, `CHANGELOG.md`, `pyproject.toml`, `src/earnings_call_risk_map/version.py`, and `docs/release-notes-v0.9.3.md` all identify `0.9.3`.
 
 ### 2. Inspect Worktree
 
@@ -44,8 +44,8 @@ Keep package publishing, hosted demo deployment, tagging, and announcements owne
 
 - Complete the wheel build dry run only if package publishing is in scope.
 - Verify the Pages demo locally only if a hosted demo is in scope.
-- Create the annotated tag only after the release owner accepts the worktree and evidence set: `git tag -a v0.9.2 -m "v0.9.2"`.
-- Create the GitHub release only after the tag has been pushed and release notes have been reviewed: `gh release create v0.9.2 --title "v0.9.2" --notes-file docs/release-notes-v0.9.2.md`.
+- Create the annotated tag only after the release owner accepts the worktree and evidence set: `git tag -a v0.9.3 -m "v0.9.3"`.
+- Create the GitHub release only after the tag has been pushed and release notes have been reviewed: `gh release create v0.9.3 --title "v0.9.3" --notes-file docs/release-notes-v0.9.3.md`.
 
 ### 6. Review Public Boundaries
 
@@ -70,7 +70,7 @@ git diff --check
 
 ## Expected Results
 
-- `PYTHONPATH=src python -m earnings_call_risk_map version` prints exactly `0.9.2`.
+- `PYTHONPATH=src python -m earnings_call_risk_map version` prints exactly `0.9.3`.
 - `PYTHONPATH=src python -m unittest discover -s tests` ends with `OK`.
 - `PYTHONPATH=src python scripts/selfcheck.py` ends with `selfcheck passed`.
 - `PYTHONPATH=src python -m earnings_call_risk_map audit --format json` reports local-only checks as passed.
@@ -93,11 +93,11 @@ python -m pip install --force-reinstall --no-deps dist-dry-run/*.whl
 earnings-call-risk-map version
 ```
 
-Expected package dry-run version output: `0.9.2`.
+Expected package dry-run version output: `0.9.3`.
 
 ## Promotion Evidence Paths
 
-- `docs/release-notes-v0.9.2.md`
+- `docs/release-notes-v0.9.3.md`
 - `docs/release-readiness.md`
 - `docs/reviewer-evidence.md`
 - `docs/reviewer-feedback-consumption.md`

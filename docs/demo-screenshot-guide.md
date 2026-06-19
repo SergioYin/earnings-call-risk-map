@@ -2,6 +2,15 @@
 
 Use this guide when choosing generated artifacts for README visuals, release notes, gallery pages, or a public demo page. The best screenshots should show the actual local artifacts, preserve source and stale-data labels, and keep the educational non-advice boundary visible.
 
+For deterministic review evidence, generate the paired checklist/receipt:
+
+```bash
+PYTHONPATH=src python -m earnings_call_risk_map visual-evidence-receipt --format markdown --out examples/output/visual_evidence_receipt.md
+PYTHONPATH=src python -m earnings_call_risk_map visual-evidence-receipt --format json --out examples/output/visual_evidence_receipt.json
+```
+
+The receipt is static and source-boundary scoped. It references checked-in public-source fixture limits, source attribution, stale/static warnings, no live data, no broker or account data, and no personalized investment, legal, accounting, tax, buy, sell, or hold advice.
+
 ## Best Screenshot Targets
 
 - `examples/output/public_apple_static_case_study_dashboard.html`: best primary README screenshot. It shows the static public-source case study, source attribution, stale/static labels, risk and opportunity panels, review queue signals, and the non-advice boundary in one browser-viewable artifact.

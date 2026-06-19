@@ -9,7 +9,7 @@
     "status": "passed"
   },
   "fixture_count": 7,
-  "output_artifact_count": 75,
+  "output_artifact_count": 77,
   "package": "earnings-call-risk-map",
   "package_health": {
     "credential_environment_status": "passed",
@@ -24,7 +24,7 @@
   ],
   "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
   "status": "passed",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "workflow_files": [],
   "workflow_files_absent": true
 }

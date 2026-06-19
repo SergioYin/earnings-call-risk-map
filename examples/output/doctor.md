@@ -1,11 +1,11 @@
 # Doctor Report
 
 - Package: `earnings-call-risk-map`
-- Version: `0.9.2`
+- Version: `0.9.3`
 - Status: `passed`
 - Local-only package health: `passed`
 - Fixture count: 7
-- Output artifact count: 75
+- Output artifact count: 77
 - Docs links: `passed` (141 checked)
 - Workflow files absent: yes
 

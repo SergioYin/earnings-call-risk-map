@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.9.3 - 2026-06-19
+
+Visual evidence receipt patch release.
+
+### Added
+
+- Release notes draft at `docs/release-notes-v0.9.3.md`.
+- `visual-evidence-receipt` generates Markdown/JSON screenshot-review evidence for public demo visuals, static source-boundary markers, and non-advice checks.
+- Selfcheck and CLI coverage now validate the visual evidence receipt fields, artifact paths, and Markdown section.
+
+### Changed
+
+- Demo screenshot guidance and generated release artifacts now include the visual evidence receipt paths.
+- Release metadata, release-owner docs, generated manifests, and generated maturity evidence now identify `0.9.3` as the current package version.
+- Package version is now `0.9.3`.
+
+### Safety
+
+- The release remains local-only and static; the new visual evidence receipt only references checked-in fixtures and generated local artifacts, with no live data, network calls, credentials, workflows, recommendations, ratings, price targets, portfolio actions, or personalized advice.
+
 ## 0.9.2 - 2026-06-19
 
 Public-source demo receipt patch release.

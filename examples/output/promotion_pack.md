@@ -1,7 +1,7 @@
 # Public Promotion Pack
 
 - Package: `earnings-call-risk-map`
-- Version: `0.9.2`
+- Version: `0.9.3`
 - Purpose: Turn earnings-call notes into deterministic risk maps, review queues, snapshots, handoff packets, and static dashboards from local JSON fixtures.
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.

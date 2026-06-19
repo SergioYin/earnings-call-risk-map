@@ -60,6 +60,7 @@ from .schema_reference import schema_reference_json
 from .source_boundary_evidence import source_boundary_evidence_json, source_boundary_evidence_markdown
 from .template_catalog import template_catalog_json, template_catalog_markdown
 from .version import __version__
+from .visual_evidence_receipt import visual_evidence_receipt_json, visual_evidence_receipt_markdown
 
 DEMO_FIXTURES = (
     ("demo", Path("examples/input/demo_company.json")),
@@ -312,6 +313,14 @@ def build_parser() -> argparse.ArgumentParser:
     demo_screenshot_guide.add_argument("--out", metavar="PATH", help="Write demo screenshot guide to this path")
     demo_screenshot_guide.set_defaults(func=cmd_demo_screenshot_guide)
 
+    visual_evidence_receipt = sub.add_parser(
+        "visual-evidence-receipt",
+        help="Render public demo screenshot visual evidence receipt as Markdown or JSON",
+    )
+    visual_evidence_receipt.add_argument("--format", choices=("json", "markdown"), default="markdown", help="Output format")
+    visual_evidence_receipt.add_argument("--out", metavar="PATH", help="Write visual evidence receipt to this path")
+    visual_evidence_receipt.set_defaults(func=cmd_visual_evidence_receipt)
+
     fresh_clone_plan = sub.add_parser(
         "fresh-clone-plan",
         help="Render fresh clone verification plan as Markdown or JSON",
@@ -421,6 +430,8 @@ def cmd_demo(args: argparse.Namespace) -> int:
     write_text(out_dir / "data_entry_checklist.json", data_entry_checklist_json())
     write_text(out_dir / "demo_screenshot_guide.md", demo_screenshot_guide_markdown())
     write_text(out_dir / "demo_screenshot_guide.json", demo_screenshot_guide_json())
+    write_text(out_dir / "visual_evidence_receipt.md", visual_evidence_receipt_markdown("."))
+    write_text(out_dir / "visual_evidence_receipt.json", visual_evidence_receipt_json("."))
     write_text(out_dir / "fresh_clone_plan.md", fresh_clone_plan_markdown())
     write_text(out_dir / "fresh_clone_plan.json", fresh_clone_plan_json())
     write_json(out_dir / "release_manifest.json", json.loads(manifest_json(".")))
@@ -727,6 +738,18 @@ def cmd_demo_screenshot_guide(args: argparse.Namespace) -> int:
         payload = demo_screenshot_guide_json()
     else:
         payload = demo_screenshot_guide_markdown()
+    if args.out:
+        write_text(args.out, payload)
+    else:
+        print(payload, end="")
+    return 0
+
+
+def cmd_visual_evidence_receipt(args: argparse.Namespace) -> int:
+    if args.format == "json":
+        payload = visual_evidence_receipt_json(".")
+    else:
+        payload = visual_evidence_receipt_markdown(".")
     if args.out:
         write_text(args.out, payload)
     else:

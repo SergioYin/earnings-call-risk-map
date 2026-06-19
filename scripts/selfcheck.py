@@ -24,7 +24,7 @@ DOC_LINK_CHECK_PATHS = (
     Path("docs/comparison-to-spreadsheets.md"),
     Path("docs/release-readiness.md"),
     Path("docs/reviewer-evidence.md"),
-    Path("docs/release-notes-v0.9.2.md"),
+    Path("docs/release-notes-v0.9.3.md"),
 )
 REQUIRED_DOC_PATHS = (
     Path("docs/tutorial-earnings-review.md"),
@@ -1008,7 +1008,7 @@ def check_publication_checklist() -> int:
         "Publication Checklist",
         "Confirm The Release Candidate",
         "Create The GitHub Release",
-        "gh release create v0.9.2",
+        "gh release create v0.9.3",
         "python scripts/privacy_scan.py",
         "Educational research review only",
     )
@@ -1306,6 +1306,108 @@ def check_demo_screenshot_guide() -> int:
     return 0
 
 
+def check_visual_evidence_receipt() -> int:
+    print("== visual evidence receipt ==", flush=True)
+    json_path = ROOT / "examples/output/visual_evidence_receipt.json"
+    md_path = ROOT / "examples/output/visual_evidence_receipt.md"
+    missing = [
+        path.relative_to(ROOT).as_posix()
+        for path in (json_path, md_path)
+        if not path.is_file()
+    ]
+    if missing:
+        print("missing visual evidence receipt artifact(s): " + ", ".join(missing))
+        return 1
+
+    payload = json.loads(json_path.read_text(encoding="utf-8"))
+    if payload.get("artifact_type") != "visual_evidence_receipt":
+        print("visual evidence receipt has unexpected artifact type")
+        return 1
+    checks = payload.get("checks", {})
+    for check in (
+        "all_screenshot_targets_exist",
+        "primary_target_exists",
+        "primary_target_has_required_markers",
+        "all_visual_targets_public_safe",
+        "source_attribution_referenced",
+        "stale_or_static_warning_referenced",
+        "public_source_fixture_limits_recorded",
+        "no_live_data_boundary_recorded",
+        "no_broker_boundary_recorded",
+        "no_personalized_advice_boundary_recorded",
+    ):
+        if checks.get(check) is not True:
+            print(f"visual evidence receipt failed check: {check}")
+            return 1
+    primary = payload.get("primary_screenshot_target", {})
+    if primary.get("path") != "examples/output/public_apple_static_case_study_dashboard.html":
+        print("visual evidence receipt has unexpected primary screenshot target")
+        return 1
+    if primary.get("blocked_markers_found") or not primary.get("has_required_markers"):
+        print("visual evidence receipt primary target is missing markers or has blocked markers")
+        return 1
+    fixture_paths = {fixture.get("path") for fixture in payload.get("public_source_fixtures", [])}
+    required_fixture_paths = {
+        "examples/input/consumer_hardware.json",
+        "examples/input/semiconductor_equipment.json",
+        "examples/input/public_apple_static_case_study.json",
+    }
+    if fixture_paths != required_fixture_paths:
+        print("visual evidence receipt public-source fixture path mismatch")
+        return 1
+    if "broker" not in payload.get("no_broker_claim", "").lower():
+        print("visual evidence receipt missing no-broker claim")
+        return 1
+
+    markdown = md_path.read_text(encoding="utf-8")
+    required_markers = (
+        "Visual Evidence Receipt",
+        "Screenshot Evidence Checklist",
+        "Public-Source Fixture Limits",
+        "Source Boundaries",
+        "No live data",
+        "No broker",
+        "No personalized investment, legal, accounting, tax, buy, sell, or hold advice",
+        "examples/output/public_apple_static_case_study_dashboard.html",
+        "examples/input/public_apple_static_case_study.json",
+    )
+    missing_markers = [marker for marker in required_markers if marker not in markdown]
+    if missing_markers:
+        print("visual evidence receipt markdown missing marker(s): " + ", ".join(missing_markers))
+        return 1
+
+    release_assets = json.loads(
+        subprocess.run(
+            [sys.executable, "-m", "earnings_call_risk_map", "release-assets"],
+            cwd=ROOT,
+            env=ENV,
+            text=True,
+            capture_output=True,
+            check=True,
+        ).stdout
+    )
+    release_manifest_paths = {
+        item["path"]
+        for item in json.loads((ROOT / "release_manifest.json").read_text(encoding="utf-8"))["files"]
+    }
+    demo_manifest_paths = {
+        item["path"]
+        for item in json.loads((ROOT / "examples/output/release_manifest.json").read_text(encoding="utf-8"))["files"]
+    }
+    for path in ("examples/output/visual_evidence_receipt.md", "examples/output/visual_evidence_receipt.json"):
+        if path not in release_assets.get("expected_assets", []):
+            print(f"release assets missing visual evidence receipt path: {path}")
+            return 1
+        if path not in release_manifest_paths:
+            print(f"release manifest missing visual evidence receipt path: {path}")
+            return 1
+        if path not in demo_manifest_paths:
+            print(f"demo release manifest missing visual evidence receipt path: {path}")
+            return 1
+    print("visual evidence receipt passed")
+    return 0
+
+
 def check_command_cheat_sheet() -> int:
     print("== command cheat sheet ==", flush=True)
     json_path = ROOT / "examples/output/command_cheat_sheet.json"
@@ -1363,6 +1465,7 @@ def check_command_cheat_sheet() -> int:
         "source-boundary-evidence",
         "template-catalog",
         "version",
+        "visual-evidence-receipt",
     }
     if command_names != required_commands or payload.get("command_count") != len(required_commands):
         missing = sorted(required_commands - command_names)
@@ -1679,6 +1782,9 @@ def main() -> int:
             if code:
                 return code
             code = check_demo_screenshot_guide()
+            if code:
+                return code
+            code = check_visual_evidence_receipt()
             if code:
                 return code
             code = check_fresh_clone_plan()

@@ -29,6 +29,7 @@
 | `promotion-pack` | Render public promotion pack as Markdown or JSON |
 | `data-entry-checklist` | Render fixture author data-entry checklist as Markdown or JSON |
 | `demo-screenshot-guide` | Render demo screenshot guide as Markdown or JSON |
+| `visual-evidence-receipt` | Render public demo screenshot visual evidence receipt as Markdown or JSON |
 | `fresh-clone-plan` | Render fresh clone verification plan as Markdown or JSON |
 | `manifest` | Print or write release manifest |
 | `maturity-evidence` | Generate a basic maturity evidence bundle |

@@ -6,7 +6,7 @@ Do not publish private fixtures, unreleased company information, account identif
 
 ## 1. Confirm The Release Candidate
 
-1. Confirm `README.md`, `CHANGELOG.md`, `pyproject.toml`, `src/earnings_call_risk_map/version.py`, and the current release notes in [docs/release-notes-v0.9.2.md](release-notes-v0.9.2.md) agree on the version.
+1. Confirm `README.md`, `CHANGELOG.md`, `pyproject.toml`, `src/earnings_call_risk_map/version.py`, and the current release notes in [docs/release-notes-v0.9.3.md](release-notes-v0.9.3.md) agree on the version.
 2. Confirm generated artifacts are fresh:
 
 ```bash
@@ -57,8 +57,8 @@ Create an annotated tag only after the repository state is the intended public r
 
 ```bash
 git status --short
-git tag -a v0.9.2 -m "v0.9.2"
-git push origin v0.9.2
+git tag -a v0.9.3 -m "v0.9.3"
+git push origin v0.9.3
 ```
 
 If the version changes, update the tag name and release-note path consistently before running this checklist.
@@ -68,9 +68,9 @@ If the version changes, update the tag name and release-note path consistently b
 Create the GitHub release from the pushed tag:
 
 ```bash
-gh release create v0.9.2 \
-  --title "v0.9.2" \
-  --notes-file docs/release-notes-v0.9.2.md
+gh release create v0.9.3 \
+  --title "v0.9.3" \
+  --notes-file docs/release-notes-v0.9.3.md
 ```
 
 Before publishing, confirm the release page links back to the public docs, includes the educational research review boundary, and does not attach private or locally generated scratch artifacts. Do not upload package-index artifacts unless the separate distribution owner has approved that step.

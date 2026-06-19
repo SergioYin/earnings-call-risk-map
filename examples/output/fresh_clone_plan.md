@@ -5,7 +5,7 @@ Local evidence that a clean clone imports, tests, generates artifacts, and keeps
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
 
 - Package: `earnings-call-risk-map`
-- Version: `0.9.2`
+- Version: `0.9.3`
 - Source doc: `docs/fresh-clone-verification.md`
 
 ## Assumptions
@@ -60,7 +60,7 @@ find verification/fresh-clone -maxdepth 3 -type f | sort | tee verification/fres
 
 ## Expected Command Evidence
 
-- `verification/fresh-clone/version.txt`: contains exactly `0.9.2`
+- `verification/fresh-clone/version.txt`: contains exactly `0.9.3`
 - `verification/fresh-clone/unittest.txt`: contains `OK` and a `Ran ... tests` line
 - `verification/fresh-clone/selfcheck.txt`: contains selfcheck section headers such as `== unit tests ==`, `== demo ==`, `== audit ==`, `== release assets ==`, `== privacy scan ==`, and `selfcheck passed`
 - `verification/fresh-clone/privacy_scan.txt`: reports the privacy scan status without credential or network findings

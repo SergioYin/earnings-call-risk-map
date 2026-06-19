@@ -42,6 +42,7 @@ COMMANDS = (
     "source-boundary-evidence",
     "template-catalog",
     "version",
+    "visual-evidence-receipt",
 )
 FIXTURE_PATTERN = "examples/input/*.json"
 OUTPUT_DIR = "examples/output"

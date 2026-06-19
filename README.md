@@ -43,7 +43,7 @@ Command details: [docs/usage.md](docs/usage.md). Positioning: [generic LLM compa
 
 ![Static dashboard preview](docs/assets/showcase-dashboard-preview.svg)
 
-**Release:** `v0.9.2` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
+**Release:** `v0.9.3` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
 
 - [Pages demo guide](docs/pages-demo.md)
 - [Demo screenshot guide](docs/demo-screenshot-guide.md)
@@ -74,7 +74,7 @@ Command details: [docs/usage.md](docs/usage.md). Positioning: [generic LLM compa
 - [Case study limitations](docs/case-study-limitations.md)
 - [Case study map docs](docs/case-study-map.md)
 - [Generated case study map](examples/output/case_study_map.md)
-- [v0.9.2 release notes draft](docs/release-notes-v0.9.2.md)
+- [v0.9.3 release notes draft](docs/release-notes-v0.9.3.md)
 - [Reviewer feedback consumption](docs/reviewer-feedback-consumption.md)
 - [Demo dashboard HTML](examples/output/demo_dashboard.html)
 - [PNG-free screenshot substitute](examples/output/showcase_dashboard_preview.svg)
@@ -249,6 +249,7 @@ For `pipx`, wheel dry-run, and troubleshooting notes, see [docs/distribution.md]
 - `publication-checklist`: writes or prints public GitHub release owner steps in Markdown or JSON.
 - `data-entry-checklist`: writes or prints fixture author data-entry checks, field mappings, and validation commands in Markdown or JSON.
 - `demo-screenshot-guide`: writes or prints screenshot target, framing, and boundary guidance in Markdown or JSON.
+- `visual-evidence-receipt`: writes or prints a deterministic public demo screenshot checklist/receipt in Markdown or JSON, including source attribution, stale/static warnings, public-source fixture limits, no-live-data/no-broker boundaries, and non-advice claims.
 - `template-catalog`: writes or prints blank template paths, recommended fields, and starter commands in Markdown or JSON.
 - `fixture-summary`: writes or prints a compact Markdown/JSON summary of one fixture's source types, stale badges, source boundaries, and onboarding counts.
 - `case-study-map`: writes or prints the bundled case study fixture map in Markdown or JSON.

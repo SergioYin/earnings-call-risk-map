@@ -1,5 +1,5 @@
 {
-  "command_count": 31,
+  "command_count": 32,
   "commands": [
     "agent-workflow",
     "analyze",
@@ -31,7 +31,8 @@
     "schema-reference",
     "source-boundary-evidence",
     "template-catalog",
-    "version"
+    "version",
+    "visual-evidence-receipt"
   ],
   "fixture_count": 7,
   "fixtures": [
@@ -223,6 +224,11 @@
         "credentials_required": false,
         "name": "version",
         "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "visual-evidence-receipt",
+        "network_required": false
       }
     ],
     "credentials_required": false,
@@ -231,7 +237,7 @@
     "status": "passed"
   },
   "name": "earnings-call-risk-map",
-  "output_artifact_count": 75,
+  "output_artifact_count": 77,
   "output_artifacts": [
     "examples/output/agent_workflow.json",
     "examples/output/agent_workflow.md",
@@ -307,12 +313,14 @@
     "examples/output/source_boundary_evidence.json",
     "examples/output/source_boundary_evidence.md",
     "examples/output/template_catalog.json",
-    "examples/output/template_catalog.md"
+    "examples/output/template_catalog.md",
+    "examples/output/visual_evidence_receipt.json",
+    "examples/output/visual_evidence_receipt.md"
   ],
   "skill": {
     "path": "skills/agent/earnings-call-risk-map/SKILL.md",
     "present": true
   },
-  "version": "0.9.2",
+  "version": "0.9.3",
   "workflow_files": []
 }

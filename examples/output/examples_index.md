@@ -8,7 +8,7 @@ Bundled examples are local deterministic fixtures, templates, and generated arti
 
 - Fixtures: 7
 - Templates: 3
-- Generated outputs: 77
+- Generated outputs: 79
 - Recommended next command: `earnings-call-risk-map demo --out-dir examples/output`
 
 ## Bundled Fixtures
@@ -112,3 +112,5 @@ Bundled examples are local deterministic fixtures, templates, and generated arti
 | `examples/output/source_boundary_evidence.md` | `md` | generated output | `earnings-call-risk-map demo --out-dir examples/output` |
 | `examples/output/template_catalog.json` | `json` | catalog | `earnings-call-risk-map template-catalog --format json --out examples/output/template_catalog.json` |
 | `examples/output/template_catalog.md` | `md` | catalog | `earnings-call-risk-map template-catalog --format markdown --out examples/output/template_catalog.md` |
+| `examples/output/visual_evidence_receipt.json` | `json` | generated output | `earnings-call-risk-map demo --out-dir examples/output` |
+| `examples/output/visual_evidence_receipt.md` | `md` | generated output | `earnings-call-risk-map demo --out-dir examples/output` |

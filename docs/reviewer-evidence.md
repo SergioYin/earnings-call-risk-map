@@ -43,7 +43,7 @@ python -m pip install .
 earnings-call-risk-map version
 ```
 
-Expected version for this release line: `0.9.2`.
+Expected version for this release line: `0.9.3`.
 
 ## Release Assets
 
@@ -51,7 +51,7 @@ Primary release and reviewer assets:
 
 - `README.md`
 - `CHANGELOG.md`
-- `docs/release-notes-v0.9.2.md`
+- `docs/release-notes-v0.9.3.md`
 - `docs/comparison-to-spreadsheets.md`
 - `examples/playbooks/README.md`
 - `examples/playbooks/quarterly-review.md`
@@ -128,7 +128,7 @@ Latest recorded final internal maturity review:
 - Review date: `2026-05-17`
 - Overall score: `94/100`
 - Level: `L4+`
-- Release gate: `PASS for owner-controlled v0.9.2 release after final worktree inspection`
+- Release gate: `PASS for owner-controlled v0.9.3 release after final worktree inspection`
 - Promotion gate: `PASS for small-scope public promotion after release owner approval`
 
 Scorecard:

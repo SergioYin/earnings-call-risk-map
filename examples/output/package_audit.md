@@ -1,10 +1,10 @@
 # Package Audit
 
 - Package: `earnings-call-risk-map`
-- Version: `0.9.2`
-- Commands: 31 (`agent-workflow`, `analyze`, `audit`, `case-study-map`, `cheat-sheet`, `compare`, `data-entry-checklist`, `demo`, `demo-screenshot-guide`, `doctor`, `examples-index`, `fixture-catalog`, `fixture-summary`, `fresh-clone-plan`, `handoff-packet`, `manifest`, `maturity-evidence`, `playbooks`, `promotion-pack`, `publication-checklist`, `release-owner-handoff`, `release-assets`, `release-notes`, `review-queue`, `review-queue-jsonl`, `risk-taxonomy`, `schema-authoring-reference`, `schema-reference`, `source-boundary-evidence`, `template-catalog`, `version`)
+- Version: `0.9.3`
+- Commands: 32 (`agent-workflow`, `analyze`, `audit`, `case-study-map`, `cheat-sheet`, `compare`, `data-entry-checklist`, `demo`, `demo-screenshot-guide`, `doctor`, `examples-index`, `fixture-catalog`, `fixture-summary`, `fresh-clone-plan`, `handoff-packet`, `manifest`, `maturity-evidence`, `playbooks`, `promotion-pack`, `publication-checklist`, `release-owner-handoff`, `release-assets`, `release-notes`, `review-queue`, `review-queue-jsonl`, `risk-taxonomy`, `schema-authoring-reference`, `schema-reference`, `source-boundary-evidence`, `template-catalog`, `version`, `visual-evidence-receipt`)
 - Fixtures: 7
-- Output artifacts: 75
+- Output artifacts: 77
 - Workflow files present: no
 - Skill present: yes (`skills/agent/earnings-call-risk-map/SKILL.md`)
 - Local-only audit: passed
@@ -58,6 +58,7 @@
 - `source-boundary-evidence`: network required `false`, credentials required `false`
 - `template-catalog`: network required `false`, credentials required `false`
 - `version`: network required `false`, credentials required `false`
+- `visual-evidence-receipt`: network required `false`, credentials required `false`
 
 ## Fixtures
 
@@ -146,6 +147,8 @@
 - `examples/output/source_boundary_evidence.md`
 - `examples/output/template_catalog.json`
 - `examples/output/template_catalog.md`
+- `examples/output/visual_evidence_receipt.json`
+- `examples/output/visual_evidence_receipt.md`
 
 ## Workflow Files
 

@@ -1,7 +1,7 @@
 # Publication Checklist
 
 - Package: `earnings-call-risk-map`
-- Version: `0.9.2`
+- Version: `0.9.3`
 - Source doc: `docs/publication-checklist.md`
 - Owner scope: public GitHub release owner steps
 - Steps: 7
@@ -89,8 +89,8 @@ Create an annotated tag only after the repository state is the intended public r
 
 ```bash
 git status --short
-git tag -a v0.9.2 -m "v0.9.2"
-git push origin v0.9.2
+git tag -a v0.9.3 -m "v0.9.3"
+git push origin v0.9.3
 ```
 
 ## 6. Create The GitHub Release
@@ -107,9 +107,9 @@ Create the GitHub release from the pushed tag.
 ### Commands
 
 ```bash
-gh release create v0.9.2 \
-  --title "v0.9.2" \
-  --notes-file docs/release-notes-v0.9.2.md
+gh release create v0.9.3 \
+  --title "v0.9.3" \
+  --notes-file docs/release-notes-v0.9.3.md
 ```
 
 ## 7. Post-Publish Smoke
