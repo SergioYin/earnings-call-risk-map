@@ -1,5 +1,5 @@
 {
-  "command_count": 32,
+  "command_count": 33,
   "commands": [
     "agent-workflow",
     "analyze",
@@ -11,6 +11,7 @@
     "demo",
     "demo-screenshot-guide",
     "doctor",
+    "evidence-handoff-audit",
     "examples-index",
     "fixture-catalog",
     "fixture-summary",
@@ -118,6 +119,11 @@
       {
         "credentials_required": false,
         "name": "doctor",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
+        "name": "evidence-handoff-audit",
         "network_required": false
       },
       {
@@ -237,7 +243,7 @@
     "status": "passed"
   },
   "name": "earnings-call-risk-map",
-  "output_artifact_count": 77,
+  "output_artifact_count": 79,
   "output_artifacts": [
     "examples/output/agent_workflow.json",
     "examples/output/agent_workflow.md",
@@ -273,6 +279,8 @@
     "examples/output/energy_infrastructure_review_queue.json",
     "examples/output/energy_infrastructure_review_queue.md",
     "examples/output/energy_infrastructure_snapshot.json",
+    "examples/output/evidence_handoff_audit.json",
+    "examples/output/evidence_handoff_audit.md",
     "examples/output/examples_index.json",
     "examples/output/examples_index.md",
     "examples/output/fixture_catalog.md",

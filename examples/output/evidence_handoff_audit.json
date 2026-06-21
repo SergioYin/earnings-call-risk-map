@@ -1,0 +1,708 @@
+{
+  "boundaries": [
+    "static/local-source only",
+    "no live data",
+    "no broker connection",
+    "no personalized investment advice",
+    "no legal advice",
+    "no accounting advice",
+    "no tax advice",
+    "no buy advice",
+    "no sell advice",
+    "no hold advice"
+  ],
+  "checked_artifacts": [
+    {
+      "bytes": 20249,
+      "present": true,
+      "relative_path": "README.md",
+      "role": "documentation",
+      "sha256": "433b1445060d5dd9370ba2528b49c3dee8312f1bdd9c2ab1243f9c8be8e2a4fc"
+    },
+    {
+      "bytes": 4394,
+      "present": true,
+      "relative_path": "docs/case-study-limitations.md",
+      "role": "freshness_documentation",
+      "sha256": "0a32fc024096b127572c02b86b4ac2529a089aa9e42bffc273bf9707f0f910dd"
+    },
+    {
+      "bytes": 3689,
+      "present": true,
+      "relative_path": "docs/non-advice-boundary.md",
+      "role": "source_boundary_documentation",
+      "sha256": "8bd98218315757cd15e9edfe0e59f0f315dc1ac0c5dc96e438312a89ea09fb42"
+    },
+    {
+      "bytes": 7267,
+      "present": true,
+      "relative_path": "docs/reviewer-evidence.md",
+      "role": "reviewer_handoff_documentation",
+      "sha256": "3e0d5b096c8b682acffeda2aaeab16d206cbe2196c7bf201cbf4a329cd6da8b9"
+    },
+    {
+      "bytes": 3220,
+      "present": true,
+      "relative_path": "docs/security-and-privacy.md",
+      "role": "source_boundary_documentation",
+      "sha256": "b6829083ba45a2af5ee38e850aefa395c73dbef50e689334dae23613acff3b14"
+    },
+    {
+      "bytes": 6714,
+      "present": true,
+      "relative_path": "docs/source-attribution-guide.md",
+      "role": "source_boundary_documentation",
+      "sha256": "1db47eb6bde1e8264ede9ca93379d136a32e7300d06b9b42dbe513ad54370890"
+    },
+    {
+      "bytes": 23277,
+      "present": true,
+      "relative_path": "docs/usage.md",
+      "role": "documentation",
+      "sha256": "72977f4e2329114a73c432e0053cdf70fd1bd2dffe92e0ed3d6e6fa7de3c9592"
+    },
+    {
+      "bytes": 5844,
+      "present": true,
+      "relative_path": "examples/input/consumer_hardware.json",
+      "role": "source_fixture",
+      "sha256": "7eb3539c44edc2d7e6e1fb3939515b902895bb075002af0f13413a3f1553e08a"
+    },
+    {
+      "bytes": 2007,
+      "present": true,
+      "relative_path": "examples/input/demo_company.json",
+      "role": "source_fixture",
+      "sha256": "90a0fa4ae264709ad9648561961a5838d63973c4734d95dcfcdcbef73a8a52a7"
+    },
+    {
+      "bytes": 1143,
+      "present": true,
+      "relative_path": "examples/input/demo_company_prior.json",
+      "role": "source_fixture",
+      "sha256": "a2ed62178af4b5ff12213a8b20563a1640771a58db9fbec674e1793ce8c1ef43"
+    },
+    {
+      "bytes": 3943,
+      "present": true,
+      "relative_path": "examples/input/demo_energy_infrastructure.json",
+      "role": "source_fixture",
+      "sha256": "3e26b778eba00846e77772a9bac9b108cc012d408afcf59d032ef3803619cde9"
+    },
+    {
+      "bytes": 5809,
+      "present": true,
+      "relative_path": "examples/input/public_apple_static_case_study.json",
+      "role": "source_fixture",
+      "sha256": "2daa794efd177367d0e454fdcf5681afe9734294030d335954c4e1bc02d649d9"
+    },
+    {
+      "bytes": 5876,
+      "present": true,
+      "relative_path": "examples/input/sample_filled_template_workflow.json",
+      "role": "source_fixture",
+      "sha256": "84aa5f77495087d8780900ec5ab0c94634ffc5067ac877c4dae5433d10365a62"
+    },
+    {
+      "bytes": 8024,
+      "present": true,
+      "relative_path": "examples/input/semiconductor_equipment.json",
+      "role": "source_fixture",
+      "sha256": "bc092ff625a9bcd316b17a862c9891bb602ac0b2e138c006f542a300a130b6ce"
+    },
+    {
+      "bytes": 4122,
+      "present": true,
+      "relative_path": "examples/output/agent_workflow.json",
+      "role": "generated_json",
+      "sha256": "8a1b74cc4f6d664f830859f141956995393a728608b380becf8fb0ae429664d6"
+    },
+    {
+      "bytes": 3426,
+      "present": true,
+      "relative_path": "examples/output/agent_workflow.md",
+      "role": "generated_markdown",
+      "sha256": "ef7fb25f74a4dbcf6416b48bdc67ad3754ac9280adc22dfdeb0af6907a305e1f"
+    },
+    {
+      "bytes": 6503,
+      "present": true,
+      "relative_path": "examples/output/case_study_map.json",
+      "role": "generated_json",
+      "sha256": "f5b5fd48bf6c271d7d71261eb1be6459e6ea5e59180986df9919f680f3238ac2"
+    },
+    {
+      "bytes": 5932,
+      "present": true,
+      "relative_path": "examples/output/case_study_map.md",
+      "role": "generated_markdown",
+      "sha256": "b28540c1fd7b9b58ca211ce9095969dd231df8adca4e1eb308bc8e2efc1347e8"
+    },
+    {
+      "bytes": 4152,
+      "present": true,
+      "relative_path": "examples/output/command_cheat_sheet.json",
+      "role": "generated_json",
+      "sha256": "923c8444bf2d8a0c08d420037b472df2f193b72c945fa94a89204aeadc956725"
+    },
+    {
+      "bytes": 2671,
+      "present": true,
+      "relative_path": "examples/output/command_cheat_sheet.md",
+      "role": "generated_markdown",
+      "sha256": "831e170fc849e685eee7d4f7fa53fb0b85c8d37342243f525d11006003acf0d7"
+    },
+    {
+      "bytes": 4152,
+      "present": true,
+      "relative_path": "examples/output/command_cheatsheet.json",
+      "role": "generated_json",
+      "sha256": "923c8444bf2d8a0c08d420037b472df2f193b72c945fa94a89204aeadc956725"
+    },
+    {
+      "bytes": 2671,
+      "present": true,
+      "relative_path": "examples/output/command_cheatsheet.md",
+      "role": "generated_markdown",
+      "sha256": "831e170fc849e685eee7d4f7fa53fb0b85c8d37342243f525d11006003acf0d7"
+    },
+    {
+      "bytes": 9023,
+      "present": true,
+      "relative_path": "examples/output/consumer_hardware_dashboard.html",
+      "role": "generated_dashboard",
+      "sha256": "4e6915e5f50f18a607e46ff0d05d518c827e1025537b2389e877c4fcfa74131c"
+    },
+    {
+      "bytes": 4362,
+      "present": true,
+      "relative_path": "examples/output/consumer_hardware_report.md",
+      "role": "generated_markdown",
+      "sha256": "67710b9d14658ae357725f7f0e42c15dd82ae49cc25823501cd8d6a7e6af1227"
+    },
+    {
+      "bytes": 4338,
+      "present": true,
+      "relative_path": "examples/output/consumer_hardware_review_queue.json",
+      "role": "generated_review_queue",
+      "sha256": "e5559de3c425aff7fa2cedf510dbe7f99ee0dc18f150f88e59222a485a8b1498"
+    },
+    {
+      "bytes": 3143,
+      "present": true,
+      "relative_path": "examples/output/consumer_hardware_review_queue.md",
+      "role": "generated_review_queue",
+      "sha256": "d5a3c5d64f9446999433a9c64cbda08d6569c8d12b949482cfbd901ca67e4378"
+    },
+    {
+      "bytes": 9021,
+      "present": true,
+      "relative_path": "examples/output/consumer_hardware_snapshot.json",
+      "role": "generated_json",
+      "sha256": "13de71b4768609f6bb147eb160b27fb0300c132bb42342b1983a64115b47d765"
+    },
+    {
+      "bytes": 4810,
+      "present": true,
+      "relative_path": "examples/output/data_entry_checklist.json",
+      "role": "generated_json",
+      "sha256": "ccf2ab74707973f75fca7bfa4893c43efc567b415a0b290410b0e7046cc2bcb6"
+    },
+    {
+      "bytes": 3728,
+      "present": true,
+      "relative_path": "examples/output/data_entry_checklist.md",
+      "role": "generated_markdown",
+      "sha256": "e062c650d5b19fec6618040bfe6e5ea6305e2e06935059e480cd45a571db497b"
+    },
+    {
+      "bytes": 2302,
+      "present": true,
+      "relative_path": "examples/output/demo_compare.json",
+      "role": "generated_compare",
+      "sha256": "788bb4fbbc3b3f333e9e0811a43fcb5bc7736a181c1c23ddafb2d38a91070cfd"
+    },
+    {
+      "bytes": 1630,
+      "present": true,
+      "relative_path": "examples/output/demo_compare.md",
+      "role": "generated_compare",
+      "sha256": "e64ec3068e16a27840ca417616ca3801402c00bb2bbbd91011ac6895a2d93951"
+    },
+    {
+      "bytes": 6551,
+      "present": true,
+      "relative_path": "examples/output/demo_dashboard.html",
+      "role": "generated_dashboard",
+      "sha256": "4a1fd4d23e76a78faac2def7b0a5cd98ace64688b235c437f19389fbbc9f0468"
+    },
+    {
+      "bytes": 1486,
+      "present": true,
+      "relative_path": "examples/output/demo_prior_report.md",
+      "role": "generated_markdown",
+      "sha256": "4df746a83c401097b72d82465a8f7f09311d573a00b05753f2ee943a6561e40e"
+    },
+    {
+      "bytes": 3259,
+      "present": true,
+      "relative_path": "examples/output/demo_prior_snapshot.json",
+      "role": "generated_json",
+      "sha256": "787e3b70ae49c62d181712bd09bc5fa469a6b89515ed063d57dcd6df8241bf38"
+    },
+    {
+      "bytes": 1963,
+      "present": true,
+      "relative_path": "examples/output/demo_report.md",
+      "role": "generated_report",
+      "sha256": "437e5fea10a983bf2f87c3ce6417a1d70f2f1fa0c9d9f46f452a5e291fcd484d"
+    },
+    {
+      "bytes": 4546,
+      "present": true,
+      "relative_path": "examples/output/demo_review_queue.json",
+      "role": "generated_review_queue",
+      "sha256": "7414442d6c628f0df7b96382f539cd1eb41e2742447083c67438630aaa2db99b"
+    },
+    {
+      "bytes": 2517,
+      "present": true,
+      "relative_path": "examples/output/demo_review_queue.md",
+      "role": "generated_review_queue",
+      "sha256": "9349b9748ab44084268507a422e1175cd177926466981423cef0b4d785fea2a5"
+    },
+    {
+      "bytes": 41248,
+      "present": true,
+      "relative_path": "examples/output/demo_review_queue_items.jsonl",
+      "role": "generated_review_queue",
+      "sha256": "a169937fa0ef622a87a22e9039c1d33440fc2f8001fc14be3332b403926cb30a"
+    },
+    {
+      "bytes": 4455,
+      "present": true,
+      "relative_path": "examples/output/demo_screenshot_guide.json",
+      "role": "generated_json",
+      "sha256": "67812bdf6fb3df3bf39df29b2ac2b64ff89c43ccb108c06d8b3f6adaa240a85c"
+    },
+    {
+      "bytes": 4015,
+      "present": true,
+      "relative_path": "examples/output/demo_screenshot_guide.md",
+      "role": "generated_markdown",
+      "sha256": "567e6930419020133328f677b92d8a7b7116d4e906b09b36a88dfcd94d256476"
+    },
+    {
+      "bytes": 6708,
+      "present": true,
+      "relative_path": "examples/output/demo_snapshot.json",
+      "role": "generated_json",
+      "sha256": "aa6b2e30f3317dbf1b77a2ac5eaed9e220f61341da5492c3b26677331d5d2f2e"
+    },
+    {
+      "bytes": 1095,
+      "present": true,
+      "relative_path": "examples/output/doctor.json",
+      "role": "generated_local_only_audit",
+      "sha256": "bc81219f20035fd0bacfe4a0a6f4173e5499a513d9bd88b49e7afe4c6603364f"
+    },
+    {
+      "bytes": 957,
+      "present": true,
+      "relative_path": "examples/output/doctor.md",
+      "role": "generated_local_only_audit",
+      "sha256": "adf003b58e848287df3371066c1a702d2aa737d9026eea5e79191464454ae3b8"
+    },
+    {
+      "bytes": 8996,
+      "present": true,
+      "relative_path": "examples/output/energy_infrastructure_dashboard.html",
+      "role": "generated_dashboard",
+      "sha256": "70ee3a85f729013f1cf0736b9ebbcb4124b8c7b4563a5bf6db0ccfb76b46c291"
+    },
+    {
+      "bytes": 3118,
+      "present": true,
+      "relative_path": "examples/output/energy_infrastructure_report.md",
+      "role": "generated_markdown",
+      "sha256": "7c2c41b383524076b2825d943e87bb80b74e427889e23817ac800d09a316bba6"
+    },
+    {
+      "bytes": 7925,
+      "present": true,
+      "relative_path": "examples/output/energy_infrastructure_review_queue.json",
+      "role": "generated_review_queue",
+      "sha256": "43b81e04f6e7c8442474897d4dd708d0643ec5f3e3e3dc3c4dd233687928a09d"
+    },
+    {
+      "bytes": 3372,
+      "present": true,
+      "relative_path": "examples/output/energy_infrastructure_review_queue.md",
+      "role": "generated_review_queue",
+      "sha256": "66d7f429d8d87138382dcf7d635b099f2f1a2c79b2bc50043d7f2518c688a0d5"
+    },
+    {
+      "bytes": 13247,
+      "present": true,
+      "relative_path": "examples/output/energy_infrastructure_snapshot.json",
+      "role": "generated_json",
+      "sha256": "0174c737dab9c71f9efde037b0d7cc0b832e9bb831b9e8f04dab29c115cb30a6"
+    },
+    {
+      "bytes": 31808,
+      "present": true,
+      "relative_path": "examples/output/examples_index.json",
+      "role": "generated_json",
+      "sha256": "4582eeec0e6f1478fc1d5ce9e1d94da0d5291085613f96a2bf9c206dc8f03a19"
+    },
+    {
+      "bytes": 14153,
+      "present": true,
+      "relative_path": "examples/output/examples_index.md",
+      "role": "generated_markdown",
+      "sha256": "7a08ae04c5d98d8059b3158d8eda4a1a38499ab656b28f0082d51ee65d5aaed4"
+    },
+    {
+      "bytes": 5300,
+      "present": true,
+      "relative_path": "examples/output/fixture_catalog.md",
+      "role": "generated_markdown",
+      "sha256": "f92441cccdb564f9814114b49582e629357f55fe48d89f49bbcd90f0c82285db"
+    },
+    {
+      "bytes": 7642,
+      "present": true,
+      "relative_path": "examples/output/fresh_clone_plan.json",
+      "role": "generated_json",
+      "sha256": "8d196eeb5c65e65c9fb2d985334da2a1093e374386abf0c1d663b0a29131128f"
+    },
+    {
+      "bytes": 6803,
+      "present": true,
+      "relative_path": "examples/output/fresh_clone_plan.md",
+      "role": "generated_markdown",
+      "sha256": "d83992cf12eb71a2fe1ee704ed34e2bce3f4f6e4a88994eda90c288ef4d67cac"
+    },
+    {
+      "bytes": 2184,
+      "present": true,
+      "relative_path": "examples/output/handoff_packet.json",
+      "role": "generated_handoff_packet",
+      "sha256": "dd6a7c176ecd07df6083b5d37369080bbdd1b96743770afb779dfb1e7b150947"
+    },
+    {
+      "bytes": 1883,
+      "present": true,
+      "relative_path": "examples/output/handoff_packet.md",
+      "role": "generated_handoff_packet",
+      "sha256": "4bb038fc18a6e3acffe8ac69ce3b887cb46dd5218f193f6b91691d8a6bac8e3a"
+    },
+    {
+      "bytes": 8052,
+      "present": true,
+      "relative_path": "examples/output/handoff_packet_examples.json",
+      "role": "generated_handoff_packet",
+      "sha256": "8c011ea02a230a79dfa56e20688df3e3664c0f6bc2d1a31ac9250c7f3bc938fc"
+    },
+    {
+      "bytes": 3585,
+      "present": true,
+      "relative_path": "examples/output/handoff_packet_examples.md",
+      "role": "generated_handoff_packet",
+      "sha256": "9c35e024d836f68f976bbaa820017a8729ae63c32465ae73a3a789861379c514"
+    },
+    {
+      "bytes": 3681,
+      "present": true,
+      "relative_path": "examples/output/integration_notes.json",
+      "role": "generated_json",
+      "sha256": "c948a610d203f214ae8deff95408925caf0c89f52e08c91fc11c3f41ca79c06d"
+    },
+    {
+      "bytes": 10549,
+      "present": true,
+      "relative_path": "examples/output/package_audit.json",
+      "role": "generated_local_only_audit",
+      "sha256": "4cbc495699abe42d5e7746eba1d8db27b4051049fa57b62b06e4dc85bcffed85"
+    },
+    {
+      "bytes": 8457,
+      "present": true,
+      "relative_path": "examples/output/package_audit.md",
+      "role": "generated_local_only_audit",
+      "sha256": "05795adca4bd1d4817eaeb97c0336ae4a50a945c53aa9f4dac7a6ad7d5326ae1"
+    },
+    {
+      "bytes": 3945,
+      "present": true,
+      "relative_path": "examples/output/playbook_output_examples.json",
+      "role": "generated_json",
+      "sha256": "f7f7d4c0df3f1223acc109757e28f58d448651bb3fdc4479225c24e0e1857fdc"
+    },
+    {
+      "bytes": 2680,
+      "present": true,
+      "relative_path": "examples/output/playbook_output_examples.md",
+      "role": "generated_markdown",
+      "sha256": "4f2177c48f9a066bac064e9ba5027de83e333ee1c2acd3306d066ddfa48ec706"
+    },
+    {
+      "bytes": 4439,
+      "present": true,
+      "relative_path": "examples/output/playbooks.json",
+      "role": "generated_json",
+      "sha256": "ddbe6e7b30eacf6cececb7d51aada4994484ab89015ca204442c9dfeb252118a"
+    },
+    {
+      "bytes": 4252,
+      "present": true,
+      "relative_path": "examples/output/playbooks.md",
+      "role": "generated_markdown",
+      "sha256": "7c7b23e5fdc2033e5d6ea6f918daeba550ecc129955f3ec7fecb4582dfed1966"
+    },
+    {
+      "bytes": 3855,
+      "present": true,
+      "relative_path": "examples/output/promotion_pack.json",
+      "role": "generated_json",
+      "sha256": "37fb89424d769ea0c202c307ff70b6d5aa7f5ed7d5639ef9ebabc68930a70bb1"
+    },
+    {
+      "bytes": 3005,
+      "present": true,
+      "relative_path": "examples/output/promotion_pack.md",
+      "role": "generated_markdown",
+      "sha256": "78175e92c31872d1b8a65f7cab12a2875ab1874dae57305764c1a5bc0b1bd174"
+    },
+    {
+      "bytes": 8740,
+      "present": true,
+      "relative_path": "examples/output/public_apple_static_case_study_dashboard.html",
+      "role": "generated_dashboard",
+      "sha256": "2903f6bea935c18763d6c63871585133108615aa6d68252199019167df06a7b0"
+    },
+    {
+      "bytes": 4000,
+      "present": true,
+      "relative_path": "examples/output/public_apple_static_case_study_report.md",
+      "role": "generated_markdown",
+      "sha256": "21d8f9adf6f7cd37b9b3787d23eed2e3759627e08905c59471bb53c6d1b6d53b"
+    },
+    {
+      "bytes": 6322,
+      "present": true,
+      "relative_path": "examples/output/public_apple_static_case_study_review_queue.json",
+      "role": "generated_review_queue",
+      "sha256": "145c1b17421fbdaf87ab469c0964aec888378cc01ef323735436045b8fc7ccd6"
+    },
+    {
+      "bytes": 3772,
+      "present": true,
+      "relative_path": "examples/output/public_apple_static_case_study_review_queue.md",
+      "role": "generated_review_queue",
+      "sha256": "b78fca3c30ae917fbb274a765c81bf0c32b92f37156aa9db80fefff6b496e4db"
+    },
+    {
+      "bytes": 10198,
+      "present": true,
+      "relative_path": "examples/output/public_apple_static_case_study_snapshot.json",
+      "role": "generated_json",
+      "sha256": "19b5dbffafcd895df35ce12f3b36850af3e1ad6cfab6d82df1f8df4271e17318"
+    },
+    {
+      "bytes": 5510,
+      "present": true,
+      "relative_path": "examples/output/publication_checklist.json",
+      "role": "generated_json",
+      "sha256": "cfc53d1078772496f5f6d61dc10a1202668f4e59b806f9f9eb4bc1c7f697d21f"
+    },
+    {
+      "bytes": 4265,
+      "present": true,
+      "relative_path": "examples/output/publication_checklist.md",
+      "role": "generated_markdown",
+      "sha256": "b44c2e2db209657a5aec13ef26a64420de59426d9945c3d2a0def66e0b9ade01"
+    },
+    {
+      "bytes": 3580,
+      "present": true,
+      "relative_path": "examples/output/risk_language_taxonomy.md",
+      "role": "generated_markdown",
+      "sha256": "cc096790eadb320013fc5c6667a928b996678e8e855035937dc4c232ee364fbc"
+    },
+    {
+      "bytes": 4458,
+      "present": true,
+      "relative_path": "examples/output/sample_filled_template_report.md",
+      "role": "generated_markdown",
+      "sha256": "75cf8616b6848b73d4d87541f0b4a36814f6758d6d774170d1ecee80aa6f733f"
+    },
+    {
+      "bytes": 6477,
+      "present": true,
+      "relative_path": "examples/output/sample_filled_template_review_queue.json",
+      "role": "generated_review_queue",
+      "sha256": "150baef6a3eb73b5830e0967750421c61ecd0eaa7911d779f9085f4dfb43e3b6"
+    },
+    {
+      "bytes": 3583,
+      "present": true,
+      "relative_path": "examples/output/sample_filled_template_review_queue.md",
+      "role": "generated_review_queue",
+      "sha256": "f193f16e904985065dc8aba089e425103a058e9207e01d88069aa493514ac924"
+    },
+    {
+      "bytes": 11793,
+      "present": true,
+      "relative_path": "examples/output/sample_filled_template_snapshot.json",
+      "role": "generated_json",
+      "sha256": "5dec987e752a8f6b7b3895c178f352ae2023f895a5a38794b2cbe0960522c3d6"
+    },
+    {
+      "bytes": 9671,
+      "present": true,
+      "relative_path": "examples/output/schema_authoring_reference.json",
+      "role": "generated_json",
+      "sha256": "e33aa48003be6b88e6cc8cf7bba1a33523c5cc02bd520ec1a10f51907ec32aff"
+    },
+    {
+      "bytes": 7328,
+      "present": true,
+      "relative_path": "examples/output/schema_authoring_reference.md",
+      "role": "generated_markdown",
+      "sha256": "cb0e6e755a831365e504d85a0493a96a3022d3874584815a785ed1857a73b47f"
+    },
+    {
+      "bytes": 10623,
+      "present": true,
+      "relative_path": "examples/output/semiconductor_equipment_dashboard.html",
+      "role": "generated_dashboard",
+      "sha256": "6dd5034d6ad1b1adb792bfc46ac629e21ad0616e85587ea18784ef6f589529f0"
+    },
+    {
+      "bytes": 5369,
+      "present": true,
+      "relative_path": "examples/output/semiconductor_equipment_report.md",
+      "role": "generated_markdown",
+      "sha256": "8f17216a89545bbf2b30fb747acb092e947a7e9b3d82ba0ca646db99ac497402"
+    },
+    {
+      "bytes": 8353,
+      "present": true,
+      "relative_path": "examples/output/semiconductor_equipment_review_queue.json",
+      "role": "generated_review_queue",
+      "sha256": "28a7e2ea34370a53dc937a1a0fc423032eedf1d75a1d2b13fbca08e2c44be1dc"
+    },
+    {
+      "bytes": 4647,
+      "present": true,
+      "relative_path": "examples/output/semiconductor_equipment_review_queue.md",
+      "role": "generated_review_queue",
+      "sha256": "edd1c5dce147befe6204c30484f40b0915775ed599b2c09c32d4172ccb59774a"
+    },
+    {
+      "bytes": 13364,
+      "present": true,
+      "relative_path": "examples/output/semiconductor_equipment_snapshot.json",
+      "role": "generated_json",
+      "sha256": "29753cda7a59306689f937de1b8feeeb41ce82a0165d93c4cbe4553b3f4cce44"
+    },
+    {
+      "bytes": 4556,
+      "present": true,
+      "relative_path": "examples/output/showcase_dashboard_preview.svg",
+      "role": "generated_dashboard",
+      "sha256": "e7e8ae708650d6c704ff46526131fa922ae3116380bb8011bca6633879e61ff0"
+    },
+    {
+      "bytes": 17242,
+      "present": true,
+      "relative_path": "examples/output/source_boundary_evidence.json",
+      "role": "generated_json",
+      "sha256": "ff286be435f12df48b74201ae02780159b1c51f877779b8b95c42bff27427505"
+    },
+    {
+      "bytes": 7738,
+      "present": true,
+      "relative_path": "examples/output/source_boundary_evidence.md",
+      "role": "generated_source_boundary_evidence",
+      "sha256": "345226d8f66692565991250fea820fbf5e9ed8ee3082d00ba82e8267486cf32c"
+    },
+    {
+      "bytes": 6130,
+      "present": true,
+      "relative_path": "examples/output/template_catalog.json",
+      "role": "generated_json",
+      "sha256": "871b99977b69f7db27ac3b1987faa7177345d4549075178f8fcc707dfd1f1d6e"
+    },
+    {
+      "bytes": 4758,
+      "present": true,
+      "relative_path": "examples/output/template_catalog.md",
+      "role": "generated_markdown",
+      "sha256": "4b79e8cbf2ee19385858ec77826befd45357e034e9ae3e2b7505530b2171f39a"
+    },
+    {
+      "bytes": 9159,
+      "present": true,
+      "relative_path": "examples/output/visual_evidence_receipt.json",
+      "role": "generated_json",
+      "sha256": "9cabb15dce945da76b696726540ade7d8c255ae249e71dbb95ed817440a4211a"
+    },
+    {
+      "bytes": 5308,
+      "present": true,
+      "relative_path": "examples/output/visual_evidence_receipt.md",
+      "role": "generated_visual_evidence",
+      "sha256": "eb31e2248412eb5497b6f8698467f9f0d6fc4a1df2f489cbbb7c9d84ce8db68d"
+    },
+    {
+      "bytes": 15338,
+      "present": true,
+      "relative_path": "reports/maturity/maturity_evidence.md",
+      "role": "release_evidence",
+      "sha256": "a8c558d5281e6bd57701d306cc2e4fbc076173a3223a638cd2a75386f76f76ab"
+    }
+  ],
+  "freshness_notes": [
+    "The audit does not fetch live market data, current filings, current transcripts, quotes, prices, or broker data.",
+    "Freshness readiness depends on each fixture's as_of, data_cutoff, item dates, stale badges, and reviewer source checks.",
+    "Regenerate demo artifacts after changing fixtures, scoring, rendering, docs, or release evidence."
+  ],
+  "missing_evidence_items": [],
+  "package": "earnings-call-risk-map",
+  "recommended_evidence_items": [
+    "Confirm source URLs, source names, publishers, and accessed_at dates before public handoff.",
+    "Confirm stale/static badges are acceptable or regenerate fixtures from current source documents.",
+    "Keep screenshot or visual evidence receipts paired with static HTML dashboards.",
+    "Keep review queue and handoff packet artifacts beside the main Markdown report."
+  ],
+  "regeneration_commands": [
+    "PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output",
+    "PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-audit --root . --format markdown --output examples/output/evidence_handoff_audit.md",
+    "PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-audit --root . --format json --output examples/output/evidence_handoff_audit.json",
+    "PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity"
+  ],
+  "review_readiness_notes": [
+    "Ready means handoff artifacts are present and hashable; it does not mean source evidence has been independently verified.",
+    "Reviewers should inspect missing-evidence and stale-data queues before using reports in any downstream research workflow.",
+    "Use the generated handoff packet and source-boundary evidence together so downstream owners see cautions and provenance."
+  ],
+  "root": "<redacted-root>",
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema": "earnings-call-risk-map.evidence-handoff-audit.v1",
+  "source_notes": [
+    "Audit uses local repository files only and records metadata, not artifact contents.",
+    "Source fixtures are user-authored or static public-source examples; reviewers must verify source URLs and filings/transcripts before relying on them.",
+    "Generated reports preserve source-boundary labels for management claims, analyst questions, and user synthesis."
+  ],
+  "summary": {
+    "checked_artifact_count": 93,
+    "generated_output_count": 78,
+    "missing_artifact_count": 0,
+    "present_artifact_count": 93,
+    "readiness_status": "ready_with_review",
+    "source_fixture_count": 7
+  },
+  "version": "0.9.3"
+}

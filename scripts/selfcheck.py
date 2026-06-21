@@ -1408,6 +1408,102 @@ def check_visual_evidence_receipt() -> int:
     return 0
 
 
+def check_evidence_handoff_audit() -> int:
+    print("== evidence handoff audit ==", flush=True)
+    json_path = ROOT / "examples/output/evidence_handoff_audit.json"
+    md_path = ROOT / "examples/output/evidence_handoff_audit.md"
+    missing = [
+        path.relative_to(ROOT).as_posix()
+        for path in (json_path, md_path)
+        if not path.is_file()
+    ]
+    if missing:
+        print("missing evidence handoff audit artifact(s): " + ", ".join(missing))
+        return 1
+
+    payload = json.loads(json_path.read_text(encoding="utf-8"))
+    if payload.get("schema") != "earnings-call-risk-map.evidence-handoff-audit.v1":
+        print("evidence handoff audit has unexpected schema")
+        return 1
+    if payload.get("root") != "<redacted-root>":
+        print("evidence handoff audit did not redact root")
+        return 1
+    summary = payload.get("summary", {})
+    if summary.get("checked_artifact_count", 0) < 10 or summary.get("present_artifact_count", 0) < 10:
+        print("evidence handoff audit has too few checked or present artifacts")
+        return 1
+    boundaries = set(payload.get("boundaries", []))
+    required_boundaries = {
+        "static/local-source only",
+        "no live data",
+        "no broker connection",
+        "no personalized investment advice",
+        "no legal advice",
+        "no accounting advice",
+        "no tax advice",
+        "no buy advice",
+        "no sell advice",
+        "no hold advice",
+    }
+    if not required_boundaries.issubset(boundaries):
+        print("evidence handoff audit missing boundary marker(s)")
+        return 1
+    artifacts = payload.get("checked_artifacts", [])
+    for expected_path in ("README.md", "examples/output/demo_report.md", "examples/output/visual_evidence_receipt.md"):
+        entry = next((item for item in artifacts if item.get("relative_path") == expected_path), None)
+        if not entry or entry.get("present") is not True or not entry.get("sha256"):
+            print(f"evidence handoff audit missing checked artifact: {expected_path}")
+            return 1
+
+    markdown = md_path.read_text(encoding="utf-8")
+    required_markers = (
+        "Evidence Handoff Audit",
+        "Checked Artifacts",
+        "Source Notes",
+        "Freshness Notes",
+        "Review Readiness Notes",
+        "Regeneration Commands",
+        "no live data",
+        "no broker connection",
+        "no personalized investment advice",
+    )
+    missing_markers = [marker for marker in required_markers if marker not in markdown]
+    if missing_markers:
+        print("evidence handoff audit markdown missing marker(s): " + ", ".join(missing_markers))
+        return 1
+
+    release_assets = json.loads(
+        subprocess.run(
+            [sys.executable, "-m", "earnings_call_risk_map", "release-assets"],
+            cwd=ROOT,
+            env=ENV,
+            text=True,
+            capture_output=True,
+            check=True,
+        ).stdout
+    )
+    release_manifest_paths = {
+        item["path"]
+        for item in json.loads((ROOT / "release_manifest.json").read_text(encoding="utf-8"))["files"]
+    }
+    demo_manifest_paths = {
+        item["path"]
+        for item in json.loads((ROOT / "examples/output/release_manifest.json").read_text(encoding="utf-8"))["files"]
+    }
+    for path in ("examples/output/evidence_handoff_audit.md", "examples/output/evidence_handoff_audit.json"):
+        if path not in release_assets.get("expected_assets", []):
+            print(f"release assets missing evidence handoff audit path: {path}")
+            return 1
+        if path not in release_manifest_paths:
+            print(f"release manifest missing evidence handoff audit path: {path}")
+            return 1
+        if path not in demo_manifest_paths:
+            print(f"demo release manifest missing evidence handoff audit path: {path}")
+            return 1
+    print("evidence handoff audit passed")
+    return 0
+
+
 def check_command_cheat_sheet() -> int:
     print("== command cheat sheet ==", flush=True)
     json_path = ROOT / "examples/output/command_cheat_sheet.json"
@@ -1444,6 +1540,7 @@ def check_command_cheat_sheet() -> int:
         "demo",
         "demo-screenshot-guide",
         "doctor",
+        "evidence-handoff-audit",
         "examples-index",
         "fixture-summary",
         "fixture-catalog",
@@ -1785,6 +1882,9 @@ def main() -> int:
             if code:
                 return code
             code = check_visual_evidence_receipt()
+            if code:
+                return code
+            code = check_evidence_handoff_audit()
             if code:
                 return code
             code = check_fresh_clone_plan()

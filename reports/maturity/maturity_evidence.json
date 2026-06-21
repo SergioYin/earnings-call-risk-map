@@ -35,6 +35,8 @@
     "examples/output/energy_infrastructure_review_queue.json",
     "examples/output/energy_infrastructure_review_queue.md",
     "examples/output/energy_infrastructure_snapshot.json",
+    "examples/output/evidence_handoff_audit.json",
+    "examples/output/evidence_handoff_audit.md",
     "examples/output/examples_index.json",
     "examples/output/examples_index.md",
     "examples/output/fixture_catalog.md",
@@ -89,16 +91,16 @@
     "examples/output/visual_evidence_receipt.md",
     "release_manifest.json"
   ],
-  "command_count": 32,
+  "command_count": 33,
   "evidence_summary": {
-    "command_count": 32,
+    "command_count": 33,
     "fixture_count": 7,
     "latest_review_score": "94/100",
     "latest_review_source": "reports/reviews/2026-06-18-v0.9.0-final-review.md",
     "privacy_scan_status": "passed",
     "release_asset_status": "passed",
-    "release_assets_expected": 97,
-    "release_assets_present": 97
+    "release_assets_expected": 99,
+    "release_assets_present": 99
   },
   "fixture_count": 7,
   "fresh_clone_commands": [
@@ -153,10 +155,10 @@
     "stdout": "privacy scan passed"
   },
   "release_asset_checklist": {
-    "expected_count": 97,
+    "expected_count": 99,
     "missing_assets": [],
     "missing_count": 0,
-    "present_count": 97,
+    "present_count": 99,
     "status": "passed"
   },
   "release_assets": [
@@ -241,6 +243,8 @@
     "examples/output/demo_screenshot_guide.json",
     "examples/output/visual_evidence_receipt.md",
     "examples/output/visual_evidence_receipt.json",
+    "examples/output/evidence_handoff_audit.md",
+    "examples/output/evidence_handoff_audit.json",
     "examples/output/fresh_clone_plan.md",
     "examples/output/fresh_clone_plan.json",
     "examples/output/playbook_output_examples.md",
@@ -297,6 +301,8 @@
     "PYTHONPATH=src python -m earnings_call_risk_map demo-screenshot-guide --format json --out examples/output/demo_screenshot_guide.json",
     "PYTHONPATH=src python -m earnings_call_risk_map visual-evidence-receipt --format markdown --out examples/output/visual_evidence_receipt.md",
     "PYTHONPATH=src python -m earnings_call_risk_map visual-evidence-receipt --format json --out examples/output/visual_evidence_receipt.json",
+    "PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-audit --root . --format markdown --output examples/output/evidence_handoff_audit.md",
+    "PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-audit --root . --format json --output examples/output/evidence_handoff_audit.json",
     "PYTHONPATH=src python -m earnings_call_risk_map fresh-clone-plan --format markdown --out examples/output/fresh_clone_plan.md",
     "PYTHONPATH=src python -m earnings_call_risk_map fresh-clone-plan --format json --out examples/output/fresh_clone_plan.json",
     "PYTHONPATH=src python -m earnings_call_risk_map cheat-sheet --format markdown --out examples/output/command_cheat_sheet.md",

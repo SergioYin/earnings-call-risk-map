@@ -10,6 +10,7 @@
 | `review-queue-jsonl` | Export deterministic JSON Lines review items across bundled demo fixtures |
 | `handoff-packet` | Export deterministic portfolio/thesis handoff packet paths and cautions |
 | `audit` | Report package audit parity as JSON or Markdown |
+| `evidence-handoff-audit` | Audit local evidence handoff artifacts as JSON or Markdown |
 | `agent-workflow` | Render generic agent workflow instructions as Markdown or JSON |
 | `cheat-sheet` | Print lightweight command cheat sheet as Markdown or JSON |
 | `case-study-map` | Render bundled case study map as Markdown or JSON |

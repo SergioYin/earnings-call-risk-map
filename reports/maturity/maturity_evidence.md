@@ -2,11 +2,11 @@
 
 - Package: `earnings-call-risk-map`
 - Version: `0.9.3`
-- Commands: 32
+- Commands: 33
 - Fixtures: 7
 - Skill path: `skills/agent/earnings-call-risk-map/SKILL.md` (present)
 - Review template: `reports/reviews/release-readiness-review.md` (present)
-- Release assets: passed (97/97 present)
+- Release assets: passed (99/99 present)
 - Privacy scan: passed (`python scripts/privacy_scan.py`)
 - Latest review score: 94/100 (reports/reviews/2026-06-18-v0.9.0-final-review.md)
 
@@ -45,6 +45,8 @@
 - `PYTHONPATH=src python -m earnings_call_risk_map demo-screenshot-guide --format json --out examples/output/demo_screenshot_guide.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map visual-evidence-receipt --format markdown --out examples/output/visual_evidence_receipt.md`
 - `PYTHONPATH=src python -m earnings_call_risk_map visual-evidence-receipt --format json --out examples/output/visual_evidence_receipt.json`
+- `PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-audit --root . --format markdown --output examples/output/evidence_handoff_audit.md`
+- `PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-audit --root . --format json --output examples/output/evidence_handoff_audit.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map fresh-clone-plan --format markdown --out examples/output/fresh_clone_plan.md`
 - `PYTHONPATH=src python -m earnings_call_risk_map fresh-clone-plan --format json --out examples/output/fresh_clone_plan.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map cheat-sheet --format markdown --out examples/output/command_cheat_sheet.md`
@@ -179,6 +181,8 @@
 - `examples/output/demo_screenshot_guide.json`
 - `examples/output/visual_evidence_receipt.md`
 - `examples/output/visual_evidence_receipt.json`
+- `examples/output/evidence_handoff_audit.md`
+- `examples/output/evidence_handoff_audit.json`
 - `examples/output/fresh_clone_plan.md`
 - `examples/output/fresh_clone_plan.json`
 - `examples/output/playbook_output_examples.md`
@@ -233,6 +237,8 @@
 - `examples/output/energy_infrastructure_review_queue.json`
 - `examples/output/energy_infrastructure_review_queue.md`
 - `examples/output/energy_infrastructure_snapshot.json`
+- `examples/output/evidence_handoff_audit.json`
+- `examples/output/evidence_handoff_audit.md`
 - `examples/output/examples_index.json`
 - `examples/output/examples_index.md`
 - `examples/output/fixture_catalog.md`

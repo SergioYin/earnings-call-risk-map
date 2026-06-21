@@ -39,6 +39,7 @@ PYTHONPATH=src python -m earnings_call_risk_map case-study-map --format markdown
 PYTHONPATH=src python -m earnings_call_risk_map template-catalog --format markdown --out examples/output/template_catalog.md
 PYTHONPATH=src python -m earnings_call_risk_map cheat-sheet --format markdown --out examples/output/command_cheat_sheet.md
 PYTHONPATH=src python -m earnings_call_risk_map audit --format markdown
+PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-audit --root . --format markdown --output examples/output/evidence_handoff_audit.md
 PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
 PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
 ```
@@ -85,6 +86,8 @@ python -m earnings_call_risk_map compare before.json after.json --json-out compa
 python -m earnings_call_risk_map fixture-catalog --out examples/output/fixture_catalog.md
 python -m earnings_call_risk_map audit --format json --out package_audit.json
 python -m earnings_call_risk_map audit --format markdown --out package_audit.md
+python -m earnings_call_risk_map evidence-handoff-audit --root . --format json --output examples/output/evidence_handoff_audit.json
+python -m earnings_call_risk_map evidence-handoff-audit --root . --format markdown --output examples/output/evidence_handoff_audit.md
 python -m earnings_call_risk_map release-assets --format markdown --out release_assets.md
 python -m earnings_call_risk_map manifest --out release_manifest.json
 python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
@@ -226,9 +229,32 @@ For the security boundary behind those checks, see [Security And Privacy](securi
 
 The demo bundle writes both `examples/output/package_audit.json` and `examples/output/package_audit.md`, then includes them in `examples/output/release_manifest.json`. The audit output files themselves are excluded from the output artifact count so repeated audit runs do not change the count.
 
+## Evidence Handoff Audit
+
+`evidence-handoff-audit` emits a deterministic reviewer handoff audit in JSON or Markdown. It checks local source fixtures, generated reports, review queues, dashboards, handoff packets, source-boundary evidence, visual evidence receipts, docs, and release evidence.
+
+The report includes a schema label, summary counts, checked artifact rows with relative path, role, present/missing status, byte count, and SHA-256 hash, plus source, freshness, and review-readiness notes. It also lists missing and recommended evidence items, regeneration commands, and explicit static/local-source, no-live-data, no-broker, no-personalized-investment, legal, accounting, tax, buy, sell, and hold advice boundaries.
+
+The command never embeds artifact file contents and redacts the absolute checkout root:
+
+```bash
+python -m earnings_call_risk_map evidence-handoff-audit --root . --format markdown
+python -m earnings_call_risk_map evidence-handoff-audit --root . --format json --output examples/output/evidence_handoff_audit.json
+```
+
+After installation, the standalone console command is also available:
+
+```bash
+evidence-handoff-audit --root . --format markdown --output examples/output/evidence_handoff_audit.md
+```
+
+The demo bundle writes both `examples/output/evidence_handoff_audit.json` and `examples/output/evidence_handoff_audit.md`.
+
 ## Release Readiness
 
 `release-assets` validates the expected release notes, documentation, generated examples, manifests, maturity evidence, public skill, and review template for the current package version. It emits JSON or Markdown and exits with code `1` when any expected asset is missing.
+
+`manifest` writes deterministic file metadata for release contents. The included `examples/output/release_manifest.json` entry uses the `<self-referential-manifest>` SHA marker and a null byte count so rerunning the command does not change only because the manifest contains that generated manifest entry.
 
 `maturity-evidence` writes `maturity_evidence.json` and `maturity_evidence.md` under the selected output directory. The bundle records local test commands, generated artifact paths, the public skill path, release review template presence, and the current result from `scripts/privacy_scan.py`.
 

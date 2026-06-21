@@ -9,7 +9,7 @@
     "status": "passed"
   },
   "fixture_count": 7,
-  "output_artifact_count": 77,
+  "output_artifact_count": 79,
   "package": "earnings-call-risk-map",
   "package_health": {
     "credential_environment_status": "passed",

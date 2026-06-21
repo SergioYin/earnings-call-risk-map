@@ -21,6 +21,7 @@ COMMANDS = (
     "demo",
     "demo-screenshot-guide",
     "doctor",
+    "evidence-handoff-audit",
     "examples-index",
     "fixture-catalog",
     "fixture-summary",

@@ -27,6 +27,7 @@ from .doctor import (
     doctor_report_markdown,
     render_doctor_report_markdown,
 )
+from .evidence_handoff_audit import evidence_handoff_audit_json, evidence_handoff_audit_markdown
 from .examples_index import examples_index_json, examples_index_markdown
 from .fixture_catalog import fixture_catalog_markdown
 from .fresh_clone_plan import fresh_clone_plan_json, fresh_clone_plan_markdown
@@ -169,6 +170,15 @@ def build_parser() -> argparse.ArgumentParser:
     audit.add_argument("--format", choices=("json", "markdown"), default="json", help="Output format")
     audit.add_argument("--out", metavar="PATH", help="Write audit report to this path")
     audit.set_defaults(func=cmd_audit)
+
+    evidence_handoff_audit = sub.add_parser(
+        "evidence-handoff-audit",
+        help="Audit local evidence handoff artifacts as JSON or Markdown",
+    )
+    evidence_handoff_audit.add_argument("--root", default=".", metavar="DIR", help="Repository root to inspect")
+    evidence_handoff_audit.add_argument("--format", choices=("json", "markdown"), default="markdown", help="Output format")
+    evidence_handoff_audit.add_argument("--output", metavar="PATH", help="Write evidence handoff audit to this path")
+    evidence_handoff_audit.set_defaults(func=cmd_evidence_handoff_audit)
 
     agent_workflow = sub.add_parser(
         "agent-workflow",
@@ -396,6 +406,8 @@ def cmd_demo(args: argparse.Namespace) -> int:
     write_text(out_dir / "handoff_packet_examples.md", render_handoff_packet_examples_markdown(handoff_examples))
     write_text(out_dir / "package_audit.json", package_audit_json("."))
     write_text(out_dir / "package_audit.md", package_audit_markdown("."))
+    write_text(out_dir / "evidence_handoff_audit.json", evidence_handoff_audit_json("."))
+    write_text(out_dir / "evidence_handoff_audit.md", evidence_handoff_audit_markdown("."))
     write_text(out_dir / "agent_workflow.md", agent_workflow_markdown())
     write_text(out_dir / "agent_workflow.json", agent_workflow_json())
     write_text(out_dir / "doctor.json", doctor_report_json("."))
@@ -515,6 +527,18 @@ def cmd_audit(args: argparse.Namespace) -> int:
         payload = package_audit_markdown(".")
     if args.out:
         write_text(args.out, payload)
+    else:
+        print(payload, end="")
+    return 0
+
+
+def cmd_evidence_handoff_audit(args: argparse.Namespace) -> int:
+    if args.format == "json":
+        payload = evidence_handoff_audit_json(args.root)
+    else:
+        payload = evidence_handoff_audit_markdown(args.root)
+    if args.output:
+        write_text(args.output, payload)
     else:
         print(payload, end="")
     return 0

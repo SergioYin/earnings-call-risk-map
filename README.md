@@ -97,6 +97,8 @@ The `audit` command records this guarantee in machine-readable form. Its local-o
 - Package and script sources contain no credential environment variable reads.
 - No `.github/workflows` files are required to run the package commands.
 
+The `evidence-handoff-audit` command records reviewer handoff readiness for local source, evidence, demo, and release artifacts. It emits relative paths, roles, present/missing status, byte counts, SHA-256 hashes, source/freshness/review notes, regeneration commands, and explicit static/local-source, no-live-data, no-broker, and non-advice boundaries without embedding artifact contents or absolute checkout paths.
+
 The test suite also runs every CLI subcommand with a minimal credential-free environment to confirm the commands do not need API keys, tokens, secrets, passwords, proxies, or cloud credentials.
 
 ## 2-Minute Walkthrough
@@ -118,12 +120,13 @@ PYTHONPATH=src python -m earnings_call_risk_map case-study-map --format markdown
 PYTHONPATH=src python -m earnings_call_risk_map data-entry-checklist --format markdown --out examples/output/data_entry_checklist.md
 PYTHONPATH=src python -m earnings_call_risk_map cheat-sheet --format markdown --out examples/output/command_cheat_sheet.md
 PYTHONPATH=src python -m earnings_call_risk_map audit --format markdown
+PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-audit --root . --format markdown --output examples/output/evidence_handoff_audit.md
 PYTHONPATH=src python -m earnings_call_risk_map release-assets --format markdown
 PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
 PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
 ```
 
-What just happened: `version` verifies imports; `analyze`, `review-queue`, `review-queue-jsonl`, `handoff-packet`, `playbooks`, `compare`, `case-study-map`, `data-entry-checklist`, and `cheat-sheet` generate review artifacts; `audit`, `release-assets`, `demo`, and `maturity-evidence` verify release parity and regenerate bundled evidence. The Apple fixture is a static public-source case study, not live data.
+What just happened: `version` verifies imports; `analyze`, `review-queue`, `review-queue-jsonl`, `handoff-packet`, `playbooks`, `compare`, `case-study-map`, `data-entry-checklist`, and `cheat-sheet` generate review artifacts; `audit`, `evidence-handoff-audit`, `release-assets`, `demo`, and `maturity-evidence` verify release parity and regenerate bundled evidence. The Apple fixture is a static public-source case study, not live data.
 
 Sample output excerpt:
 
@@ -258,7 +261,7 @@ For `pipx`, wheel dry-run, and troubleshooting notes, see [docs/distribution.md]
 - `audit`: writes or prints package parity in JSON or Markdown.
 - `cheat-sheet`: writes or prints a lightweight command cheat sheet with every CLI command and short purpose in Markdown or JSON.
 - `release-assets`: writes or prints a JSON/Markdown checklist for expected release assets and exits nonzero when any are missing.
-- `manifest`: writes a deterministic release manifest with file hashes.
+- `manifest`: writes a deterministic release manifest with file hashes; the included demo-copy manifest entry uses a self-referential marker instead of hashing its own contents.
 - `maturity-evidence`: writes JSON and Markdown release maturity evidence under `reports/maturity` by default.
 - `version`: prints the package version.
 

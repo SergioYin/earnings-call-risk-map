@@ -11,6 +11,7 @@ from .version import __version__
 
 DEFAULT_INCLUDE_DIRS = ("src", "tests", "scripts", "examples", "docs", "reports", "skills")
 DEFAULT_INCLUDE_FILES = ("README.md", "LICENSE", "CHANGELOG.md", "pyproject.toml")
+SELF_REFERENTIAL_MANIFESTS = {"release_manifest.json", "examples/output/release_manifest.json"}
 
 
 def build_manifest(root: str | Path = ".") -> dict[str, Any]:
@@ -39,9 +40,16 @@ def manifest_json(root: str | Path = ".") -> str:
 
 
 def _file_entry(base: Path, path: Path) -> dict[str, Any]:
+    relative_path = path.relative_to(base).as_posix()
+    if relative_path in SELF_REFERENTIAL_MANIFESTS:
+        return {
+            "path": relative_path,
+            "bytes": None,
+            "sha256": "<self-referential-manifest>",
+        }
     content = path.read_bytes()
     return {
-        "path": path.relative_to(base).as_posix(),
+        "path": relative_path,
         "bytes": len(content),
         "sha256": hashlib.sha256(content).hexdigest(),
     }

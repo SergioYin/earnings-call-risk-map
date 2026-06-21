@@ -311,6 +311,18 @@
       "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
     },
     {
+      "artifact_group": "handoff packet",
+      "format": "json",
+      "path": "examples/output/evidence_handoff_audit.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "handoff packet",
+      "format": "md",
+      "path": "examples/output/evidence_handoff_audit.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
       "artifact_group": "generated output",
       "format": "json",
       "path": "examples/output/examples_index.json",
@@ -586,7 +598,7 @@
   "schema_version": "0.1",
   "summary": {
     "fixture_count": 7,
-    "generated_output_count": 79,
+    "generated_output_count": 81,
     "template_count": 3
   },
   "templates": [

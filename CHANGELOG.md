@@ -2,17 +2,19 @@
 
 ## 0.9.3 - 2026-06-19
 
-Visual evidence receipt patch release.
+Visual evidence receipt and evidence handoff audit patch release.
 
 ### Added
 
 - Release notes draft at `docs/release-notes-v0.9.3.md`.
 - `visual-evidence-receipt` generates Markdown/JSON screenshot-review evidence for public demo visuals, static source-boundary markers, and non-advice checks.
-- Selfcheck and CLI coverage now validate the visual evidence receipt fields, artifact paths, and Markdown section.
+- `evidence-handoff-audit` generates Markdown/JSON reviewer handoff metadata for local source, evidence, demo, and release artifacts without embedding artifact contents or absolute checkout paths.
+- Selfcheck and CLI coverage now validate the visual evidence receipt and evidence handoff audit fields, artifact paths, and Markdown sections.
 
 ### Changed
 
 - Demo screenshot guidance and generated release artifacts now include the visual evidence receipt paths.
+- Demo generation now writes `examples/output/evidence_handoff_audit.md` and `examples/output/evidence_handoff_audit.json`.
 - Release metadata, release-owner docs, generated manifests, and generated maturity evidence now identify `0.9.3` as the current package version.
 - Package version is now `0.9.3`.
 

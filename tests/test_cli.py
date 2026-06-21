@@ -1079,6 +1079,7 @@ class CliTests(unittest.TestCase):
         self.assertIn("cheat-sheet", payload["commands"])
         self.assertIn("data-entry-checklist", payload["commands"])
         self.assertIn("doctor", payload["commands"])
+        self.assertIn("evidence-handoff-audit", payload["commands"])
         self.assertIn("examples-index", payload["commands"])
         self.assertIn("fixture-catalog", payload["commands"])
         self.assertIn("playbooks", payload["commands"])
@@ -1345,7 +1346,7 @@ class CliTests(unittest.TestCase):
         self.assertIn("- None", result.stdout)
         self.assertIn("## Changelog Excerpt", result.stdout)
         self.assertIn("## 0.9.3 - 2026-06-19", result.stdout)
-        self.assertIn("Visual evidence receipt patch release.", result.stdout)
+        self.assertIn("Visual evidence receipt and evidence handoff audit patch release.", result.stdout)
         self.assertNotIn("## 0.6.0 - 2026-05-17", result.stdout)
         self.assertIn(NON_ADVICE_TEXT, result.stdout)
 
@@ -1774,8 +1775,15 @@ class CliTests(unittest.TestCase):
         result = self.run_cli("manifest")
         self.assertEqual(result.returncode, 0, result.stderr)
         payload = json.loads(result.stdout)
-        paths = {item["path"] for item in payload["files"]}
+        entries = {item["path"]: item for item in payload["files"]}
+        paths = set(entries)
         self.assertIn("src/earnings_call_risk_map/cli.py", paths)
+        self.assertNotIn("release_manifest.json", paths)
+        self.assertEqual(entries["examples/output/release_manifest.json"]["bytes"], None)
+        self.assertEqual(
+            entries["examples/output/release_manifest.json"]["sha256"],
+            "<self-referential-manifest>",
+        )
 
     def test_maturity_evidence_writes_bundle(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -1785,7 +1793,7 @@ class CliTests(unittest.TestCase):
             json_path = Path(tmp) / "maturity_evidence.json"
             md_path = Path(tmp) / "maturity_evidence.md"
             payload = json.loads(json_path.read_text(encoding="utf-8"))
-            self.assertEqual(payload["command_count"], 32)
+            self.assertEqual(payload["command_count"], 33)
             self.assertEqual(payload["fixture_count"], 7)
             self.assertIn("PYTHONPATH=src python -m unittest discover -s tests", payload["test_commands"])
             self.assertIn("PYTHONPATH=src python -m earnings_call_risk_map release-assets", payload["verification_commands"])
@@ -1883,7 +1891,7 @@ class CliTests(unittest.TestCase):
             self.assertIn(payload["privacy_scan"]["status"], {"passed", "failed"})
             markdown = md_path.read_text(encoding="utf-8")
             self.assertIn("Maturity Evidence Bundle", markdown)
-            self.assertIn("- Commands: 32", markdown)
+            self.assertIn("- Commands: 33", markdown)
             self.assertIn("- Fixtures: 7", markdown)
             self.assertIn("- Release assets: passed", markdown)
             self.assertIn("- Latest review score: 94/100", markdown)
@@ -1903,7 +1911,7 @@ class CliTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertIn("wrote maturity evidence bundle", result.stdout)
             payload = json.loads((Path(tmp) / "maturity_evidence.json").read_text(encoding="utf-8"))
-            self.assertEqual(payload["command_count"], 32)
+            self.assertEqual(payload["command_count"], 33)
             self.assertEqual(payload["fixture_count"], 7)
             self.assertEqual(payload["release_asset_checklist"]["status"], "passed")
             self.assertEqual(payload["latest_review_score"]["overall"], "94/100")
@@ -1966,7 +1974,7 @@ def _rewrite_readme_cli_args_for_temp_outputs(
             elif value == "after.json":
                 rewritten[index] = str(after_snapshot)
 
-    output_flags = {"--json-out", "--md-out", "--html-out", "--out", "--out-dir"}
+    output_flags = {"--json-out", "--md-out", "--html-out", "--out", "--out-dir", "--output"}
     for index, value in enumerate(rewritten[:-1]):
         if value in output_flags:
             rewritten[index + 1] = str(tmp_path / _temp_output_name(rewritten[index + 1], value))
