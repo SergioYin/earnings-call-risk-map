@@ -99,8 +99,8 @@
     "latest_review_source": "reports/reviews/2026-06-18-v0.9.0-final-review.md",
     "privacy_scan_status": "passed",
     "release_asset_status": "passed",
-    "release_assets_expected": 99,
-    "release_assets_present": 99
+    "release_assets_expected": 100,
+    "release_assets_present": 100
   },
   "fixture_count": 7,
   "fresh_clone_commands": [
@@ -155,15 +155,16 @@
     "stdout": "privacy scan passed"
   },
   "release_asset_checklist": {
-    "expected_count": 99,
+    "expected_count": 100,
     "missing_assets": [],
     "missing_count": 0,
-    "present_count": 99,
+    "present_count": 100,
     "status": "passed"
   },
   "release_assets": [
     "README.md",
     "CHANGELOG.md",
+    "docs/release-notes-v0.9.4.md",
     "docs/release-notes-v0.9.3.md",
     "docs/comparison-to-spreadsheets.md",
     "examples/playbooks/README.md",

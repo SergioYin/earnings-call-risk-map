@@ -86,6 +86,7 @@ REVIEW_TEMPLATE_PATH = "reports/reviews/release-readiness-review.md"
 RELEASE_ASSETS = (
     "README.md",
     "CHANGELOG.md",
+    "docs/release-notes-v0.9.4.md",
     "docs/release-notes-v0.9.3.md",
     "docs/comparison-to-spreadsheets.md",
     "examples/playbooks/README.md",

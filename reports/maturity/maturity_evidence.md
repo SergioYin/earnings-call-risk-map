@@ -6,7 +6,7 @@
 - Fixtures: 7
 - Skill path: `skills/agent/earnings-call-risk-map/SKILL.md` (present)
 - Review template: `reports/reviews/release-readiness-review.md` (present)
-- Release assets: passed (99/99 present)
+- Release assets: passed (100/100 present)
 - Privacy scan: passed (`python scripts/privacy_scan.py`)
 - Latest review score: 94/100 (reports/reviews/2026-06-18-v0.9.0-final-review.md)
 
@@ -102,6 +102,7 @@
 
 - `README.md`
 - `CHANGELOG.md`
+- `docs/release-notes-v0.9.4.md`
 - `docs/release-notes-v0.9.3.md`
 - `docs/comparison-to-spreadsheets.md`
 - `examples/playbooks/README.md`

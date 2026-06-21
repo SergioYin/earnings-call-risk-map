@@ -13,11 +13,11 @@
   ],
   "checked_artifacts": [
     {
-      "bytes": 20249,
+      "bytes": 20366,
       "present": true,
       "relative_path": "README.md",
       "role": "documentation",
-      "sha256": "433b1445060d5dd9370ba2528b49c3dee8312f1bdd9c2ab1243f9c8be8e2a4fc"
+      "sha256": "4f1cdc25d1963d00a610cdcd7bf01d75cc378e990c3038977fc1d3d1f228bcd3"
     },
     {
       "bytes": 4394,
@@ -34,11 +34,11 @@
       "sha256": "8bd98218315757cd15e9edfe0e59f0f315dc1ac0c5dc96e438312a89ea09fb42"
     },
     {
-      "bytes": 7267,
+      "bytes": 7489,
       "present": true,
       "relative_path": "docs/reviewer-evidence.md",
       "role": "reviewer_handoff_documentation",
-      "sha256": "3e0d5b096c8b682acffeda2aaeab16d206cbe2196c7bf201cbf4a329cd6da8b9"
+      "sha256": "8763cf16b9ac54b2c0fd95b7f63c98dc1d54dcdbc0cb4f80787b668c33a2065d"
     },
     {
       "bytes": 3220,
@@ -304,14 +304,14 @@
       "present": true,
       "relative_path": "examples/output/doctor.json",
       "role": "generated_local_only_audit",
-      "sha256": "bc81219f20035fd0bacfe4a0a6f4173e5499a513d9bd88b49e7afe4c6603364f"
+      "sha256": "6212bd607c2bf9ddea8c1cbfd9e80215f594ac834da62f019b03f8aae88a7939"
     },
     {
       "bytes": 957,
       "present": true,
       "relative_path": "examples/output/doctor.md",
       "role": "generated_local_only_audit",
-      "sha256": "adf003b58e848287df3371066c1a702d2aa737d9026eea5e79191464454ae3b8"
+      "sha256": "edfb49329f4509c6cf3c89175432c50bcbcd26038f15df360d625da4aa87f833"
     },
     {
       "bytes": 8996,
@@ -657,11 +657,11 @@
       "sha256": "eb31e2248412eb5497b6f8698467f9f0d6fc4a1df2f489cbbb7c9d84ce8db68d"
     },
     {
-      "bytes": 15338,
+      "bytes": 15373,
       "present": true,
       "relative_path": "reports/maturity/maturity_evidence.md",
       "role": "release_evidence",
-      "sha256": "a8c558d5281e6bd57701d306cc2e4fbc076173a3223a638cd2a75386f76f76ab"
+      "sha256": "1dca85e35af25a8a6fd87c128be4e8e6c5f332d867889fdc20947b914a8cd7d9"
     }
   ],
   "freshness_notes": [

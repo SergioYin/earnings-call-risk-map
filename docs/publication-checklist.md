@@ -6,7 +6,7 @@ Do not publish private fixtures, unreleased company information, account identif
 
 ## 1. Confirm The Release Candidate
 
-1. Confirm `README.md`, `CHANGELOG.md`, `pyproject.toml`, `src/earnings_call_risk_map/version.py`, and the current release notes in [docs/release-notes-v0.9.3.md](release-notes-v0.9.3.md) agree on the version.
+1. Confirm `README.md`, `CHANGELOG.md`, `pyproject.toml`, `src/earnings_call_risk_map/version.py`, and the current package release notes in [docs/release-notes-v0.9.3.md](release-notes-v0.9.3.md) agree on the package version. For the v0.9.4 post-release evidence hygiene increment, also confirm [docs/release-notes-v0.9.4.md](release-notes-v0.9.4.md) explains that package-internal version fields remain `0.9.3`.
 2. Confirm generated artifacts are fresh:
 
 ```bash

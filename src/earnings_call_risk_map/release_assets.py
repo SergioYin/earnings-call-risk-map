@@ -13,7 +13,7 @@ from .version import __version__
 def expected_release_assets() -> tuple[str, ...]:
     versioned_notes = f"docs/release-notes-v{__version__}.md"
     return tuple(
-        versioned_notes if path.startswith("docs/release-notes-v") else path
+        versioned_notes if path == "docs/release-notes-v0.9.3.md" else path
         for path in RELEASE_ASSETS
     )
 

@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.9.4 - 2026-06-22
+
+Post-release evidence hygiene increment.
+
+### Added
+
+- Release notes draft at `docs/release-notes-v0.9.4.md`.
+- README, release-readiness, and reviewer-evidence references now make the v0.9.4 evidence note explicit.
+
+### Changed
+
+- The public release evidence pointer now distinguishes v0.9.4 documentation hygiene from the package-internal `0.9.3` version expected by the current deterministic tests and generated package fields.
+
+### Safety
+
+- This increment is documentation and evidence hygiene only; it does not add live data, network calls, credentials, workflows, recommendations, ratings, price targets, portfolio actions, or personalized advice.
+
 ## 0.9.3 - 2026-06-19
 
 Visual evidence receipt and evidence handoff audit patch release.

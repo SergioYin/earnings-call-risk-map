@@ -30,10 +30,10 @@
 
 | Relative path | Role | Present | Bytes | SHA-256 |
 | --- | --- | --- | ---: | --- |
-| README.md | documentation | yes | 20249 | 433b1445060d5dd9370ba2528b49c3dee8312f1bdd9c2ab1243f9c8be8e2a4fc |
+| README.md | documentation | yes | 20366 | 4f1cdc25d1963d00a610cdcd7bf01d75cc378e990c3038977fc1d3d1f228bcd3 |
 | docs/case-study-limitations.md | freshness_documentation | yes | 4394 | 0a32fc024096b127572c02b86b4ac2529a089aa9e42bffc273bf9707f0f910dd |
 | docs/non-advice-boundary.md | source_boundary_documentation | yes | 3689 | 8bd98218315757cd15e9edfe0e59f0f315dc1ac0c5dc96e438312a89ea09fb42 |
-| docs/reviewer-evidence.md | reviewer_handoff_documentation | yes | 7267 | 3e0d5b096c8b682acffeda2aaeab16d206cbe2196c7bf201cbf4a329cd6da8b9 |
+| docs/reviewer-evidence.md | reviewer_handoff_documentation | yes | 7489 | 8763cf16b9ac54b2c0fd95b7f63c98dc1d54dcdbc0cb4f80787b668c33a2065d |
 | docs/security-and-privacy.md | source_boundary_documentation | yes | 3220 | b6829083ba45a2af5ee38e850aefa395c73dbef50e689334dae23613acff3b14 |
 | docs/source-attribution-guide.md | source_boundary_documentation | yes | 6714 | 1db47eb6bde1e8264ede9ca93379d136a32e7300d06b9b42dbe513ad54370890 |
 | docs/usage.md | documentation | yes | 23277 | 72977f4e2329114a73c432e0053cdf70fd1bd2dffe92e0ed3d6e6fa7de3c9592 |
@@ -71,8 +71,8 @@
 | examples/output/demo_screenshot_guide.json | generated_json | yes | 4455 | 67812bdf6fb3df3bf39df29b2ac2b64ff89c43ccb108c06d8b3f6adaa240a85c |
 | examples/output/demo_screenshot_guide.md | generated_markdown | yes | 4015 | 567e6930419020133328f677b92d8a7b7116d4e906b09b36a88dfcd94d256476 |
 | examples/output/demo_snapshot.json | generated_json | yes | 6708 | aa6b2e30f3317dbf1b77a2ac5eaed9e220f61341da5492c3b26677331d5d2f2e |
-| examples/output/doctor.json | generated_local_only_audit | yes | 1095 | bc81219f20035fd0bacfe4a0a6f4173e5499a513d9bd88b49e7afe4c6603364f |
-| examples/output/doctor.md | generated_local_only_audit | yes | 957 | adf003b58e848287df3371066c1a702d2aa737d9026eea5e79191464454ae3b8 |
+| examples/output/doctor.json | generated_local_only_audit | yes | 1095 | 6212bd607c2bf9ddea8c1cbfd9e80215f594ac834da62f019b03f8aae88a7939 |
+| examples/output/doctor.md | generated_local_only_audit | yes | 957 | edfb49329f4509c6cf3c89175432c50bcbcd26038f15df360d625da4aa87f833 |
 | examples/output/energy_infrastructure_dashboard.html | generated_dashboard | yes | 8996 | 70ee3a85f729013f1cf0736b9ebbcb4124b8c7b4563a5bf6db0ccfb76b46c291 |
 | examples/output/energy_infrastructure_report.md | generated_markdown | yes | 3118 | 7c2c41b383524076b2825d943e87bb80b74e427889e23817ac800d09a316bba6 |
 | examples/output/energy_infrastructure_review_queue.json | generated_review_queue | yes | 7925 | 43b81e04f6e7c8442474897d4dd708d0643ec5f3e3e3dc3c4dd233687928a09d |
@@ -122,7 +122,7 @@
 | examples/output/template_catalog.md | generated_markdown | yes | 4758 | 4b79e8cbf2ee19385858ec77826befd45357e034e9ae3e2b7505530b2171f39a |
 | examples/output/visual_evidence_receipt.json | generated_json | yes | 9159 | 9cabb15dce945da76b696726540ade7d8c255ae249e71dbb95ed817440a4211a |
 | examples/output/visual_evidence_receipt.md | generated_visual_evidence | yes | 5308 | eb31e2248412eb5497b6f8698467f9f0d6fc4a1df2f489cbbb7c9d84ce8db68d |
-| reports/maturity/maturity_evidence.md | release_evidence | yes | 15338 | a8c558d5281e6bd57701d306cc2e4fbc076173a3223a638cd2a75386f76f76ab |
+| reports/maturity/maturity_evidence.md | release_evidence | yes | 15373 | 1dca85e35af25a8a6fd87c128be4e8e6c5f332d867889fdc20947b914a8cd7d9 |
 
 ## Source Notes
 

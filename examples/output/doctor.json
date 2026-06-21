@@ -2,7 +2,7 @@
   "artifact_type": "doctor_report",
   "docs_links": {
     "checked_document_count": 23,
-    "checked_link_count": 141,
+    "checked_link_count": 143,
     "expected_document_count": 23,
     "failure_count": 0,
     "failures": [],

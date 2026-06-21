@@ -43,7 +43,7 @@ Command details: [docs/usage.md](docs/usage.md). Positioning: [generic LLM compa
 
 ![Static dashboard preview](docs/assets/showcase-dashboard-preview.svg)
 
-**Release:** `v0.9.3` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
+**Release evidence:** `v0.9.4` | **Package version:** `0.9.3` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
 
 - [Pages demo guide](docs/pages-demo.md)
 - [Demo screenshot guide](docs/demo-screenshot-guide.md)
@@ -74,7 +74,8 @@ Command details: [docs/usage.md](docs/usage.md). Positioning: [generic LLM compa
 - [Case study limitations](docs/case-study-limitations.md)
 - [Case study map docs](docs/case-study-map.md)
 - [Generated case study map](examples/output/case_study_map.md)
-- [v0.9.3 release notes draft](docs/release-notes-v0.9.3.md)
+- [v0.9.4 post-release evidence notes](docs/release-notes-v0.9.4.md)
+- [v0.9.3 package release notes draft](docs/release-notes-v0.9.3.md)
 - [Reviewer feedback consumption](docs/reviewer-feedback-consumption.md)
 - [Demo dashboard HTML](examples/output/demo_dashboard.html)
 - [PNG-free screenshot substitute](examples/output/showcase_dashboard_preview.svg)

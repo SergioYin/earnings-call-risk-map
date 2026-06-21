@@ -45,12 +45,15 @@ earnings-call-risk-map version
 
 Expected version for this release line: `0.9.3`.
 
+Post-release evidence hygiene note for this evidence set: `docs/release-notes-v0.9.4.md`. The package-internal version remains `0.9.3` for deterministic CLI and generated-artifact checks.
+
 ## Release Assets
 
 Primary release and reviewer assets:
 
 - `README.md`
 - `CHANGELOG.md`
+- `docs/release-notes-v0.9.4.md`
 - `docs/release-notes-v0.9.3.md`
 - `docs/comparison-to-spreadsheets.md`
 - `examples/playbooks/README.md`
