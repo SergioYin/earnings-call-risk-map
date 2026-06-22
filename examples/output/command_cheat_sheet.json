@@ -1,6 +1,6 @@
 {
   "artifact_type": "command_cheat_sheet",
-  "command_count": 33,
+  "command_count": 34,
   "commands": [
     {
       "command": "analyze",
@@ -37,6 +37,10 @@
     {
       "command": "evidence-handoff-audit",
       "purpose": "Audit local evidence handoff artifacts as JSON or Markdown"
+    },
+    {
+      "command": "evidence-handoff-compare",
+      "purpose": "Compare two evidence handoff audit JSON files as JSON or Markdown"
     },
     {
       "command": "agent-workflow",

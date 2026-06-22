@@ -2,11 +2,11 @@
 
 - Package: `earnings-call-risk-map`
 - Version: `0.9.3`
-- Commands: 33
+- Commands: 34
 - Fixtures: 7
 - Skill path: `skills/agent/earnings-call-risk-map/SKILL.md` (present)
 - Review template: `reports/reviews/release-readiness-review.md` (present)
-- Release assets: passed (100/100 present)
+- Release assets: passed (105/105 present)
 - Privacy scan: passed (`python scripts/privacy_scan.py`)
 - Latest review score: 94/100 (reports/reviews/2026-06-18-v0.9.0-final-review.md)
 
@@ -47,6 +47,8 @@
 - `PYTHONPATH=src python -m earnings_call_risk_map visual-evidence-receipt --format json --out examples/output/visual_evidence_receipt.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-audit --root . --format markdown --output examples/output/evidence_handoff_audit.md`
 - `PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-audit --root . --format json --output examples/output/evidence_handoff_audit.json`
+- `PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-compare --before examples/output/evidence_handoff_compare_demo_before.json --after examples/output/evidence_handoff_compare_demo_after.json --format markdown --output examples/output/evidence_handoff_compare.md`
+- `PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-compare --before examples/output/evidence_handoff_compare_demo_before.json --after examples/output/evidence_handoff_compare_demo_after.json --format json --output examples/output/evidence_handoff_compare.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map fresh-clone-plan --format markdown --out examples/output/fresh_clone_plan.md`
 - `PYTHONPATH=src python -m earnings_call_risk_map fresh-clone-plan --format json --out examples/output/fresh_clone_plan.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map cheat-sheet --format markdown --out examples/output/command_cheat_sheet.md`
@@ -102,6 +104,7 @@
 
 - `README.md`
 - `CHANGELOG.md`
+- `docs/release-notes-v0.9.6.md`
 - `docs/release-notes-v0.9.4.md`
 - `docs/release-notes-v0.9.3.md`
 - `docs/comparison-to-spreadsheets.md`
@@ -184,6 +187,10 @@
 - `examples/output/visual_evidence_receipt.json`
 - `examples/output/evidence_handoff_audit.md`
 - `examples/output/evidence_handoff_audit.json`
+- `examples/output/evidence_handoff_compare.md`
+- `examples/output/evidence_handoff_compare.json`
+- `examples/output/evidence_handoff_compare_demo_before.json`
+- `examples/output/evidence_handoff_compare_demo_after.json`
 - `examples/output/fresh_clone_plan.md`
 - `examples/output/fresh_clone_plan.json`
 - `examples/output/playbook_output_examples.md`
@@ -240,6 +247,10 @@
 - `examples/output/energy_infrastructure_snapshot.json`
 - `examples/output/evidence_handoff_audit.json`
 - `examples/output/evidence_handoff_audit.md`
+- `examples/output/evidence_handoff_compare.json`
+- `examples/output/evidence_handoff_compare.md`
+- `examples/output/evidence_handoff_compare_demo_after.json`
+- `examples/output/evidence_handoff_compare_demo_before.json`
 - `examples/output/examples_index.json`
 - `examples/output/examples_index.md`
 - `examples/output/fixture_catalog.md`

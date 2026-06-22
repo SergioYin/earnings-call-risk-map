@@ -1,6 +1,6 @@
 {
   "boundaries": [
-    "static/local-source only",
+    "local/static fixtures only",
     "no live data",
     "no broker connection",
     "no personalized investment advice",
@@ -9,15 +9,16 @@
     "no tax advice",
     "no buy advice",
     "no sell advice",
-    "no hold advice"
+    "no hold advice",
+    "no private data"
   ],
   "checked_artifacts": [
     {
-      "bytes": 20366,
+      "bytes": 21316,
       "present": true,
       "relative_path": "README.md",
       "role": "documentation",
-      "sha256": "4f1cdc25d1963d00a610cdcd7bf01d75cc378e990c3038977fc1d3d1f228bcd3"
+      "sha256": "29f0fa2c825d44177cc85dc585ee84a10fbdfbf500735d0bddad833dd3a121e7"
     },
     {
       "bytes": 4394,
@@ -34,11 +35,11 @@
       "sha256": "8bd98218315757cd15e9edfe0e59f0f315dc1ac0c5dc96e438312a89ea09fb42"
     },
     {
-      "bytes": 7489,
+      "bytes": 7519,
       "present": true,
       "relative_path": "docs/reviewer-evidence.md",
       "role": "reviewer_handoff_documentation",
-      "sha256": "8763cf16b9ac54b2c0fd95b7f63c98dc1d54dcdbc0cb4f80787b668c33a2065d"
+      "sha256": "a98c544dd687111bfa7965b34ca57561b5a17608d4f82da5fa85624ac2f8fe1f"
     },
     {
       "bytes": 3220,
@@ -55,11 +56,11 @@
       "sha256": "1db47eb6bde1e8264ede9ca93379d136a32e7300d06b9b42dbe513ad54370890"
     },
     {
-      "bytes": 23277,
+      "bytes": 24971,
       "present": true,
       "relative_path": "docs/usage.md",
       "role": "documentation",
-      "sha256": "72977f4e2329114a73c432e0053cdf70fd1bd2dffe92e0ed3d6e6fa7de3c9592"
+      "sha256": "72b4b210f3899d6c8ce3452d084c24ececb39910ba16f024aac64c9272d96f7f"
     },
     {
       "bytes": 5844,
@@ -139,32 +140,32 @@
       "sha256": "b28540c1fd7b9b58ca211ce9095969dd231df8adca4e1eb308bc8e2efc1347e8"
     },
     {
-      "bytes": 4152,
+      "bytes": 4295,
       "present": true,
       "relative_path": "examples/output/command_cheat_sheet.json",
       "role": "generated_json",
-      "sha256": "923c8444bf2d8a0c08d420037b472df2f193b72c945fa94a89204aeadc956725"
+      "sha256": "cc44812a6a19bd8a730a1277358e392199efe6997f3b6aefd0ca836b3b582b96"
     },
     {
-      "bytes": 2671,
+      "bytes": 2770,
       "present": true,
       "relative_path": "examples/output/command_cheat_sheet.md",
       "role": "generated_markdown",
-      "sha256": "831e170fc849e685eee7d4f7fa53fb0b85c8d37342243f525d11006003acf0d7"
+      "sha256": "d4e3aba6b4997dd0d62a3c6536a655603c45580d0d94e77ce169e6f7b693bfde"
     },
     {
-      "bytes": 4152,
+      "bytes": 4295,
       "present": true,
       "relative_path": "examples/output/command_cheatsheet.json",
       "role": "generated_json",
-      "sha256": "923c8444bf2d8a0c08d420037b472df2f193b72c945fa94a89204aeadc956725"
+      "sha256": "cc44812a6a19bd8a730a1277358e392199efe6997f3b6aefd0ca836b3b582b96"
     },
     {
-      "bytes": 2671,
+      "bytes": 2770,
       "present": true,
       "relative_path": "examples/output/command_cheatsheet.md",
       "role": "generated_markdown",
-      "sha256": "831e170fc849e685eee7d4f7fa53fb0b85c8d37342243f525d11006003acf0d7"
+      "sha256": "d4e3aba6b4997dd0d62a3c6536a655603c45580d0d94e77ce169e6f7b693bfde"
     },
     {
       "bytes": 9023,
@@ -304,14 +305,14 @@
       "present": true,
       "relative_path": "examples/output/doctor.json",
       "role": "generated_local_only_audit",
-      "sha256": "6212bd607c2bf9ddea8c1cbfd9e80215f594ac834da62f019b03f8aae88a7939"
+      "sha256": "e65e8db906fc0d284932fb7a6fb8ee771eb28403d9444c31ce049a8cfbe61ba0"
     },
     {
       "bytes": 957,
       "present": true,
       "relative_path": "examples/output/doctor.md",
       "role": "generated_local_only_audit",
-      "sha256": "edfb49329f4509c6cf3c89175432c50bcbcd26038f15df360d625da4aa87f833"
+      "sha256": "03f1075feb62ae15fa04dc35eafe6cf21c81751c44b07864d662ced54239782d"
     },
     {
       "bytes": 8996,
@@ -349,18 +350,46 @@
       "sha256": "0174c737dab9c71f9efde037b0d7cc0b832e9bb831b9e8f04dab29c115cb30a6"
     },
     {
-      "bytes": 31808,
+      "bytes": 3501,
+      "present": true,
+      "relative_path": "examples/output/evidence_handoff_compare.json",
+      "role": "generated_compare",
+      "sha256": "e2ea3fb05b1d2ade9a48ce5c8e294f9027d71cf318a0ff718995b8ae5dc4f887"
+    },
+    {
+      "bytes": 1980,
+      "present": true,
+      "relative_path": "examples/output/evidence_handoff_compare.md",
+      "role": "generated_compare",
+      "sha256": "a5d7e0a0cd6583d0a666ada83e97b57b6dab4cb07f2261dc025718fe33ff5424"
+    },
+    {
+      "bytes": 1634,
+      "present": true,
+      "relative_path": "examples/output/evidence_handoff_compare_demo_after.json",
+      "role": "generated_compare",
+      "sha256": "9b8256c6baa318219f01149c9f37e60ed1c2699361a38894091e361207fee9e1"
+    },
+    {
+      "bytes": 1437,
+      "present": true,
+      "relative_path": "examples/output/evidence_handoff_compare_demo_before.json",
+      "role": "generated_compare",
+      "sha256": "ec67588e64fc7a6ff7d0858b57793319832996fa124bf8f8308651d0b60df4db"
+    },
+    {
+      "bytes": 32763,
       "present": true,
       "relative_path": "examples/output/examples_index.json",
       "role": "generated_json",
-      "sha256": "4582eeec0e6f1478fc1d5ce9e1d94da0d5291085613f96a2bf9c206dc8f03a19"
+      "sha256": "bdcb0168b5b015641f063ec0591e0e98769568eb1e11b697228450ca8f891045"
     },
     {
-      "bytes": 14153,
+      "bytes": 14724,
       "present": true,
       "relative_path": "examples/output/examples_index.md",
       "role": "generated_markdown",
-      "sha256": "7a08ae04c5d98d8059b3158d8eda4a1a38499ab656b28f0082d51ee65d5aaed4"
+      "sha256": "b185a0e009ee25e4245b4e9bbbf8296cae1b664eae7774a6d69e2b26447f8da8"
     },
     {
       "bytes": 5300,
@@ -419,18 +448,18 @@
       "sha256": "c948a610d203f214ae8deff95408925caf0c89f52e08c91fc11c3f41ca79c06d"
     },
     {
-      "bytes": 10549,
+      "bytes": 10948,
       "present": true,
       "relative_path": "examples/output/package_audit.json",
       "role": "generated_local_only_audit",
-      "sha256": "4cbc495699abe42d5e7746eba1d8db27b4051049fa57b62b06e4dc85bcffed85"
+      "sha256": "15777d2dcca0468b69dce4f8251c7ef564c33c1a68f6057a907e1c6005737fcc"
     },
     {
-      "bytes": 8457,
+      "bytes": 8791,
       "present": true,
       "relative_path": "examples/output/package_audit.md",
       "role": "generated_local_only_audit",
-      "sha256": "05795adca4bd1d4817eaeb97c0336ae4a50a945c53aa9f4dac7a6ad7d5326ae1"
+      "sha256": "86b10aecd3be2b2989eddcebe75c3c50652bafeaa14896ae60092787620122fa"
     },
     {
       "bytes": 3945,
@@ -657,11 +686,11 @@
       "sha256": "eb31e2248412eb5497b6f8698467f9f0d6fc4a1df2f489cbbb7c9d84ce8db68d"
     },
     {
-      "bytes": 15373,
+      "bytes": 16406,
       "present": true,
       "relative_path": "reports/maturity/maturity_evidence.md",
       "role": "release_evidence",
-      "sha256": "1dca85e35af25a8a6fd87c128be4e8e6c5f332d867889fdc20947b914a8cd7d9"
+      "sha256": "b2052976be8a298237b5c59225a105dfd79f9a3afc20910c8a2812cdfbf95115"
     }
   ],
   "freshness_notes": [
@@ -697,10 +726,10 @@
     "Generated reports preserve source-boundary labels for management claims, analyst questions, and user synthesis."
   ],
   "summary": {
-    "checked_artifact_count": 93,
-    "generated_output_count": 78,
+    "checked_artifact_count": 97,
+    "generated_output_count": 82,
     "missing_artifact_count": 0,
-    "present_artifact_count": 93,
+    "present_artifact_count": 97,
     "readiness_status": "ready_with_review",
     "source_fixture_count": 7
   },

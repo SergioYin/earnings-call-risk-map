@@ -28,6 +28,7 @@ Homepage = "https://github.com/SergioYin/earnings-call-risk-map"
 [project.scripts]
 earnings-call-risk-map = "earnings_call_risk_map.cli:main"
 evidence-handoff-audit = "earnings_call_risk_map.evidence_handoff_audit:cli_main"
+evidence-handoff-compare = "earnings_call_risk_map.evidence_handoff_compare:cli_main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

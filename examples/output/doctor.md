@@ -5,8 +5,8 @@
 - Status: `passed`
 - Local-only package health: `passed`
 - Fixture count: 7
-- Output artifact count: 79
-- Docs links: `passed` (143 checked)
+- Output artifact count: 83
+- Docs links: `passed` (144 checked)
 - Workflow files absent: yes
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
@@ -21,7 +21,7 @@
 ## Docs Links
 
 - Checked documents: 23
-- Checked links: 143
+- Checked links: 144
 - Failures: 0
 
 ## Workflow Files

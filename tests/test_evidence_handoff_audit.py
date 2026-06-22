@@ -34,6 +34,7 @@ class EvidenceHandoffAuditTests(unittest.TestCase):
         self.assertIn("no buy advice", report["boundaries"])
         self.assertIn("no sell advice", report["boundaries"])
         self.assertIn("no hold advice", report["boundaries"])
+        self.assertIn("no private data", report["boundaries"])
 
         root_text = str(ROOT)
         encoded = json.dumps(report, sort_keys=True)

@@ -233,7 +233,7 @@ The demo bundle writes both `examples/output/package_audit.json` and `examples/o
 
 `evidence-handoff-audit` emits a deterministic reviewer handoff audit in JSON or Markdown. It checks local source fixtures, generated reports, review queues, dashboards, handoff packets, source-boundary evidence, visual evidence receipts, docs, and release evidence.
 
-The report includes a schema label, summary counts, checked artifact rows with relative path, role, present/missing status, byte count, and SHA-256 hash, plus source, freshness, and review-readiness notes. It also lists missing and recommended evidence items, regeneration commands, and explicit static/local-source, no-live-data, no-broker, no-personalized-investment, legal, accounting, tax, buy, sell, and hold advice boundaries.
+The report includes a schema label, summary counts, checked artifact rows with relative path, role, present/missing status, byte count, and SHA-256 hash, plus source, freshness, and review-readiness notes. It also lists missing and recommended evidence items, regeneration commands, and explicit local/static-fixture, no-live-data, no-broker, no-private-data, no-personalized-investment, legal, accounting, tax, buy, sell, and hold advice boundaries.
 
 The command never embeds artifact file contents and redacts the absolute checkout root:
 
@@ -249,6 +249,25 @@ evidence-handoff-audit --root . --format markdown --output examples/output/evide
 ```
 
 The demo bundle writes both `examples/output/evidence_handoff_audit.json` and `examples/output/evidence_handoff_audit.md`.
+
+## Evidence Handoff Compare
+
+`evidence-handoff-compare` compares two local evidence handoff audit JSON files and emits deterministic JSON or Markdown. It matches entries by stable `evidence_id` when available and otherwise by `relative_path`, then reports added, removed, changed, and unchanged counts.
+
+Changed entries list metadata differences only: byte count, SHA-256 hash, presence, role, freshness fields, and source-boundary fields when present. The command does not read live market data, connect to brokers, fetch URLs, inspect private data, or provide personalized investment, legal, accounting, tax, buy, sell, or hold advice.
+
+```bash
+python -m earnings_call_risk_map evidence-handoff-compare --before examples/output/evidence_handoff_compare_demo_before.json --after examples/output/evidence_handoff_compare_demo_after.json --format markdown
+python -m earnings_call_risk_map evidence-handoff-compare --before examples/output/evidence_handoff_compare_demo_before.json --after examples/output/evidence_handoff_compare_demo_after.json --format json --output examples/output/evidence_handoff_compare.json
+```
+
+After installation, the standalone console command is also available:
+
+```bash
+evidence-handoff-compare --before examples/output/evidence_handoff_compare_demo_before.json --after examples/output/evidence_handoff_compare_demo_after.json --format markdown --output examples/output/evidence_handoff_compare.md
+```
+
+The demo bundle writes `examples/output/evidence_handoff_compare_demo_before.json`, `examples/output/evidence_handoff_compare_demo_after.json`, `examples/output/evidence_handoff_compare.json`, and `examples/output/evidence_handoff_compare.md`.
 
 ## Release Readiness
 

@@ -4,18 +4,18 @@
 - Package: `earnings-call-risk-map`
 - Version: `0.9.3`
 - Root: `<redacted-root>`
-- Checked artifacts: 93
-- Present artifacts: 93
+- Checked artifacts: 97
+- Present artifacts: 97
 - Missing artifacts: 0
 - Source fixtures: 7
-- Generated outputs: 78
+- Generated outputs: 82
 - Readiness: `ready_with_review`
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
 
 ## Boundaries
 
-- static/local-source only
+- local/static fixtures only
 - no live data
 - no broker connection
 - no personalized investment advice
@@ -25,18 +25,19 @@
 - no buy advice
 - no sell advice
 - no hold advice
+- no private data
 
 ## Checked Artifacts
 
 | Relative path | Role | Present | Bytes | SHA-256 |
 | --- | --- | --- | ---: | --- |
-| README.md | documentation | yes | 20366 | 4f1cdc25d1963d00a610cdcd7bf01d75cc378e990c3038977fc1d3d1f228bcd3 |
+| README.md | documentation | yes | 21316 | 29f0fa2c825d44177cc85dc585ee84a10fbdfbf500735d0bddad833dd3a121e7 |
 | docs/case-study-limitations.md | freshness_documentation | yes | 4394 | 0a32fc024096b127572c02b86b4ac2529a089aa9e42bffc273bf9707f0f910dd |
 | docs/non-advice-boundary.md | source_boundary_documentation | yes | 3689 | 8bd98218315757cd15e9edfe0e59f0f315dc1ac0c5dc96e438312a89ea09fb42 |
-| docs/reviewer-evidence.md | reviewer_handoff_documentation | yes | 7489 | 8763cf16b9ac54b2c0fd95b7f63c98dc1d54dcdbc0cb4f80787b668c33a2065d |
+| docs/reviewer-evidence.md | reviewer_handoff_documentation | yes | 7519 | a98c544dd687111bfa7965b34ca57561b5a17608d4f82da5fa85624ac2f8fe1f |
 | docs/security-and-privacy.md | source_boundary_documentation | yes | 3220 | b6829083ba45a2af5ee38e850aefa395c73dbef50e689334dae23613acff3b14 |
 | docs/source-attribution-guide.md | source_boundary_documentation | yes | 6714 | 1db47eb6bde1e8264ede9ca93379d136a32e7300d06b9b42dbe513ad54370890 |
-| docs/usage.md | documentation | yes | 23277 | 72977f4e2329114a73c432e0053cdf70fd1bd2dffe92e0ed3d6e6fa7de3c9592 |
+| docs/usage.md | documentation | yes | 24971 | 72b4b210f3899d6c8ce3452d084c24ececb39910ba16f024aac64c9272d96f7f |
 | examples/input/consumer_hardware.json | source_fixture | yes | 5844 | 7eb3539c44edc2d7e6e1fb3939515b902895bb075002af0f13413a3f1553e08a |
 | examples/input/demo_company.json | source_fixture | yes | 2007 | 90a0fa4ae264709ad9648561961a5838d63973c4734d95dcfcdcbef73a8a52a7 |
 | examples/input/demo_company_prior.json | source_fixture | yes | 1143 | a2ed62178af4b5ff12213a8b20563a1640771a58db9fbec674e1793ce8c1ef43 |
@@ -48,10 +49,10 @@
 | examples/output/agent_workflow.md | generated_markdown | yes | 3426 | ef7fb25f74a4dbcf6416b48bdc67ad3754ac9280adc22dfdeb0af6907a305e1f |
 | examples/output/case_study_map.json | generated_json | yes | 6503 | f5b5fd48bf6c271d7d71261eb1be6459e6ea5e59180986df9919f680f3238ac2 |
 | examples/output/case_study_map.md | generated_markdown | yes | 5932 | b28540c1fd7b9b58ca211ce9095969dd231df8adca4e1eb308bc8e2efc1347e8 |
-| examples/output/command_cheat_sheet.json | generated_json | yes | 4152 | 923c8444bf2d8a0c08d420037b472df2f193b72c945fa94a89204aeadc956725 |
-| examples/output/command_cheat_sheet.md | generated_markdown | yes | 2671 | 831e170fc849e685eee7d4f7fa53fb0b85c8d37342243f525d11006003acf0d7 |
-| examples/output/command_cheatsheet.json | generated_json | yes | 4152 | 923c8444bf2d8a0c08d420037b472df2f193b72c945fa94a89204aeadc956725 |
-| examples/output/command_cheatsheet.md | generated_markdown | yes | 2671 | 831e170fc849e685eee7d4f7fa53fb0b85c8d37342243f525d11006003acf0d7 |
+| examples/output/command_cheat_sheet.json | generated_json | yes | 4295 | cc44812a6a19bd8a730a1277358e392199efe6997f3b6aefd0ca836b3b582b96 |
+| examples/output/command_cheat_sheet.md | generated_markdown | yes | 2770 | d4e3aba6b4997dd0d62a3c6536a655603c45580d0d94e77ce169e6f7b693bfde |
+| examples/output/command_cheatsheet.json | generated_json | yes | 4295 | cc44812a6a19bd8a730a1277358e392199efe6997f3b6aefd0ca836b3b582b96 |
+| examples/output/command_cheatsheet.md | generated_markdown | yes | 2770 | d4e3aba6b4997dd0d62a3c6536a655603c45580d0d94e77ce169e6f7b693bfde |
 | examples/output/consumer_hardware_dashboard.html | generated_dashboard | yes | 9023 | 4e6915e5f50f18a607e46ff0d05d518c827e1025537b2389e877c4fcfa74131c |
 | examples/output/consumer_hardware_report.md | generated_markdown | yes | 4362 | 67710b9d14658ae357725f7f0e42c15dd82ae49cc25823501cd8d6a7e6af1227 |
 | examples/output/consumer_hardware_review_queue.json | generated_review_queue | yes | 4338 | e5559de3c425aff7fa2cedf510dbe7f99ee0dc18f150f88e59222a485a8b1498 |
@@ -71,15 +72,19 @@
 | examples/output/demo_screenshot_guide.json | generated_json | yes | 4455 | 67812bdf6fb3df3bf39df29b2ac2b64ff89c43ccb108c06d8b3f6adaa240a85c |
 | examples/output/demo_screenshot_guide.md | generated_markdown | yes | 4015 | 567e6930419020133328f677b92d8a7b7116d4e906b09b36a88dfcd94d256476 |
 | examples/output/demo_snapshot.json | generated_json | yes | 6708 | aa6b2e30f3317dbf1b77a2ac5eaed9e220f61341da5492c3b26677331d5d2f2e |
-| examples/output/doctor.json | generated_local_only_audit | yes | 1095 | 6212bd607c2bf9ddea8c1cbfd9e80215f594ac834da62f019b03f8aae88a7939 |
-| examples/output/doctor.md | generated_local_only_audit | yes | 957 | edfb49329f4509c6cf3c89175432c50bcbcd26038f15df360d625da4aa87f833 |
+| examples/output/doctor.json | generated_local_only_audit | yes | 1095 | e65e8db906fc0d284932fb7a6fb8ee771eb28403d9444c31ce049a8cfbe61ba0 |
+| examples/output/doctor.md | generated_local_only_audit | yes | 957 | 03f1075feb62ae15fa04dc35eafe6cf21c81751c44b07864d662ced54239782d |
 | examples/output/energy_infrastructure_dashboard.html | generated_dashboard | yes | 8996 | 70ee3a85f729013f1cf0736b9ebbcb4124b8c7b4563a5bf6db0ccfb76b46c291 |
 | examples/output/energy_infrastructure_report.md | generated_markdown | yes | 3118 | 7c2c41b383524076b2825d943e87bb80b74e427889e23817ac800d09a316bba6 |
 | examples/output/energy_infrastructure_review_queue.json | generated_review_queue | yes | 7925 | 43b81e04f6e7c8442474897d4dd708d0643ec5f3e3e3dc3c4dd233687928a09d |
 | examples/output/energy_infrastructure_review_queue.md | generated_review_queue | yes | 3372 | 66d7f429d8d87138382dcf7d635b099f2f1a2c79b2bc50043d7f2518c688a0d5 |
 | examples/output/energy_infrastructure_snapshot.json | generated_json | yes | 13247 | 0174c737dab9c71f9efde037b0d7cc0b832e9bb831b9e8f04dab29c115cb30a6 |
-| examples/output/examples_index.json | generated_json | yes | 31808 | 4582eeec0e6f1478fc1d5ce9e1d94da0d5291085613f96a2bf9c206dc8f03a19 |
-| examples/output/examples_index.md | generated_markdown | yes | 14153 | 7a08ae04c5d98d8059b3158d8eda4a1a38499ab656b28f0082d51ee65d5aaed4 |
+| examples/output/evidence_handoff_compare.json | generated_compare | yes | 3501 | e2ea3fb05b1d2ade9a48ce5c8e294f9027d71cf318a0ff718995b8ae5dc4f887 |
+| examples/output/evidence_handoff_compare.md | generated_compare | yes | 1980 | a5d7e0a0cd6583d0a666ada83e97b57b6dab4cb07f2261dc025718fe33ff5424 |
+| examples/output/evidence_handoff_compare_demo_after.json | generated_compare | yes | 1634 | 9b8256c6baa318219f01149c9f37e60ed1c2699361a38894091e361207fee9e1 |
+| examples/output/evidence_handoff_compare_demo_before.json | generated_compare | yes | 1437 | ec67588e64fc7a6ff7d0858b57793319832996fa124bf8f8308651d0b60df4db |
+| examples/output/examples_index.json | generated_json | yes | 32763 | bdcb0168b5b015641f063ec0591e0e98769568eb1e11b697228450ca8f891045 |
+| examples/output/examples_index.md | generated_markdown | yes | 14724 | b185a0e009ee25e4245b4e9bbbf8296cae1b664eae7774a6d69e2b26447f8da8 |
 | examples/output/fixture_catalog.md | generated_markdown | yes | 5300 | f92441cccdb564f9814114b49582e629357f55fe48d89f49bbcd90f0c82285db |
 | examples/output/fresh_clone_plan.json | generated_json | yes | 7642 | 8d196eeb5c65e65c9fb2d985334da2a1093e374386abf0c1d663b0a29131128f |
 | examples/output/fresh_clone_plan.md | generated_markdown | yes | 6803 | d83992cf12eb71a2fe1ee704ed34e2bce3f4f6e4a88994eda90c288ef4d67cac |
@@ -88,8 +93,8 @@
 | examples/output/handoff_packet_examples.json | generated_handoff_packet | yes | 8052 | 8c011ea02a230a79dfa56e20688df3e3664c0f6bc2d1a31ac9250c7f3bc938fc |
 | examples/output/handoff_packet_examples.md | generated_handoff_packet | yes | 3585 | 9c35e024d836f68f976bbaa820017a8729ae63c32465ae73a3a789861379c514 |
 | examples/output/integration_notes.json | generated_json | yes | 3681 | c948a610d203f214ae8deff95408925caf0c89f52e08c91fc11c3f41ca79c06d |
-| examples/output/package_audit.json | generated_local_only_audit | yes | 10549 | 4cbc495699abe42d5e7746eba1d8db27b4051049fa57b62b06e4dc85bcffed85 |
-| examples/output/package_audit.md | generated_local_only_audit | yes | 8457 | 05795adca4bd1d4817eaeb97c0336ae4a50a945c53aa9f4dac7a6ad7d5326ae1 |
+| examples/output/package_audit.json | generated_local_only_audit | yes | 10948 | 15777d2dcca0468b69dce4f8251c7ef564c33c1a68f6057a907e1c6005737fcc |
+| examples/output/package_audit.md | generated_local_only_audit | yes | 8791 | 86b10aecd3be2b2989eddcebe75c3c50652bafeaa14896ae60092787620122fa |
 | examples/output/playbook_output_examples.json | generated_json | yes | 3945 | f7f7d4c0df3f1223acc109757e28f58d448651bb3fdc4479225c24e0e1857fdc |
 | examples/output/playbook_output_examples.md | generated_markdown | yes | 2680 | 4f2177c48f9a066bac064e9ba5027de83e333ee1c2acd3306d066ddfa48ec706 |
 | examples/output/playbooks.json | generated_json | yes | 4439 | ddbe6e7b30eacf6cececb7d51aada4994484ab89015ca204442c9dfeb252118a |
@@ -122,7 +127,7 @@
 | examples/output/template_catalog.md | generated_markdown | yes | 4758 | 4b79e8cbf2ee19385858ec77826befd45357e034e9ae3e2b7505530b2171f39a |
 | examples/output/visual_evidence_receipt.json | generated_json | yes | 9159 | 9cabb15dce945da76b696726540ade7d8c255ae249e71dbb95ed817440a4211a |
 | examples/output/visual_evidence_receipt.md | generated_visual_evidence | yes | 5308 | eb31e2248412eb5497b6f8698467f9f0d6fc4a1df2f489cbbb7c9d84ce8db68d |
-| reports/maturity/maturity_evidence.md | release_evidence | yes | 15373 | 1dca85e35af25a8a6fd87c128be4e8e6c5f332d867889fdc20947b914a8cd7d9 |
+| reports/maturity/maturity_evidence.md | release_evidence | yes | 16406 | b2052976be8a298237b5c59225a105dfd79f9a3afc20910c8a2812cdfbf95115 |
 
 ## Source Notes
 

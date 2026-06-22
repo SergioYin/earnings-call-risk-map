@@ -22,6 +22,7 @@ COMMANDS = (
     "demo-screenshot-guide",
     "doctor",
     "evidence-handoff-audit",
+    "evidence-handoff-compare",
     "examples-index",
     "fixture-catalog",
     "fixture-summary",

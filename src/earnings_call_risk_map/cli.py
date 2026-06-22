@@ -28,6 +28,7 @@ from .doctor import (
     render_doctor_report_markdown,
 )
 from .evidence_handoff_audit import evidence_handoff_audit_json, evidence_handoff_audit_markdown
+from .evidence_handoff_compare import evidence_handoff_compare_json, evidence_handoff_compare_markdown
 from .examples_index import examples_index_json, examples_index_markdown
 from .fixture_catalog import fixture_catalog_markdown
 from .fresh_clone_plan import fresh_clone_plan_json, fresh_clone_plan_markdown
@@ -179,6 +180,21 @@ def build_parser() -> argparse.ArgumentParser:
     evidence_handoff_audit.add_argument("--format", choices=("json", "markdown"), default="markdown", help="Output format")
     evidence_handoff_audit.add_argument("--output", metavar="PATH", help="Write evidence handoff audit to this path")
     evidence_handoff_audit.set_defaults(func=cmd_evidence_handoff_audit)
+
+    evidence_handoff_compare = sub.add_parser(
+        "evidence-handoff-compare",
+        help="Compare two evidence handoff audit JSON files as JSON or Markdown",
+    )
+    evidence_handoff_compare.add_argument("--before", required=True, metavar="PATH", help="Earlier audit JSON")
+    evidence_handoff_compare.add_argument("--after", required=True, metavar="PATH", help="Later audit JSON")
+    evidence_handoff_compare.add_argument(
+        "--format",
+        choices=("json", "markdown"),
+        default="markdown",
+        help="Output format",
+    )
+    evidence_handoff_compare.add_argument("--output", metavar="PATH", help="Write evidence handoff compare to this path")
+    evidence_handoff_compare.set_defaults(func=cmd_evidence_handoff_compare)
 
     agent_workflow = sub.add_parser(
         "agent-workflow",
@@ -406,6 +422,7 @@ def cmd_demo(args: argparse.Namespace) -> int:
     write_text(out_dir / "handoff_packet_examples.md", render_handoff_packet_examples_markdown(handoff_examples))
     write_text(out_dir / "package_audit.json", package_audit_json("."))
     write_text(out_dir / "package_audit.md", package_audit_markdown("."))
+    _write_evidence_handoff_compare_examples(out_dir)
     write_text(out_dir / "evidence_handoff_audit.json", evidence_handoff_audit_json("."))
     write_text(out_dir / "evidence_handoff_audit.md", evidence_handoff_audit_markdown("."))
     write_text(out_dir / "agent_workflow.md", agent_workflow_markdown())
@@ -537,6 +554,18 @@ def cmd_evidence_handoff_audit(args: argparse.Namespace) -> int:
         payload = evidence_handoff_audit_json(args.root)
     else:
         payload = evidence_handoff_audit_markdown(args.root)
+    if args.output:
+        write_text(args.output, payload)
+    else:
+        print(payload, end="")
+    return 0
+
+
+def cmd_evidence_handoff_compare(args: argparse.Namespace) -> int:
+    if args.format == "json":
+        payload = evidence_handoff_compare_json(args.before, args.after)
+    else:
+        payload = evidence_handoff_compare_markdown(args.before, args.after)
     if args.output:
         write_text(args.output, payload)
     else:
@@ -922,3 +951,102 @@ def _build_handoff_packet_examples(out_dir: Path) -> dict[str, object]:
             for slug, title, report_path, review_queue_jsonl_path, compare_path in specs
         ],
     }
+
+
+def _write_evidence_handoff_compare_examples(out_dir: Path) -> None:
+    before = {
+        "schema": "earnings-call-risk-map.evidence-handoff-audit.v1",
+        "package": "earnings-call-risk-map",
+        "version": __version__,
+        "root": "<redacted-root>",
+        "summary": {
+            "checked_artifact_count": 3,
+            "present_artifact_count": 2,
+            "missing_artifact_count": 1,
+            "readiness_status": "needs_artifact_regeneration",
+        },
+        "checked_artifacts": [
+            {
+                "relative_path": "README.md",
+                "role": "documentation",
+                "present": True,
+                "bytes": 120,
+                "sha256": "0" * 64,
+            },
+            {
+                "relative_path": "examples/output/demo_report.md",
+                "role": "generated_report",
+                "present": True,
+                "bytes": 240,
+                "sha256": "1" * 64,
+                "freshness_status": "static",
+            },
+            {
+                "relative_path": "examples/output/old_review_queue.md",
+                "role": "generated_review_queue",
+                "present": False,
+                "bytes": None,
+                "sha256": None,
+            },
+        ],
+        "boundaries": [
+            "local/static fixtures only",
+            "no live data",
+            "no broker connection",
+            "no personalized investment advice",
+            "no private data",
+        ],
+        "safety_notice": SAFETY_NOTICE,
+    }
+    after = {
+        **before,
+        "summary": {
+            "checked_artifact_count": 3,
+            "present_artifact_count": 3,
+            "missing_artifact_count": 0,
+            "readiness_status": "ready_with_review",
+        },
+        "checked_artifacts": [
+            {
+                "relative_path": "README.md",
+                "role": "documentation",
+                "present": True,
+                "bytes": 120,
+                "sha256": "0" * 64,
+            },
+            {
+                "relative_path": "examples/output/demo_report.md",
+                "role": "generated_report",
+                "present": True,
+                "bytes": 260,
+                "sha256": "2" * 64,
+                "freshness_status": "static_reviewed",
+            },
+            {
+                "relative_path": "examples/output/demo_review_queue.md",
+                "role": "generated_review_queue",
+                "present": True,
+                "bytes": 180,
+                "sha256": "3" * 64,
+            },
+        ],
+        "boundaries": [
+            "local/static fixtures only",
+            "no live data",
+            "no broker connection",
+            "no personalized investment advice",
+            "no legal advice",
+            "no accounting advice",
+            "no tax advice",
+            "no buy advice",
+            "no sell advice",
+            "no hold advice",
+            "no private data",
+        ],
+    }
+    before_path = out_dir / "evidence_handoff_compare_demo_before.json"
+    after_path = out_dir / "evidence_handoff_compare_demo_after.json"
+    write_json(before_path, before)
+    write_json(after_path, after)
+    write_text(out_dir / "evidence_handoff_compare.json", evidence_handoff_compare_json(before_path, after_path))
+    write_text(out_dir / "evidence_handoff_compare.md", evidence_handoff_compare_markdown(before_path, after_path))

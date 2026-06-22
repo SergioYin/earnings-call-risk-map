@@ -1,0 +1,50 @@
+{
+  "boundaries": [
+    "local/static fixtures only",
+    "no live data",
+    "no broker connection",
+    "no personalized investment advice",
+    "no legal advice",
+    "no accounting advice",
+    "no tax advice",
+    "no buy advice",
+    "no sell advice",
+    "no hold advice",
+    "no private data"
+  ],
+  "checked_artifacts": [
+    {
+      "bytes": 120,
+      "present": true,
+      "relative_path": "README.md",
+      "role": "documentation",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "bytes": 260,
+      "freshness_status": "static_reviewed",
+      "present": true,
+      "relative_path": "examples/output/demo_report.md",
+      "role": "generated_report",
+      "sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+    },
+    {
+      "bytes": 180,
+      "present": true,
+      "relative_path": "examples/output/demo_review_queue.md",
+      "role": "generated_review_queue",
+      "sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+    }
+  ],
+  "package": "earnings-call-risk-map",
+  "root": "<redacted-root>",
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema": "earnings-call-risk-map.evidence-handoff-audit.v1",
+  "summary": {
+    "checked_artifact_count": 3,
+    "missing_artifact_count": 0,
+    "present_artifact_count": 3,
+    "readiness_status": "ready_with_review"
+  },
+  "version": "0.9.3"
+}

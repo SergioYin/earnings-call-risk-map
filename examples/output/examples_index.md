@@ -8,7 +8,7 @@ Bundled examples are local deterministic fixtures, templates, and generated arti
 
 - Fixtures: 7
 - Templates: 3
-- Generated outputs: 81
+- Generated outputs: 85
 - Recommended next command: `earnings-call-risk-map demo --out-dir examples/output`
 
 ## Bundled Fixtures
@@ -71,6 +71,10 @@ Bundled examples are local deterministic fixtures, templates, and generated arti
 | `examples/output/energy_infrastructure_snapshot.json` | `json` | analyzed snapshot | `earnings-call-risk-map demo --out-dir examples/output` |
 | `examples/output/evidence_handoff_audit.json` | `json` | handoff packet | `earnings-call-risk-map demo --out-dir examples/output` |
 | `examples/output/evidence_handoff_audit.md` | `md` | handoff packet | `earnings-call-risk-map demo --out-dir examples/output` |
+| `examples/output/evidence_handoff_compare.json` | `json` | snapshot compare | `earnings-call-risk-map demo --out-dir examples/output` |
+| `examples/output/evidence_handoff_compare.md` | `md` | snapshot compare | `earnings-call-risk-map demo --out-dir examples/output` |
+| `examples/output/evidence_handoff_compare_demo_after.json` | `json` | snapshot compare | `earnings-call-risk-map demo --out-dir examples/output` |
+| `examples/output/evidence_handoff_compare_demo_before.json` | `json` | snapshot compare | `earnings-call-risk-map demo --out-dir examples/output` |
 | `examples/output/examples_index.json` | `json` | generated output | `earnings-call-risk-map examples-index --format json --out examples/output/examples_index.json` |
 | `examples/output/examples_index.md` | `md` | generated output | `earnings-call-risk-map examples-index --format markdown --out examples/output/examples_index.md` |
 | `examples/output/fixture_catalog.md` | `md` | catalog | `earnings-call-risk-map fixture-catalog --out examples/output/fixture_catalog.md` |

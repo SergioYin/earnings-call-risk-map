@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.9.6 - 2026-06-23
+
+Release-to-release evidence handoff comparison increment.
+
+### Added
+
+- Release notes draft at `docs/release-notes-v0.9.6.md`.
+- `evidence-handoff-compare` compares two handoff audit JSON files and emits JSON or Markdown.
+- Checked-in demo comparison inputs and outputs under `examples/output/`.
+
+### Changed
+
+- Evidence handoff boundaries now explicitly include local/static fixtures and no private data.
+- README, usage, release-readiness, reviewer evidence, maturity evidence, package audit, and generated command examples now reference the compare command.
+
+### Safety
+
+- The command is local-only and metadata-only. It adds no live data, broker connections, private-data handling, recommendations, ratings, price targets, portfolio actions, or personalized investment, legal, accounting, tax, buy, sell, or hold advice.
+
 ## 0.9.4 - 2026-06-22
 
 Post-release evidence hygiene increment.

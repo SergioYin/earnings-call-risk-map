@@ -43,7 +43,7 @@ Command details: [docs/usage.md](docs/usage.md). Positioning: [generic LLM compa
 
 ![Static dashboard preview](docs/assets/showcase-dashboard-preview.svg)
 
-**Release evidence:** `v0.9.4` | **Package version:** `0.9.3` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
+**Release evidence:** `v0.9.6` | **Package version:** `0.9.3` | **Runtime dependencies:** `0` | **Workflows:** `none` | **Preview format:** `SVG + static HTML`
 
 - [Pages demo guide](docs/pages-demo.md)
 - [Demo screenshot guide](docs/demo-screenshot-guide.md)
@@ -74,6 +74,7 @@ Command details: [docs/usage.md](docs/usage.md). Positioning: [generic LLM compa
 - [Case study limitations](docs/case-study-limitations.md)
 - [Case study map docs](docs/case-study-map.md)
 - [Generated case study map](examples/output/case_study_map.md)
+- [v0.9.6 evidence handoff compare notes](docs/release-notes-v0.9.6.md)
 - [v0.9.4 post-release evidence notes](docs/release-notes-v0.9.4.md)
 - [v0.9.3 package release notes draft](docs/release-notes-v0.9.3.md)
 - [Reviewer feedback consumption](docs/reviewer-feedback-consumption.md)
@@ -98,7 +99,9 @@ The `audit` command records this guarantee in machine-readable form. Its local-o
 - Package and script sources contain no credential environment variable reads.
 - No `.github/workflows` files are required to run the package commands.
 
-The `evidence-handoff-audit` command records reviewer handoff readiness for local source, evidence, demo, and release artifacts. It emits relative paths, roles, present/missing status, byte counts, SHA-256 hashes, source/freshness/review notes, regeneration commands, and explicit static/local-source, no-live-data, no-broker, and non-advice boundaries without embedding artifact contents or absolute checkout paths.
+The `evidence-handoff-audit` command records reviewer handoff readiness for local source, evidence, demo, and release artifacts. It emits relative paths, roles, present/missing status, byte counts, SHA-256 hashes, source/freshness/review notes, regeneration commands, and explicit local/static-fixture, no-live-data, no-broker, no-private-data, and non-advice boundaries without embedding artifact contents or absolute checkout paths.
+
+The `evidence-handoff-compare` command compares two checked audit JSON files by stable `evidence_id` when present, otherwise by relative path. It reports added, removed, changed, and unchanged evidence/artifact counts and lists byte, SHA-256, presence, role, freshness, and source-boundary differences when those fields are available.
 
 The test suite also runs every CLI subcommand with a minimal credential-free environment to confirm the commands do not need API keys, tokens, secrets, passwords, proxies, or cloud credentials.
 
@@ -122,12 +125,13 @@ PYTHONPATH=src python -m earnings_call_risk_map data-entry-checklist --format ma
 PYTHONPATH=src python -m earnings_call_risk_map cheat-sheet --format markdown --out examples/output/command_cheat_sheet.md
 PYTHONPATH=src python -m earnings_call_risk_map audit --format markdown
 PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-audit --root . --format markdown --output examples/output/evidence_handoff_audit.md
+PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-compare --before examples/output/evidence_handoff_compare_demo_before.json --after examples/output/evidence_handoff_compare_demo_after.json --format markdown --output examples/output/evidence_handoff_compare.md
 PYTHONPATH=src python -m earnings_call_risk_map release-assets --format markdown
 PYTHONPATH=src python -m earnings_call_risk_map demo --out-dir examples/output
 PYTHONPATH=src python -m earnings_call_risk_map maturity-evidence --out-dir reports/maturity
 ```
 
-What just happened: `version` verifies imports; `analyze`, `review-queue`, `review-queue-jsonl`, `handoff-packet`, `playbooks`, `compare`, `case-study-map`, `data-entry-checklist`, and `cheat-sheet` generate review artifacts; `audit`, `evidence-handoff-audit`, `release-assets`, `demo`, and `maturity-evidence` verify release parity and regenerate bundled evidence. The Apple fixture is a static public-source case study, not live data.
+What just happened: `version` verifies imports; `analyze`, `review-queue`, `review-queue-jsonl`, `handoff-packet`, `playbooks`, `compare`, `case-study-map`, `data-entry-checklist`, and `cheat-sheet` generate review artifacts; `audit`, `evidence-handoff-audit`, `evidence-handoff-compare`, `release-assets`, `demo`, and `maturity-evidence` verify release parity and regenerate bundled evidence. The Apple fixture is a static public-source case study, not live data.
 
 Sample output excerpt:
 
@@ -260,6 +264,8 @@ For `pipx`, wheel dry-run, and troubleshooting notes, see [docs/distribution.md]
 - `demo`: builds `demo_*`, `energy_infrastructure_*`, `consumer_hardware_*`, `semiconductor_equipment_*`, and `public_apple_static_case_study_*` artifacts, package audit files, and a demo release manifest.
 - `compare`: compares two analyzed JSON snapshots and adds a plain-language interpretation section. Positive deltas mean a topic drew more deterministic risk or opportunity score in the later snapshot; negative deltas mean the later snapshot drew less score. When comparing software and energy infrastructure fixtures, read the output as cross-fixture differences in checked-in inputs and domain vocabulary, not investment ranking or buy, sell, hold advice. Deltas are review prompts only, so reviewers should verify source documents and freshness badges before treating a movement as resolved or newly material.
 - `audit`: writes or prints package parity in JSON or Markdown.
+- `evidence-handoff-audit`: writes or prints local evidence handoff metadata in JSON or Markdown.
+- `evidence-handoff-compare`: writes or prints release-to-release evidence handoff audit differences in JSON or Markdown.
 - `cheat-sheet`: writes or prints a lightweight command cheat sheet with every CLI command and short purpose in Markdown or JSON.
 - `release-assets`: writes or prints a JSON/Markdown checklist for expected release assets and exits nonzero when any are missing.
 - `manifest`: writes a deterministic release manifest with file hashes; the included demo-copy manifest entry uses a self-referential marker instead of hashing its own contents.

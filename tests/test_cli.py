@@ -1793,7 +1793,7 @@ class CliTests(unittest.TestCase):
             json_path = Path(tmp) / "maturity_evidence.json"
             md_path = Path(tmp) / "maturity_evidence.md"
             payload = json.loads(json_path.read_text(encoding="utf-8"))
-            self.assertEqual(payload["command_count"], 33)
+            self.assertEqual(payload["command_count"], 34)
             self.assertEqual(payload["fixture_count"], 7)
             self.assertIn("PYTHONPATH=src python -m unittest discover -s tests", payload["test_commands"])
             self.assertIn("PYTHONPATH=src python -m earnings_call_risk_map release-assets", payload["verification_commands"])
@@ -1854,6 +1854,10 @@ class CliTests(unittest.TestCase):
                 payload["verification_commands"],
             )
             self.assertIn(
+                "PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-compare --before examples/output/evidence_handoff_compare_demo_before.json --after examples/output/evidence_handoff_compare_demo_after.json --format markdown --output examples/output/evidence_handoff_compare.md",
+                payload["verification_commands"],
+            )
+            self.assertIn(
                 "PYTHONPATH=src python -m earnings_call_risk_map doctor --format json --out examples/output/doctor.json",
                 payload["verification_commands"],
             )
@@ -1871,6 +1875,8 @@ class CliTests(unittest.TestCase):
             self.assertIn("examples/output/visual_evidence_receipt.json", payload["artifact_paths"])
             self.assertIn("examples/output/fresh_clone_plan.md", payload["artifact_paths"])
             self.assertIn("examples/output/source_boundary_evidence.json", payload["artifact_paths"])
+            self.assertIn("examples/output/evidence_handoff_compare.md", payload["artifact_paths"])
+            self.assertIn("examples/output/evidence_handoff_compare.json", payload["artifact_paths"])
             self.assertEqual(payload["release_asset_checklist"]["status"], "passed")
             self.assertEqual(payload["release_asset_checklist"]["missing_assets"], [])
             self.assertGreater(payload["release_asset_checklist"]["present_count"], 0)
@@ -1891,7 +1897,7 @@ class CliTests(unittest.TestCase):
             self.assertIn(payload["privacy_scan"]["status"], {"passed", "failed"})
             markdown = md_path.read_text(encoding="utf-8")
             self.assertIn("Maturity Evidence Bundle", markdown)
-            self.assertIn("- Commands: 33", markdown)
+            self.assertIn("- Commands: 34", markdown)
             self.assertIn("- Fixtures: 7", markdown)
             self.assertIn("- Release assets: passed", markdown)
             self.assertIn("- Latest review score: 94/100", markdown)
@@ -1911,7 +1917,7 @@ class CliTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertIn("wrote maturity evidence bundle", result.stdout)
             payload = json.loads((Path(tmp) / "maturity_evidence.json").read_text(encoding="utf-8"))
-            self.assertEqual(payload["command_count"], 33)
+            self.assertEqual(payload["command_count"], 34)
             self.assertEqual(payload["fixture_count"], 7)
             self.assertEqual(payload["release_asset_checklist"]["status"], "passed")
             self.assertEqual(payload["latest_review_score"]["overall"], "94/100")

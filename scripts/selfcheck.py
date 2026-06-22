@@ -24,6 +24,7 @@ DOC_LINK_CHECK_PATHS = (
     Path("docs/comparison-to-spreadsheets.md"),
     Path("docs/release-readiness.md"),
     Path("docs/reviewer-evidence.md"),
+    Path("docs/release-notes-v0.9.6.md"),
     Path("docs/release-notes-v0.9.3.md"),
 )
 REQUIRED_DOC_PATHS = (
@@ -1434,7 +1435,7 @@ def check_evidence_handoff_audit() -> int:
         return 1
     boundaries = set(payload.get("boundaries", []))
     required_boundaries = {
-        "static/local-source only",
+        "local/static fixtures only",
         "no live data",
         "no broker connection",
         "no personalized investment advice",
@@ -1444,6 +1445,7 @@ def check_evidence_handoff_audit() -> int:
         "no buy advice",
         "no sell advice",
         "no hold advice",
+        "no private data",
     }
     if not required_boundaries.issubset(boundaries):
         print("evidence handoff audit missing boundary marker(s)")
@@ -1466,6 +1468,7 @@ def check_evidence_handoff_audit() -> int:
         "no live data",
         "no broker connection",
         "no personalized investment advice",
+        "no private data",
     )
     missing_markers = [marker for marker in required_markers if marker not in markdown]
     if missing_markers:
@@ -1501,6 +1504,98 @@ def check_evidence_handoff_audit() -> int:
             print(f"demo release manifest missing evidence handoff audit path: {path}")
             return 1
     print("evidence handoff audit passed")
+    return 0
+
+
+def check_evidence_handoff_compare() -> int:
+    print("== evidence handoff compare ==", flush=True)
+    paths = [
+        ROOT / "examples/output/evidence_handoff_compare_demo_before.json",
+        ROOT / "examples/output/evidence_handoff_compare_demo_after.json",
+        ROOT / "examples/output/evidence_handoff_compare.json",
+        ROOT / "examples/output/evidence_handoff_compare.md",
+    ]
+    missing = [path.relative_to(ROOT).as_posix() for path in paths if not path.is_file()]
+    if missing:
+        print("missing evidence handoff compare artifact(s): " + ", ".join(missing))
+        return 1
+
+    payload = json.loads((ROOT / "examples/output/evidence_handoff_compare.json").read_text(encoding="utf-8"))
+    if payload.get("schema") != "earnings-call-risk-map.evidence-handoff-compare.v1":
+        print("evidence handoff compare has unexpected schema")
+        return 1
+    summary = payload.get("summary", {})
+    if summary.get("added_count") != 1 or summary.get("removed_count") != 1 or summary.get("changed_count") != 1:
+        print("evidence handoff compare has unexpected summary counts")
+        return 1
+    changed = payload.get("changed", [])
+    if not changed or {"bytes", "sha256", "freshness_status"} - {
+        item.get("field") for item in changed[0].get("differences", [])
+    }:
+        print("evidence handoff compare missing expected changed metadata fields")
+        return 1
+    boundaries = set(payload.get("boundaries", []))
+    required_boundaries = {
+        "local/static fixtures only",
+        "no live data",
+        "no broker connection",
+        "no personalized investment advice",
+        "no legal advice",
+        "no accounting advice",
+        "no tax advice",
+        "no buy advice",
+        "no sell advice",
+        "no hold advice",
+        "no private data",
+    }
+    if not required_boundaries.issubset(boundaries):
+        print("evidence handoff compare missing boundary marker(s)")
+        return 1
+
+    markdown = (ROOT / "examples/output/evidence_handoff_compare.md").read_text(encoding="utf-8")
+    required_markers = (
+        "Evidence Handoff Compare",
+        "Changed Entries",
+        "Added Entries",
+        "Removed Entries",
+        "Boundary Comparison",
+        "no live data",
+        "no private data",
+    )
+    missing_markers = [marker for marker in required_markers if marker not in markdown]
+    if missing_markers:
+        print("evidence handoff compare markdown missing marker(s): " + ", ".join(missing_markers))
+        return 1
+
+    release_assets = json.loads(
+        subprocess.run(
+            [sys.executable, "-m", "earnings_call_risk_map", "release-assets"],
+            cwd=ROOT,
+            env=ENV,
+            text=True,
+            capture_output=True,
+            check=True,
+        ).stdout
+    )
+    release_manifest_paths = {
+        item["path"]
+        for item in json.loads((ROOT / "release_manifest.json").read_text(encoding="utf-8"))["files"]
+    }
+    demo_manifest_paths = {
+        item["path"]
+        for item in json.loads((ROOT / "examples/output/release_manifest.json").read_text(encoding="utf-8"))["files"]
+    }
+    for path in (item.relative_to(ROOT).as_posix() for item in paths):
+        if path not in release_assets.get("expected_assets", []):
+            print(f"release assets missing evidence handoff compare path: {path}")
+            return 1
+        if path not in release_manifest_paths:
+            print(f"release manifest missing evidence handoff compare path: {path}")
+            return 1
+        if path not in demo_manifest_paths:
+            print(f"demo release manifest missing evidence handoff compare path: {path}")
+            return 1
+    print("evidence handoff compare passed")
     return 0
 
 
@@ -1541,6 +1636,7 @@ def check_command_cheat_sheet() -> int:
         "demo-screenshot-guide",
         "doctor",
         "evidence-handoff-audit",
+        "evidence-handoff-compare",
         "examples-index",
         "fixture-summary",
         "fixture-catalog",
@@ -1885,6 +1981,9 @@ def main() -> int:
             if code:
                 return code
             code = check_evidence_handoff_audit()
+            if code:
+                return code
+            code = check_evidence_handoff_compare()
             if code:
                 return code
             code = check_fresh_clone_plan()

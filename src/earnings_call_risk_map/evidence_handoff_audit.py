@@ -14,7 +14,7 @@ from .version import __version__
 SCHEMA_LABEL = "earnings-call-risk-map.evidence-handoff-audit.v1"
 
 BOUNDARIES = (
-    "static/local-source only",
+    "local/static fixtures only",
     "no live data",
     "no broker connection",
     "no personalized investment advice",
@@ -24,6 +24,7 @@ BOUNDARIES = (
     "no buy advice",
     "no sell advice",
     "no hold advice",
+    "no private data",
 )
 
 EXPECTED_ARTIFACTS: tuple[tuple[str, str], ...] = (

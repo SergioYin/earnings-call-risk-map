@@ -1,0 +1,117 @@
+{
+  "added": [
+    {
+      "bytes": 180,
+      "evidence_id": null,
+      "key": "examples/output/demo_review_queue.md",
+      "present": true,
+      "relative_path": "examples/output/demo_review_queue.md",
+      "role": "generated_review_queue",
+      "sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+    }
+  ],
+  "boundaries": [
+    "local/static fixtures only",
+    "no live data",
+    "no broker connection",
+    "no personalized investment advice",
+    "no legal advice",
+    "no accounting advice",
+    "no tax advice",
+    "no buy advice",
+    "no sell advice",
+    "no hold advice",
+    "no private data"
+  ],
+  "boundary_comparison": {
+    "added": [
+      "no accounting advice",
+      "no buy advice",
+      "no hold advice",
+      "no legal advice",
+      "no sell advice",
+      "no tax advice"
+    ],
+    "removed": [],
+    "unchanged": [
+      "local/static fixtures only",
+      "no broker connection",
+      "no live data",
+      "no personalized investment advice",
+      "no private data"
+    ]
+  },
+  "changed": [
+    {
+      "differences": [
+        {
+          "after": 260,
+          "before": 240,
+          "field": "bytes"
+        },
+        {
+          "after": "2222222222222222222222222222222222222222222222222222222222222222",
+          "before": "1111111111111111111111111111111111111111111111111111111111111111",
+          "field": "sha256"
+        },
+        {
+          "after": "static_reviewed",
+          "before": "static",
+          "field": "freshness_status"
+        }
+      ],
+      "evidence_id": null,
+      "key": "examples/output/demo_report.md",
+      "relative_path": "examples/output/demo_report.md"
+    }
+  ],
+  "comparison_notes": [
+    "Stable keys prefer evidence_id when present and otherwise use relative_path.",
+    "Changed entries list metadata differences only; artifact contents are not embedded.",
+    "Byte, SHA-256, presence, role, freshness, and source-boundary fields are compared when available."
+  ],
+  "inputs": {
+    "after": "examples/output/evidence_handoff_compare_demo_after.json",
+    "before": "examples/output/evidence_handoff_compare_demo_before.json"
+  },
+  "package": "earnings-call-risk-map",
+  "removed": [
+    {
+      "bytes": null,
+      "evidence_id": null,
+      "key": "examples/output/old_review_queue.md",
+      "present": false,
+      "relative_path": "examples/output/old_review_queue.md",
+      "role": "generated_review_queue",
+      "sha256": null
+    }
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema": "earnings-call-risk-map.evidence-handoff-compare.v1",
+  "source_schemas": {
+    "after": "earnings-call-risk-map.evidence-handoff-audit.v1",
+    "before": "earnings-call-risk-map.evidence-handoff-audit.v1"
+  },
+  "summary": {
+    "added_count": 1,
+    "after_entry_count": 3,
+    "before_entry_count": 3,
+    "boundary_changed": true,
+    "changed_count": 1,
+    "removed_count": 1,
+    "safety_notice_changed": false,
+    "unchanged_count": 1
+  },
+  "unchanged": [
+    {
+      "bytes": 120,
+      "evidence_id": null,
+      "key": "README.md",
+      "present": true,
+      "relative_path": "README.md",
+      "role": "documentation",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "version": "0.9.3"
+}
