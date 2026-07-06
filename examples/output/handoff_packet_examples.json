@@ -43,7 +43,7 @@
           "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
           "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
         },
-        "tool_version": "0.9.3"
+        "tool_version": "0.9.7"
       },
       "slug": "quarterly-review",
       "title": "Quarterly Review Handoff"
@@ -89,7 +89,7 @@
           "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
           "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
         },
-        "tool_version": "0.9.3"
+        "tool_version": "0.9.7"
       },
       "slug": "catalyst-check-in",
       "title": "Catalyst Check-In Handoff"
@@ -135,7 +135,7 @@
           "management_claims": "source-provided company statements or prepared remarks; verify against filings and transcripts",
           "user_synthesis": "user-authored notes, tags, and deterministic tool scores; review prompts, not advice"
         },
-        "tool_version": "0.9.3"
+        "tool_version": "0.9.7"
       },
       "slug": "post-earnings-thesis-refresh",
       "title": "Post-Earnings Thesis Refresh Handoff"

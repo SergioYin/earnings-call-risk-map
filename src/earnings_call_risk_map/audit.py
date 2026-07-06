@@ -33,6 +33,7 @@ COMMANDS = (
     "playbooks",
     "promotion-pack",
     "publication-checklist",
+    "release-owner-compare-blockers",
     "release-owner-handoff",
     "release-assets",
     "release-notes",

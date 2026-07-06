@@ -441,7 +441,7 @@ class DocsTests(unittest.TestCase):
         text = path.read_text(encoding="utf-8")
 
         for marker in (
-            "contains exactly `0.9.3`",
+            "contains exactly `0.9.7`",
             "contains `OK` and a `Ran ... tests` line",
             "`== unit tests ==`",
             "`== demo ==`",
@@ -659,10 +659,10 @@ class DocsTests(unittest.TestCase):
             "Exact Verification Commands",
             "Promotion Evidence Paths",
             "Owner-Controlled Promotion Gates",
-            "Confirm release metadata agrees on `0.9.3`",
+            "Confirm release metadata agrees on `0.9.7`",
             "git status --short",
-            "git tag -a v0.9.3 -m \"v0.9.3\"",
-            "gh release create v0.9.3 --title \"v0.9.3\" --notes-file docs/release-notes-v0.9.3.md",
+            "git tag -a v0.9.7 -m \"v0.9.7\"",
+            "gh release create v0.9.7 --title \"v0.9.7\" --notes-file docs/release-notes-v0.9.7.md",
             "PYTHONPATH=src python -m earnings_call_risk_map version",
             "PYTHONPATH=src python -m unittest discover -s tests",
             "PYTHONPATH=src python scripts/selfcheck.py",

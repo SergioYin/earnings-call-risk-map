@@ -31,6 +31,7 @@ def build_schema_reference() -> dict[str, Any]:
         "x_companion_output_schemas": {
             "evidence_handoff_audit": "earnings-call-risk-map.evidence-handoff-audit.v1",
             "evidence_handoff_compare": "earnings-call-risk-map.evidence-handoff-compare.v1",
+            "release_owner_compare_blockers": "earnings-call-risk-map.release-owner-compare-blockers.v1",
             "evidence_handoff_compare_keys": (
                 "Comparison matches checked_artifacts by evidence_id when present and otherwise by relative_path; "
                 "changed entries report metadata-only byte/hash/presence/role/freshness/source-boundary "

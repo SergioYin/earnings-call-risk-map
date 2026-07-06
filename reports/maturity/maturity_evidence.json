@@ -67,6 +67,8 @@
     "examples/output/publication_checklist.json",
     "examples/output/publication_checklist.md",
     "examples/output/release_manifest.json",
+    "examples/output/release_owner_compare_blockers.json",
+    "examples/output/release_owner_compare_blockers.md",
     "examples/output/risk_language_taxonomy.md",
     "examples/output/sample_filled_template_report.md",
     "examples/output/sample_filled_template_review_queue.json",
@@ -95,16 +97,16 @@
     "examples/output/visual_evidence_receipt.md",
     "release_manifest.json"
   ],
-  "command_count": 34,
+  "command_count": 35,
   "evidence_summary": {
-    "command_count": 34,
+    "command_count": 35,
     "fixture_count": 7,
     "latest_review_score": "94/100",
     "latest_review_source": "reports/reviews/2026-06-18-v0.9.0-final-review.md",
     "privacy_scan_status": "passed",
     "release_asset_status": "passed",
-    "release_assets_expected": 105,
-    "release_assets_present": 105
+    "release_assets_expected": 107,
+    "release_assets_present": 107
   },
   "fixture_count": 7,
   "fresh_clone_commands": [
@@ -123,7 +125,7 @@
     "level": "L4+",
     "overall": "94/100",
     "promotion_gate": "PASS for small-scope public promotion after release owner approval",
-    "release_gate": "PASS for owner-controlled v0.9.3 release after final worktree inspection",
+    "release_gate": "PASS for owner-controlled v0.9.7 release after final worktree inspection",
     "review_date": "2026-06-18",
     "source": "reports/reviews/2026-06-18-v0.9.0-final-review.md"
   },
@@ -146,7 +148,7 @@
     "level": "L4+",
     "overall": "94/100",
     "promotion_gate": "PASS for small-scope public promotion after release owner approval",
-    "release_gate": "PASS for owner-controlled v0.9.3 release after final worktree inspection",
+    "release_gate": "PASS for owner-controlled v0.9.7 release after final worktree inspection",
     "review_date": "2026-06-18",
     "source": "reports/reviews/2026-06-18-v0.9.0-final-review.md"
   },
@@ -159,18 +161,18 @@
     "stdout": "privacy scan passed"
   },
   "release_asset_checklist": {
-    "expected_count": 105,
+    "expected_count": 107,
     "missing_assets": [],
     "missing_count": 0,
-    "present_count": 105,
+    "present_count": 107,
     "status": "passed"
   },
   "release_assets": [
     "README.md",
     "CHANGELOG.md",
+    "docs/release-notes-v0.9.7.md",
     "docs/release-notes-v0.9.6.md",
     "docs/release-notes-v0.9.4.md",
-    "docs/release-notes-v0.9.3.md",
     "docs/comparison-to-spreadsheets.md",
     "examples/playbooks/README.md",
     "examples/playbooks/quarterly-review.md",
@@ -255,6 +257,8 @@
     "examples/output/evidence_handoff_compare.json",
     "examples/output/evidence_handoff_compare_demo_before.json",
     "examples/output/evidence_handoff_compare_demo_after.json",
+    "examples/output/release_owner_compare_blockers.md",
+    "examples/output/release_owner_compare_blockers.json",
     "examples/output/fresh_clone_plan.md",
     "examples/output/fresh_clone_plan.json",
     "examples/output/playbook_output_examples.md",
@@ -315,6 +319,8 @@
     "PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-audit --root . --format json --output examples/output/evidence_handoff_audit.json",
     "PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-compare --before examples/output/evidence_handoff_compare_demo_before.json --after examples/output/evidence_handoff_compare_demo_after.json --format markdown --output examples/output/evidence_handoff_compare.md",
     "PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-compare --before examples/output/evidence_handoff_compare_demo_before.json --after examples/output/evidence_handoff_compare_demo_after.json --format json --output examples/output/evidence_handoff_compare.json",
+    "PYTHONPATH=src python -m earnings_call_risk_map release-owner-compare-blockers --compare examples/output/evidence_handoff_compare.json --format markdown --output examples/output/release_owner_compare_blockers.md",
+    "PYTHONPATH=src python -m earnings_call_risk_map release-owner-compare-blockers --compare examples/output/evidence_handoff_compare.json --format json --output examples/output/release_owner_compare_blockers.json",
     "PYTHONPATH=src python -m earnings_call_risk_map fresh-clone-plan --format markdown --out examples/output/fresh_clone_plan.md",
     "PYTHONPATH=src python -m earnings_call_risk_map fresh-clone-plan --format json --out examples/output/fresh_clone_plan.json",
     "PYTHONPATH=src python -m earnings_call_risk_map cheat-sheet --format markdown --out examples/output/command_cheat_sheet.md",
@@ -327,5 +333,5 @@
     "python scripts/privacy_scan.py",
     "git diff --check"
   ],
-  "version": "0.9.3"
+  "version": "0.9.7"
 }

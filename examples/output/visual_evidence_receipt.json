@@ -205,5 +205,5 @@
   },
   "source_boundary_artifact": "examples/output/source_boundary_evidence.json",
   "source_doc": "docs/demo-screenshot-guide.md",
-  "tool_version": "0.9.3"
+  "tool_version": "0.9.7"
 }

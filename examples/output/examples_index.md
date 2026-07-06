@@ -8,7 +8,7 @@ Bundled examples are local deterministic fixtures, templates, and generated arti
 
 - Fixtures: 7
 - Templates: 3
-- Generated outputs: 85
+- Generated outputs: 87
 - Recommended next command: `earnings-call-risk-map demo --out-dir examples/output`
 
 ## Bundled Fixtures
@@ -101,6 +101,8 @@ Bundled examples are local deterministic fixtures, templates, and generated arti
 | `examples/output/publication_checklist.json` | `json` | generated output | `earnings-call-risk-map demo --out-dir examples/output` |
 | `examples/output/publication_checklist.md` | `md` | generated output | `earnings-call-risk-map demo --out-dir examples/output` |
 | `examples/output/release_manifest.json` | `json` | manifest | `earnings-call-risk-map demo --out-dir examples/output` |
+| `examples/output/release_owner_compare_blockers.json` | `json` | snapshot compare | `earnings-call-risk-map demo --out-dir examples/output` |
+| `examples/output/release_owner_compare_blockers.md` | `md` | snapshot compare | `earnings-call-risk-map demo --out-dir examples/output` |
 | `examples/output/risk_language_taxonomy.md` | `md` | taxonomy | `earnings-call-risk-map risk-taxonomy --out examples/output/risk_language_taxonomy.md` |
 | `examples/output/sample_filled_template_report.md` | `md` | markdown report | `earnings-call-risk-map demo --out-dir examples/output` |
 | `examples/output/sample_filled_template_review_queue.json` | `json` | review queue | `earnings-call-risk-map demo --out-dir examples/output` |

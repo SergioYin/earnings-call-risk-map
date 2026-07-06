@@ -1,0 +1,170 @@
+{
+  "boundaries": [
+    "local/static fixtures only",
+    "no live data",
+    "no broker connection",
+    "no personalized investment advice",
+    "no legal advice",
+    "no accounting advice",
+    "no tax advice",
+    "no buy advice",
+    "no sell advice",
+    "no hold advice",
+    "no private data"
+  ],
+  "checklist": [
+    {
+      "blocking": true,
+      "evidence": [
+        {
+          "key": "examples/output/old_review_queue.md",
+          "relative_path": "examples/output/old_review_queue.md"
+        }
+      ],
+      "evidence_count": 1,
+      "reviewer_action": "Restore the artifact, regenerate the handoff bundle, or record owner acceptance before release.",
+      "slug": "no-removed-evidence-artifacts",
+      "status": "blocker",
+      "title": "No evidence handoff artifacts were removed."
+    },
+    {
+      "blocking": false,
+      "evidence": [],
+      "evidence_count": 0,
+      "reviewer_action": "Regenerate missing artifacts before release or explicitly remove them from the release evidence set.",
+      "slug": "no-artifacts-became-missing",
+      "status": "clear",
+      "title": "No previously present evidence artifact became missing."
+    },
+    {
+      "blocking": false,
+      "evidence": [],
+      "evidence_count": 0,
+      "reviewer_action": "Do not release until removed boundary language is restored or the release owner accepts the changed boundary.",
+      "slug": "release-boundaries-preserved",
+      "status": "clear",
+      "title": "No existing local-only, no-live-data, no-private-data, or non-advice boundary was removed."
+    },
+    {
+      "blocking": false,
+      "evidence": [],
+      "evidence_count": 0,
+      "reviewer_action": "Review safety notice text against the non-advice boundary before release.",
+      "slug": "safety-notice-preserved",
+      "status": "clear",
+      "title": "The safety notice did not change between evidence handoff audits."
+    },
+    {
+      "blocking": false,
+      "evidence": [
+        {
+          "key": "examples/output/demo_review_queue.md",
+          "relative_path": "examples/output/demo_review_queue.md"
+        }
+      ],
+      "evidence_count": 1,
+      "reviewer_action": "Inspect added artifacts for source scope, stale/static labeling, and release-owner relevance.",
+      "slug": "added-artifacts-reviewed",
+      "status": "review_required",
+      "title": "Added evidence artifacts are reviewed for public-source, local-only, and non-advice boundaries."
+    },
+    {
+      "blocking": false,
+      "evidence": [
+        {
+          "key": "examples/output/demo_report.md",
+          "relative_path": "examples/output/demo_report.md"
+        }
+      ],
+      "evidence_count": 1,
+      "reviewer_action": "Review the changed artifact diff or regeneration command before release.",
+      "slug": "content-hash-or-size-changes-reviewed",
+      "status": "review_required",
+      "title": "Changed byte counts or SHA-256 hashes are explained by intentional generated artifact or documentation updates."
+    },
+    {
+      "blocking": false,
+      "evidence": [],
+      "evidence_count": 0,
+      "reviewer_action": "Confirm role changes still route artifacts to the right reviewer handoff bucket.",
+      "slug": "role-changes-reviewed",
+      "status": "clear",
+      "title": "Evidence role changes are intentional and do not hide release evidence."
+    },
+    {
+      "blocking": false,
+      "evidence": [
+        {
+          "key": "examples/output/demo_report.md",
+          "relative_path": "examples/output/demo_report.md"
+        }
+      ],
+      "evidence_count": 1,
+      "reviewer_action": "Review source-boundary and freshness notes; do not treat stale/static artifacts as current analysis.",
+      "slug": "source-and-freshness-changes-reviewed",
+      "status": "review_required",
+      "title": "Freshness and source-boundary metadata changes are reviewed before release."
+    },
+    {
+      "blocking": false,
+      "evidence": [
+        {
+          "key": "no accounting advice",
+          "relative_path": ""
+        },
+        {
+          "key": "no buy advice",
+          "relative_path": ""
+        },
+        {
+          "key": "no hold advice",
+          "relative_path": ""
+        },
+        {
+          "key": "no legal advice",
+          "relative_path": ""
+        },
+        {
+          "key": "no sell advice",
+          "relative_path": ""
+        },
+        {
+          "key": "no tax advice",
+          "relative_path": ""
+        }
+      ],
+      "evidence_count": 6,
+      "reviewer_action": "Confirm added boundary text is consistent with public docs and generated evidence.",
+      "slug": "added-boundaries-reviewed",
+      "status": "review_required",
+      "title": "New boundary language is reviewed for consistency across public docs and generated artifacts."
+    }
+  ],
+  "inputs": {
+    "compare": "examples/output/evidence_handoff_compare.json"
+  },
+  "package": "earnings-call-risk-map",
+  "release_owner_notes": [
+    "This checklist summarizes metadata from evidence handoff compare artifacts; it does not embed artifact contents.",
+    "A clear checklist does not approve tagging, publishing, hosted demo deployment, or public announcement.",
+    "The release owner must review changed evidence, stale/static labels, and source boundaries before relying on the handoff."
+  ],
+  "safety_notice": "Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.",
+  "schema": "earnings-call-risk-map.release-owner-compare-blockers.v1",
+  "source_inputs": {
+    "after": "examples/output/evidence_handoff_compare_demo_after.json",
+    "before": "examples/output/evidence_handoff_compare_demo_before.json"
+  },
+  "source_schema": "earnings-call-risk-map.evidence-handoff-compare.v1",
+  "summary": {
+    "blocker_count": 1,
+    "clear_count": 4,
+    "compare_added_count": 1,
+    "compare_changed_count": 1,
+    "compare_removed_count": 1,
+    "compare_unchanged_count": 1,
+    "release_decision": "blocked",
+    "review_required_count": 4
+  },
+  "version": "0.9.7"
+}

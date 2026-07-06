@@ -1,12 +1,12 @@
 # Maturity Evidence Bundle
 
 - Package: `earnings-call-risk-map`
-- Version: `0.9.3`
-- Commands: 34
+- Version: `0.9.7`
+- Commands: 35
 - Fixtures: 7
 - Skill path: `skills/agent/earnings-call-risk-map/SKILL.md` (present)
 - Review template: `reports/reviews/release-readiness-review.md` (present)
-- Release assets: passed (105/105 present)
+- Release assets: passed (107/107 present)
 - Privacy scan: passed (`python scripts/privacy_scan.py`)
 - Latest review score: 94/100 (reports/reviews/2026-06-18-v0.9.0-final-review.md)
 
@@ -49,6 +49,8 @@
 - `PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-audit --root . --format json --output examples/output/evidence_handoff_audit.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-compare --before examples/output/evidence_handoff_compare_demo_before.json --after examples/output/evidence_handoff_compare_demo_after.json --format markdown --output examples/output/evidence_handoff_compare.md`
 - `PYTHONPATH=src python -m earnings_call_risk_map evidence-handoff-compare --before examples/output/evidence_handoff_compare_demo_before.json --after examples/output/evidence_handoff_compare_demo_after.json --format json --output examples/output/evidence_handoff_compare.json`
+- `PYTHONPATH=src python -m earnings_call_risk_map release-owner-compare-blockers --compare examples/output/evidence_handoff_compare.json --format markdown --output examples/output/release_owner_compare_blockers.md`
+- `PYTHONPATH=src python -m earnings_call_risk_map release-owner-compare-blockers --compare examples/output/evidence_handoff_compare.json --format json --output examples/output/release_owner_compare_blockers.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map fresh-clone-plan --format markdown --out examples/output/fresh_clone_plan.md`
 - `PYTHONPATH=src python -m earnings_call_risk_map fresh-clone-plan --format json --out examples/output/fresh_clone_plan.json`
 - `PYTHONPATH=src python -m earnings_call_risk_map cheat-sheet --format markdown --out examples/output/command_cheat_sheet.md`
@@ -80,7 +82,7 @@
 - Review date: `2026-06-18`
 - Overall: `94/100`
 - Level: `L4+`
-- Release gate: `PASS for owner-controlled v0.9.3 release after final worktree inspection`
+- Release gate: `PASS for owner-controlled v0.9.7 release after final worktree inspection`
 - Promotion gate: `PASS for small-scope public promotion after release owner approval`
 
 ### Scorecard
@@ -104,9 +106,9 @@
 
 - `README.md`
 - `CHANGELOG.md`
+- `docs/release-notes-v0.9.7.md`
 - `docs/release-notes-v0.9.6.md`
 - `docs/release-notes-v0.9.4.md`
-- `docs/release-notes-v0.9.3.md`
 - `docs/comparison-to-spreadsheets.md`
 - `examples/playbooks/README.md`
 - `examples/playbooks/quarterly-review.md`
@@ -191,6 +193,8 @@
 - `examples/output/evidence_handoff_compare.json`
 - `examples/output/evidence_handoff_compare_demo_before.json`
 - `examples/output/evidence_handoff_compare_demo_after.json`
+- `examples/output/release_owner_compare_blockers.md`
+- `examples/output/release_owner_compare_blockers.json`
 - `examples/output/fresh_clone_plan.md`
 - `examples/output/fresh_clone_plan.json`
 - `examples/output/playbook_output_examples.md`
@@ -277,6 +281,8 @@
 - `examples/output/publication_checklist.json`
 - `examples/output/publication_checklist.md`
 - `examples/output/release_manifest.json`
+- `examples/output/release_owner_compare_blockers.json`
+- `examples/output/release_owner_compare_blockers.md`
 - `examples/output/risk_language_taxonomy.md`
 - `examples/output/sample_filled_template_report.md`
 - `examples/output/sample_filled_template_review_queue.json`

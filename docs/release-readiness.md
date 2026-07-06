@@ -2,7 +2,7 @@
 
 Use the release readiness review template at `reports/reviews/release-readiness-review.md` before publishing a demo bundle or tagged release.
 
-Use `docs/release-notes-v0.9.6.md` as the evidence handoff compare note for v0.9.6. The package-internal version remains `0.9.3`; use `docs/release-notes-v0.9.4.md` as the post-release evidence hygiene note for v0.9.4 and `docs/release-notes-v0.9.3.md` as the deterministic package release notes draft for v0.9.3. Prior notes remain in `docs/release-notes-v0.9.2.md`, `docs/release-notes-v0.9.0.md`, `docs/release-notes-v0.8.0.md`, `docs/release-notes-v0.7.0.md`, `docs/release-notes-v0.6.0.md`, `docs/release-notes-v0.5.0.md`, `docs/release-notes-v0.4.0.md`, `docs/release-notes-v0.3.0.md`, `docs/release-notes-v0.2.0.md`, and `docs/release-notes-v0.1.0.md`.
+Use `docs/release-notes-v0.9.7.md` as the current package release note for the release-owner compare blocker checklist increment. Use `docs/release-notes-v0.9.6.md` as the evidence handoff compare note that feeds the blocker checklist. Prior notes remain in `docs/release-notes-v0.9.4.md`, `docs/release-notes-v0.9.3.md`, `docs/release-notes-v0.9.2.md`, `docs/release-notes-v0.9.0.md`, `docs/release-notes-v0.8.0.md`, `docs/release-notes-v0.7.0.md`, `docs/release-notes-v0.6.0.md`, `docs/release-notes-v0.5.0.md`, `docs/release-notes-v0.4.0.md`, `docs/release-notes-v0.3.0.md`, `docs/release-notes-v0.2.0.md`, and `docs/release-notes-v0.1.0.md`.
 
 Use `docs/distribution.md` for local install, `pipx`, supported Python version, and wheel dry-run checks. Do not publish package artifacts as part of the dry run.
 

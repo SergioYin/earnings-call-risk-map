@@ -2,7 +2,7 @@
 
 - Schema: `earnings-call-risk-map.evidence-handoff-compare.v1`
 - Package: `earnings-call-risk-map`
-- Version: `0.9.3`
+- Version: `0.9.7`
 - Before: `examples/output/evidence_handoff_compare_demo_before.json`
 - After: `examples/output/evidence_handoff_compare_demo_after.json`
 - Added: 1

@@ -1,7 +1,7 @@
 # Portfolio/Thesis Handoff Packet
 
 - Packet type: `portfolio_thesis_handoff`
-- Tool version: `0.9.3`
+- Tool version: `0.9.7`
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
 

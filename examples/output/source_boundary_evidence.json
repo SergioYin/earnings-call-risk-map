@@ -173,7 +173,7 @@
     "docs/source-attribution-guide.md",
     "docs/fixture-catalog.md"
   ],
-  "tool_version": "0.9.3",
+  "tool_version": "0.9.7",
   "walkthrough_receipt": {
     "artifact_status": [
       {

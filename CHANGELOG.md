@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.9.7 - 2026-07-07
+
+Release-owner compare blocker checklist increment.
+
+### Added
+
+- Release notes draft at `docs/release-notes-v0.9.7.md`.
+- `release-owner-compare-blockers` turns evidence handoff compare JSON into a release-owner blocker and review checklist in JSON or Markdown.
+- Checked-in blocker checklist demo outputs under `examples/output/`.
+- CLI, selfcheck, maturity evidence, package audit, generated command examples, and schema reference coverage for the blocker checklist command.
+
+### Changed
+
+- Release metadata, release-owner docs, generated manifests, and generated maturity evidence now identify `0.9.7` as the current package version.
+- README, usage, release-readiness, reviewer evidence, and owner handoff docs now include the release-owner blocker checklist in the release verification flow.
+- Package version is now `0.9.7`.
+
+### Safety
+
+- The command is local-only and metadata-only. It reads checked-in or user-supplied static compare JSON files and adds no live data, network calls, broker connections, private-data handling, workflows, recommendations, ratings, price targets, portfolio actions, or personalized investment, legal, accounting, tax, buy, sell, or hold advice.
+
 ## 0.9.6 - 2026-06-23
 
 Release-to-release evidence handoff comparison increment.

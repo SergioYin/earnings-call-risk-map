@@ -9,6 +9,7 @@ from typing import Any
 
 from .audit import build_package_audit
 from .models import SAFETY_NOTICE
+from .version import __version__
 
 MARKDOWN_LINK_RE = re.compile(r"!?\[[^\]]+\]\(([^)]+)\)")
 DOC_LINK_CHECK_PATHS = (
@@ -27,7 +28,7 @@ DOC_LINK_CHECK_PATHS = (
     Path("docs/publication-checklist.md"),
     Path("docs/release-readiness.md"),
     Path("docs/reviewer-evidence.md"),
-    Path("docs/release-notes-v0.9.3.md"),
+    Path(f"docs/release-notes-v{__version__}.md"),
     Path("docs/risk-language-taxonomy.md"),
     Path("docs/roadmap.md"),
     Path("docs/security-and-privacy.md"),

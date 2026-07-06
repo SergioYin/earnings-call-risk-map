@@ -40,5 +40,5 @@
     "present_artifact_count": 2,
     "readiness_status": "needs_artifact_regeneration"
   },
-  "version": "0.9.3"
+  "version": "0.9.7"
 }

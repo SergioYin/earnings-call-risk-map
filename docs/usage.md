@@ -269,6 +269,25 @@ evidence-handoff-compare --before examples/output/evidence_handoff_compare_demo_
 
 The demo bundle writes `examples/output/evidence_handoff_compare_demo_before.json`, `examples/output/evidence_handoff_compare_demo_after.json`, `examples/output/evidence_handoff_compare.json`, and `examples/output/evidence_handoff_compare.md`.
 
+## Release Owner Compare Blockers
+
+`release-owner-compare-blockers` reads a local `evidence-handoff-compare` JSON file and emits a deterministic release-owner blocker checklist in JSON or Markdown. It does not read live market data, fetch URLs, inspect artifact contents, connect to brokers, or provide personalized investment, legal, accounting, tax, buy, sell, or hold advice.
+
+The checklist treats removed evidence artifacts, artifacts that became missing, removed release boundaries, and safety notice changes as release blockers. It treats added artifacts, byte/hash changes, role changes, freshness changes, source-boundary metadata changes, and added boundary text as review-required items for the release owner.
+
+```bash
+python -m earnings_call_risk_map release-owner-compare-blockers --compare examples/output/evidence_handoff_compare.json --format markdown
+python -m earnings_call_risk_map release-owner-compare-blockers --compare examples/output/evidence_handoff_compare.json --format json --output examples/output/release_owner_compare_blockers.json
+```
+
+After installation, the standalone console command is also available:
+
+```bash
+release-owner-compare-blockers --compare examples/output/evidence_handoff_compare.json --format markdown --output examples/output/release_owner_compare_blockers.md
+```
+
+The demo bundle writes `examples/output/release_owner_compare_blockers.json` and `examples/output/release_owner_compare_blockers.md`.
+
 ## Release Readiness
 
 `release-assets` validates the expected release notes, documentation, generated examples, manifests, maturity evidence, public skill, and review template for the current package version. It emits JSON or Markdown and exits with code `1` when any expected asset is missing.

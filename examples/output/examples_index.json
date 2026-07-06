@@ -503,6 +503,18 @@
       "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
     },
     {
+      "artifact_group": "snapshot compare",
+      "format": "json",
+      "path": "examples/output/release_owner_compare_blockers.json",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
+      "artifact_group": "snapshot compare",
+      "format": "md",
+      "path": "examples/output/release_owner_compare_blockers.md",
+      "recommended_next_command": "earnings-call-risk-map demo --out-dir examples/output"
+    },
+    {
       "artifact_group": "taxonomy",
       "format": "md",
       "path": "examples/output/risk_language_taxonomy.md",
@@ -622,7 +634,7 @@
   "schema_version": "0.1",
   "summary": {
     "fixture_count": 7,
-    "generated_output_count": 85,
+    "generated_output_count": 87,
     "template_count": 3
   },
   "templates": [

@@ -1,5 +1,5 @@
 {
-  "command_count": 34,
+  "command_count": 35,
   "commands": [
     "agent-workflow",
     "analyze",
@@ -23,6 +23,7 @@
     "playbooks",
     "promotion-pack",
     "publication-checklist",
+    "release-owner-compare-blockers",
     "release-owner-handoff",
     "release-assets",
     "release-notes",
@@ -184,6 +185,11 @@
       },
       {
         "credentials_required": false,
+        "name": "release-owner-compare-blockers",
+        "network_required": false
+      },
+      {
+        "credentials_required": false,
         "name": "release-owner-handoff",
         "network_required": false
       },
@@ -249,7 +255,7 @@
     "status": "passed"
   },
   "name": "earnings-call-risk-map",
-  "output_artifact_count": 83,
+  "output_artifact_count": 85,
   "output_artifacts": [
     "examples/output/agent_workflow.json",
     "examples/output/agent_workflow.md",
@@ -315,6 +321,8 @@
     "examples/output/publication_checklist.json",
     "examples/output/publication_checklist.md",
     "examples/output/release_manifest.json",
+    "examples/output/release_owner_compare_blockers.json",
+    "examples/output/release_owner_compare_blockers.md",
     "examples/output/risk_language_taxonomy.md",
     "examples/output/sample_filled_template_report.md",
     "examples/output/sample_filled_template_review_queue.json",
@@ -339,6 +347,6 @@
     "path": "skills/agent/earnings-call-risk-map/SKILL.md",
     "present": true
   },
-  "version": "0.9.3",
+  "version": "0.9.7",
   "workflow_files": []
 }

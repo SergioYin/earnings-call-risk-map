@@ -1,10 +1,10 @@
 # Package Audit
 
 - Package: `earnings-call-risk-map`
-- Version: `0.9.3`
-- Commands: 34 (`agent-workflow`, `analyze`, `audit`, `case-study-map`, `cheat-sheet`, `compare`, `data-entry-checklist`, `demo`, `demo-screenshot-guide`, `doctor`, `evidence-handoff-audit`, `evidence-handoff-compare`, `examples-index`, `fixture-catalog`, `fixture-summary`, `fresh-clone-plan`, `handoff-packet`, `manifest`, `maturity-evidence`, `playbooks`, `promotion-pack`, `publication-checklist`, `release-owner-handoff`, `release-assets`, `release-notes`, `review-queue`, `review-queue-jsonl`, `risk-taxonomy`, `schema-authoring-reference`, `schema-reference`, `source-boundary-evidence`, `template-catalog`, `version`, `visual-evidence-receipt`)
+- Version: `0.9.7`
+- Commands: 35 (`agent-workflow`, `analyze`, `audit`, `case-study-map`, `cheat-sheet`, `compare`, `data-entry-checklist`, `demo`, `demo-screenshot-guide`, `doctor`, `evidence-handoff-audit`, `evidence-handoff-compare`, `examples-index`, `fixture-catalog`, `fixture-summary`, `fresh-clone-plan`, `handoff-packet`, `manifest`, `maturity-evidence`, `playbooks`, `promotion-pack`, `publication-checklist`, `release-owner-compare-blockers`, `release-owner-handoff`, `release-assets`, `release-notes`, `review-queue`, `review-queue-jsonl`, `risk-taxonomy`, `schema-authoring-reference`, `schema-reference`, `source-boundary-evidence`, `template-catalog`, `version`, `visual-evidence-receipt`)
 - Fixtures: 7
-- Output artifacts: 83
+- Output artifacts: 85
 - Workflow files present: no
 - Skill present: yes (`skills/agent/earnings-call-risk-map/SKILL.md`)
 - Local-only audit: passed
@@ -49,6 +49,7 @@
 - `playbooks`: network required `false`, credentials required `false`
 - `promotion-pack`: network required `false`, credentials required `false`
 - `publication-checklist`: network required `false`, credentials required `false`
+- `release-owner-compare-blockers`: network required `false`, credentials required `false`
 - `release-owner-handoff`: network required `false`, credentials required `false`
 - `release-assets`: network required `false`, credentials required `false`
 - `release-notes`: network required `false`, credentials required `false`
@@ -138,6 +139,8 @@
 - `examples/output/publication_checklist.json`
 - `examples/output/publication_checklist.md`
 - `examples/output/release_manifest.json`
+- `examples/output/release_owner_compare_blockers.json`
+- `examples/output/release_owner_compare_blockers.md`
 - `examples/output/risk_language_taxonomy.md`
 - `examples/output/sample_filled_template_report.md`
 - `examples/output/sample_filled_template_review_queue.json`

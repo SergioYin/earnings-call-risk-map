@@ -4,7 +4,7 @@ Deterministic checklist for reviewing public demo screenshots from checked-in st
 
 > Educational research review only. This tool does not provide personalized investment, legal, accounting, tax, buy, sell, or hold advice. Verify source materials and note that stale/static data may no longer reflect current conditions.
 
-- Tool version: `0.9.3`
+- Tool version: `0.9.7`
 - Source doc: `docs/demo-screenshot-guide.md`
 - Source-boundary artifact: `examples/output/source_boundary_evidence.json`
 - Primary screenshot target: `examples/output/public_apple_static_case_study_dashboard.html`

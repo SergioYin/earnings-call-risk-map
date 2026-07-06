@@ -14,11 +14,11 @@
   ],
   "checked_artifacts": [
     {
-      "bytes": 21316,
+      "bytes": 22452,
       "present": true,
       "relative_path": "README.md",
       "role": "documentation",
-      "sha256": "29f0fa2c825d44177cc85dc585ee84a10fbdfbf500735d0bddad833dd3a121e7"
+      "sha256": "1ab616724a3bd468b21f00c4c13d7ff39bba37a885a7bfdde7bfe9ae32efa9f6"
     },
     {
       "bytes": 4394,
@@ -35,11 +35,11 @@
       "sha256": "8bd98218315757cd15e9edfe0e59f0f315dc1ac0c5dc96e438312a89ea09fb42"
     },
     {
-      "bytes": 7519,
+      "bytes": 7578,
       "present": true,
       "relative_path": "docs/reviewer-evidence.md",
       "role": "reviewer_handoff_documentation",
-      "sha256": "a98c544dd687111bfa7965b34ca57561b5a17608d4f82da5fa85624ac2f8fe1f"
+      "sha256": "00dc158405f39f87c717d49ed006d7a191b94c8a4ef59bc8b87abf05889a3eba"
     },
     {
       "bytes": 3220,
@@ -56,11 +56,11 @@
       "sha256": "1db47eb6bde1e8264ede9ca93379d136a32e7300d06b9b42dbe513ad54370890"
     },
     {
-      "bytes": 24971,
+      "bytes": 26421,
       "present": true,
       "relative_path": "docs/usage.md",
       "role": "documentation",
-      "sha256": "72b4b210f3899d6c8ce3452d084c24ececb39910ba16f024aac64c9272d96f7f"
+      "sha256": "a1d0a7cf63d2ff83bf82a8b88171f531ea301042f2732c8265732bae99f19160"
     },
     {
       "bytes": 5844,
@@ -140,67 +140,67 @@
       "sha256": "b28540c1fd7b9b58ca211ce9095969dd231df8adca4e1eb308bc8e2efc1347e8"
     },
     {
-      "bytes": 4295,
+      "bytes": 4451,
       "present": true,
       "relative_path": "examples/output/command_cheat_sheet.json",
       "role": "generated_json",
-      "sha256": "cc44812a6a19bd8a730a1277358e392199efe6997f3b6aefd0ca836b3b582b96"
+      "sha256": "18e0fb0c0775699718ae3ad7b9e885b0ad960771bee57a4db723c60d496124f1"
     },
     {
-      "bytes": 2770,
+      "bytes": 2882,
       "present": true,
       "relative_path": "examples/output/command_cheat_sheet.md",
       "role": "generated_markdown",
-      "sha256": "d4e3aba6b4997dd0d62a3c6536a655603c45580d0d94e77ce169e6f7b693bfde"
+      "sha256": "198309f450e70316c26cc643f8cd52c3a82b3d851511138c3c779fdd5856b0fe"
     },
     {
-      "bytes": 4295,
+      "bytes": 4451,
       "present": true,
       "relative_path": "examples/output/command_cheatsheet.json",
       "role": "generated_json",
-      "sha256": "cc44812a6a19bd8a730a1277358e392199efe6997f3b6aefd0ca836b3b582b96"
+      "sha256": "18e0fb0c0775699718ae3ad7b9e885b0ad960771bee57a4db723c60d496124f1"
     },
     {
-      "bytes": 2770,
+      "bytes": 2882,
       "present": true,
       "relative_path": "examples/output/command_cheatsheet.md",
       "role": "generated_markdown",
-      "sha256": "d4e3aba6b4997dd0d62a3c6536a655603c45580d0d94e77ce169e6f7b693bfde"
+      "sha256": "198309f450e70316c26cc643f8cd52c3a82b3d851511138c3c779fdd5856b0fe"
     },
     {
       "bytes": 9023,
       "present": true,
       "relative_path": "examples/output/consumer_hardware_dashboard.html",
       "role": "generated_dashboard",
-      "sha256": "4e6915e5f50f18a607e46ff0d05d518c827e1025537b2389e877c4fcfa74131c"
+      "sha256": "d67292c12a2a4a5fb6c990887161d14d98cf5087a0f3710e6bb95b55233c2ceb"
     },
     {
       "bytes": 4362,
       "present": true,
       "relative_path": "examples/output/consumer_hardware_report.md",
       "role": "generated_markdown",
-      "sha256": "67710b9d14658ae357725f7f0e42c15dd82ae49cc25823501cd8d6a7e6af1227"
+      "sha256": "3ff837101da52f6fa90ec9753631c3ebdb86ac945b7be342cb5678b2f1f6cf39"
     },
     {
       "bytes": 4338,
       "present": true,
       "relative_path": "examples/output/consumer_hardware_review_queue.json",
       "role": "generated_review_queue",
-      "sha256": "e5559de3c425aff7fa2cedf510dbe7f99ee0dc18f150f88e59222a485a8b1498"
+      "sha256": "698171da5f79d30629a779438d730b2af1b630fe2443930ce1b59f2b64641b09"
     },
     {
       "bytes": 3143,
       "present": true,
       "relative_path": "examples/output/consumer_hardware_review_queue.md",
       "role": "generated_review_queue",
-      "sha256": "d5a3c5d64f9446999433a9c64cbda08d6569c8d12b949482cfbd901ca67e4378"
+      "sha256": "c22c2b4243927fff10f03ca8187590a1ad69b6c2d766ad5bcfd125ad4ea80ae3"
     },
     {
       "bytes": 9021,
       "present": true,
       "relative_path": "examples/output/consumer_hardware_snapshot.json",
       "role": "generated_json",
-      "sha256": "13de71b4768609f6bb147eb160b27fb0300c132bb42342b1983a64115b47d765"
+      "sha256": "ddc5b10865121c34efd9347491631d5e6734b642564d4b312251df0cd15240e5"
     },
     {
       "bytes": 4810,
@@ -221,7 +221,7 @@
       "present": true,
       "relative_path": "examples/output/demo_compare.json",
       "role": "generated_compare",
-      "sha256": "788bb4fbbc3b3f333e9e0811a43fcb5bc7736a181c1c23ddafb2d38a91070cfd"
+      "sha256": "eaf58c843a7a24ca3e48825dffbc026c69dce5f14ec6b0cb931a6aaf9dba2a5a"
     },
     {
       "bytes": 1630,
@@ -235,42 +235,42 @@
       "present": true,
       "relative_path": "examples/output/demo_dashboard.html",
       "role": "generated_dashboard",
-      "sha256": "4a1fd4d23e76a78faac2def7b0a5cd98ace64688b235c437f19389fbbc9f0468"
+      "sha256": "dbcc5d0a0b761b2affb0cc295d29a54edeec22b9cd8534c839d2e1641b14d6b7"
     },
     {
       "bytes": 1486,
       "present": true,
       "relative_path": "examples/output/demo_prior_report.md",
       "role": "generated_markdown",
-      "sha256": "4df746a83c401097b72d82465a8f7f09311d573a00b05753f2ee943a6561e40e"
+      "sha256": "3085399f0edb6808152308e5560d70f79fbee06f429ff72a50d61c72741150f9"
     },
     {
       "bytes": 3259,
       "present": true,
       "relative_path": "examples/output/demo_prior_snapshot.json",
       "role": "generated_json",
-      "sha256": "787e3b70ae49c62d181712bd09bc5fa469a6b89515ed063d57dcd6df8241bf38"
+      "sha256": "d47a7191d0215ed81c3cf900929bc2ce8e957763e11eb7f0a6408a01bac7ecd6"
     },
     {
       "bytes": 1963,
       "present": true,
       "relative_path": "examples/output/demo_report.md",
       "role": "generated_report",
-      "sha256": "437e5fea10a983bf2f87c3ce6417a1d70f2f1fa0c9d9f46f452a5e291fcd484d"
+      "sha256": "0654432795d6ad181cbe0416fa697015138dd5868fbb42bc699424c8a77f9047"
     },
     {
       "bytes": 4546,
       "present": true,
       "relative_path": "examples/output/demo_review_queue.json",
       "role": "generated_review_queue",
-      "sha256": "7414442d6c628f0df7b96382f539cd1eb41e2742447083c67438630aaa2db99b"
+      "sha256": "2774b9ddc91b92869136a7f63f44888f6b9b80198d7c7b82ac6c7ce2fcc2a2af"
     },
     {
       "bytes": 2517,
       "present": true,
       "relative_path": "examples/output/demo_review_queue.md",
       "role": "generated_review_queue",
-      "sha256": "9349b9748ab44084268507a422e1175cd177926466981423cef0b4d785fea2a5"
+      "sha256": "000a1ef1363286b2f5670da02436815f01100209598db5b50e53b72715bb7bb3"
     },
     {
       "bytes": 41248,
@@ -298,98 +298,98 @@
       "present": true,
       "relative_path": "examples/output/demo_snapshot.json",
       "role": "generated_json",
-      "sha256": "aa6b2e30f3317dbf1b77a2ac5eaed9e220f61341da5492c3b26677331d5d2f2e"
+      "sha256": "733b8f8919c8c324a5f78ddd4b922445d977d172b1b8eb37af12524b79d44ec2"
     },
     {
       "bytes": 1095,
       "present": true,
       "relative_path": "examples/output/doctor.json",
       "role": "generated_local_only_audit",
-      "sha256": "e65e8db906fc0d284932fb7a6fb8ee771eb28403d9444c31ce049a8cfbe61ba0"
+      "sha256": "e8ec74b4281be02010a91cb06692a1b80653a3ef0df43798bea647440e23f790"
     },
     {
       "bytes": 957,
       "present": true,
       "relative_path": "examples/output/doctor.md",
       "role": "generated_local_only_audit",
-      "sha256": "03f1075feb62ae15fa04dc35eafe6cf21c81751c44b07864d662ced54239782d"
+      "sha256": "5d82dd3bb5dd3ef41b160ad89a327c9230706d1650019c52b1a798a43d2672ab"
     },
     {
       "bytes": 8996,
       "present": true,
       "relative_path": "examples/output/energy_infrastructure_dashboard.html",
       "role": "generated_dashboard",
-      "sha256": "70ee3a85f729013f1cf0736b9ebbcb4124b8c7b4563a5bf6db0ccfb76b46c291"
+      "sha256": "767bb99b2242db2673c1ae04e72b21fdbccf1b34b1bf9172b71408a1f63d7977"
     },
     {
       "bytes": 3118,
       "present": true,
       "relative_path": "examples/output/energy_infrastructure_report.md",
       "role": "generated_markdown",
-      "sha256": "7c2c41b383524076b2825d943e87bb80b74e427889e23817ac800d09a316bba6"
+      "sha256": "3ed6f8368b0b5d04f5e252714f12cad0012e6819732beacb0d211a25daf38a67"
     },
     {
       "bytes": 7925,
       "present": true,
       "relative_path": "examples/output/energy_infrastructure_review_queue.json",
       "role": "generated_review_queue",
-      "sha256": "43b81e04f6e7c8442474897d4dd708d0643ec5f3e3e3dc3c4dd233687928a09d"
+      "sha256": "fec165190819b40ee5f52b4e6ff2f283bd7f048aff42f37928f78b7b7a8609b5"
     },
     {
       "bytes": 3372,
       "present": true,
       "relative_path": "examples/output/energy_infrastructure_review_queue.md",
       "role": "generated_review_queue",
-      "sha256": "66d7f429d8d87138382dcf7d635b099f2f1a2c79b2bc50043d7f2518c688a0d5"
+      "sha256": "a8c5d22ab822ac65d19ab933b21609a3d61e1fc9461e088e9e11743fe810f4e7"
     },
     {
       "bytes": 13247,
       "present": true,
       "relative_path": "examples/output/energy_infrastructure_snapshot.json",
       "role": "generated_json",
-      "sha256": "0174c737dab9c71f9efde037b0d7cc0b832e9bb831b9e8f04dab29c115cb30a6"
+      "sha256": "0e592da2cdea1b456308b326b4fb8271da8aebf6464d4e2c3bd5fad425e6fae8"
     },
     {
       "bytes": 3501,
       "present": true,
       "relative_path": "examples/output/evidence_handoff_compare.json",
       "role": "generated_compare",
-      "sha256": "e2ea3fb05b1d2ade9a48ce5c8e294f9027d71cf318a0ff718995b8ae5dc4f887"
+      "sha256": "e5a7581d05de809b22364cb75ed1c6198d4d955978bfb76552a293db0de0ec27"
     },
     {
       "bytes": 1980,
       "present": true,
       "relative_path": "examples/output/evidence_handoff_compare.md",
       "role": "generated_compare",
-      "sha256": "a5d7e0a0cd6583d0a666ada83e97b57b6dab4cb07f2261dc025718fe33ff5424"
+      "sha256": "7d222c9926474c13d91b86f337c16fa519d8878e3e2c7883c9877ab5a9e1e069"
     },
     {
       "bytes": 1634,
       "present": true,
       "relative_path": "examples/output/evidence_handoff_compare_demo_after.json",
       "role": "generated_compare",
-      "sha256": "9b8256c6baa318219f01149c9f37e60ed1c2699361a38894091e361207fee9e1"
+      "sha256": "92c72e068e0087e667c9fdc054c54bb377bf87c56a98a7680945d805f4cd364e"
     },
     {
       "bytes": 1437,
       "present": true,
       "relative_path": "examples/output/evidence_handoff_compare_demo_before.json",
       "role": "generated_compare",
-      "sha256": "ec67588e64fc7a6ff7d0858b57793319832996fa124bf8f8308651d0b60df4db"
+      "sha256": "a22956b1f332aef13d23559faec66009d01b67aa7621aedc207c131c75ca4bff"
     },
     {
-      "bytes": 32763,
+      "bytes": 33239,
       "present": true,
       "relative_path": "examples/output/examples_index.json",
       "role": "generated_json",
-      "sha256": "bdcb0168b5b015641f063ec0591e0e98769568eb1e11b697228450ca8f891045"
+      "sha256": "4630816c8088eb6f8060e533fb1574ca3e2182f7e062c110ec22729c768c9a97"
     },
     {
-      "bytes": 14724,
+      "bytes": 15008,
       "present": true,
       "relative_path": "examples/output/examples_index.md",
       "role": "generated_markdown",
-      "sha256": "b185a0e009ee25e4245b4e9bbbf8296cae1b664eae7774a6d69e2b26447f8da8"
+      "sha256": "30f1c79dcbcd65535543f6c75981a5978dbf073e59e0b5140a7823429b2e7e6a"
     },
     {
       "bytes": 5300,
@@ -403,35 +403,35 @@
       "present": true,
       "relative_path": "examples/output/fresh_clone_plan.json",
       "role": "generated_json",
-      "sha256": "8d196eeb5c65e65c9fb2d985334da2a1093e374386abf0c1d663b0a29131128f"
+      "sha256": "24811d15e01e29a1c38b2426f37ac0584493365c2385e9e46d43ba8ee71ea3d6"
     },
     {
       "bytes": 6803,
       "present": true,
       "relative_path": "examples/output/fresh_clone_plan.md",
       "role": "generated_markdown",
-      "sha256": "d83992cf12eb71a2fe1ee704ed34e2bce3f4f6e4a88994eda90c288ef4d67cac"
+      "sha256": "17fd30e7b87f783b32cbe5820a55c5157ec0278f452c3f1b465bf31cb30c0cef"
     },
     {
       "bytes": 2184,
       "present": true,
       "relative_path": "examples/output/handoff_packet.json",
       "role": "generated_handoff_packet",
-      "sha256": "dd6a7c176ecd07df6083b5d37369080bbdd1b96743770afb779dfb1e7b150947"
+      "sha256": "92c24379b1777ea832abb33bfbea65daa99eddb955aeb1891ed9187bafae2360"
     },
     {
       "bytes": 1883,
       "present": true,
       "relative_path": "examples/output/handoff_packet.md",
       "role": "generated_handoff_packet",
-      "sha256": "4bb038fc18a6e3acffe8ac69ce3b887cb46dd5218f193f6b91691d8a6bac8e3a"
+      "sha256": "159f38c1d6093d6980bb2defb4f9346f4161b0e1a956da78dbd0825de9ea46ec"
     },
     {
       "bytes": 8052,
       "present": true,
       "relative_path": "examples/output/handoff_packet_examples.json",
       "role": "generated_handoff_packet",
-      "sha256": "8c011ea02a230a79dfa56e20688df3e3664c0f6bc2d1a31ac9250c7f3bc938fc"
+      "sha256": "7f7bccfe05ea22ebe526ce8bc07b90b676cd985e1a3c4ce2eccc6c3d2413f5d4"
     },
     {
       "bytes": 3585,
@@ -448,18 +448,18 @@
       "sha256": "c948a610d203f214ae8deff95408925caf0c89f52e08c91fc11c3f41ca79c06d"
     },
     {
-      "bytes": 10948,
+      "bytes": 11242,
       "present": true,
       "relative_path": "examples/output/package_audit.json",
       "role": "generated_local_only_audit",
-      "sha256": "15777d2dcca0468b69dce4f8251c7ef564c33c1a68f6057a907e1c6005737fcc"
+      "sha256": "87b80107c1bfd2ce3492c2736e9934b5fb28c33889250dc8ad36d2953c9725cf"
     },
     {
-      "bytes": 8791,
+      "bytes": 9026,
       "present": true,
       "relative_path": "examples/output/package_audit.md",
       "role": "generated_local_only_audit",
-      "sha256": "86b10aecd3be2b2989eddcebe75c3c50652bafeaa14896ae60092787620122fa"
+      "sha256": "3420423d8400fd1bb54b9369937dcdaba3565658fda9e3a4f3a78aa70e83e878"
     },
     {
       "bytes": 3945,
@@ -494,63 +494,77 @@
       "present": true,
       "relative_path": "examples/output/promotion_pack.json",
       "role": "generated_json",
-      "sha256": "37fb89424d769ea0c202c307ff70b6d5aa7f5ed7d5639ef9ebabc68930a70bb1"
+      "sha256": "1f418741e91a6b9bf57fdf94df2c452cffb4c846cd8260d43b9197c45f0b1d2b"
     },
     {
       "bytes": 3005,
       "present": true,
       "relative_path": "examples/output/promotion_pack.md",
       "role": "generated_markdown",
-      "sha256": "78175e92c31872d1b8a65f7cab12a2875ab1874dae57305764c1a5bc0b1bd174"
+      "sha256": "8061dec8e1e5c7609dfa955440694f988e1ecc124601e730904cdc84fc2708ed"
     },
     {
       "bytes": 8740,
       "present": true,
       "relative_path": "examples/output/public_apple_static_case_study_dashboard.html",
       "role": "generated_dashboard",
-      "sha256": "2903f6bea935c18763d6c63871585133108615aa6d68252199019167df06a7b0"
+      "sha256": "ed741976f2a7a8068b3b0b753497ccad87488a5084293983e9534b321e85f006"
     },
     {
       "bytes": 4000,
       "present": true,
       "relative_path": "examples/output/public_apple_static_case_study_report.md",
       "role": "generated_markdown",
-      "sha256": "21d8f9adf6f7cd37b9b3787d23eed2e3759627e08905c59471bb53c6d1b6d53b"
+      "sha256": "78ace564b0d0280f32a9788d23ea9d14c2458d2e00237343eb5b86cc79de6746"
     },
     {
       "bytes": 6322,
       "present": true,
       "relative_path": "examples/output/public_apple_static_case_study_review_queue.json",
       "role": "generated_review_queue",
-      "sha256": "145c1b17421fbdaf87ab469c0964aec888378cc01ef323735436045b8fc7ccd6"
+      "sha256": "c4e3cd7653234486223b61cd20ebdc01ba1c3567f25139fc444933626a7b45b4"
     },
     {
       "bytes": 3772,
       "present": true,
       "relative_path": "examples/output/public_apple_static_case_study_review_queue.md",
       "role": "generated_review_queue",
-      "sha256": "b78fca3c30ae917fbb274a765c81bf0c32b92f37156aa9db80fefff6b496e4db"
+      "sha256": "6557f67fe3d590fbc841093089c0b6b2b05064bd75f19c673fb3454caae6b201"
     },
     {
       "bytes": 10198,
       "present": true,
       "relative_path": "examples/output/public_apple_static_case_study_snapshot.json",
       "role": "generated_json",
-      "sha256": "19b5dbffafcd895df35ce12f3b36850af3e1ad6cfab6d82df1f8df4271e17318"
+      "sha256": "3d25bedd9972f05b6b4dc106c3f7660b5f8521a4d0f03686c003c398b590d586"
     },
     {
       "bytes": 5510,
       "present": true,
       "relative_path": "examples/output/publication_checklist.json",
       "role": "generated_json",
-      "sha256": "cfc53d1078772496f5f6d61dc10a1202668f4e59b806f9f9eb4bc1c7f697d21f"
+      "sha256": "3c2fc032bfb4d93f8b263b102de662ed457381f9bddf9a57d828a0569c64fa3a"
     },
     {
       "bytes": 4265,
       "present": true,
       "relative_path": "examples/output/publication_checklist.md",
       "role": "generated_markdown",
-      "sha256": "b44c2e2db209657a5aec13ef26a64420de59426d9945c3d2a0def66e0b9ade01"
+      "sha256": "6141ffa3d67900ae847d5a749cfd10866c3aeaa58c121ae9bbc76a701d61f26a"
+    },
+    {
+      "bytes": 6186,
+      "present": true,
+      "relative_path": "examples/output/release_owner_compare_blockers.json",
+      "role": "generated_compare",
+      "sha256": "b3f21cfd057daf41d320b232e3158e7da74370c3d671a9c3fa775a7f8fc33ad2"
+    },
+    {
+      "bytes": 3342,
+      "present": true,
+      "relative_path": "examples/output/release_owner_compare_blockers.md",
+      "role": "generated_compare",
+      "sha256": "abea7ab58f2be83b29d2ff4b54c89da10fbac5e4b45e7743f7d3651b8d5f3181"
     },
     {
       "bytes": 3580,
@@ -606,35 +620,35 @@
       "present": true,
       "relative_path": "examples/output/semiconductor_equipment_dashboard.html",
       "role": "generated_dashboard",
-      "sha256": "6dd5034d6ad1b1adb792bfc46ac629e21ad0616e85587ea18784ef6f589529f0"
+      "sha256": "96e1c34010195731ce3bedb531596774af629c55d612f4cf3de34f869ed84634"
     },
     {
       "bytes": 5369,
       "present": true,
       "relative_path": "examples/output/semiconductor_equipment_report.md",
       "role": "generated_markdown",
-      "sha256": "8f17216a89545bbf2b30fb747acb092e947a7e9b3d82ba0ca646db99ac497402"
+      "sha256": "0a6e6ad8d4a088d70403bffbef9319000433b9daf4e8dd04f039ac6a420cef20"
     },
     {
       "bytes": 8353,
       "present": true,
       "relative_path": "examples/output/semiconductor_equipment_review_queue.json",
       "role": "generated_review_queue",
-      "sha256": "28a7e2ea34370a53dc937a1a0fc423032eedf1d75a1d2b13fbca08e2c44be1dc"
+      "sha256": "f2aac951f61667985c86670c909862f5021784cedf8507766fdade9c1bc16e98"
     },
     {
       "bytes": 4647,
       "present": true,
       "relative_path": "examples/output/semiconductor_equipment_review_queue.md",
       "role": "generated_review_queue",
-      "sha256": "edd1c5dce147befe6204c30484f40b0915775ed599b2c09c32d4172ccb59774a"
+      "sha256": "577e2d7ed2b8e00d0fa6976c2d0f7e9f673fb33dd85e8a83098bf89b807b0975"
     },
     {
       "bytes": 13364,
       "present": true,
       "relative_path": "examples/output/semiconductor_equipment_snapshot.json",
       "role": "generated_json",
-      "sha256": "29753cda7a59306689f937de1b8feeeb41ce82a0165d93c4cbe4553b3f4cce44"
+      "sha256": "79d16d304c5e879f7e418bdd4fe00984ea8783d5c6699879b1c2d868828c63e1"
     },
     {
       "bytes": 4556,
@@ -648,14 +662,14 @@
       "present": true,
       "relative_path": "examples/output/source_boundary_evidence.json",
       "role": "generated_json",
-      "sha256": "ff286be435f12df48b74201ae02780159b1c51f877779b8b95c42bff27427505"
+      "sha256": "ee7be32891be6b2e9090ce0ca031e8be3d3ee91d12bda31c6aec77229c090a7d"
     },
     {
       "bytes": 7738,
       "present": true,
       "relative_path": "examples/output/source_boundary_evidence.md",
       "role": "generated_source_boundary_evidence",
-      "sha256": "345226d8f66692565991250fea820fbf5e9ed8ee3082d00ba82e8267486cf32c"
+      "sha256": "e10179e5b015fb7843ba02cb14eb0201dcf15f065eb4907bdd2de7fd36d5b45e"
     },
     {
       "bytes": 6130,
@@ -676,21 +690,21 @@
       "present": true,
       "relative_path": "examples/output/visual_evidence_receipt.json",
       "role": "generated_json",
-      "sha256": "9cabb15dce945da76b696726540ade7d8c255ae249e71dbb95ed817440a4211a"
+      "sha256": "a83d05fe1d64d80264eaa87c67be6e31f3cc156597b750395a49c34f781326ef"
     },
     {
       "bytes": 5308,
       "present": true,
       "relative_path": "examples/output/visual_evidence_receipt.md",
       "role": "generated_visual_evidence",
-      "sha256": "eb31e2248412eb5497b6f8698467f9f0d6fc4a1df2f489cbbb7c9d84ce8db68d"
+      "sha256": "7ef68aec5d7e1d515cdc349b5ee5dfc9a26f6bd6829f79f64d18a08d4dcdd3a1"
     },
     {
-      "bytes": 16406,
+      "bytes": 17056,
       "present": true,
       "relative_path": "reports/maturity/maturity_evidence.md",
       "role": "release_evidence",
-      "sha256": "b2052976be8a298237b5c59225a105dfd79f9a3afc20910c8a2812cdfbf95115"
+      "sha256": "002b58cccb06e33e260b5d73d7b06256ce518201ec5ab3738f0721e1e05604af"
     }
   ],
   "freshness_notes": [
@@ -726,12 +740,12 @@
     "Generated reports preserve source-boundary labels for management claims, analyst questions, and user synthesis."
   ],
   "summary": {
-    "checked_artifact_count": 97,
-    "generated_output_count": 82,
+    "checked_artifact_count": 99,
+    "generated_output_count": 84,
     "missing_artifact_count": 0,
-    "present_artifact_count": 97,
+    "present_artifact_count": 99,
     "readiness_status": "ready_with_review",
     "source_fixture_count": 7
   },
-  "version": "0.9.3"
+  "version": "0.9.7"
 }

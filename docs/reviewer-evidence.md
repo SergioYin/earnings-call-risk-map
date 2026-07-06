@@ -43,9 +43,9 @@ python -m pip install .
 earnings-call-risk-map version
 ```
 
-Expected version for this release line: `0.9.3`.
+Expected version for this release line: `0.9.7`.
 
-Current evidence increment note for this evidence set: `docs/release-notes-v0.9.6.md`. The package-internal version remains `0.9.3` for deterministic CLI and generated-artifact checks.
+Current release increment note for this evidence set: `docs/release-notes-v0.9.7.md`. The v0.9.6 evidence handoff compare note remains part of the evidence trail consumed by the release-owner blocker checklist.
 
 ## Release Assets
 
@@ -53,6 +53,7 @@ Primary release and reviewer assets:
 
 - `README.md`
 - `CHANGELOG.md`
+- `docs/release-notes-v0.9.7.md`
 - `docs/release-notes-v0.9.4.md`
 - `docs/release-notes-v0.9.6.md`
 - `docs/release-notes-v0.9.3.md`
@@ -132,7 +133,7 @@ Latest recorded final internal maturity review:
 - Review date: `2026-05-17`
 - Overall score: `94/100`
 - Level: `L4+`
-- Release gate: `PASS for owner-controlled v0.9.3 release after final worktree inspection`
+- Release gate: `PASS for owner-controlled v0.9.7 release after final worktree inspection`
 - Promotion gate: `PASS for small-scope public promotion after release owner approval`
 
 Scorecard:

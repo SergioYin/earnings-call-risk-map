@@ -24,8 +24,8 @@ DOC_LINK_CHECK_PATHS = (
     Path("docs/comparison-to-spreadsheets.md"),
     Path("docs/release-readiness.md"),
     Path("docs/reviewer-evidence.md"),
+    Path("docs/release-notes-v0.9.7.md"),
     Path("docs/release-notes-v0.9.6.md"),
-    Path("docs/release-notes-v0.9.3.md"),
 )
 REQUIRED_DOC_PATHS = (
     Path("docs/tutorial-earnings-review.md"),
@@ -1009,7 +1009,7 @@ def check_publication_checklist() -> int:
         "Publication Checklist",
         "Confirm The Release Candidate",
         "Create The GitHub Release",
-        "gh release create v0.9.3",
+        "gh release create v0.9.7",
         "python scripts/privacy_scan.py",
         "Educational research review only",
     )
@@ -1599,6 +1599,99 @@ def check_evidence_handoff_compare() -> int:
     return 0
 
 
+def check_release_owner_compare_blockers() -> int:
+    print("== release owner compare blockers ==", flush=True)
+    json_path = ROOT / "examples/output/release_owner_compare_blockers.json"
+    md_path = ROOT / "examples/output/release_owner_compare_blockers.md"
+    missing = [
+        path.relative_to(ROOT).as_posix()
+        for path in (json_path, md_path)
+        if not path.is_file()
+    ]
+    if missing:
+        print("missing release owner compare blocker artifact(s): " + ", ".join(missing))
+        return 1
+
+    payload = json.loads(json_path.read_text(encoding="utf-8"))
+    if payload.get("schema") != "earnings-call-risk-map.release-owner-compare-blockers.v1":
+        print("release owner compare blockers has unexpected schema")
+        return 1
+    summary = payload.get("summary", {})
+    if summary.get("release_decision") != "blocked" or summary.get("blocker_count", 0) < 1:
+        print("release owner compare blockers has unexpected decision or blocker count")
+        return 1
+    checks = {item.get("slug"): item for item in payload.get("checklist", [])}
+    required_checks = {
+        "no-removed-evidence-artifacts",
+        "no-artifacts-became-missing",
+        "release-boundaries-preserved",
+        "safety-notice-preserved",
+        "added-artifacts-reviewed",
+        "content-hash-or-size-changes-reviewed",
+        "source-and-freshness-changes-reviewed",
+    }
+    if not required_checks.issubset(checks):
+        print("release owner compare blockers missing checklist gate(s)")
+        return 1
+    if checks["no-removed-evidence-artifacts"].get("status") != "blocker":
+        print("release owner compare blockers did not flag removed evidence as blocker")
+        return 1
+    if checks["content-hash-or-size-changes-reviewed"].get("status") != "review_required":
+        print("release owner compare blockers did not flag hash/size changes for review")
+        return 1
+    boundaries = set(payload.get("boundaries", []))
+    for boundary in ("no live data", "no broker connection", "no private data"):
+        if boundary not in boundaries:
+            print(f"release owner compare blockers missing boundary marker: {boundary}")
+            return 1
+
+    markdown = md_path.read_text(encoding="utf-8")
+    required_markers = (
+        "Release Owner Compare Blocker Checklist",
+        "Release decision: `blocked`",
+        "No evidence handoff artifacts were removed",
+        "Changed byte counts or SHA-256 hashes",
+        "Release Owner Notes",
+        "no live data",
+        "no private data",
+    )
+    missing_markers = [marker for marker in required_markers if marker not in markdown]
+    if missing_markers:
+        print("release owner compare blockers markdown missing marker(s): " + ", ".join(missing_markers))
+        return 1
+
+    release_assets = json.loads(
+        subprocess.run(
+            [sys.executable, "-m", "earnings_call_risk_map", "release-assets"],
+            cwd=ROOT,
+            env=ENV,
+            text=True,
+            capture_output=True,
+            check=True,
+        ).stdout
+    )
+    release_manifest_paths = {
+        item["path"]
+        for item in json.loads((ROOT / "release_manifest.json").read_text(encoding="utf-8"))["files"]
+    }
+    demo_manifest_paths = {
+        item["path"]
+        for item in json.loads((ROOT / "examples/output/release_manifest.json").read_text(encoding="utf-8"))["files"]
+    }
+    for path in (json_path.relative_to(ROOT).as_posix(), md_path.relative_to(ROOT).as_posix()):
+        if path not in release_assets.get("expected_assets", []):
+            print(f"release assets missing release owner compare blocker path: {path}")
+            return 1
+        if path not in release_manifest_paths:
+            print(f"release manifest missing release owner compare blocker path: {path}")
+            return 1
+        if path not in demo_manifest_paths:
+            print(f"demo release manifest missing release owner compare blocker path: {path}")
+            return 1
+    print("release owner compare blockers passed")
+    return 0
+
+
 def check_command_cheat_sheet() -> int:
     print("== command cheat sheet ==", flush=True)
     json_path = ROOT / "examples/output/command_cheat_sheet.json"
@@ -1647,6 +1740,7 @@ def check_command_cheat_sheet() -> int:
         "playbooks",
         "promotion-pack",
         "publication-checklist",
+        "release-owner-compare-blockers",
         "release-owner-handoff",
         "release-assets",
         "release-notes",
@@ -1984,6 +2078,9 @@ def main() -> int:
             if code:
                 return code
             code = check_evidence_handoff_compare()
+            if code:
+                return code
+            code = check_release_owner_compare_blockers()
             if code:
                 return code
             code = check_fresh_clone_plan()

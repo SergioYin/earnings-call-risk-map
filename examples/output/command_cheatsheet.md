@@ -12,6 +12,7 @@
 | `audit` | Report package audit parity as JSON or Markdown |
 | `evidence-handoff-audit` | Audit local evidence handoff artifacts as JSON or Markdown |
 | `evidence-handoff-compare` | Compare two evidence handoff audit JSON files as JSON or Markdown |
+| `release-owner-compare-blockers` | Render release-owner evidence-change blocker checklist from compare JSON |
 | `agent-workflow` | Render generic agent workflow instructions as Markdown or JSON |
 | `cheat-sheet` | Print lightweight command cheat sheet as Markdown or JSON |
 | `case-study-map` | Render bundled case study map as Markdown or JSON |

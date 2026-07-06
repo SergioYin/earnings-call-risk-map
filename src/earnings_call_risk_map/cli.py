@@ -47,6 +47,10 @@ from .publication_checklist import publication_checklist_json, publication_check
 from .promotion_pack import promotion_pack_json, promotion_pack_markdown
 from .release_assets import build_release_asset_checklist, render_release_asset_checklist_markdown
 from .release_notes import release_notes_summary_markdown
+from .release_owner_compare_blockers import (
+    release_owner_compare_blockers_json,
+    release_owner_compare_blockers_markdown,
+)
 from .release_owner_handoff import release_owner_handoff_json, release_owner_handoff_markdown
 from .render import (
     render_compare_markdown,
@@ -195,6 +199,24 @@ def build_parser() -> argparse.ArgumentParser:
     )
     evidence_handoff_compare.add_argument("--output", metavar="PATH", help="Write evidence handoff compare to this path")
     evidence_handoff_compare.set_defaults(func=cmd_evidence_handoff_compare)
+
+    release_owner_compare_blockers = sub.add_parser(
+        "release-owner-compare-blockers",
+        help="Render release-owner evidence-change blocker checklist from compare JSON",
+    )
+    release_owner_compare_blockers.add_argument("--compare", required=True, metavar="PATH", help="Evidence handoff compare JSON")
+    release_owner_compare_blockers.add_argument(
+        "--format",
+        choices=("json", "markdown"),
+        default="markdown",
+        help="Output format",
+    )
+    release_owner_compare_blockers.add_argument(
+        "--output",
+        metavar="PATH",
+        help="Write release-owner compare blocker checklist to this path",
+    )
+    release_owner_compare_blockers.set_defaults(func=cmd_release_owner_compare_blockers)
 
     agent_workflow = sub.add_parser(
         "agent-workflow",
@@ -423,6 +445,14 @@ def cmd_demo(args: argparse.Namespace) -> int:
     write_text(out_dir / "package_audit.json", package_audit_json("."))
     write_text(out_dir / "package_audit.md", package_audit_markdown("."))
     _write_evidence_handoff_compare_examples(out_dir)
+    write_text(
+        out_dir / "release_owner_compare_blockers.md",
+        release_owner_compare_blockers_markdown(out_dir / "evidence_handoff_compare.json"),
+    )
+    write_text(
+        out_dir / "release_owner_compare_blockers.json",
+        release_owner_compare_blockers_json(out_dir / "evidence_handoff_compare.json"),
+    )
     write_text(out_dir / "evidence_handoff_audit.json", evidence_handoff_audit_json("."))
     write_text(out_dir / "evidence_handoff_audit.md", evidence_handoff_audit_markdown("."))
     write_text(out_dir / "agent_workflow.md", agent_workflow_markdown())
@@ -566,6 +596,18 @@ def cmd_evidence_handoff_compare(args: argparse.Namespace) -> int:
         payload = evidence_handoff_compare_json(args.before, args.after)
     else:
         payload = evidence_handoff_compare_markdown(args.before, args.after)
+    if args.output:
+        write_text(args.output, payload)
+    else:
+        print(payload, end="")
+    return 0
+
+
+def cmd_release_owner_compare_blockers(args: argparse.Namespace) -> int:
+    if args.format == "json":
+        payload = release_owner_compare_blockers_json(args.compare)
+    else:
+        payload = release_owner_compare_blockers_markdown(args.compare)
     if args.output:
         write_text(args.output, payload)
     else:
